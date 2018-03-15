@@ -1,0 +1,35 @@
+{
+  "name": "epsilon-stream-web",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta.2",
+    "classnames": "^2.2.5",
+    "jquery": "^3.2.1",
+    "query-string": "^5.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-iframe": "^1.1.0",
+    "react-progressbar": "^15.4.1",
+    "react-redux": "^5.0.6",
+    "react-route": "^1.0.3",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "^1.0.17",
+    "react-simpletabs": "^0.7.0",
+    "react-spinners": "^0.2.5",
+    "react-youtube": "^7.5.0",
+    "reactstrap": "^5.0.0-alpha.4",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^4.8.3",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "postbuild": "cp -r assets build/",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
