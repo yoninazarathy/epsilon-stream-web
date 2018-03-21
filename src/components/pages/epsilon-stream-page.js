@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Navbar, Nav, NavbarBrand, NavbarToggler, Collapse, Form, Input } from 'reactstrap';
+import { Button, Navbar, Nav, NavbarBrand, NavbarToggler, Collapse, Form, Input} from 'reactstrap';
 import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
 import Icon from '../../assets/icon.png'
 import SettingsImage from '../../assets/3dotsMenu.png'
@@ -7,6 +7,7 @@ import HomeImage from '../../assets/Home.png'
 import RightButtonImage from '../../assets/Right_Passive.png'
 import LeftButtonImage from '../../assets/Left_Passive.png'
 import randomChoiceAction from '../../actions/random-choice-action.js'
+import MediaQuery from 'react-responsive';
 
 // import '../App.css';
 import { withRouter } from 'react-router-dom'
@@ -63,9 +64,6 @@ const SettingsButton = withRouter(({history}) => (
         <img alt="settings" src={SettingsImage} width={30} height={30} />
     </Button>
 ))
-
-
-
 class EpsilonStreamPage extends Component {
     constructor(props) {
       super(props);
@@ -99,6 +97,11 @@ class EpsilonStreamPage extends Component {
       store.dispatch(push('/search'))
       //history.push('/search')
     }
+    handleClick() {
+    this.setState({
+        open: !this.state.open
+    });
+}
     render() {
         return (
             <div className="EpsilonStreamPage">

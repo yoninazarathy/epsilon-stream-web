@@ -4,16 +4,16 @@ import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import createHistory from 'history/createBrowserHistory'
-import { routerMiddleware } from 'react-router-redux'
+import {routerMiddleware } from 'react-router-redux'
 
 export const history = createHistory()
 
-const historyMiddleware = routerMiddleware(history)
+const historyMiddleware = routerMiddleware(history);
 
 const middleware = applyMiddleware(thunk, logger, historyMiddleware)
 
 export const store = createStore(   reducers,
-                                    undefined, 
+                                    undefined,
                                     compose(middleware,
                                         autoRehydrate()))
                                         persistStore(store)

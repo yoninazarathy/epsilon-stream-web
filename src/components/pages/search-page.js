@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import EpsilonStreamPage from './epsilon-stream-page.js';
 import {connect} from 'react-redux'
@@ -7,6 +8,7 @@ import { Button } from 'reactstrap';
 
 class SearchPage extends Component {
   render() {
+    const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 200);
     return (
         <EpsilonStreamPage title="Search" hassearch={true}>
           <SearchResults/>

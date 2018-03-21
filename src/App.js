@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 import {Provider} from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
+import {ConnectedRouter as Router, routerReducer} from 'react-router-redux';
 import {store, history} from './store.js'
 
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 
 import IndexPage from './components/pages/index-page.js'
 import ProductPage from './components/pages/product-page.js'
@@ -19,10 +19,8 @@ import NotFoundPage from './components/pages/notfound-page.js'
 
 class App extends React.Component {
   render() {
-    console.log("Yo")
-    console.log(ConnectedRouter)
     return (
-      <ConnectedRouter history={history}>
+      <Router history={history}>
         <div className="App">
           <Switch>
             <Route exact path="/" component={SearchPage} />{/*was IndexPage*/}
@@ -34,7 +32,7 @@ class App extends React.Component {
             <Route exact path='*' component={NotFoundPage} />
           </Switch>
         </div>
-      </ConnectedRouter>
+      </Router>
     );
   }
 }
