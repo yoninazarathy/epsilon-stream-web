@@ -3,8 +3,8 @@ import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,ha
 import startCloudPullAction from './actions/start-cloud-pull-action.js'
 import {localRecord, recordsOfHashTag} from './managers/records-manager.js';
 import {makeImageDictionary} from './managers/image-manager.js'
-
 import { routerReducer } from 'react-router-redux'
+import makeHashTagDict from './actions/rehash-search-strings-action.js'
 
 function createVideoProgressDict(videoProgressDict, videoId, seconds) {
     let newProgressDict = {...videoProgressDict}
@@ -99,6 +99,7 @@ const database = (state = {records: []}, actions) => {
             return {
                 ...state,
                 mathObjects: [],
+                hashTagDict: [],
                 mathObjectLinks: [],
                 videos: [],
                 featuredURLs: [],
@@ -167,7 +168,12 @@ const database = (state = {records: []}, actions) => {
                 featuredURLsInProgress: false,
                 featuredURLs: actions.payload.map((record) => localRecord(record,"FeaturedURL"))
             }
-        default:
+        case "REHASH_SEARCH_STRINGS":
+            return{
+                ...state,
+                hashTagDict: makeHashTagDict()
+            }
+        default:            
             return state;
     }
 }

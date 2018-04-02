@@ -8,9 +8,24 @@ import {routerMiddleware } from 'react-router-redux'
 
 export const history = createHistory()
 
+
+//QQQQ Consider moving this to another module
+const rehashMiddleWare = store => next => action => {
+    if(action.type == 'FETCH_MATH_OBJECT_STOP'){
+        console.log("got it......")
+        console.log(action.payload)
+        next(action)
+        store.dispatch({type: "REHASH_SEARCH_STRINGS",payload:{}})
+
+    }else{
+        next(action);
+    }
+  }
+
+
 const historyMiddleware = routerMiddleware(history);
 
-const middleware = applyMiddleware(thunk, logger, historyMiddleware)
+const middleware = applyMiddleware(thunk, logger, historyMiddleware,rehashMiddleWare)
 
 export const store = createStore(   reducers,
                                     undefined,
