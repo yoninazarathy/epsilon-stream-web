@@ -65,7 +65,6 @@ export function hashTagOfString(searchString) {
 }
 
 export function autoCompleteForString(s) {
-    return ["shit","big shit", "huge shit"]
     return store.getState().database.hashTagDict.values()
     //return store.getState().database.mathObjects.map((m) => m.associatedTitlesNew.map((g) => g.find((i) => i.toLowerCase().includes(s.toLowerCase()))).filter((n) => n != undefined))
 }
