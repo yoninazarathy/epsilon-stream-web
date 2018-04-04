@@ -23,11 +23,14 @@ class SearchItemUNROUTED extends React.Component{
                             : ""
                         }
                     </Media>
-                    <Media body>
-                        <Media heading>{this.props.title}</Media>
-                        <br />
-                        <span className="media-subtitle align-bottom">{this.props.subtitle}</span><br/>
-                    </Media>
+                    <Container>
+                        <Row>
+                            <span className = "media-title"> {this.props.title} </span>
+                        </Row>
+                        <Row>
+                            <span className="media-subtitle">{this.props.subtitle}</span>
+                        </Row>
+                    </Container>
                 </Media>
             </div>
         )

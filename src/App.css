@@ -2,7 +2,7 @@
 }
 
 .App-intro {
-  font-size: large;
+  font-size: small;
 }
 
 .blog-post-img {
@@ -15,17 +15,27 @@
   border-radius: 5px;
   box-shadow: inset 1px 4px 9px -6px;
   height: 113px;
+  font-size: 10pt;
 }
 
 .SearchItem > .media > .media-body {
-  padding: 10px;
+  /*padding: 10px;*/
+  color: blueviolet;
 }
 
 .SearchItem > .media > .media-left > .media-container {
   height: 113px;
   width: 195px;
-
   overflow: hidden;
+}
+.media-title{
+  padding-top: 10px;
+  font-size: large;
+}
+
+.media-subtitle{
+  padding-top: 30px;
+  font-size: small;
 }
 
 .progressbar-container {
@@ -68,6 +78,9 @@ body:after {
   border-radius: 100px;
 }
 
+NavbarBrand.propTypes = {
+  color: white;
+}
 .center {
   text-align: center;
 }
@@ -82,9 +95,9 @@ body:after {
 
 .SearchResults{
   padding-top: 0px;
-  padding-right: 120px;
+  /*padding-right: 120px;
   padding-bottom: 20px;
-  padding-left: 120px;
+  padding-left: 120px;*/
   /*width: 1000px;*/
   background-color: lightgray;
   align-content: center;

@@ -19,7 +19,7 @@ import {store} from '../../store.js'
 import {push} from 'react-router-redux'
 
 const ProductButton = withRouter(({history}) => (
-    <img className="productButton mr-sm-2" src={Icon} width={45} onClick={() => {history.push('/product') }} />
+    <img className="productButton mr-sm-2" src={Icon} width={45} onClick={() => {window.open("https://epsilonstream.com", '_blank')} } />
 ))
 
 const LeftButton = withRouter(({history}) => (
@@ -105,18 +105,19 @@ class EpsilonStreamPage extends Component {
     render() {
         return (
             <div className="EpsilonStreamPage">
-                <Navbar color="danger" expand="md">
-                    <NavbarBrand href="/"><ProductButton />EpsilonStream Beta</NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} />
+                <Navbar color = "danger" light expand="md">
+                    <NavbarBrand href="/" color = "white">
+                    <ProductButton /> Epsilon Stream Beta</NavbarBrand>
+                   {/*<NavbarToggler onClick={this.toggle} />*/}
                     {
                         this.props.hassearch ?
-                        <Collapse isOpen={this.state.isOpen} navbar>
-                            <Nav className="w-100" navbar>
+                        <Collapse isOpen={true/*this.state.isOpen*/} navbar>
+                            <Nav className="w-100" navbar expand = "md">
                                 {/*<LeftButton />*/}
                                 {/*<RightButton />*/}
                                 <Form inline className="w-100">
-                                    <Input  type="text" className="w-50 ml-auto"
-                                            name="search" placeholder="Search"
+                                    <Input  type="text" className="w-100 ml-auto"
+                                            name="search" placeholder="Search Mathematics"
                                             value={this.state.value}
                                             onChange={this.handleChange}
                                             list="search-autocomplete" />
@@ -125,15 +126,15 @@ class EpsilonStreamPage extends Component {
                                             return <option value={string} />
                                         })}
                                     </datalist>
-                                    {/*<SearchButton />*/}
+                                    {/*<SearchButton />
                                     <SurpriseButton />
-                                    <HomeButton />
+                                    <HomeButton />*/}
                                 </Form>
                             </Nav>
                         </Collapse>
                         : ""
                     }
-                    <SettingsButton />
+                    {/*<SettingsButton/>*/}
                 </Navbar>
                 {this.props.children}
             </div>
