@@ -123,7 +123,10 @@ const database = (state = {records: []}, actions) => {
             startCloudPullAction("FULL_PULL")
             return{
                 ...state,
-                fullPullFetchInProgress: true,
+                mathObjectsFetchInProgress: true,
+                mathObjectLinksFetchInProgress: true,
+                videosInProgress: true,
+                featuredURLsInProgress: true,
             }
         case "FETCH_MATH_OBJECT_START":
             startCloudPullAction("MATH_OBJECT")
@@ -148,11 +151,6 @@ const database = (state = {records: []}, actions) => {
             return{
                 ...state,
                 featuredURLsInProgress: true
-            }
-        case "FETCH_FULL_PULL_STOP":
-            return{
-                ...state,
-                fullPullFetchInProgress: false
             }
         case "FETCH_MATH_OBJECT_STOP":
             return{

@@ -8,12 +8,10 @@ import RightButtonImage from '../../assets/Right_Passive.png'
 import LeftButtonImage from '../../assets/Left_Passive.png'
 import MediaQuery from 'react-responsive';
 import { withRouter } from 'react-router-dom'
-
-// import '../App.css';
+import { RingLoader } from 'react-spinners';
 import updateSearchAction from '../../actions/update-search-action.js'
 import {connect} from 'react-redux'
 import userHomeAction from '../../actions/user-home-action';
-
 import {store} from '../../store.js'
 import {push} from 'react-router-redux'
 
@@ -46,8 +44,8 @@ class EpsilonStreamPage extends Component {
         value: ''
       };
 
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      //this.handleChange = this.handleChange.bind(this);
+      //this.handleSubmit = this.handleSubmit.bind(this);
     }
     toggle() {
       this.setState({
@@ -55,42 +53,12 @@ class EpsilonStreamPage extends Component {
       });
     }
 
-    // Search
-    handleChange(event) {
-      this.setState({value: event.target.value});
-      if(event.target.value === ""){
-        store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
-      }
-      //updateSearchAction(event.target.value)
-      //store.dispatch(push('?search='+event.target.value))
-      //this.props.activeRouteHandler({key: "test"})
+    handleClick() {
+        this.setState({
+            open: !this.state.open
+        });
     }
 
-    handleSubmit(event) {
-      //alert('A name was submitted: ' + this.state.value);
-      //event.preventDefault();
-      //store.dispatch(push('/search'))
-      //history.push('/search')
-    }
-
-    handleKeyPress(event){
-        console.log("key: " + event.key)
-        if (event.key !== 'Enter'){
-            store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{}})
-            //  console.log("enter enter enter")
-            //  console.log(this.state.value)
-        }else{
-            store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
-            updateSearchAction(event.target.value)
-            this.state.value = event.target.value
-        }
-    }
-
-//     handleClick() {
-//     this.setState({
-//         open: !this.state.open
-//     });
-// }
     render() {
         return (
             <div className="EpsilonStreamPage">
@@ -122,7 +90,18 @@ class EpsilonStreamPage extends Component {
                     }
                     {/*<SettingsButton/>*/}
                 </Navbar>
-                {this.props.children}
+                <div>
+                    {this.props.loadingInProgress ?
+                        <center>
+                        <RingLoader
+                            color={'#123abc'} 
+                            loading={true} 
+                        />     
+                        </center>  
+                        :         
+                        this.props.children
+                    }
+                </div>
             </div>
         );
     }
@@ -131,6 +110,10 @@ class EpsilonStreamPage extends Component {
 const mapStateToProps = (state) => {
     return {
         searchString: state.user.cleanSearchString,
+        loadingInProgress:  state.database.mathObjectsFetchInProgress       ||
+                            state.database.mathObjectLinksFetchInProgress   ||
+                            state.database.videosInProgress                 ||
+                            state.database.featuredURLsInProgress
     };
 };
 
