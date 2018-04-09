@@ -5,6 +5,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0-beta.2",
     "classnames": "^2.2.5",
+    "history": "^4.7.2",
     "jquery": "^3.2.1",
     "lodash": "^4.17.5",
     "query-string": "^5.0.1",
@@ -14,7 +15,7 @@
     "react-iframe": "^1.1.0",
     "react-progressbar": "^15.4.1",
     "react-redux": "^5.0.6",
-    "react-responsive": "^4.0.5",
+    "react-responsive": "^4.1.0",
     "react-responsive-redux": "^0.5.0",
     "react-responsive-ux-container": "^1.0.7",
     "react-route": "^1.0.3",

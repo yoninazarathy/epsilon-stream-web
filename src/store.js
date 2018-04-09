@@ -4,7 +4,7 @@ import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import createHistory from 'history/createBrowserHistory'
-import {routerMiddleware } from 'react-router-redux'
+import {routerMiddleware, push } from 'react-router-redux'
 
 export const history = createHistory()
 
@@ -29,7 +29,7 @@ const middleware = applyMiddleware(thunk, logger, historyMiddleware,rehashMiddle
 
 export const store = createStore(   reducers,
                                     undefined,
-                                    compose(middleware,
+                                    compose (middleware,
                                         autoRehydrate()))
                                         persistStore(store)
 
