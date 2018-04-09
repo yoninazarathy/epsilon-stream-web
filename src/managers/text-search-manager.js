@@ -12,10 +12,6 @@ export function displayResultsOfSearchResults(searchResults) {
     let ourVideoDict = store.getState().database.videos;
     return [
         ...searchResults.videos.map((sr) => {
-            console.log('markerx');
-            console.log(ourVideoProgressDict[sr.youtubeVideoId]);
-            console.log(sr.durationSec);
-            console.log(ourVideoProgressDict[sr.youtubeVideoId] / sr.durationSec);
             return {
                 type: sr.type,
                 image: sr.imageURL,

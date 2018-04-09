@@ -6,11 +6,10 @@ import SettingsImage from '../../assets/3dotsMenu.png'
 import HomeImage from '../../assets/Home.png'
 import RightButtonImage from '../../assets/Right_Passive.png'
 import LeftButtonImage from '../../assets/Left_Passive.png'
-import randomChoiceAction from '../../actions/random-choice-action.js'
 import MediaQuery from 'react-responsive';
+import { withRouter } from 'react-router-dom'
 
 // import '../App.css';
-import { withRouter } from 'react-router-dom'
 import updateSearchAction from '../../actions/update-search-action.js'
 import {connect} from 'react-redux'
 import userHomeAction from '../../actions/user-home-action';
@@ -22,33 +21,6 @@ const ProductButton = withRouter(({history}) => (
     <img className="productButton mr-sm-2" src={Icon} width={45} onClick={() => {window.open("https://epsilonstream.com", '_blank')} } />
 ))
 
-const LeftButton = withRouter(({history}) => (
-    <Button outline color="danger" className="ml-sm-2 mr-sm-2"
-        onClick={() => {console.log("left....")}}>
-        <img alt="left" src={LeftButtonImage} width={30} height={30} />
-    </Button>
-))
-
-const RightButton = withRouter(({history}) => (
-    <Button outline color="danger" className="ml-sm-2 mr-sm-2"
-        onClick={() => {console.log("right....")}}>
-        <img alt="right" src={RightButtonImage} width={30} height={30} />
-    </Button>
-))
-
-const SearchButton = withRouter(({history}) => (
-    <Button outline color="light" className="ml-sm-2"
-        onClick={() => {history.push('/search')}}>
-        Search
-    </Button>
-))
-
-const SurpriseButton = withRouter(({history}) => (
-    <Button outline color="light" className="ml-sm-2 mr-sm-2"
-        onClick={randomChoiceAction}>
-        Surprise
-    </Button>
-))
 
 const HomeButton = withRouter(({history}) => (
     <Button outline color="light" className="ml-sm-2 mr-sm-2"
@@ -86,22 +58,39 @@ class EpsilonStreamPage extends Component {
     // Search
     handleChange(event) {
       this.setState({value: event.target.value});
-      updateSearchAction(event.target.value)
+      if(event.target.value === ""){
+        store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
+      }
+      //updateSearchAction(event.target.value)
       //store.dispatch(push('?search='+event.target.value))
       //this.props.activeRouteHandler({key: "test"})
     }
 
     handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.value);
-      event.preventDefault();
-      store.dispatch(push('/search'))
+      //alert('A name was submitted: ' + this.state.value);
+      //event.preventDefault();
+      //store.dispatch(push('/search'))
       //history.push('/search')
     }
-    handleClick() {
-    this.setState({
-        open: !this.state.open
-    });
-}
+
+    handleKeyPress(event){
+        console.log("key: " + event.key)
+        if (event.key !== 'Enter'){
+            store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{}})
+            //  console.log("enter enter enter")
+            //  console.log(this.state.value)
+        }else{
+            store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
+            updateSearchAction(event.target.value)
+            this.state.value = event.target.value
+        }
+    }
+
+//     handleClick() {
+//     this.setState({
+//         open: !this.state.open
+//     });
+// }
     render() {
         return (
             <div className="EpsilonStreamPage">
@@ -120,12 +109,9 @@ class EpsilonStreamPage extends Component {
                                             name="search" placeholder="Search Mathematics"
                                             value={this.state.value}
                                             onChange={this.handleChange}
-                                            list="search-autocomplete" />
-                                    <datalist id="search-autocomplete">
-                                        {this.props.autoCompleteList.map(function (string, index) {
-                                            return <option value={string} />
-                                        })}
-                                    </datalist>
+                                            onKeyPress={this.handleKeyPress}
+                                            autocomplete = "off"
+                                    />
                                     {/*<SearchButton />
                                     <SurpriseButton />
                                     <HomeButton />*/}
@@ -145,7 +131,6 @@ class EpsilonStreamPage extends Component {
 const mapStateToProps = (state) => {
     return {
         searchString: state.user.cleanSearchString,
-        autoCompleteList: state.user.autoCompleteList
     };
 };
 

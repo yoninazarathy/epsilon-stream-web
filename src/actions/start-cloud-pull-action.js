@@ -3,14 +3,14 @@ import pullCloudKitData from '../managers/cloudkit-manager.js'
 
 export default function startCloudPullAction(actionType){
     if(actionType == "FULL_PULL"){
-      console.log('will do full pull')
+      //console.log('will do full pull')
       function sanitizedforindemnity(lst) {
         let name = lst[0]
         console.log(name)
         let query = makeQuery(name)
         pullCloudKitData(query,
             (result) =>{
-                console.log(result)
+                //console.log(result)
                 store.dispatch({type:"FETCH_"+name+"_STOP",
                                 success: true, 
                                 payload: result})

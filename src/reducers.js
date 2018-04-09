@@ -1,4 +1,4 @@
-import {createStore,applyMiddleware, combineReducers} from 'redux'
+import {applyMiddleware, combineReducers} from 'redux'
 import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,hashTagOfString} from './managers/text-search-manager.js'
 import startCloudPullAction from './actions/start-cloud-pull-action.js'
 import {localRecord, recordsOfHashTag} from './managers/records-manager.js';
@@ -17,6 +17,7 @@ const user = (state = {counter: 0}, actions) => {
         case "RESET_USER_STORE":
             return {
                 ...state,
+                searchTypingInProgress: false,
                 counter: 0, //QQQQ temp for learning how to use (delete)
                 searchString: "",
                 currentHashTag: "",
@@ -32,6 +33,16 @@ const user = (state = {counter: 0}, actions) => {
                 rawSearchString: tempCleanString,
                 cleanSearchString: tempCleanString, //QQQQ what for?
                 autoCompleteList: autoCompleteForString(tempCleanString)
+            }
+        case "USER_SEARCH_IS_TYPING":
+            return {
+                ... state,
+                searchTypingInProgress: true
+            }
+        case "USER_SEARCH_DONE_TYPING":
+            return {
+                ... state,
+                searchTypingInProgress: false
             }
         case "UPDATE_SEARCH_STRING": //QQQQ this is used also for surprise and for home (and mol).... fix
             let cleanString = cleanSearchString(actions.payload)

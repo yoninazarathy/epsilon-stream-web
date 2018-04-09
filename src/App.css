@@ -102,3 +102,7 @@ NavbarBrand.propTypes = {
   background-color: lightgray;
   align-content: center;
 }
+
+ul{
+  list-style-type: none;
+}

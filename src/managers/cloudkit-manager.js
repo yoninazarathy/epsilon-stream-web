@@ -69,7 +69,7 @@ function handleResponse(response){
 
    if(response.moreComing){
      currentOptions.continuationMarker = response.continuationMarker
-     console.log("more coming")
+     //console.log("more coming")
      publicDB.performQuery(currentQuery,currentOptions).then(handleResponse);
    }else{
     //  console.log("done")

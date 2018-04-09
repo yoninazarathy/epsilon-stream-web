@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 
-import {Provider} from 'react-redux'
+//import {Provider} from 'react-redux'
 import {ConnectedRouter as Router, routerReducer} from 'react-router-redux';
 import {store, history} from './store.js'
 
@@ -38,10 +38,8 @@ class App extends React.Component {
 }
 
 function refreshStore() {
-  console.log("I'm here")
   store.dispatch({type : "FETCH_FULL_PULL_START"})
-
-  setTimeout(refreshStore, 1000*60*60)
+  setTimeout(refreshStore, 3*1000*60*60)
 }
 
 refreshStore()
