@@ -7,10 +7,19 @@ export function cleanSearchString(searchString) {
     return searchString
 }
 
-export function displayResultsOfSearchResults(searchResults) {
+export function displayResultsOfSearchResults(searchResults,snippet) {
     let ourVideoProgressDict = store.getState().user.videoProgressDict;
     let ourVideoDict = store.getState().database.videos;
-    return [
+    return [  
+     /*   {
+            type: "EpsilonSnippet",
+            image: null,
+            title: snippet,
+            subtile: null,
+            link: null,
+            action: undefined
+        }
+        ,*/
         ...searchResults.videos.map((sr) => {
             return {
                 type: sr.type,

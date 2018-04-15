@@ -34,7 +34,8 @@ export function localRecord(fromRecord,type){
                 //associatedTitles: fi.associatedTitles.value.split("~").map((g) => g.split(",").map((s) => s.substr(1).slice(0, -1))),
                 associatedTitlesNew: x(fi.associatedTitles.value),
                 associatedTitles: fi.associatedTitles.value,
-                hashTag: fi.hashTag.value
+                hashTag: fi.hashTag.value,
+                notes: "notes"//fi.Notes.value
             }
         case "MathObjectLinks":
             return {
@@ -80,6 +81,10 @@ export function localRecord(fromRecord,type){
         } 
 }
     return 
+}
+
+export function snippetOfHashTag(hashTag){
+    return "The snippet of " + hashTag + " is here" ;
 }
 
 export function recordsOfHashTag(hashTag){

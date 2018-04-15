@@ -24,12 +24,10 @@ class App extends React.Component {
         <div className="App">
           <Switch>
             <Route exact path="/" component={SearchPage} />{/*was IndexPage*/}
-            <Route exact path="/product" component={ProductPage} />
             <Route exact path="/search" component={SearchPage} />
             <Route exact path="/watch" component={WatchPage} />
             <Route exact path="/settings" component={SettingsPage} />
-            <Route exact path="/peeker" component={PeekerPage} />
-            <Route exact path='*' component={NotFoundPage} />
+            {/*<Route exact path='*' component={NotFoundPage} />*/}
           </Switch>
         </div>
       </Router>

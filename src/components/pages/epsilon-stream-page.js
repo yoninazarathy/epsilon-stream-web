@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Navbar, Nav, NavbarBrand, NavbarToggler, Collapse, Form, Input} from 'reactstrap';
+import { InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, NavbarToggler, Collapse, Form, Input} from 'reactstrap';
 import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
 import Icon from '../../assets/icon.png'
 import SettingsImage from '../../assets/3dotsMenu.png'
 import HomeImage from '../../assets/Home.png'
+import Surprise1 from '../../assets/Surprise1.png'
 import RightButtonImage from '../../assets/Right_Passive.png'
 import LeftButtonImage from '../../assets/Left_Passive.png'
 import MediaQuery from 'react-responsive';
@@ -14,17 +15,18 @@ import {connect} from 'react-redux'
 import userHomeAction from '../../actions/user-home-action';
 import {store} from '../../store.js'
 import {push} from 'react-router-redux'
+import ReactPlayer from 'react-player'
+import randomChoiceAction from '../../actions/random-choice-action.js'
 
 const ProductButton = withRouter(({history}) => (
-    <img className="productButton mr-sm-2" src={Icon} width={45} onClick={() => {window.open("https://epsilonstream.com", '_blank')} } />
+    <img className="productButton mr-sm-2" src={Icon} width={45} onClick={() => {window.open("https://about.epsilonstream.com", '_blank')} } />
 ))
 
 
 const HomeButton = withRouter(({history}) => (
-    <Button outline color="light" className="ml-sm-2 mr-sm-2"
+    <Button  color="danger" className="ml-sm-2 mr-sm-2"
         onClick={userHomeAction}>
-        {/*<img alt="home" src={HomeImage} width={30} height={30} />*/}
-        Home
+        <img alt="home" src={HomeImage} width={30} height={30} />
     </Button>
 ))
 
@@ -34,6 +36,21 @@ const SettingsButton = withRouter(({history}) => (
         <img alt="settings" src={SettingsImage} width={30} height={30} />
     </Button>
 ))
+
+const SearchButton = withRouter(({history}) => (
+    <Button outline color="light" className="ml-sm-2"
+        onClick={() => {history.push('/search')}}>
+        Search
+    </Button>
+  ))
+  
+  const SurpriseButton = withRouter(({history}) => (
+    <Button color="danger" className="ml-sm-2 mr-sm-2"
+        onClick={randomChoiceAction}>
+        <img alt="surprise" src={Surprise1} width={30} height={30} />
+    </Button>
+  ))
+
 class EpsilonStreamPage extends Component {
     constructor(props) {
       super(props);
@@ -41,11 +58,12 @@ class EpsilonStreamPage extends Component {
       this.toggle = this.toggle.bind(this);
       this.state = {
         isOpen: false,
-        value: ''
+        value: ' '
       };
 
-      //this.handleChange = this.handleChange.bind(this);
-      //this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+      this.handleKeyPress = this.handleKeyPress.bind(this);
     }
     toggle() {
       this.setState({
@@ -58,6 +76,31 @@ class EpsilonStreamPage extends Component {
             open: !this.state.open
         });
     }
+
+    handleSubmit(event) {
+        //alert('A name was submitted: ' + this.state.value);
+        //event.preventDefault();
+        //store.dispatch(push('/search'))
+        //history.push('/search')
+      }
+  
+      handleKeyPress(event){
+          console.log("key: " + event.key)
+          if (event.key !== 'Enter'){
+              store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{}})
+          }else{
+              store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
+              updateSearchAction(event.target.value)
+              console.log(event.target.value)
+          }
+      }
+
+      handleChange(event){
+        this.setState({...this.state, value:event.target.value})
+        //updateSearchAction(event.target.value)
+        }
+
+
 
     render() {
         return (
@@ -72,18 +115,21 @@ class EpsilonStreamPage extends Component {
                             <Nav className="w-100" navbar expand = "md">
                                 {/*<LeftButton />*/}
                                 {/*<RightButton />*/}
-                                <Form inline className="w-100">
-                                    <Input  type="text" className="w-100 ml-auto"
+                                <InputGroup>
+                                    <Input type="text" className="w-100 ml-auto"
                                             name="search" placeholder="Search Mathematics"
                                             value={this.state.value}
                                             onChange={this.handleChange}
                                             onKeyPress={this.handleKeyPress}
-                                            autocomplete = "off"
-                                    />
-                                    {/*<SearchButton />
-                                    <SurpriseButton />
-                                    <HomeButton />*/}
-                                </Form>
+                                            autocomplete = "off" />
+                                            <InputGroupAddon addonType="prepend">
+                                                <SurpriseButton/>
+                                            </InputGroupAddon>
+                                            <InputGroupAddon addonType="prepend">
+                                                <HomeButton />
+                                            </InputGroupAddon>
+                                    </InputGroup>
+                                    {/*<SearchButton />*/}
                             </Nav>
                         </Collapse>
                         : ""
@@ -93,11 +139,8 @@ class EpsilonStreamPage extends Component {
                 <div>
                     {this.props.loadingInProgress ?
                         <center>
-                        <RingLoader
-                            color={'#123abc'} 
-                            loading={true} 
-                        />     
-                        </center>  
+                            LOADING CONTENT
+                        </center>
                         :         
                         this.props.children
                     }
@@ -106,6 +149,16 @@ class EpsilonStreamPage extends Component {
         );
     }
 }
+//https://es-app.com/assets/anim/LogoAnimationVert_9sec.mp4
+
+                        /*<center>
+                            <video  width = "500"
+                                    height= "800" autoplay="" loop ="">
+                                    <source src ="https://people.smp.uq.edu.au/YoniNazarathy/LogoAnimationVert_9sec_High_Res.mp4"
+                                    type = "video/mp4"/>
+                                    Your browser does not support the video tag
+                            </video>
+                            */
 
 const mapStateToProps = (state) => {
     return {

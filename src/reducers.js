@@ -1,7 +1,7 @@
 import {applyMiddleware, combineReducers} from 'redux'
 import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,hashTagOfString} from './managers/text-search-manager.js'
 import startCloudPullAction from './actions/start-cloud-pull-action.js'
-import {localRecord, recordsOfHashTag} from './managers/records-manager.js';
+import {localRecord, recordsOfHashTag, snippetOfHashTag} from './managers/records-manager.js';
 import {makeImageDictionary} from './managers/image-manager.js'
 import { routerReducer } from 'react-router-redux'
 import makeHashTagDict from './actions/rehash-search-strings-action.js'
@@ -65,7 +65,8 @@ const user = (state = {counter: 0}, actions) => {
         case "UPDATE_DISPLAY_RESULTS":
             return{
                 ...state,
-                displaySearchResults: displayResultsOfSearchResults(state.currentSearchResults)
+                displaySearchResults: displayResultsOfSearchResults(state.currentSearchResults,
+                                                            snippetOfHashTag(state.currentHashTag))
             }
         case "USER_START_WATCH":
             return{
@@ -114,10 +115,10 @@ const database = (state = {records: []}, actions) => {
                 mathObjectLinks: [],
                 videos: [],
                 featuredURLs: [],
-                mathObjectsFetchInProgress: false,
-                mathObjectLinksFetchInProgress: false,
-                videosInProgress: false,
-                featuredURLsInProgress: false
+                mathObjectsFetchInProgress: true,
+                mathObjectLinksFetchInProgress: true,
+                videosInProgress: true,
+                featuredURLsInProgress: true
             }
         case "FETCH_FULL_PULL_START":
             startCloudPullAction("FULL_PULL")
