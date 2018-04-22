@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import { InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, NavbarToggler, Collapse, Form, Input} from 'reactstrap';
-import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
+import { InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, Collapse, Input} from 'reactstrap';
+//import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
 import Icon from '../../assets/icon.png'
-import SettingsImage from '../../assets/3dotsMenu.png'
+//import SettingsImage from '../../assets/3dotsMenu.png'
 import HomeImage from '../../assets/Home.png'
 import Surprise1 from '../../assets/Surprise1.png'
-import RightButtonImage from '../../assets/Right_Passive.png'
-import LeftButtonImage from '../../assets/Left_Passive.png'
-import MediaQuery from 'react-responsive';
+//import RightButtonImage from '../../assets/Right_Passive.png'
+//import LeftButtonImage from '../../assets/Left_Passive.png'
+//import MediaQuery from 'react-responsive';
 import { withRouter } from 'react-router-dom'
-import { RingLoader } from 'react-spinners';
+//import { RingLoader } from 'react-spinners';
 import updateSearchAction from '../../actions/update-search-action.js'
 import {connect} from 'react-redux'
 import userHomeAction from '../../actions/user-home-action';
 import {store} from '../../store.js'
-import {push} from 'react-router-redux'
-import ReactPlayer from 'react-player'
+//import {push} from 'react-router-redux'
 import randomChoiceAction from '../../actions/random-choice-action.js'
 
 const ProductButton = withRouter(({history}) => (
-    <img className="productButton mr-sm-2" src={Icon} width={45} onClick={() => {window.open("https://about.epsilonstream.com", '_blank')} } />
+    <img    className="productButton mr-sm-2" 
+            src={Icon} 
+            width={45}
+            onClick={() => {window.open("https://about.epsilonstream.com", '_blank')} } 
+            alt = "ES"/>
 ))
 
 
@@ -30,19 +33,23 @@ const HomeButton = withRouter(({history}) => (
     </Button>
 ))
 
+/*
 const SettingsButton = withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {history.push('/settings')}}>
         <img alt="settings" src={SettingsImage} width={30} height={30} />
     </Button>
 ))
+*/
 
+/*
 const SearchButton = withRouter(({history}) => (
     <Button outline color="light" className="ml-sm-2"
         onClick={() => {history.push('/search')}}>
         Search
     </Button>
   ))
+  */
   
   const SurpriseButton = withRouter(({history}) => (
     <Button color="danger" className="ml-sm-2 mr-sm-2"
@@ -131,11 +138,11 @@ class EpsilonStreamPage extends Component {
                                             value={this.state.value}
                                             onChange={this.handleChange}
                                             onKeyPress={this.handleKeyPress}
-                                            autocomplete = "off" />
-                                            <InputGroupAddon addonType="prepend">
+                                            autoComplete = "off" />
+                                            <InputGroupAddon >
                                                 <SurpriseButton/>
                                             </InputGroupAddon>
-                                            <InputGroupAddon addonType="prepend">
+                                            <InputGroupAddon >
                                                 <HomeButton />
                                             </InputGroupAddon>
                                     </InputGroup>

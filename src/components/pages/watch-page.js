@@ -88,14 +88,14 @@ class WatchPage extends Component {
     let qry = this.props.location.search;
     let parsed = querystring.parse(qry);
     var videoId = ""
-    var userId = ""
+    //var userId = ""
     if ("v" in parsed) {
       videoId = parsed.v
     } else {
       console.log("no video")
     }
     if ("id in parsed") {
-      userId = parsed.id
+      //userId = parsed.id
     }
     const opts = {
       height: '100%',
@@ -122,7 +122,7 @@ class WatchPage extends Component {
           onPause={this.onPause}
           onEnd={this.onEnd}
           />
-        <p> VideoId: {videoId}, UserId: {userId} </p>
+        {/*<p> VideoId: {videoId}, UserId: {userId} </p>*/}
       </EpsilonStreamPage>
     );
   }

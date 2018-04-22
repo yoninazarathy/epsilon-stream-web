@@ -1,12 +1,12 @@
-import _ from 'lodash';
+//import _ from 'lodash';
 import React, { Component } from 'react';
 import EpsilonStreamPage from './epsilon-stream-page.js';
 import {connect} from 'react-redux'
 import SearchResults from '../search/search-results.js';
 import SearchAutoCompleteList from '../search/search-autocomplete-list.js'
-import updateSearchAction from '../../actions/update-search-action.js'
-import { Button } from 'reactstrap';
-import { withRouter } from 'react-router-dom'
+//import updateSearchAction from '../../actions/update-search-action.js'
+//import { Button } from 'reactstrap';
+//import { withRouter } from 'react-router-dom'
 import {store} from '../../store.js'
 
 // const LeftButton = withRouter(({history}) => (
