@@ -85,9 +85,10 @@ class EpsilonStreamPage extends Component {
       }
   
       handleKeyPress(event){
-          console.log("key: " + event.key)
+            //console.log("key: " + event.key)
+          //console.log(event.target.value)
           if (event.key !== 'Enter'){
-              store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{}})
+              //store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:event.target.value}})
           }else{
               store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
               updateSearchAction(event.target.value)
@@ -96,8 +97,17 @@ class EpsilonStreamPage extends Component {
       }
 
       handleChange(event){
+        console.log("val: " + event.target.value)
         this.setState({...this.state, value:event.target.value})
+        if(event.target.value === ''){
+            store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
+            updateSearchAction(event.target.value)
+        }else{
+            store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:event.target.value}})
+        }
         //updateSearchAction(event.target.value)
+
+
         }
 
 

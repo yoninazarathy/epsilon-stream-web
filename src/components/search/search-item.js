@@ -14,13 +14,9 @@ class SearchItemUNROUTED extends React.Component{
             <div className={classes} onClick={() => {this.props.action(this.props.link,this.props.history)}}>
                 <Media>
                     <Media left href="#">
-                        { this.props.noImage == false ?
-                            <div className="media-container">
-                                <Media object src={image.src} alt={image.alt} />
-                            </div>
-                            :
-                            ""
-                        }
+                        <div className="media-container">
+                            <Media object src={image.src} alt={image.alt} />
+                        </div>
                         {
                             this.props.hasprogressbar ?
                             <ProgressBar completed={this.props.completed} />

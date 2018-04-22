@@ -44,7 +44,7 @@ function makeQuery(actionType){
 
       switch(actionType){
         case "MATH_OBJECT":
-          query = { recordType: 'MathObject',filterBy: [inCollection]}//, sortBy: [{ fieldName: 'hashTag'}] };
+          query = { recordType: 'MathObject'};//,filterBy: [inCollection]}//, sortBy: [{ fieldName: 'hashTag'}] };
           break;
         case "VIDEO":
           query = { recordType: 'Video',filterBy: [inVideoCollection]};

@@ -44,7 +44,7 @@ export default function pullCloudKitData(query,afterGet){
   collectedRecords = []
   
   currentOptions = {
-    resultsLimit: 100,
+    resultsLimit: 99,
     continuationMarker: null
    };
 
