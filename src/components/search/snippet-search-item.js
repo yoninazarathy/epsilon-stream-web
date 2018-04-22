@@ -1,6 +1,6 @@
 import React from 'react';
 import {SearchItem} from './search-item.js'
-import ReactMarkDown from 'react-markdown'
+//import ReactMarkDown from 'react-markdown'
 
 class SnippetSearchItem extends React.Component{
     render(){

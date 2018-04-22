@@ -2,17 +2,14 @@ import React from 'react';
 import './App.css';
 
 //import {Provider} from 'react-redux'
-import {ConnectedRouter as Router, routerReducer} from 'react-router-redux';
+import {ConnectedRouter as Router} from 'react-router-redux';
 import {store, history} from './store.js'
 
 import {Route, Switch} from 'react-router-dom'
 
-import IndexPage from './components/pages/index-page.js'
-import ProductPage from './components/pages/product-page.js'
 import SearchPage from './components/pages/search-page.js'
 import WatchPage from './components/pages/watch-page.js'
 import SettingsPage from './components/pages/settings-page.js'
-import PeekerPage from './components/pages/peeker-page.js'
 import NotFoundPage from './components/pages/notfound-page.js'
 
 
@@ -27,7 +24,7 @@ class App extends React.Component {
             <Route exact path="/search" component={SearchPage} />
             <Route exact path="/watch" component={WatchPage} />
             <Route exact path="/settings" component={SettingsPage} />
-            {/*<Route exact path='*' component={NotFoundPage} />*/}
+            <Route exact path='*' component={NotFoundPage}/>
           </Switch>
         </div>
       </Router>

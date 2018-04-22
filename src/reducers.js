@@ -1,8 +1,8 @@
-import {applyMiddleware, combineReducers} from 'redux'
+import {combineReducers} from 'redux'
 import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,hashTagOfString} from './managers/text-search-manager.js'
 import startCloudPullAction from './actions/start-cloud-pull-action.js'
 import {localRecord, recordsOfHashTag, snippetOfHashTag} from './managers/records-manager.js';
-import {makeImageDictionary} from './managers/image-manager.js'
+//import {makeImageDictionary} from './managers/image-manager.js'
 import { routerReducer } from 'react-router-redux'
 import makeHashTagDict from './actions/rehash-search-strings-action.js'
 
@@ -29,19 +29,19 @@ const user = (state = {counter: 0}, actions) => {
         case "USER_HOME_ACTION": //QQQQ not using it now
             let tempCleanString = cleanSearchString("Home")
             return {
-                ... state,
+                ...state,
                 rawSearchString: tempCleanString,
                 cleanSearchString: tempCleanString, //QQQQ what for?
                 autoCompleteList: autoCompleteForString(tempCleanString)
             }
         case "USER_SEARCH_IS_TYPING":
             return {
-                ... state,
+                ...state,
                 searchTypingInProgress: true
             }
         case "USER_SEARCH_DONE_TYPING":
             return {
-                ... state,
+                ...state,
                 searchTypingInProgress: false
             }
         case "UPDATE_SEARCH_STRING": //QQQQ this is used also for surprise and for home (and mol).... fix

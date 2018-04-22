@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import React from 'react';
+import { Container, Row } from 'reactstrap';
 import getImageForKey from '../../managers/image-manager.js';
-import { Media, Button } from 'reactstrap';
+import { Media } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 
 import { ProgressBar } from './progressbar.js';

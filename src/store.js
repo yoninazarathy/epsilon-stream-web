@@ -4,15 +4,15 @@ import logger from 'redux-logger'
 import thunk from 'redux-thunk'
 import { persistStore, autoRehydrate } from 'redux-persist'
 import createHistory from 'history/createBrowserHistory'
-import {routerMiddleware, push } from 'react-router-redux'
+import {routerMiddleware } from 'react-router-redux' //QQQQ push
 
 export const history = createHistory()
 
 
 //QQQQ Consider moving this to another module
 const rehashMiddleWare = store => next => action => {
-    if(action.type == 'FETCH_MATH_OBJECT_STOP'){
-        console.log(action.payload)
+    if(action.type === 'FETCH_MATH_OBJECT_STOP'){
+        //console.log(action.payload)
         next(action)
         store.dispatch({type: "REHASH_SEARCH_STRINGS",payload:{}})
 

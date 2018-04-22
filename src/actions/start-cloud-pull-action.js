@@ -2,7 +2,7 @@ import {store} from '../store.js'
 import pullCloudKitData from '../managers/cloudkit-manager.js'
 
 export default function startCloudPullAction(actionType){
-    if(actionType == "FULL_PULL"){
+    if(actionType === "FULL_PULL"){
       //console.log('will do full pull')
       function sanitizedforindemnity(lst) {
         let name = lst[0]
@@ -14,7 +14,7 @@ export default function startCloudPullAction(actionType){
                 store.dispatch({type:"FETCH_"+name+"_STOP",
                                 success: true, 
                                 payload: result})
-                if (lst.length != 1) {
+                if (lst.length !== 1) {
                   sanitizedforindemnity(lst.slice(1))
               }
             })

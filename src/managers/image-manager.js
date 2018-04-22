@@ -1,5 +1,5 @@
 import Icon from '../assets/icon.png'
-import store from '../store.js'
+//import store from '../store.js'
 
 export default function getImageForKey(key, type){
     switch(type){

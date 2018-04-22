@@ -1,7 +1,7 @@
 import {
     store
 } from '../store.js'
-import $ from 'jquery'
+//import $ from 'jquery'
 
 export function cleanSearchString(searchString) {
     return searchString
@@ -9,7 +9,7 @@ export function cleanSearchString(searchString) {
 
 export function displayResultsOfSearchResults(searchResults,snippet) {
     let ourVideoProgressDict = store.getState().user.videoProgressDict;
-    let ourVideoDict = store.getState().database.videos;
+    //let ourVideoDict = store.getState().database.videos;
     return [  
      /*   {
             type: "EpsilonSnippet",
@@ -66,7 +66,7 @@ export function hashTagOfString(searchString) {
         }
     }
     console.log(hashTag)
-    return hashTag
+    return hashTag//"#explodingDots"//hashTag
 }
 
 export function autoCompleteForString(s) {

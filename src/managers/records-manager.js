@@ -15,8 +15,9 @@ export function recordToShortString(record){
             return  record.ourTitle + "   ( " + 
                     record.provider + " ) -- " +
                     record.featureType
+        default:
+            return "ERROR"
     }
-    return "ERROR"
 }
 
 function x(y) {
@@ -60,27 +61,27 @@ export function localRecord(fromRecord,type){
                 // displaySearchPriority: fi.displaySearchPriority.value (some don't have it yet)
             } 
         case "FeaturedURL":
-        let featureType = "undef"
-        if(fi.isAppStoreApp.value == 0){
-            featureType = fi.typeOfFeature.value
-            if(fi.provider.value == "Youtube"){
-                featureType = "Youtube Channel"
+            let featureType = "undef"
+            if(fi.isAppStoreApp.value === 0){
+                featureType = fi.typeOfFeature.value
+                if(fi.provider.value === "Youtube"){
+                    featureType = "Youtube Channel"
+                }
+            }else{
+                featureType = "Game"
             }
-        }else{
-            featureType = "Game"
-        }
-        return {
-            type: type,
-            imageURL: fi.imageURL.value,//"https://es-app.com/assets/"+fi.imageKey.value+".jpg",
-            //imageURL: fi.imageURL.value, //derived
-            ourTitle: fi.ourTitle.value,
-            provider: fi.provider.value,
-            urlOfItem: fi.urlOfItem.value,
-            featureType: featureType,
-            hashTags: fi.hashTags.value,            
-        } 
-}
-    return 
+            return {
+                type: type,
+                imageURL: fi.imageURL.value,//"https://es-app.com/assets/"+fi.imageKey.value+".jpg",
+                //imageURL: fi.imageURL.value, //derived
+                ourTitle: fi.ourTitle.value,
+                provider: fi.provider.value,
+                urlOfItem: fi.urlOfItem.value,
+                featureType: featureType,
+                hashTags: fi.hashTags.value,            
+            } 
+        default:
+    }
 }
 
 export function snippetOfHashTag(hashTag){

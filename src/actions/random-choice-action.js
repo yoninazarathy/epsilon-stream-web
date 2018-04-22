@@ -1,6 +1,5 @@
 import {store} from '../store.js'
 import randomSearchResult from '../managers/random-search-manager.js'
-import updateSearchAction from './update-search-action.js'
 
 export default function randomChoiceAction(){
     let result = randomSearchResult()
