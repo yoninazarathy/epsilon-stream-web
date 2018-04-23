@@ -5,28 +5,29 @@ import {connect} from 'react-redux'
 import SearchResults from '../search/search-results.js';
 import SearchAutoCompleteList from '../search/search-autocomplete-list.js'
 //import updateSearchAction from '../../actions/update-search-action.js'
-//import { Button } from 'reactstrap';
+import { Modal, Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 //import { withRouter } from 'react-router-dom'
 import {store} from '../../store.js'
 
-// const LeftButton = withRouter(({history}) => (
-//     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
-//         onClick={() => {console.log("left....")}}>
-//         <img alt="left" src={LeftButtonImage} width={30} height={30} />
-//     </Button>
-// ))
-
-// const RightButton = withRouter(({history}) => (
-//     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
-//         onClick={() => {console.log("right....")}}>
-//         <img alt="right" src={RightButtonImage} width={30} height={30} />
-//     </Button>
-// ))
-
-
-
 
 class SearchPage extends Component {
+
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal: true,
+    };
+
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  }
+
 
 
     // Search
@@ -42,9 +43,25 @@ class SearchPage extends Component {
   render() {
     //const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 200);
     return (
+        <div>
         <EpsilonStreamPage title="Search" hassearch={true}>
-          {this.props.searchTypingInProgress ? <SearchAutoCompleteList/> : <SearchResults/>}
+            {this.props.searchTypingInProgress ? <SearchAutoCompleteList/> : <SearchResults/>}
         </EpsilonStreamPage>
+        <Modal isOpen={this.state.modal} toggle={this.toggle}>
+          <ModalHeader toggle={this.toggle}>Epsilon Stream Beta</ModalHeader>
+            <ModalBody>
+                This is the beta version of our Epsilon Stream Web-App. We are working hard to finalize it. If you have an iPhone or iPad, you may enjoy a free and fully functional <a href="https://itunes.apple.com/app/id1200152358"> iOS version</a> now. Otherwise, feel free to try out this Beta version and please consider to register with us.
+            </ModalBody>
+            <ModalFooter>
+                  {/*<Button color="primary" onClick={this.toggle}>Thanks</Button>*/}
+                  {' '}
+                  <Button color="primary" 
+                            onClick={() => {this.toggle;
+                                            window.open("https://about.epsilonstream.com/beta-tester/", '_blank')}
+                                        }>Register</Button>{' '}
+            </ModalFooter>
+          </Modal>
+        </div>
     );
   }
 }
