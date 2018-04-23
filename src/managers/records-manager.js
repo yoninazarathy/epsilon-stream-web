@@ -89,11 +89,18 @@ export function snippetOfHashTag(hashTag){
 }
 
 export function recordsOfHashTag(hashTag){
-    return {
+    if(hashTag === "#noTag"){
+        return {videos: [],
+                featuredURLs: [],
+                mathObjectLinks: []}
+    }
+
+    let matches =  {
         videos: videosOfHashTag(hashTag),
         featuredURLs: featuredURLsOfHashTag(hashTag),
         mathObjectLinks: mathObjectLinksOfHashTag(hashTag)
     }
+    return matches
 }
 
 function videosOfHashTag(hashTag){ 

@@ -11,8 +11,8 @@ export default function makeHashTagDict(){
     for (var i = 0; i < tits.length; i++) { 
         var title = tits[i].split("$")[1] //QQQQ this is just one title
         //dict.set(title,hashes[i])
-        dict.push(title)//{key: title,
-                    //value: hashes[i]})
+        dict.push(title)//  {key: title,
+                  //  value: hashes[i]})
     }
     console.log(dict)
     return dict

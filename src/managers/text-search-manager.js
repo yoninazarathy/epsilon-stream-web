@@ -3,6 +3,7 @@ import {
 } from '../store.js'
 //import $ from 'jquery'
 
+
 export function cleanSearchString(searchString) {
     return searchString
 }
@@ -10,7 +11,7 @@ export function cleanSearchString(searchString) {
 export function displayResultsOfSearchResults(searchResults,snippet) {
     let ourVideoProgressDict = store.getState().user.videoProgressDict;
     //let ourVideoDict = store.getState().database.videos;
-    return [  
+    let retVal =  [  
      /*   {
             type: "EpsilonSnippet",
             image: null,
@@ -52,6 +53,20 @@ export function displayResultsOfSearchResults(searchResults,snippet) {
             }
         })
     ]
+    if(retVal.length === 0){
+        let searchString = store.getState().user.rawSearchString
+        retVal = [
+            {
+                type:"NO-MATCH",
+                image: undefined,
+                title: "No match found for " + searchString,
+                subtitle: undefined,
+                link: undefined,
+                action: undefined
+            }
+        ]
+    }
+    return retVal
 }
 
 export function hashTagOfString(searchString) {
@@ -70,6 +85,7 @@ export function hashTagOfString(searchString) {
 }
 
 export function autoCompleteForString(s) {
+    //console.log("search string: " + s)
     return store.getState().database.hashTagDict
     //return store.getState().database.mathObjects.map((m) => m.associatedTitlesNew.map((g) => g.find((i) => i.toLowerCase().includes(s.toLowerCase()))).filter((n) => n != undefined))
 }

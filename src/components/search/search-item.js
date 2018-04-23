@@ -15,7 +15,7 @@ class SearchItemUNROUTED extends React.Component{
                 <Media>
                     <Media left href="#">
                         <div className="media-container">
-                            <Media object src={image.src} alt={image.alt} />
+                            <Media object src={image !== null ? image.src : ""} alt={image !== null ? image.alt : ""} />
                         </div>
                         {
                             this.props.hasprogressbar ?

@@ -104,7 +104,7 @@ class EpsilonStreamPage extends Component {
       }
 
       handleChange(event){
-        console.log("val: " + event.target.value)
+        //console.log("val: " + event.target.value)
         this.setState({...this.state, value:event.target.value})
         if(event.target.value === ''){
             store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
