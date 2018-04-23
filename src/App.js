@@ -12,6 +12,9 @@ import WatchPage from './components/pages/watch-page.js'
 import SettingsPage from './components/pages/settings-page.js'
 import NotFoundPage from './components/pages/notfound-page.js'
 
+import SmartBanner from 'react-smartbanner';
+import '../node_modules/react-smartbanner/dist/main.css';
+
 
 
 class App extends React.Component {
@@ -19,6 +22,7 @@ class App extends React.Component {
     return (
       <Router history={history}>
         <div className="App">
+          <SmartBanner title={'Epsilon Stream'} />
           <Switch>
             <Route exact path="/" component={SearchPage} />{/*was IndexPage*/}
             <Route exact path="/search" component={SearchPage} />
