@@ -35,4 +35,8 @@ export const store = createStore(   reducers,
 store.dispatch({type: "RESET_DATABASE_STORE",payload:{}})
 store.dispatch({type: "RESET_USER_STORE",payload:{}})
 
+export function isAndroid() {
+    return store.getState().user.isAndroid;
+}
+
 export default store

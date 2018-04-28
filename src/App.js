@@ -3,7 +3,7 @@ import './App.css';
 
 //import {Provider} from 'react-redux'
 import {ConnectedRouter as Router} from 'react-router-redux';
-import {store, history} from './store.js'
+import {store, history,isAndroid} from './store.js'
 
 import {Route, Switch} from 'react-router-dom'
 
@@ -22,7 +22,7 @@ class App extends React.Component {
     return (
       <Router history={history}>
         <div className="App">
-          <SmartBanner title={'Epsilon Stream'} />
+          {isAndroid() ? '' :<SmartBanner title={'Epsilon Stream'}  />}
           <Switch>
             <Route exact path="/" component={SearchPage} />{/*was IndexPage*/}
             <Route exact path="/search" component={SearchPage} />

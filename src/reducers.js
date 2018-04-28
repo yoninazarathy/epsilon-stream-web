@@ -15,6 +15,8 @@ function createVideoProgressDict(videoProgressDict, videoId, seconds) {
 const user = (state = {counter: 0}, actions) => {
     switch (actions.type) {
         case "RESET_USER_STORE":
+
+
             return {
                 ...state,
                 searchTypingInProgress: false,
@@ -24,7 +26,8 @@ const user = (state = {counter: 0}, actions) => {
                 currentSearchResults: {},
                 displaySearchResults: [],
                 autoCompleteList: [],
-                videoProgressDict: {}
+                videoProgressDict: {},
+                isAndroid: "Android" in window
             }
         case "USER_HOME_ACTION": //QQQQ not using it now
             let tempCleanString = cleanSearchString("Home")
