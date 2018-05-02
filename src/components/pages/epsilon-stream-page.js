@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, Collapse, Input} from 'reactstrap';
+import { Row,Col,Container,InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, Collapse, Input} from 'reactstrap';
 //import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
 import Icon from '../../assets/icon.png'
 //import SettingsImage from '../../assets/3dotsMenu.png'
@@ -122,46 +122,57 @@ class EpsilonStreamPage extends Component {
     render() {
         return (
             <div className="EpsilonStreamPage">
-                <Navbar color = "danger" light expand="md">
-                    <NavbarBrand href="/" color = "white">
-                    <ProductButton /> Epsilon Stream Beta</NavbarBrand>
-                   {/*<NavbarToggler onClick={this.toggle} />*/}
-                    {
-                        this.props.hassearch ?
-                        <Collapse isOpen={true/*this.state.isOpen*/} navbar>
-                            <Nav className="w-100" navbar expand = "md">
-                                {/*<LeftButton />*/}
-                                {/*<RightButton />*/}
-                                <InputGroup>
-                                    <Input type="text" className="w-100 ml-auto"
-                                            name="search" placeholder="Search Mathematics"
-                                            value={this.state.value}
-                                            onChange={this.handleChange}
-                                            onKeyPress={this.handleKeyPress}
-                                            autoComplete = "off" />
-                                            <InputGroupAddon >
-                                                <SurpriseButton/>
-                                            </InputGroupAddon>
-                                            <InputGroupAddon >
-                                                <HomeButton />
-                                            </InputGroupAddon>
-                                    </InputGroup>
-                                    {/*<SearchButton />*/}
-                            </Nav>
-                        </Collapse>
-                        : ""
-                    }
-                    {/*<SettingsButton/>*/}
-                </Navbar>
-                <div>
-                    {this.props.loadingInProgress ?
-                        <center>
-                            LOADING CONTENT
-                        </center>
-                        :         
-                        this.props.children
-                    }
-                </div>
+                <Container fluid={true} >
+                    <Row>
+                    <Col    xs={{ size: 12, order: 0, offset: 0}}
+                            sm={{ size: 12, order: 0, offset: 0}} 
+                            md={{ size: 12, order: 0, offset: 0}}
+                            lg={{ size: 12, order: 0, offset: 0}}
+                            xl={{ size: 9, order: 0, offset: 1}}
+                            >
+                        <Navbar color = "danger" light expand="md">
+                            <NavbarBrand href="/" color = "white">
+                            <ProductButton /> <p className = "text-white">Epsilon Stream Beta</p></NavbarBrand>
+                        {/*<NavbarToggler onClick={this.toggle} />*/}
+                            {
+                                this.props.hassearch ?
+                                <Collapse isOpen={true/*this.state.isOpen*/} navbar>
+                                    <Nav className="w-100" navbar expand = "md">
+                                        {/*<LeftButton />*/}
+                                        {/*<RightButton />*/}
+                                        <InputGroup>
+                                            <Input type="text" className="w-100 ml-auto"
+                                                    name="search" placeholder="Search Mathematics"
+                                                    value={this.state.value}
+                                                    onChange={this.handleChange}
+                                                    onKeyPress={this.handleKeyPress}
+                                                    autoComplete = "off" />
+                                                    <InputGroupAddon >
+                                                        <SurpriseButton/>
+                                                    </InputGroupAddon>
+                                                    <InputGroupAddon >
+                                                        <HomeButton />
+                                                    </InputGroupAddon>
+                                            </InputGroup>
+                                            {/*<SearchButton />*/}
+                                    </Nav>
+                                </Collapse>
+                                : ""
+                            }
+                            {/*<SettingsButton/>*/}
+                        </Navbar>
+                        <div>
+                            {this.props.loadingInProgress ?
+                                <center>
+                                    LOADING CONTENT
+                                </center>
+                                :         
+                                this.props.children
+                            }
+                        </div>
+                    </Col>
+                    </Row>
+                </Container>
             </div>
         );
     }

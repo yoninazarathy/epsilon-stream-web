@@ -15,8 +15,6 @@ function createVideoProgressDict(videoProgressDict, videoId, seconds) {
 const user = (state = {counter: 0}, actions) => {
     switch (actions.type) {
         case "RESET_USER_STORE":
-
-
             return {
                 ...state,
                 searchTypingInProgress: false,
@@ -38,9 +36,12 @@ const user = (state = {counter: 0}, actions) => {
                 autoCompleteList: autoCompleteForString(tempCleanString)
             }
         case "USER_SEARCH_IS_TYPING":
+            let tempCleanString2 = cleanSearchString(actions.payload.value)
             return {
                 ...state,
-                searchTypingInProgress: true
+                searchTypingInProgress: true,
+                cleanSearchString: tempCleanString2, //QQQQ what for?
+                autoCompleteList: autoCompleteForString(tempCleanString2)
             }
         case "USER_SEARCH_DONE_TYPING":
             return {

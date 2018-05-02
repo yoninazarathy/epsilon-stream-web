@@ -14,6 +14,5 @@ export default function makeHashTagDict(){
         dict.push(title)//  {key: title,
                   //  value: hashes[i]})
     }
-    console.log(dict)
     return dict
 }
