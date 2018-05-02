@@ -132,7 +132,7 @@ class EpsilonStreamPage extends Component {
                             >
                         <Navbar color = "danger" light expand="md">
                             <NavbarBrand href="/" color = "white">
-                            <ProductButton /> <p className = "text-white">Epsilon Stream Beta</p></NavbarBrand>
+                            <ProductButton /> <p className = "text-white">Epsilon Stream Web -  Beta</p></NavbarBrand>
                         {/*<NavbarToggler onClick={this.toggle} />*/}
                             {
                                 this.props.hassearch ?

@@ -125,7 +125,13 @@ NavbarBrand.propTypes = {
 
 ul{
   list-style-type: none;
+  padding-left: 0;
 }
+
+li{
+  margin: 2px 0;
+}
+
 
 .alt-grid [class*="col-"] {padding-left:0;padding-right:0}
 .alt-grid .row {margin-left:0;margin-right:0}

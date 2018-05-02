@@ -9,7 +9,7 @@ class SearchAutoCompleteList extends Component {
         <div className="SearchAutoCompleteList">
             <ul>
               {this.props.autoCompleteList.map((item,i) => <li key={i}>
-                <Button color="link" 
+                <Button outline color="danger" block 
                         onClick={()=>{updateSearchAction(item)}}
                       >
                       {item}

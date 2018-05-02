@@ -45,10 +45,10 @@ class SearchPage extends Component {
     return (
         <div>
         <EpsilonStreamPage title="Search" hassearch={true}>
-            {this.props.searchTypingInProgress ? <SearchAutoCompleteList/> : <SearchResults/>}
+            {this.props.searchTypingInProgress && this.props.listHasStuff ? <SearchAutoCompleteList/> : <SearchResults/>}
         </EpsilonStreamPage>
         <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <ModalHeader toggle={this.toggle}>Epsilon Stream Beta</ModalHeader>
+          <ModalHeader toggle={this.toggle}>Epsilon Stream Web - Beta</ModalHeader>
             <ModalBody>
                 This is the beta version of our Epsilon Stream Web-App. We are working hard to finalize it. If you have an iPhone or iPad, you may enjoy a free and fully functional <a href="https://itunes.apple.com/app/id1200152358"> iOS version</a> now. Otherwise, feel free to try out this Beta version. You may also register to give us feedback.
             </ModalBody>
@@ -69,6 +69,7 @@ class SearchPage extends Component {
 const mapStateToProps = (state) => {
   return {
     searchTypingInProgress: state.user.searchTypingInProgress,
+    listHasStuff: state.user.autoCompleteList.length > 0
   };
 };
 
