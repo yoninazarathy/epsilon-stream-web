@@ -29,7 +29,8 @@ export function displayResultsOfSearchResults(searchResults,snippet) {
                 subtitle: sr.provider + ', ' + ((sr.durationSec < 60) ? '1' : Math.round(sr.durationSec / 60)) + ' min',
                 link: sr.youtubeVideoId,
                 action: undefined,
-                completed: (ourVideoProgressDict[sr.youtubeVideoId] / sr.durationSec) || 0
+                completed: (ourVideoProgressDict[sr.youtubeVideoId] / sr.durationSec) || 0,
+                displayOrder: 2.3
             }
         }),
         ...searchResults.featuredURLs.map((sr) => {
@@ -39,7 +40,8 @@ export function displayResultsOfSearchResults(searchResults,snippet) {
                 title: sr.ourTitle,
                 subtitle: sr.provider,
                 link: sr.urlOfItem,
-                action: undefined
+                action: undefined,
+                displayOrder: 12.3
             }
         }),
         ...searchResults.mathObjectLinks.map((sr) => {
@@ -49,7 +51,8 @@ export function displayResultsOfSearchResults(searchResults,snippet) {
                 title: sr.ourTitle,
                 subtitle: sr.provider,
                 link: sr.searchTitle,
-                action: undefined
+                action: undefined,
+                displayOrder: 20.3
             }
         })
     ]
@@ -62,10 +65,12 @@ export function displayResultsOfSearchResults(searchResults,snippet) {
                 title: "No match found for " + searchString,
                 subtitle: undefined,
                 link: undefined,
-                action: undefined
+                action: undefined,
+                displayOrder: 0.0// doesn't matter
             }
         ]
     }
+    retVal.sort((a,b) => {return a.displayOrder > b.displayOrder })
     return retVal
 }
 

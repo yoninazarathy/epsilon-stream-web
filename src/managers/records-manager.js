@@ -57,8 +57,12 @@ export function localRecord(fromRecord,type){
                 imageURL: fi.imageURL.value,
                 ourTitle: fi.ourTitle.value,
                 provider: fi.channelKey.value, //name change
-                youtubeVideoId: fi.youtubeVideoId.value
-                // displaySearchPriority: fi.displaySearchPriority.value (some don't have it yet)
+                youtubeVideoId: fi.youtubeVideoId.value,
+                displaySearchPriority: typeof(fi.displaySearchPriority) !== 'undefined' ?
+                                                    fi.displaySearchPriority.value  : -1000,
+                hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
+                                                    fi.hashTagPriorities.value  : "", 
+                                                
             } 
         case "FeaturedURL":
             let featureType = "undef"

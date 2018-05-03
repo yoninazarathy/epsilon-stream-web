@@ -75,7 +75,7 @@ class SearchResults extends Component {
             image={item.image}
             subtitle={item.subtitle}
             link={item.link}
-            action={() => {userLinkAction(item.title)}}
+            action={() => {userLinkAction(item.link)}}
             completed={item.completed}
             />
           );
