@@ -8,7 +8,7 @@ export function cleanSearchString(searchString) {
     return searchString
 }
 
-export function displayResultsOfSearchResults(searchResults,snippet) {
+export function displayResultsOfSearchResults(searchResults,snippet,currentHashTag) {
     let ourVideoProgressDict = store.getState().user.videoProgressDict;
     //let ourVideoDict = store.getState().database.videos;
     let retVal =  [  
@@ -30,7 +30,7 @@ export function displayResultsOfSearchResults(searchResults,snippet) {
                 link: sr.youtubeVideoId,
                 action: undefined,
                 completed: (ourVideoProgressDict[sr.youtubeVideoId] / sr.durationSec) || 0,
-                displayOrder: 2.3
+                displayOrder: calculatePriority(sr.displaySearchPriority,sr.hashTagPriorities,currentHashTag)
             }
         }),
         ...searchResults.featuredURLs.map((sr) => {
@@ -41,7 +41,7 @@ export function displayResultsOfSearchResults(searchResults,snippet) {
                 subtitle: sr.provider,
                 link: sr.urlOfItem,
                 action: undefined,
-                displayOrder: 12.3
+                displayOrder: calculatePriority(sr.displaySearchPriority,sr.hashTagPriorities,currentHashTag)
             }
         }),
         ...searchResults.mathObjectLinks.map((sr) => {
@@ -52,7 +52,7 @@ export function displayResultsOfSearchResults(searchResults,snippet) {
                 subtitle: sr.provider,
                 link: sr.searchTitle,
                 action: undefined,
-                displayOrder: 20.3
+                displayOrder: calculatePriority(sr.displaySearchPriority,sr.hashTagPriorities,currentHashTag)
             }
         })
     ]
@@ -85,7 +85,7 @@ export function hashTagOfString(searchString) {
             break
         }
     }
-    console.log(hashTag)
+    //console.log(hashTag)
     return hashTag//"#explodingDots"//hashTag
 }
 
@@ -97,4 +97,20 @@ export function autoCompleteForString(s) {
     // }else{
         return filtered
     // } 
+}
+
+
+function calculatePriority(displaySearchPriority,hashTagPriorities,currentHashTag){
+    //console.log(displaySearchPriority + "    " + hashTagPriorities)
+    //console.log(currentHashTag)
+    //console.log(hashTagPriorities)
+    let index = hashTagPriorities.indexOf(currentHashTag)
+    if(index === -1){
+        return displaySearchPriority
+    }else{
+        let afterStr = hashTagPriorities.substr(index + currentHashTag.length + 1) //The +1 is to remove the ":"
+        //console.log("AFTER: " + afterStr)
+        let pri = parseFloat(afterStr)
+        return pri
+    }
 }

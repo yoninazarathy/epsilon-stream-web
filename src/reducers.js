@@ -70,7 +70,8 @@ const user = (state = {counter: 0}, actions) => {
             return{
                 ...state,
                 displaySearchResults: displayResultsOfSearchResults(state.currentSearchResults,
-                                                            snippetOfHashTag(state.currentHashTag))
+                                                                    snippetOfHashTag(state.currentHashTag),
+                                                                    state.currentHashTag)
             }
         case "USER_START_WATCH":
             return{

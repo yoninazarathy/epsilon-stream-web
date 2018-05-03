@@ -46,9 +46,11 @@ export function localRecord(fromRecord,type){
                 ourTitle: fi.ourTitle.value,
                 ourTitleDetail: fi.ourTitleDetail.value,
                 searchTitle: fi.searchTitle.value,
-                avoided: ('avoidPlatforms' in fi) ? fi.avoidPlatforms.value : ""
-                // displaySearchPriority: fi.displaySearchPriority.value (some don't have it yet)
-            } 
+                avoided: ('avoidPlatforms' in fi) ? fi.avoidPlatforms.value : "",
+                displaySearchPriority: typeof(fi.displaySearchPriority) !== 'undefined' ?
+                                                    fi.displaySearchPriority.value  : -1000,
+                hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
+                                                    fi.hashTagPriorities.value  : "",             } 
         case "Video":
             return {
                 type: type,
@@ -82,7 +84,11 @@ export function localRecord(fromRecord,type){
                 provider: fi.provider.value,
                 urlOfItem: fi.urlOfItem.value,
                 featureType: featureType,
-                hashTags: fi.hashTags.value,            
+                hashTags: fi.hashTags.value,   
+                displaySearchPriority: typeof(fi.displaySearchPriority) !== 'undefined' ?
+                                                    fi.displaySearchPriority.value  : -1000,
+                hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
+                                                    fi.hashTagPriorities.value  : "",          
             } 
         default:
     }
