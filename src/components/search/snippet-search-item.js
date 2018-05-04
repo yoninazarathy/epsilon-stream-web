@@ -43,7 +43,7 @@ class SnippetSearchItem extends React.Component{
             <Modal isOpen={this.state.modal} toggle={this.toggle}>
                         <ModalHeader toggle={this.toggle}>Snippet Header</ModalHeader>
                             <ModalBody>
-                                <Snippet mathObject = {"#algebra"}/>
+                                <Snippet mathObject = {this.props.hashTag}/>
                             </ModalBody>
                             <ModalFooter>
                                 <Button color="primary" onClick={this.toggle}>OK</Button>
