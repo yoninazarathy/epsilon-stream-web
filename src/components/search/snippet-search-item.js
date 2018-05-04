@@ -1,23 +1,55 @@
 import React from 'react';
 import {SearchItem} from './search-item.js'
-//import ReactMarkDown from 'react-markdown'
+import { Modal, Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import Snippet from '../snippet.js';
+
+
+
 
 class SnippetSearchItem extends React.Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+          modal: false,
+        };
+    
+        this.toggle = this.toggle.bind(this);
+      }
+    
+
+    toggle() {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
+    
+
     render(){
-        const input = '## This is a header\n\nAnd this is a paragraph'
+        
+
         return(
             <div>
             <SearchItem searchType='EXPLORE'
                       type={this.props.type}
                       image={this.props.image}
-                      title={input /*this.props.title*/}
+                      title={"See the snippet about this object" /*this.props.title*/}
                       subtitle={this.props.subtitle}
                       link={this.props.link}
                       hasprogressbar={false}
                       noImage = {true}
-                      action={this.props.action}>
+                      action={this.toggle}>
             </SearchItem>
-            {/*<ReactMarkDown source={input} />*/}
+            <Modal isOpen={this.state.modal} toggle={this.toggle}>
+                        <ModalHeader toggle={this.toggle}>QQQ</ModalHeader>
+                            <ModalBody>
+                                <Snippet mathObject = {"algebra"}/>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.toggle}>OK</Button>
+                          </ModalFooter>
+
+            </Modal>
             </div>
             )
     }

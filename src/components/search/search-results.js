@@ -7,6 +7,8 @@ import MathObjectLinkItem from './math-object-link-item.js'
 import SnippetSearchItem from './snippet-search-item.js'
 import NoMatchSearchItem from './no-match-search-item.js'
 import userWatchAction from '../../actions/user-watch-action';
+import userSnippetAction from '../../actions/user-snippet-action';
+
 //import userPlayAction from '../../actions/user-play-action';
 import userExploreAction from '../../actions/user-explore-action';
 import userLinkAction from '../../actions/user-link-action';
@@ -40,8 +42,8 @@ class SearchResults extends Component {
             title={item.title}
             image={null}
             subtitle={null}
-            link={null}
-            action={()=>{console.log("clicked snippet")} }
+            link={"algebra"}
+            action={userSnippetAction} 
           />
           );
         case "FeaturedURL":

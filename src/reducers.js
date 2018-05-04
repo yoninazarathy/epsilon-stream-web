@@ -118,6 +118,9 @@ const database = (state = {records: []}, actions) => {
                 mathObjects: [],
                 hashTagDict: [],
                 mathObjectLinks: [],
+                snippetDict:{
+                        "algebra":"algebra: $a x^2 + b x + c = 0$",
+                        "geometry":"# geometry snippet"}, //QQQQ
                 videos: [],
                 featuredURLs: [],
                 mathObjectsFetchInProgress: true,
