@@ -42,7 +42,7 @@ class SearchResults extends Component {
             title={item.title}
             image={null}
             subtitle={null}
-            link={"algebra"}
+            link={"#algebra"}
             action={userSnippetAction} 
           />
           );

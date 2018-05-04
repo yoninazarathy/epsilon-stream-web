@@ -11,6 +11,8 @@ class Snippet extends React.Component{
   constructor(props) {
     super(props);
     let rawMarkDown = this.props.snippetDict[props.mathObject]
+    console.log("object: " + props.mathObject)
+    console.log(this.props.snippetDict)
     if(rawMarkDown !== undefined){
       this.formattedMD = md.render(rawMarkDown)
     }else{

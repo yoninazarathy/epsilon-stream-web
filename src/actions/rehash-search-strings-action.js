@@ -16,3 +16,12 @@ export default function makeHashTagDict(){
     }
     return dict
 }
+
+export function makeSnippetDict(){
+    let snippets = store.getState().database.snippets;
+    let dict = {}
+    for(var i=0; i<snippets.length;i++){
+        dict[snippets[i].hashTags] = snippets[i].body;
+    }
+    return dict
+}

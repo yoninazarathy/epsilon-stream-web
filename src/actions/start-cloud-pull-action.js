@@ -19,7 +19,7 @@ export default function startCloudPullAction(actionType){
               }
             })
           }
-          sanitizedforindemnity(["FEATURED_URL", "MATH_OBJECT", "MATH_OBJECT_LINK", "VIDEO"])
+          sanitizedforindemnity(["FEATURED_URL", "MATH_OBJECT", "MATH_OBJECT_LINK", "VIDEO","SNIPPET"])
     }else{
       let query = makeQuery(actionType)
       pullCloudKitData(query,
@@ -55,8 +55,11 @@ function makeQuery(actionType){
         case "MATH_OBJECT_LINK":
           query = { recordType: 'MathObjectLinks',  filterBy: [inCollection] };
           break;
-        default:
-          return;
+        case "SNIPPET":
+          query = { recordType: 'Snippet'};
+          break;
+          default:
+            return;
       }
       return query;
     }

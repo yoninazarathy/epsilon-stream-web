@@ -15,7 +15,9 @@ const rehashMiddleWare = store => next => action => {
         //console.log(action.payload)
         next(action)
         store.dispatch({type: "REHASH_SEARCH_STRINGS",payload:{}})
-
+    }else if(action.type === 'FETCH_SNIPPET_STOP'){
+        next(action)
+        store.dispatch({type: "REHASH_SNIPPET_STRINGS",payload:{}})
     }else{
         next(action);
     }

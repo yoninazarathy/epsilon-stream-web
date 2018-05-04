@@ -4,7 +4,7 @@ import startCloudPullAction from './actions/start-cloud-pull-action.js'
 import {localRecord, recordsOfHashTag, snippetOfHashTag} from './managers/records-manager.js';
 //import {makeImageDictionary} from './managers/image-manager.js'
 import { routerReducer } from 'react-router-redux'
-import makeHashTagDict from './actions/rehash-search-strings-action.js'
+import makeHashTagDict,{makeSnippetDict} from './actions/rehash-search-strings-action.js'
 
 function createVideoProgressDict(videoProgressDict, videoId, seconds) {
     let newProgressDict = {...videoProgressDict}
@@ -12,13 +12,12 @@ function createVideoProgressDict(videoProgressDict, videoId, seconds) {
     return newProgressDict
 }
 
-const user = (state = {counter: 0}, actions) => {
+const user = (state = {}, actions) => {
     switch (actions.type) {
         case "RESET_USER_STORE":
             return {
                 ...state,
                 searchTypingInProgress: false,
-                counter: 0, //QQQQ temp for learning how to use (delete)
                 searchString: "",
                 currentHashTag: "",
                 currentSearchResults: {},
@@ -118,15 +117,15 @@ const database = (state = {records: []}, actions) => {
                 mathObjects: [],
                 hashTagDict: [],
                 mathObjectLinks: [],
-                snippetDict:{
-                        "algebra":"algebra: $a x^2 + b x + c = 0$",
-                        "geometry":"# geometry snippet"}, //QQQQ
+                snippetDict: {},
                 videos: [],
                 featuredURLs: [],
+                snippets: [],
                 mathObjectsFetchInProgress: true,
                 mathObjectLinksFetchInProgress: true,
                 videosInProgress: true,
-                featuredURLsInProgress: true
+                featuredURLsInProgress: true,
+                snippetsFetchInProgress: true,
             }
         case "FETCH_FULL_PULL_START":
             startCloudPullAction("FULL_PULL")
@@ -136,6 +135,7 @@ const database = (state = {records: []}, actions) => {
                 mathObjectLinksFetchInProgress: true,
                 videosInProgress: true,
                 featuredURLsInProgress: true,
+                snippetsFetchInProgress: true,
             }
         case "FETCH_MATH_OBJECT_START":
             startCloudPullAction("MATH_OBJECT")
@@ -160,6 +160,12 @@ const database = (state = {records: []}, actions) => {
             return{
                 ...state,
                 featuredURLsInProgress: true
+            }
+        case "FETCH_SNIPPET_START":
+            startCloudPullAction("SNIPPET")
+            return{
+                ...state,
+                snippetsFetchInProgress: true
             }
         case "FETCH_MATH_OBJECT_STOP":
             return{
@@ -186,11 +192,22 @@ const database = (state = {records: []}, actions) => {
                 featuredURLsInProgress: false,
                 featuredURLs: actions.payload.map((record) => localRecord(record,"FeaturedURL"))
             }
+        case "FETCH_SNIPPET_STOP":
+            return{
+                ...state,
+                snippetsFetchInProgress: false,
+                snippets: actions.payload.map((record) => localRecord(record,"Snippet"))
+            }
         case "REHASH_SEARCH_STRINGS":
             return{
                 ...state,
-                hashTagDict: makeHashTagDict()
+                hashTagDict: makeHashTagDict(),
             }
+        case "REHASH_SNIPPET_STRINGS":
+            return{
+                ...state,
+                snippetDict: makeSnippetDict()
+            }            
         default:            
             return state;
     }

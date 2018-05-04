@@ -90,6 +90,13 @@ export function localRecord(fromRecord,type){
                 hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
                                                     fi.hashTagPriorities.value  : "",          
             } 
+        case "Snippet":
+            return {
+                type: type,
+                body: fi.body.value,
+                hashTags: fi.hashTags.value,
+                ourTitle: fi.title.value,                                                
+            } 
         default:
     }
 }
