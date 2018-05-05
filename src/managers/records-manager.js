@@ -115,7 +115,8 @@ export function recordsOfHashTag(hashTag){
     let matches =  {
         videos: videosOfHashTag(hashTag),
         featuredURLs: featuredURLsOfHashTag(hashTag),
-        mathObjectLinks: mathObjectLinksOfHashTag(hashTag)
+        mathObjectLinks: mathObjectLinksOfHashTag(hashTag),
+        snippets: snippetsOfHashTag(hashTag)
     }
     return matches
 }
@@ -141,5 +142,12 @@ function mathObjectLinksOfHashTag(hashTag){
     })
     return $.grep(mols2, (mol) => {
         return mol.hashTags.includes(hashTag) //QQQQ bug of form #arc, #arcLength
+    })
+}
+
+function snippetsOfHashTag(hashTag){ 
+    let snips = store.getState().database.snippets
+    return $.grep(snips, (snips) => {
+        return snips.hashTags.includes(hashTag) //QQQQ bug of form #arc, #arcLength
     })
 }

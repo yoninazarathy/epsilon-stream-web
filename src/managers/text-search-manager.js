@@ -12,15 +12,17 @@ export function displayResultsOfSearchResults(searchResults,snippet,currentHashT
     let ourVideoProgressDict = store.getState().user.videoProgressDict;
     //let ourVideoDict = store.getState().database.videos;
     let retVal =  [  
-        {
-            type: "EpsilonSnippet",
-            image: null,
-            title: snippet,
-            subtile: null,
-            link: null,
-            action: undefined,
-            displayOrder: -Infinity
-        }
+        ...searchResults.snippets.map((sr) =>{
+            return{
+                type: "EpsilonSnippet",
+                image: null,
+                title: snippet,
+                subtile: null,
+                link: null,
+                action: undefined,
+                displayOrder: -Infinity
+            }
+        })
         ,
         ...searchResults.videos.map((sr) => {
             return {
