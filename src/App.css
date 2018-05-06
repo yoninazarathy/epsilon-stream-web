@@ -1,4 +1,5 @@
 .EpsilonStreamPage{
+  background-color: lightgrey;
 }
 
 .App-intro {
@@ -98,19 +99,23 @@ body:after {
   border-radius: 100px;
 }
 
+
 NavbarBrand.propTypes = {
   color: white;
+  fixed: true;
 }
+
 .center {
   text-align: center;
 }
 
 .youtube-player {
   position: absolute;
-  top: 71px;
+  top: 0px;
   bottom: 0px;
   left: 0px;
   right: 0px;
+  height:100vh;
 }
 
 .SearchResults{
@@ -121,6 +126,11 @@ NavbarBrand.propTypes = {
   /*width: 1000px;*/
   background-color: lightgray;
   align-content: center;
+  height:100vh;
+}
+
+.background{
+  background-color: lightgrey;
 }
 
 ul{
@@ -141,4 +151,20 @@ li{
 
 .Alert{
   padding: 0px;
+}
+
+.text-white{
+  display: inline;
+}
+
+.navbar-nav > li{
+  padding-left:10px;
+  padding-right:10px;
+  line-height: 60px;
+}
+
+.LoadContent{
+  line-height: 200px;
+  vertical-align: middle;
+  background-color: lightgrey;
 }

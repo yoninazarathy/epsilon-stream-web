@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 class SettingsPage extends Component {
   render() {
     return (
-        <EpsilonStreamPage title="Settings" hassearch={false}>
+        <EpsilonStreamPage>
             <p>Settings.</p>
         </EpsilonStreamPage>
     );

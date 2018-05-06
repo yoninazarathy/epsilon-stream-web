@@ -1,62 +1,47 @@
 import React, { Component } from 'react';
-import { Row,Col,Container,InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, Collapse, Input} from 'reactstrap';
+import { NavbarToggler,NavItem,Row,Col,Container,InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, Collapse, Input} from 'reactstrap';
+import { Tooltip, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+
 //import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
 import Icon from '../../assets/icon.png'
 //import SettingsImage from '../../assets/3dotsMenu.png'
-import HomeImage from '../../assets/Home.png'
-import Surprise1 from '../../assets/Surprise1.png'
 //import RightButtonImage from '../../assets/Right_Passive.png'
 //import LeftButtonImage from '../../assets/Left_Passive.png'
 //import MediaQuery from 'react-responsive';
 import { withRouter } from 'react-router-dom'
-//import { RingLoader } from 'react-spinners';
-import updateSearchAction from '../../actions/update-search-action.js'
+import { RingLoader } from 'react-spinners';
 import {connect} from 'react-redux'
-import userHomeAction from '../../actions/user-home-action';
 import {store} from '../../store.js'
-//import {push} from 'react-router-redux'
-import randomChoiceAction from '../../actions/random-choice-action.js'
-
-const ProductButton = withRouter(({history}) => (
-    <img    className="productButton mr-sm-2" 
-            src={Icon} 
-            width={45}
-            onClick={() => {window.open("https://about.epsilonstream.com", '_blank')} } 
-            alt = "ES"/>
-))
+import {push} from 'react-router-redux'
 
 
-const HomeButton = withRouter(({history}) => (
-    <Button  color="danger" className="ml-sm-2 mr-sm-2"
-        onClick={userHomeAction}>
-        <img alt="home" src={HomeImage} width={30} height={30} />
-    </Button>
-))
-
-/*
 const SettingsButton = withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {history.push('/settings')}}>
-        <img alt="settings" src={SettingsImage} width={30} height={30} />
+                                    <p className = "text-white">
+                                        Settings
+                                    </p>
     </Button>
 ))
-*/
 
-/*
 const SearchButton = withRouter(({history}) => (
-    <Button outline color="light" className="ml-sm-2"
+    <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {history.push('/search')}}>
-        Search
+                                    <p className = "text-white">
+                                        Search
+                                    </p>
     </Button>
-  ))
-  */
-  
-  const SurpriseButton = withRouter(({history}) => (
-    <Button color="danger" className="ml-sm-2 mr-sm-2"
-        onClick={randomChoiceAction}>
-        <img alt="surprise" src={Surprise1} width={30} height={30} />
+))
+
+const AboutButton = withRouter(({history}) => (
+    <Button outline color="danger" className="ml-sm-2 mr-sm-2"
+        onClick={() => {window.open("https://about.epsilonstream.com", '_blank')}}>
+                                    <p className = "text-white">
+                                        About
+                                    </p>
     </Button>
-  ))
+))
+
 
 class EpsilonStreamPage extends Component {
     constructor(props) {
@@ -65,19 +50,35 @@ class EpsilonStreamPage extends Component {
       this.toggle = this.toggle.bind(this);
       this.state = {
         isOpen: false,
-        value: ' '
+        value: ' ',
+        searchOn: false,
+        modal: true,
+        tooltipOpen: false
       };
-
-      this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
-      this.handleKeyPress = this.handleKeyPress.bind(this);
+      this.modalToggle = this.modalToggle.bind(this);
+      this.toolTipToggle = this.toolTipToggle.bind(this);
     }
+
     toggle() {
       this.setState({
         isOpen: !this.state.isOpen
       });
     }
 
+    toolTipToggle() {
+        this.setState({
+          tooltipOpen: !this.state.tooltipOpen
+        });
+      }
+    
+
+      modalToggle() {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
+    
     handleClick() {
         this.setState({
             open: !this.state.open
@@ -91,36 +92,94 @@ class EpsilonStreamPage extends Component {
         //history.push('/search')
       }
   
-      handleKeyPress(event){
-            //console.log("key: " + event.key)
-          //console.log(event.target.value)
-          if (event.key !== 'Enter'){
-              //store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:event.target.value}})
-          }else{
-              store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
-              updateSearchAction(event.target.value)
-              console.log(event.target.value)
-          }
-      }
 
-      handleChange(event){
-        //console.log("val: " + event.target.value)
-        this.setState({...this.state, value:event.target.value})
-        if(event.target.value === ''){
-            store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
-            updateSearchAction(event.target.value)
-        }else{
-            store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:event.target.value}})
-        }
-        //updateSearchAction(event.target.value)
-
-
-        }
 
 
 
     render() {
         return (
+            <div>
+                <Navbar className="navbar" color="danger" expand="md" > 
+                    <NavbarBrand href="/"> 
+                        <span>
+                            <img    className="productButton mr-sm-2" 
+                                    src={Icon} 
+                                    width={45}
+                                    alt = "ES"
+                                    id="ToolTipLogo"/>
+                            <p className = "text-white">
+                                {this.props.headerString}
+                            </p>
+                            <Tooltip placement="right" isOpen={this.state.tooltipOpen} target="ToolTipLogo" toggle={this.toolTipToggle}>
+                                Epsilon Stream Beta
+                            </Tooltip>
+
+
+                        </span>
+                    </NavbarBrand>
+                    <NavbarToggler onClick={this.toggle}/>
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <SearchButton/>
+                            </NavItem>
+                            <NavItem>
+                                <SettingsButton/>
+                            </NavItem>
+                            <NavItem>
+                                <AboutButton/>
+                            </NavItem>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+                <div className = "background">
+                <Container fluid={true} >
+                    <Row>
+                        <Col    xs={{ size: 12, order: 0, offset: 0}}
+                                sm={{ size: 12, order: 0, offset: 0}} 
+                                md={{ size: 12, order: 0, offset: 0}}
+                                lg={{ size: 8, order: 0, offset: 2}}
+                                xl={{ size: 8, order: 0, offset: 2}}
+                                >
+                            {this.props.loadingInProgress ?
+                                <center>
+                                    <div className = "LoadContent">
+                                        <p> LOADING CONTENT </p>
+                                        <RingLoader/>
+                                        </div>
+                                </center>
+                                :  
+                                <center>       
+                                    {this.props.children}
+                                </center>
+                            }    
+                        </Col>
+                    </Row>  
+                </Container>   
+                </div>  
+                <Modal isOpen={this.state.modal} toggle={this.modalToggle}>
+                    <ModalHeader toggle={this.modalToggle}>Epsilon Stream Web - Beta</ModalHeader>
+                    <ModalBody>
+                        This is the beta version of our Epsilon Stream Web-App. We are working hard to finalize it. If you have an iPhone or iPad, you may enjoy a free and fully functional <a href="https://itunes.apple.com/app/id1200152358"> iOS version</a> now. Otherwise, feel free to try out this Beta version. You may also register to give us feedback.
+                    </ModalBody>
+                    <ModalFooter>
+                            {/*<Button color="primary" onClick={this.toggle}>Thanks</Button>*/}
+                            {' '}
+                            <Button color="primary" 
+                                    onClick={() => {this.toggle;
+                                                    window.open("https://about.epsilonstream.com/beta-tester/", '_blank')}
+                                                }>Register</Button>{' '}
+                    </ModalFooter>
+                </Modal> 
+            </div>
+        );
+    }
+}
+
+
+
+
+/*
             <div className="EpsilonStreamPage">
                 <Container fluid={true} >
                     <Row>
@@ -133,50 +192,42 @@ class EpsilonStreamPage extends Component {
                         <Navbar color = "danger" light expand="md">
                             <NavbarBrand href="/" color = "white">
                             <ProductButton /> <p className = "text-white">Epsilon Stream Web -  Beta</p></NavbarBrand>
-                        {/*<NavbarToggler onClick={this.toggle} />*/}
-                            {
-                                this.props.hassearch ?
-                                <Collapse isOpen={true/*this.state.isOpen*/} navbar>
-                                    <Nav className="w-100" navbar expand = "md">
-                                        {/*<LeftButton />*/}
-                                        {/*<RightButton />*/}
-                                        <InputGroup>
-                                            <Input type="text" className="w-100 ml-auto"
-                                                    name="search" placeholder="Search Mathematics"
-                                                    value={this.state.value}
-                                                    onChange={this.handleChange}
-                                                    onKeyPress={this.handleKeyPress}
-                                                    autoComplete = "off" />
-                                                    <InputGroupAddon >
-                                                        <SurpriseButton/>
-                                                    </InputGroupAddon>
-                                                    <InputGroupAddon >
-                                                        <HomeButton />
-                                                    </InputGroupAddon>
-                                            </InputGroup>
-                                            {/*<SearchButton />*/}
-                                    </Nav>
-                                </Collapse>
-                                : ""
-                            }
-                            {/*<SettingsButton/>*/}
-                        </Navbar>
-                        <div>
-                            {this.props.loadingInProgress ?
-                                <center>
-                                    LOADING CONTENT
-                                </center>
-                                :         
-                                this.props.children
-                            }
-                        </div>
-                    </Col>
-                    </Row>
-                </Container>
-            </div>
-        );
-    }
-}
+                        {
+                            this.props.hassearch ?
+                            <Collapse isOpen={true} navbar>
+                                <Nav className="w-100" navbar expand = "md">
+                                    <InputGroup>
+                                        <Input type="text" className="w-100 ml-auto"
+                                                name="search" placeholder="Search Mathematics"
+                                                value={this.state.value}
+                                                onChange={this.handleChange}
+                                                onKeyPress={this.handleKeyPress}
+                                                autoComplete = "off" />
+                                                <InputGroupAddon >
+                                                    <SurpriseButton/>
+                                                </InputGroupAddon>
+                                                <InputGroupAddon >
+                                                    <HomeButton />
+                                                </InputGroupAddon>
+                                        </InputGroup>
+                                </Nav>
+                            </Collapse>
+                            : ""
+                        }
+                    </Navbar>
+                    <div>
+
+                    </div>
+                </Col>
+                </Row>
+            </Container>
+        </div>
+        */
+
+
+
+
+
 //https://es-app.com/assets/anim/LogoAnimationVert_9sec.mp4
 
                         /*<center>
@@ -194,7 +245,9 @@ const mapStateToProps = (state) => {
         loadingInProgress:  state.database.mathObjectsFetchInProgress       ||
                             state.database.mathObjectLinksFetchInProgress   ||
                             state.database.videosInProgress                 ||
-                            state.database.featuredURLsInProgress
+                            state.database.snippetsFetchInProgress          ||
+                            state.database.featuredURLsInProgress,
+        headerString: state.user.currentHashTag,
     };
 };
 

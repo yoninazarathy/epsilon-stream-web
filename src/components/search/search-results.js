@@ -95,7 +95,6 @@ class SearchResults extends Component {
   render(){
     return(
         <div className="SearchResults">
-            <Alert color = "info"> <center>{this.props.hashTag}</center> </Alert>
             {this.props.displaySearchResults.map(this.getItem)}
         </div>
     )

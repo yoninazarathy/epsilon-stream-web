@@ -94,9 +94,7 @@ class WatchPage extends Component {
     } else {
       console.log("no video")
     }
-    if ("id in parsed") {
-      //userId = parsed.id
-    }
+
     const opts = {
       height: '100%',
       width: '100%',
@@ -122,7 +120,6 @@ class WatchPage extends Component {
           onPause={this.onPause}
           onEnd={this.onEnd}
           />
-        {/*<p> VideoId: {videoId}, UserId: {userId} </p>*/}
       </EpsilonStreamPage>
     );
   }

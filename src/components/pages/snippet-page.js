@@ -33,9 +33,11 @@ class SnippetPage extends Component {
 
     return (
         <div>
-          <center>
-            <Snippet mathObject = {'#'+mathObject}/>
-          </center>
+          <EpsilonStreamPage title="Watch" hassearch={true}>
+            <center>
+              <Snippet mathObject = {'#'+mathObject}/>
+            </center>
+          </EpsilonStreamPage>
         </div>
     );
   }
