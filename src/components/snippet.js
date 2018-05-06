@@ -10,19 +10,18 @@ class Snippet extends React.Component{
 
   constructor(props) {
     super(props);
-    let rawMarkDown = this.props.snippetDict[props.mathObject]
-    console.log("object: " + props.mathObject)
+  }
+
+  render(){
+    let rawMarkDown = this.props.snippetDict[this.props.mathObject]
+    console.log("object: " + this.props.mathObject)
     console.log(this.props.snippetDict)
     if(rawMarkDown !== undefined){
       this.formattedMD = md.render(rawMarkDown)
     }else{
-      this.formattedMD = md.render("# There is no snippet for \#" + props.mathObject)
+      this.formattedMD = md.render("# There is no snippet for \#" + this.props.mathObject)
     }
     console.log(this.formattedMD)
-    };
-
-
-  render(){
     return(
         <span dangerouslySetInnerHTML={{__html: this.formattedMD}} />
     )

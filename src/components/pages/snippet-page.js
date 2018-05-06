@@ -26,6 +26,7 @@ class SnippetPage extends Component {
     var mathObject = ""
     if ("mo" in parsed) {
       mathObject = parsed.mo
+      console.log(mathObject)
     } else {
       console.log("no math boject")
     }
@@ -33,7 +34,7 @@ class SnippetPage extends Component {
     return (
         <div>
           <center>
-            <Snippet mathObject = {mathObject}/>
+            <Snippet mathObject = {'#'+mathObject}/>
           </center>
         </div>
     );
