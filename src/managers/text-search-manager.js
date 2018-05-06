@@ -8,15 +8,17 @@ export function cleanSearchString(searchString) {
     return searchString
 }
 
-export function displayResultsOfSearchResults(searchResults,snippet,currentHashTag) {
+export function displayResultsOfSearchResults(searchResults,currentHashTag) {
     let ourVideoProgressDict = store.getState().user.videoProgressDict;
     //let ourVideoDict = store.getState().database.videos;
+    console.log('resssss')
+    console.log(searchResults)
     let retVal =  [  
         ...searchResults.snippets.map((sr) =>{
             return{
                 type: "EpsilonSnippet",
                 image: null,
-                title: snippet,
+                title: null,
                 subtile: null,
                 link: null,
                 action: undefined,

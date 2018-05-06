@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux'
 import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,hashTagOfString} from './managers/text-search-manager.js'
 import startCloudPullAction from './actions/start-cloud-pull-action.js'
-import {localRecord, recordsOfHashTag, snippetOfHashTag} from './managers/records-manager.js';
+import {localRecord, recordsOfHashTag, snippetsOfHashTag} from './managers/records-manager.js';
 //import {makeImageDictionary} from './managers/image-manager.js'
 import { routerReducer } from 'react-router-redux'
 import makeHashTagDict,{makeSnippetDict} from './actions/rehash-search-strings-action.js'
@@ -69,7 +69,6 @@ const user = (state = {}, actions) => {
             return{
                 ...state,
                 displaySearchResults: displayResultsOfSearchResults(state.currentSearchResults,
-                                                                    snippetOfHashTag(state.currentHashTag),
                                                                     state.currentHashTag)
             }
         case "USER_START_WATCH":

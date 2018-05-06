@@ -101,15 +101,12 @@ export function localRecord(fromRecord,type){
     }
 }
 
-export function snippetOfHashTag(hashTag){
-    return "The snippet of " + hashTag + " is here" ;
-}
-
 export function recordsOfHashTag(hashTag){
     if(hashTag === "#noTag"){
         return {videos: [],
                 featuredURLs: [],
-                mathObjectLinks: []}
+                mathObjectLinks: [],
+                snippets: []}
     }
 
     let matches =  {
@@ -145,7 +142,7 @@ function mathObjectLinksOfHashTag(hashTag){
     })
 }
 
-function snippetsOfHashTag(hashTag){ 
+export function snippetsOfHashTag(hashTag){ 
     let snips = store.getState().database.snippets
     return $.grep(snips, (snips) => {
         return snips.hashTags.includes(hashTag) //QQQQ bug of form #arc, #arcLength

@@ -9,6 +9,7 @@ import { Button} from 'reactstrap';
 //import { withRouter } from 'react-router-dom'
 import {store} from '../../store.js'
 import SearchBar from '../search-bar.js'
+import {push} from 'react-router-redux'
 
 
 class SearchPage extends Component {
@@ -21,6 +22,7 @@ class SearchPage extends Component {
       //updateSearchAction(event.target.value)
       //store.dispatch(push('?search='+event.target.value))
       //this.props.activeRouteHandler({key: "test"})
+      
     }
   render() {
     //const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 200);
