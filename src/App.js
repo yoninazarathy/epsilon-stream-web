@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+// import $ from 'jquery'
 
 //import {Provider} from 'react-redux'
 import {ConnectedRouter as Router} from 'react-router-redux';
@@ -44,5 +45,31 @@ function refreshStore() {
 }
 
 refreshStore()
+
+document.onkeydown = checkKey;
+
+//QQQQ get to this: https://stackoverflow.com/questions/27711018/cleaner-way-to-change-focus-on-child-components-in-react?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+      console.log("up arrow")
+      //$(".move:focus").prev().focus(); 
+    }
+    else if (e.keyCode == '40') {
+      console.log("down arrow")
+      // $(".move:focus").next().focus();
+
+    }
+    else if (e.keyCode == '37') {
+       // left arrow
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+    }
+
+}
+
 
 export default App;

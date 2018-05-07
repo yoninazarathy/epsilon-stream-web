@@ -11,8 +11,6 @@ export function cleanSearchString(searchString) {
 export function displayResultsOfSearchResults(searchResults,currentHashTag) {
     let ourVideoProgressDict = store.getState().user.videoProgressDict;
     //let ourVideoDict = store.getState().database.videos;
-    console.log('resssss')
-    console.log(searchResults)
     let retVal =  [  
         ...searchResults.snippets.map((sr) =>{
             return{

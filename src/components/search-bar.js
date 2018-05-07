@@ -32,7 +32,8 @@ class SearchBar extends React.Component{
     super(props);
 
     this.state = {
-      searchString: "", 
+      searchString: "",
+      isInControl: false 
     };
     this.handleChange   = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -41,7 +42,8 @@ class SearchBar extends React.Component{
 
   updateModel(searchString,finishedTyping){
     this.setState({
-      searchString: searchString
+      searchString: searchString,
+      isInControl: true
     });      
     if(finishedTyping){
       store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
@@ -52,6 +54,10 @@ class SearchBar extends React.Component{
         store.dispatch(push('/search'))
       }
       updateSearchAction(searchString)
+      this.setState({
+        ...this.state,
+        isInControl: false
+      })
     }else{
       store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:searchString}})
     }
@@ -75,6 +81,14 @@ class SearchBar extends React.Component{
 
   }
 
+  //QQQQ doesn't seem to work
+  //  getDerivedStateFromProps(nextProps, prevState){
+  //   console.log("here baby:")
+  //   return{
+  //     searchString: nextProps.storeSearchString
+  //   }
+  // }
+
   render(){
     // if(this.props.startQuery !== ''){
     //   //updateSearchAction(this.props.startQuery)
@@ -88,7 +102,7 @@ class SearchBar extends React.Component{
                       <Input type="text" className="w-100 ml-auto"
                               id = "inputField"
                               name="search" 
-                              value={this.state.searchString}
+                              value={this.state.isInControl ?  this.state.searchString: this.props.storeSearchString}
                               placeholder="Search Mathematics"
                               onChange={this.handleChange}
                               onKeyPress={this.handleKeyPress}
@@ -107,6 +121,7 @@ class SearchBar extends React.Component{
 const mapStateToProps = (state) => {
   return {
     snippetDict: state.database.snippetDict, //QQQQ replace
+    storeSearchString: state.user.rawSearchString
   };
 };
 
