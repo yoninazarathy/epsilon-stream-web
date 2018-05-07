@@ -8,6 +8,9 @@ import HomeImage from '../assets/Home.png'
 import Surprise1 from '../assets/Surprise1.png'
 import {store} from '../store.js'
 import updateSearchAction from '../actions/update-search-action.js'
+import {push} from 'react-router-redux'
+import querystring from 'query-string';
+
 
 const SurpriseButton = withRouter(({history}) => (
   <Button color="danger" className="ml-sm-2 mr-sm-2"
@@ -29,47 +32,64 @@ class SearchBar extends React.Component{
     super(props);
 
     this.state = {
-      isOpen: false, //QQQQ REPLACE
+      searchString: "", 
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange   = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.updateModel    = this.updateModel.bind(this);
   }
 
+  updateModel(searchString,finishedTyping){
+    this.setState({
+      searchString: searchString
+    });      
+    if(finishedTyping){
+      store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
+      if(this.state.searchString !== ''){
+        let query = searchString.toLowerCase().split(' ').join('+');
+        store.dispatch(push('/search?q='+query))
+      }else{
+        store.dispatch(push('/search'))
+      }
+      updateSearchAction(searchString)
+    }else{
+      store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:searchString}})
+    }
+  }
 
   handleKeyPress(event){
-    //console.log("key: " + event.key)
-  //console.log(event.target.value)
-  if (event.key !== 'Enter'){
-      //store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:event.target.value}})
-  }else{
-      store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
-      updateSearchAction(event.target.value)
-      console.log(event.target.value)
+    if (event.key === 'Enter'){
+      this.updateModel(event.target.value.replace(/\s+/g, " ").replace(/^\s|\s$/g, ""),true)
+    }
   }
-}
 
-handleChange(event){
-//console.log("val: " + event.target.value)
-this.setState({...this.state, value:event.target.value})
-if(event.target.value === ''){
-    store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
-    updateSearchAction(event.target.value)
-}else{
-    store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:event.target.value}})
-}
-//updateSearchAction(event.target.value)
+  handleChange(event){
+    if(event.target.value === ''){
+        this.updateModel('',true)
+    }else{
+        this.updateModel(event.target.value,false)
+    }
+  }
 
+  updateDisplay(){
 
-}
+  }
 
   render(){
+    // if(this.props.startQuery !== ''){
+    //   //updateSearchAction(this.props.startQuery)
+    //   this.setState({
+    //     searchString: this.props.startQuery
+    //   });  
+    // }
     return(
         <div>
           <InputGroup>
-          
                       <Input type="text" className="w-100 ml-auto"
-                              name="search" placeholder="Search Mathematics"
-                              value={this.state.value}
+                              id = "inputField"
+                              name="search" 
+                              value={this.state.searchString}
+                              placeholder="Search Mathematics"
                               onChange={this.handleChange}
                               onKeyPress={this.handleKeyPress}
                               autoComplete = "off" />

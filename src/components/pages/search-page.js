@@ -10,6 +10,7 @@ import { Button} from 'reactstrap';
 import {store} from '../../store.js'
 import SearchBar from '../search-bar.js'
 import {push} from 'react-router-redux'
+import querystring from 'query-string';
 
 
 class SearchPage extends Component {
@@ -25,11 +26,19 @@ class SearchPage extends Component {
       
     }
   render() {
+    let qry = this.props.location.search;
+    querystring.parse(qry)
+    let parsed = querystring.parse(qry);
+    var query = ""
+    if ("q" in parsed) {
+      query = parsed.q
+    } 
+
     //const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 200);
     return (
         <div>
         <EpsilonStreamPage title="Search" hassearch={true}>
-            <SearchBar/>
+            <SearchBar startQuery={query}/>
             {this.props.searchTypingInProgress && this.props.listHasStuff 
                         ? <SearchAutoCompleteList/> : 
                           <SearchResults/>}
