@@ -23,6 +23,7 @@ import { SnippetPage } from './components/pages/snippet-page';
 class App extends React.Component {
   render() {
     const SearchPageWithQS = (props) => {return (<SearchPage qs={history.location.search} {...props}/>);}
+    const SearchPageWithHome = (props) => {return (<SearchPage qs={"home"} {...props}/>);}
     const SnippetPageWithQS = (props) => {return (<SnippetPage qs={history.location.search} {...props}/>);}
     const WatchPageWithQS = (props) => {return (<WatchPage qs={history.location.search} {...props}/>);}
 
@@ -33,6 +34,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" render={SearchPageWithQS} />
             <Route exact path="/search" component={SearchPageWithQS} />
+            <Route exact path="/home" component={SearchPageWithHome} />
             <Route exact path="/watch" component={WatchPageWithQS} />
             <Route exact path="/snippet" component={SnippetPageWithQS} />
             <Route exact path="/settings" component={SettingsPage} />

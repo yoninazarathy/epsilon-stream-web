@@ -12,6 +12,11 @@ function createVideoProgressDict(videoProgressDict, videoId, seconds) {
     return newProgressDict
 }
 
+function nextCounter(counter){
+    console.log("counter " + counter)
+    return counter === 3 ? 0 : counter + 1
+}
+
 const user = (state = {}, actions) => {
     switch (actions.type) {
         case "RESET_USER_STORE":
@@ -24,7 +29,8 @@ const user = (state = {}, actions) => {
                 displaySearchResults: [],
                 autoCompleteList: [],
                 videoProgressDict: {},
-                isAndroid: "Android" in window
+                isAndroid: "Android" in window,
+                betaPopUpCounter: 0,
             }
         case "USER_HOME_ACTION": //QQQQ not using it now
             let tempCleanString = cleanSearchString("Home")
@@ -32,7 +38,8 @@ const user = (state = {}, actions) => {
                 ...state,
                 rawSearchString: tempCleanString,
                 cleanSearchString: tempCleanString, //QQQQ what for?
-                autoCompleteList: autoCompleteForString(tempCleanString)
+                autoCompleteList: autoCompleteForString(tempCleanString),
+                betaPopUpCounter: nextCounter(state.betaPopUpCounter)
             }
         case "USER_SEARCH_IS_TYPING":
             let tempCleanString2 = cleanSearchString(actions.payload.value)
@@ -40,7 +47,7 @@ const user = (state = {}, actions) => {
                 ...state,
                 searchTypingInProgress: true,
                 cleanSearchString: tempCleanString2, //QQQQ what for?
-                autoCompleteList: autoCompleteForString(tempCleanString2)
+                autoCompleteList: autoCompleteForString(tempCleanString2),
             }
         case "USER_SEARCH_DONE_TYPING":
             return {
@@ -69,7 +76,9 @@ const user = (state = {}, actions) => {
             return{
                 ...state,
                 displaySearchResults: displayResultsOfSearchResults(state.currentSearchResults,
-                                                                    state.currentHashTag)
+                                                                    state.currentHashTag),
+                betaPopUpCounter: nextCounter(state.betaPopUpCounter)
+
             }
         case "USER_START_WATCH":
             return{
@@ -84,7 +93,8 @@ const user = (state = {}, actions) => {
             return {
                 ...state,
                 videoProgressDict: createVideoProgressDict(state.videoProgressDict, actions.payload.videoId, actions.payload.currentTime),
-                playing: true
+                playing: true,
+                betaPopUpCounter: nextCounter(state.betaPopUpCounter)
             }
         case "USER_PLAYER_PAUSE":
             return {

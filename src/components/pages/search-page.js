@@ -14,7 +14,7 @@ import querystring from 'query-string'
 import updateSearchAction from '../../actions/update-search-action.js'
 
 class SearchPage extends Component {
-  constructor(props){
+ /* constructor(props){
     super(props);
     this.state = {
       parsedQuery: ''
@@ -29,14 +29,16 @@ class SearchPage extends Component {
         this.state.parsedQuery = parsed.q;
       }
     }
-  }
+  }*/
 
 
   render() {
+    console.log("sssssss")
+    console.log(this.props.qs)
     return (
         <div>
         <EpsilonStreamPage title="Search" hassearch={true}>
-            <SearchBar startQuery={'start search'}/>
+            <SearchBar startQuery={this.props.qs}/>
             {this.props.searchTypingInProgress && this.props.listHasStuff 
                         ? <SearchAutoCompleteList/> : 
                           <SearchResults/>}

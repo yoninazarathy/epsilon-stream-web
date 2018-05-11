@@ -19,20 +19,12 @@ const SurpriseButton = withRouter(({history}) => (
   </Button>
 ))
 
-const HomeButton = withRouter(({history}) => (
-  <Button  color="danger" className="ml-sm-2 mr-sm-2"
-      onClick={userHomeAction}>
-      <img alt="home" src={HomeImage} width={30} height={30} />
-  </Button>
-))
-
-
 class SearchBar extends React.Component{
   constructor(props) {
     super(props);
 
     this.state = {
-      searchString: "",
+      searchString: '',//this.props.startQuery,
       isInControl: false 
     };
     this.handleChange   = this.handleChange.bind(this);
@@ -109,9 +101,6 @@ class SearchBar extends React.Component{
                               autoComplete = "off" />
                               <InputGroupAddon >
                                   <SurpriseButton/>
-                              </InputGroupAddon>
-                              <InputGroupAddon >
-                                  <HomeButton />
                               </InputGroupAddon>
           </InputGroup>
         </div>

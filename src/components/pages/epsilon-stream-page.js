@@ -55,7 +55,6 @@ class EpsilonStreamPage extends Component {
         modal: true,
         tooltipOpen: false
       };
-      this.handleSubmit = this.handleSubmit.bind(this);
       this.modalToggle = this.modalToggle.bind(this);
       this.toolTipToggle = this.toolTipToggle.bind(this);
     }
@@ -84,23 +83,12 @@ class EpsilonStreamPage extends Component {
             open: !this.state.open
         });
     }
-
-    handleSubmit(event) {
-        //alert('A name was submitted: ' + this.state.value);
-        //event.preventDefault();
-        //store.dispatch(push('/search'))
-        //history.push('/search')
-      }
   
-
-
-
-
     render() {
         return (
             <div>
                 <Navbar className="navbar" color="danger" expand="md" > 
-                    <NavbarBrand href="/"> 
+                    <NavbarBrand href="/home"> 
                         <span>
                             <img    className="productButton mr-sm-2" 
                                     src={Icon} 
@@ -113,8 +101,6 @@ class EpsilonStreamPage extends Component {
                             <Tooltip placement="right" isOpen={this.state.tooltipOpen} target="ToolTipLogo" toggle={this.toolTipToggle}>
                                 Epsilon Stream Beta
                             </Tooltip>
-
-
                         </span>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle}/>
@@ -157,75 +143,26 @@ class EpsilonStreamPage extends Component {
                     </Row>  
                 </Container>   
                 </div>  
-                <Modal isOpen={this.state.modal} toggle={this.modalToggle}>
-                    <ModalHeader toggle={this.modalToggle}>Epsilon Stream Web - Beta</ModalHeader>
-                    <ModalBody>
-                        This is the beta version of our Epsilon Stream Web-App. We are working hard to finalize it. If you have an iPhone or iPad, you may enjoy a free and fully functional <a href="https://itunes.apple.com/app/id1200152358"> iOS version</a> now. Otherwise, feel free to try out this Beta version. You may also register to give us feedback.
-                    </ModalBody>
-                    <ModalFooter>
-                            {/*<Button color="primary" onClick={this.toggle}>Thanks</Button>*/}
-                            {' '}
-                            <Button color="primary" 
-                                    onClick={() => {this.toggle;
-                                                    window.open("https://about.epsilonstream.com/beta-tester/", '_blank')}
-                                                }>Register</Button>{' '}
-                    </ModalFooter>
-                </Modal> 
+                {this.props.betaPopUpCounter === 0 ?
+                    <Modal isOpen={this.state.modal} toggle={this.modalToggle}>
+                        <ModalHeader toggle={this.modalToggle}>Epsilon Stream Web - Beta</ModalHeader>
+                        <ModalBody>
+                            This is the beta version of our Epsilon Stream Web-App. We are working hard to finalize it. If you have an iPhone or iPad, you may enjoy a free and fully functional <a href="https://itunes.apple.com/app/id1200152358"> iOS version</a> now. Otherwise, feel free to try out this Beta version. You may also register to give us feedback.
+                        </ModalBody>
+                        <ModalFooter>
+                                {/*<Button color="primary" onClick={this.toggle}>Thanks</Button>*/}
+                                {' '}
+                                <Button color="primary" 
+                                        onClick={() => {this.toggle;
+                                                        window.open("https://about.epsilonstream.com/beta-tester/", '_blank')}
+                                                    }>Register</Button>{' '}
+                        </ModalFooter>
+                    </Modal> 
+                    : ''}
             </div>
         );
     }
 }
-
-
-
-
-/*
-            <div className="EpsilonStreamPage">
-                <Container fluid={true} >
-                    <Row>
-                    <Col    xs={{ size: 12, order: 0, offset: 0}}
-                            sm={{ size: 12, order: 0, offset: 0}} 
-                            md={{ size: 12, order: 0, offset: 0}}
-                            lg={{ size: 12, order: 0, offset: 0}}
-                            xl={{ size: 9, order: 0, offset: 1}}
-                            >
-                        <Navbar color = "danger" light expand="md">
-                            <NavbarBrand href="/" color = "white">
-                            <ProductButton /> <p className = "text-white">Epsilon Stream Web -  Beta</p></NavbarBrand>
-                        {
-                            this.props.hassearch ?
-                            <Collapse isOpen={true} navbar>
-                                <Nav className="w-100" navbar expand = "md">
-                                    <InputGroup>
-                                        <Input type="text" className="w-100 ml-auto"
-                                                name="search" placeholder="Search Mathematics"
-                                                value={this.state.value}
-                                                onChange={this.handleChange}
-                                                onKeyPress={this.handleKeyPress}
-                                                autoComplete = "off" />
-                                                <InputGroupAddon >
-                                                    <SurpriseButton/>
-                                                </InputGroupAddon>
-                                                <InputGroupAddon >
-                                                    <HomeButton />
-                                                </InputGroupAddon>
-                                        </InputGroup>
-                                </Nav>
-                            </Collapse>
-                            : ""
-                        }
-                    </Navbar>
-                    <div>
-
-                    </div>
-                </Col>
-                </Row>
-            </Container>
-        </div>
-        */
-
-
-
 
 
 //https://es-app.com/assets/anim/LogoAnimationVert_9sec.mp4
@@ -248,6 +185,7 @@ const mapStateToProps = (state) => {
                             state.database.snippetsFetchInProgress          ||
                             state.database.featuredURLsInProgress,
         headerString: state.user.currentHashTag,
+        betaPopUpCounter: state.user.betaPopUpCounter
     };
 };
 
