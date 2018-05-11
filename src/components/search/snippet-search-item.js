@@ -2,7 +2,7 @@ import React from 'react';
 import {SearchItem} from './search-item.js'
 import { Modal, Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Snippet from '../snippet.js';
-
+import robotIcon from '../../assets/OneOnEpsilon-Character.png'
 
 
 
@@ -30,10 +30,10 @@ class SnippetSearchItem extends React.Component{
 
         return(
             <div>
-            <SearchItem searchType='EXPLORE'
+            <SearchItem searchType='Snippet'
                       type={this.props.type}
-                      image={this.props.image}
-                      title={"See the snippet about this object" /*this.props.title*/}
+                      image={robotIcon}
+                      title={this.props.title}
                       subtitle={this.props.subtitle}
                       link={this.props.link}
                       hasprogressbar={false}
@@ -41,7 +41,7 @@ class SnippetSearchItem extends React.Component{
                       action={this.toggle}>
             </SearchItem>
             <Modal isOpen={this.state.modal} toggle={this.toggle}>
-                        <ModalHeader toggle={this.toggle}>Snippet Header</ModalHeader>
+                        <ModalHeader toggle={this.toggle}> {this.props.title}</ModalHeader>
                             <ModalBody>
                                 <Snippet mathObject = {this.props.hashTag}/>
                             </ModalBody>

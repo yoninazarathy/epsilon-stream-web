@@ -10,35 +10,33 @@ import { Button} from 'reactstrap';
 import {store} from '../../store.js'
 import SearchBar from '../search-bar.js'
 import {push} from 'react-router-redux'
-import querystring from 'query-string';
-
+import querystring from 'query-string'
+import updateSearchAction from '../../actions/update-search-action.js'
 
 class SearchPage extends Component {
-    // Search
-    handleChange(event) {
-      this.setState({value: event.target.value});
-      if(event.target.value === ""){
-        store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
-      }
-      //updateSearchAction(event.target.value)
-      //store.dispatch(push('?search='+event.target.value))
-      //this.props.activeRouteHandler({key: "test"})
-      
-    }
-  render() {
-    let qry = this.props.location.search;
-    querystring.parse(qry)
-    let parsed = querystring.parse(qry);
-    var query = ""
-    if ("q" in parsed) {
-      query = parsed.q
-    } 
+  constructor(props){
+    super(props);
+    this.state = {
+      parsedQuery: ''
+    };
 
-    //const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 200);
+    if(this.props.qs !== ''){
+      let qry = this.props.location.search;
+      let parsed = querystring.parse(this.props.qs)
+      if('q' in parsed ){
+        console.log('GOT IT MATE!!!')
+        console.log(parsed.q)
+        this.state.parsedQuery = parsed.q;
+      }
+    }
+  }
+
+
+  render() {
     return (
         <div>
         <EpsilonStreamPage title="Search" hassearch={true}>
-            <SearchBar startQuery={query}/>
+            <SearchBar startQuery={'start search'}/>
             {this.props.searchTypingInProgress && this.props.listHasStuff 
                         ? <SearchAutoCompleteList/> : 
                           <SearchResults/>}

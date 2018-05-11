@@ -29,6 +29,11 @@
   width: 195px;
   overflow: hidden;
 }
+
+.SearchItem-SNIPPET{
+  background-color: black;
+}
+
 .media-title{
   padding-top: 10px;
   font-size: large;
@@ -68,6 +73,7 @@
   display: block;
 }
 
+
 .MathObjectLinks > .media > .media-left > .media-container > img {
   border-radius: 100px;
   width: 30px;
@@ -77,6 +83,11 @@
   padding-top:10%;
   padding-bottom:10%;
   display: block;
+}
+
+.Snippet > .media > .media-left > .media-container > img {
+ /* min-height: 113px;
+  min-width: 195px;*/
 }
 
 

@@ -19,17 +19,22 @@ import { SnippetPage } from './components/pages/snippet-page';
 
 
 
+
 class App extends React.Component {
   render() {
+    const SearchPageWithQS = (props) => {return (<SearchPage qs={history.location.search} {...props}/>);}
+    const SnippetPageWithQS = (props) => {return (<SnippetPage qs={history.location.search} {...props}/>);}
+    const WatchPageWithQS = (props) => {return (<WatchPage qs={history.location.search} {...props}/>);}
+
     return (
       <Router history={history}>
         <div className="App">
           {isAndroid() ? '' :<SmartBanner title={'Epsilon Stream'}  />}
           <Switch>
-            <Route exact path="/" component={SearchPage} />{/*was IndexPage*/}
-            <Route exact path="/search" component={SearchPage} />
-            <Route exact path="/watch" component={WatchPage} />
-            <Route exact path="/snippet" component={SnippetPage} />
+            <Route exact path="/" render={SearchPageWithQS} />
+            <Route exact path="/search" component={SearchPageWithQS} />
+            <Route exact path="/watch" component={WatchPageWithQS} />
+            <Route exact path="/snippet" component={SnippetPageWithQS} />
             <Route exact path="/settings" component={SettingsPage} />
             <Route exact path='*' component={NotFoundPage}/>
           </Switch>

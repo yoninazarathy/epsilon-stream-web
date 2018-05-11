@@ -16,7 +16,7 @@ export function displayResultsOfSearchResults(searchResults,currentHashTag) {
             return{
                 type: "EpsilonSnippet",
                 image: null,
-                title: null,
+                title: sr.ourTitle,
                 subtile: null,
                 link: null,
                 action: undefined,
