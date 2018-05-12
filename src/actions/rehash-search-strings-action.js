@@ -25,3 +25,12 @@ export function makeSnippetDict(){
     }
     return dict
 }
+
+export function makeSnippetImageDict(){
+    let snippets = store.getState().database.snippets;
+    let dict = {}
+    for(var i=0; i<snippets.length;i++){
+        dict[snippets[i].hashTags] = snippets[i].imageURL;
+    }
+    return dict
+}

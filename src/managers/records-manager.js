@@ -95,7 +95,9 @@ export function localRecord(fromRecord,type){
                 type: type,
                 body: fi.body.value,
                 hashTags: fi.hashTags.value,
-                ourTitle: fi.title.value,                                                
+                ourTitle: fi.title.value,   
+                imageURL: typeof(fi.imageURL) !== 'undefined' ?
+                                fi.imageURL.value  : "",                                           
             } 
         default:
     }

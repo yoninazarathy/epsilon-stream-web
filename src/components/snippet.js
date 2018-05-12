@@ -19,13 +19,23 @@ class Snippet extends React.Component{
     }
     console.log(this.formattedMD)
     return(
+        <div>
         <span dangerouslySetInnerHTML={{__html: this.formattedMD}} />
+          {this.props.snippetImageDict[this.props.mathObject] !== undefined ? 
+            <img  alt = {'missing'} 
+                  source={this.props.snippetImageDict[this.props.mathObject]} 
+                  width = {30} height = {30}/>
+            :
+            ''
+          }
+        </div>
     )
   }
 }
 const mapStateToProps = (state) => {
   return {
     snippetDict: state.database.snippetDict,
+    snippetImageDict: state.database.snippetImageDict
   };
 };
 

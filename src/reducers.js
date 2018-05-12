@@ -4,7 +4,7 @@ import startCloudPullAction from './actions/start-cloud-pull-action.js'
 import {localRecord, recordsOfHashTag, snippetsOfHashTag} from './managers/records-manager.js';
 //import {makeImageDictionary} from './managers/image-manager.js'
 import { routerReducer } from 'react-router-redux'
-import makeHashTagDict,{makeSnippetDict} from './actions/rehash-search-strings-action.js'
+import makeHashTagDict,{makeSnippetDict,makeSnippetImageDict} from './actions/rehash-search-strings-action.js'
 
 function createVideoProgressDict(videoProgressDict, videoId, seconds) {
     let newProgressDict = {...videoProgressDict}
@@ -127,6 +127,7 @@ const database = (state = {records: []}, actions) => {
                 hashTagDict: [],
                 mathObjectLinks: [],
                 snippetDict: {},
+                snippetImageDict:{},
                 videos: [],
                 featuredURLs: [],
                 snippets: [],
@@ -215,7 +216,8 @@ const database = (state = {records: []}, actions) => {
         case "REHASH_SNIPPET_STRINGS":
             return{
                 ...state,
-                snippetDict: makeSnippetDict()
+                snippetDict: makeSnippetDict(),
+                snippetImageDict: makeSnippetImageDict()
             }            
         default:            
             return state;
