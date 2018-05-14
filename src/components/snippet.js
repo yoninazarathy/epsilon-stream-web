@@ -5,9 +5,16 @@ var md = require('markdown-it')();
 var mk = require('markdown-it-katex');
 md.use(mk);
 
-class Snippet extends React.Component{
-  formattedMD: ""
+function stichLinks(mdText){
+  return mdText.replace(/\[[^\[^\]^\(^\)]*\]\([^\[^\]^\(^\)]*\)/gi,
+    (x) => {return x.replace(/\([^\[^\]^\(^\)]*\)/,
+      (x)=>{return'(search?q='+x.substring(1,x.length-1).split(' ').join('+') +')'})
+  });
+}
 
+class Snippet extends React.Component{
+  formattedMD: "" 
+ 
   render(){
     let rawMarkDown = this.props.snippetDict[this.props.mathObject]
     // console.log("object: " + this.props.mathObject)
@@ -17,6 +24,10 @@ class Snippet extends React.Component{
         rawMarkDown += '\n\r'
         rawMarkDown += "[image1]:" + this.props.snippetImageDict[this.props.mathObject]
       }
+
+      rawMarkDown = stichLinks(rawMarkDown)
+      console.log('QQQQ')
+      console.log(rawMarkDown)
       this.formattedMD = md.render(rawMarkDown)
     }else{
       this.formattedMD = md.render("# There is no snippet for \#" + this.props.mathObject)
