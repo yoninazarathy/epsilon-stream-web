@@ -13,21 +13,18 @@ class Snippet extends React.Component{
     // console.log("object: " + this.props.mathObject)
     // console.log(this.props.snippetDict)
     if(rawMarkDown !== undefined){
+      if(this.props.snippetImageDict[this.props.mathObject] !== undefined){
+        rawMarkDown += '\n\r'
+        rawMarkDown += "[image1]:" + this.props.snippetImageDict[this.props.mathObject]
+      }
       this.formattedMD = md.render(rawMarkDown)
     }else{
       this.formattedMD = md.render("# There is no snippet for \#" + this.props.mathObject)
     }
-    console.log(this.formattedMD)
+
     return(
         <div>
-        <span dangerouslySetInnerHTML={{__html: this.formattedMD}} />
-          {this.props.snippetImageDict[this.props.mathObject] !== undefined ? 
-            <img  alt = {'missing'} 
-                  source={this.props.snippetImageDict[this.props.mathObject]} 
-                  width = {30} height = {30}/>
-            :
-            ''
-          }
+          <span dangerouslySetInnerHTML={{__html: this.formattedMD}} />
         </div>
     )
   }

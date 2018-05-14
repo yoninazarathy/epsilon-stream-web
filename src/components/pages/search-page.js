@@ -33,8 +33,8 @@ class SearchPage extends Component {
 
 
   render() {
-    console.log("sssssss")
-    console.log(this.props.qs)
+    // console.log("sssssss")
+    // console.log(this.props.qs)
     return (
         <div>
         <EpsilonStreamPage title="Search" hassearch={true}>
