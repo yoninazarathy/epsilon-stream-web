@@ -13,7 +13,7 @@ function createVideoProgressDict(videoProgressDict, videoId, seconds) {
 }
 
 function nextCounter(counter){
-    console.log("counter " + counter)
+    // console.log("counter " + counter)
     return counter === 3 ? 0 : counter + 1
 }
 

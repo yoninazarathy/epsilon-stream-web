@@ -24,12 +24,16 @@ class SearchBar extends React.Component{
     super(props);
 
     this.state = {
-      searchString: '',//this.props.startQuery,
+      searchString: this.props.startQuery,
       isInControl: false 
     };
     this.handleChange   = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.updateModel    = this.updateModel.bind(this);
+
+    if(this.state.searchString != ' '){
+      this.updateModel(this.state.searchString,true)
+    }
   }
 
   updateModel(searchString,finishedTyping){

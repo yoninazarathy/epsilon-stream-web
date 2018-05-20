@@ -27,6 +27,7 @@ class App extends React.Component {
     const SearchPageWithHome = (props) => {return (<SearchPage qs={"home"} {...props}/>);}
     const SnippetPageWithQS = (props) => {return (<SnippetPage qs={history.location.search} {...props}/>);}
     const WatchPageWithQS = (props) => {return (<WatchPage qs={history.location.search} {...props}/>);}
+    const BlogPageWithQS = (props) => {return (<BlogPage qs={history.location.search} {...props}/>);}
 
     return (
       <Router history={history}>
@@ -39,7 +40,7 @@ class App extends React.Component {
             <Route exact path="/watch" component={WatchPageWithQS} />
             <Route exact path="/snippet" component={SnippetPageWithQS} />
             <Route exact path="/settings" component={SettingsPage} />
-            <Route exact path="/blog" component={BlogPage} />
+            <Route exact path="/blog" component={BlogPageWithQS} />
             <Route exact path='*' component={NotFoundPage}/>
           </Switch>
         </div>

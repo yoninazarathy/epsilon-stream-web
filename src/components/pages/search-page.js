@@ -14,7 +14,7 @@ import querystring from 'query-string'
 import updateSearchAction from '../../actions/update-search-action.js'
 
 class SearchPage extends Component {
- /* constructor(props){
+  constructor(props){
     super(props);
     this.state = {
       parsedQuery: ''
@@ -23,13 +23,16 @@ class SearchPage extends Component {
     if(this.props.qs !== ''){
       let qry = this.props.location.search;
       let parsed = querystring.parse(this.props.qs)
+      // console.log(parsed)
       if('q' in parsed ){
-        console.log('GOT IT MATE!!!')
-        console.log(parsed.q)
         this.state.parsedQuery = parsed.q;
+        updateSearchAction(this.state.parsedQuery)
+      }else if('home' in parsed){
+        this.state.parsedQuery = 'home';
+        //updateSearchAction(this.state.parsedQuery)
       }
     }
-  }*/
+  }
 
 
   render() {
@@ -38,7 +41,7 @@ class SearchPage extends Component {
     return (
         <div>
         <EpsilonStreamPage title="Search" hassearch={true}>
-            <SearchBar startQuery={this.props.qs}/>
+            <SearchBar startQuery={this.state.parsedQuery}/>
             {this.props.searchTypingInProgress && this.props.listHasStuff 
                         ? <SearchAutoCompleteList/> : 
                           <SearchResults/>}

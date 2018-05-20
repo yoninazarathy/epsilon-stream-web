@@ -6,7 +6,7 @@ export default function startCloudPullAction(actionType){
       //console.log('will do full pull')
       function sanitizedforindemnity(lst) {
         let name = lst[0]
-        console.log(name)
+        // console.log(name)
         let query = makeQuery(name)
         pullCloudKitData(query,
             (result) =>{
@@ -24,7 +24,7 @@ export default function startCloudPullAction(actionType){
       let query = makeQuery(actionType)
       pullCloudKitData(query,
           (result) => {
-              console.log(result)
+              //console.log(result)
               store.dispatch({type:"FETCH_"+actionType+"_STOP",
                               success: true, 
                               payload: result})
