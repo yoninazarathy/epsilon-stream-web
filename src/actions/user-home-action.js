@@ -6,7 +6,7 @@ export default function userHomeAction(){
     //QQQQ note used store.dispatch({type: "USER_HOME_ACTION",payload:{}})   
     //QQQQ this code is duplicated (also in search-bar and maybe elsewhwere - consolidate)
     let query = result.toLowerCase().split(' ').join('+');
-    store.dispatch(push('/search?q='+query))
+    store.dispatch(push('/home'))//search?q='+query))
 
     store.dispatch({type: "UPDATE_SEARCH_STRING",payload: result})
     store.dispatch({type: "UPDATE_HASH_TAG",payload: {}})

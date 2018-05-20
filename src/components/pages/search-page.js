@@ -12,6 +12,7 @@ import SearchBar from '../search-bar.js'
 import {push} from 'react-router-redux'
 import querystring from 'query-string'
 import updateSearchAction from '../../actions/update-search-action.js'
+import userHomeAction from '../../actions/user-home-action.js'
 
 class SearchPage extends Component {
   constructor(props){
@@ -29,6 +30,7 @@ class SearchPage extends Component {
         updateSearchAction(this.state.parsedQuery)
       }else if('home' in parsed){
         this.state.parsedQuery = 'home';
+        userHomeAction()
         //updateSearchAction(this.state.parsedQuery)
       }
     }
