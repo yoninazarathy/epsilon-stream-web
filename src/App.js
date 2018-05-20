@@ -11,6 +11,7 @@ import {Route, Switch} from 'react-router-dom'
 import SearchPage from './components/pages/search-page.js'
 import WatchPage from './components/pages/watch-page.js'
 import SettingsPage from './components/pages/settings-page.js'
+import BlogPage from './components/pages/blog-page.js'
 import NotFoundPage from './components/pages/notfound-page.js'
 
 import SmartBanner from 'react-smartbanner';
@@ -38,6 +39,7 @@ class App extends React.Component {
             <Route exact path="/watch" component={WatchPageWithQS} />
             <Route exact path="/snippet" component={SnippetPageWithQS} />
             <Route exact path="/settings" component={SettingsPage} />
+            <Route exact path="/blog" component={BlogPage} />
             <Route exact path='*' component={NotFoundPage}/>
           </Switch>
         </div>
