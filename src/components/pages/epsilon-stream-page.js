@@ -35,13 +35,21 @@ const SearchButton = withRouter(({history}) => (
 
 const AboutButton = withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
-        onClick={() => {window.open("https://about.epsilonstream.com", '_blank')}}>
+        onClick={() => {window.open("https://oneonepsilon.com/epsilonstream", '_blank')}}>
                                     <p className = "text-white">
                                         About
                                     </p>
     </Button>
 ))
 
+const RegisterButton = withRouter(({history}) => (
+    <Button outline color="danger" className="ml-sm-2 mr-sm-2"
+        onClick={() => {window.open("https://oneonepsilon.com/register", '_blank')}}>
+                                    <p className = "text-white">
+                                        Register
+                                    </p>
+    </Button>
+))
 
 class EpsilonStreamPage extends Component {
     constructor(props) {
@@ -115,6 +123,9 @@ class EpsilonStreamPage extends Component {
                             <NavItem>
                                 <AboutButton/>
                             </NavItem>
+                            <NavItem>
+                                <RegisterButton/>
+                            </NavItem>
                         </Nav>
                     </Collapse>
                 </Navbar>
@@ -154,7 +165,7 @@ class EpsilonStreamPage extends Component {
                                 {' '}
                                 <Button color="primary" 
                                         onClick={() => {this.toggle;
-                                                        window.open("https://about.epsilonstream.com/beta-tester/", '_blank')}
+                                                        window.open("https://oneonepsilon.com/epsilonstream", '_blank')}
                                                     }>Register</Button>{' '}
                         </ModalFooter>
                     </Modal> 
