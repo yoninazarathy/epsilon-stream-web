@@ -94,7 +94,7 @@ export function hashTagOfString(searchString) {
 
 export function autoCompleteForString(s) {
     let sLow = s.toLowerCase()
-    let filtered = store.getState().database.hashTagDict.filter((x)=>{return x.toLowerCase().includes(sLow)}) 
+    let filtered = Object.keys(store.getState().database.hashTagDict).filter((x)=>{return x.toLowerCase().includes(sLow)}) 
     // if(filtered.length === 0){
         // return ["No Match"];
     // }else{

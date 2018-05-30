@@ -23,7 +23,7 @@ class BlogPost extends React.Component{
     this.gotMDCallback = this.gotMDCallback.bind(this);
 
     let url = "https://es-app.com/blog/"+this.props.blogId+".md"
-    console.log(url)
+    //console.log(url)
     $.ajax(
       {
         url: url,
@@ -43,7 +43,7 @@ class BlogPost extends React.Component{
     }
 
     return(
-        <div>
+        <div className = "blogPost">
           <span dangerouslySetInnerHTML={{__html: this.formattedMD}} />
         </div>
     )

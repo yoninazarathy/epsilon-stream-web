@@ -26,8 +26,7 @@ class Snippet extends React.Component{
       }
 
       rawMarkDown = stichLinks(rawMarkDown)
-      console.log('QQQQ')
-      console.log(rawMarkDown)
+//      console.log(rawMarkDown)
       this.formattedMD = md.render(rawMarkDown)
     }else{
       this.formattedMD = md.render("# There is no snippet for \#" + this.props.mathObject)

@@ -6,14 +6,18 @@ export default function makeHashTagDict(){
     var tits = store.getState().database.mathObjects.map(x=>x.associatedTitles)
     var hashes = store.getState().database.mathObjects.map(x=>x.hashTag)
 
-    var dict = []
+    var dict = {}
     
     for (var i = 0; i < tits.length; i++) { 
-        var title = tits[i].split("$")[1] //QQQQ this is just one title
-        //dict.set(title,hashes[i])
-        dict.push(title)//  {key: title,
-                  //  value: hashes[i]})
+        var titles = tits[i].split("$")
+        titles = titles.filter(word => {return (word !== "") && (word !== ",") && (word !== "~")})
+        for(var k=0; k< titles.length;k++){
+            dict[titles[k]] = hashes[i];
+        }
     }
+
+    console.log(Object.keys(dict))
+
     return dict
 }
 

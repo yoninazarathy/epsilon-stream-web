@@ -175,3 +175,8 @@ li{
   vertical-align: middle;
   background-color: lightgrey;
 }
+
+.blogPost{
+  background-color: aliceblue;
+  text-align: left;
+}
