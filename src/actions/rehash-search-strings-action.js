@@ -15,9 +15,6 @@ export default function makeHashTagDict(){
             dict[titles[k]] = hashes[i];
         }
     }
-
-    console.log(Object.keys(dict))
-
     return dict
 }
 

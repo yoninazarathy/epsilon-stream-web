@@ -29,9 +29,17 @@ class SearchPage extends Component {
         this.state.parsedQuery = parsed.q;
         updateSearchAction(this.state.parsedQuery)
       }else if('home' in parsed){
-        this.state.parsedQuery = 'home';
+        this.state.parsedQuery = 'Epsilon Stream Home';
         userHomeAction()
-        //updateSearchAction(this.state.parsedQuery)
+      } else if('news' in parsed){
+        this.state.parsedQuery = 'One on Epsilon';
+        updateSearchAction(this.state.parsedQuery) //QQQQ make special function for it
+      }else if('curious' in parsed){
+        this.state.parsedQuery = 'Curious Epsilon';
+        updateSearchAction(this.state.parsedQuery) //QQQQ make special function for it
+      }else if('picks' in parsed){
+        this.state.parsedQuery = 'Epsilon Picks';
+        updateSearchAction(this.state.parsedQuery) //QQQQ make special function for it
       }
     }
   }
