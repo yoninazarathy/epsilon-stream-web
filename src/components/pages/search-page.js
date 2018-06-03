@@ -28,6 +28,8 @@ class SearchPage extends Component {
       if('q' in parsed ){
         this.state.parsedQuery = parsed.q;
         updateSearchAction(this.state.parsedQuery)
+      }else if('mo' in parsed){
+        console.log("TO DO....")//QQQQ        
       }else if('home' in parsed){
         this.state.parsedQuery = 'Epsilon Stream Home';
         userHomeAction()

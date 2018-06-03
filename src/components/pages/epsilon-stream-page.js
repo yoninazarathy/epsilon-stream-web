@@ -195,7 +195,7 @@ const mapStateToProps = (state) => {
                             state.database.videosInProgress                 ||
                             state.database.snippetsFetchInProgress          ||
                             state.database.featuredURLsInProgress,
-        headerString: state.user.currentHashTag,
+        headerString: ' ' + state.user.pageTitle,
         betaPopUpCounter: state.user.betaPopUpCounter
     };
 };

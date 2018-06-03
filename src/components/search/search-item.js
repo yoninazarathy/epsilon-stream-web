@@ -26,7 +26,7 @@ class SearchItemUNROUTED extends React.Component{
         let image = getImageForKey(this.props.image, this.props.searchType)
         let classes = "SearchItem " + this.props.type
         return(
-            <div className={classes} onClick={null/*() => {this.props.action(this.props.link,this.props.history)}*/}>
+            <div className={classes} onClick={() => {this.props.action(this.props.link,this.props.history)}}>
                 <Media>
                     <Media left href="#">
                         <div className="media-container">

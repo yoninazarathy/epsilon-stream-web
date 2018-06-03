@@ -4,7 +4,8 @@ import startCloudPullAction from './actions/start-cloud-pull-action.js'
 import {localRecord, recordsOfHashTag, snippetsOfHashTag} from './managers/records-manager.js';
 //import {makeImageDictionary} from './managers/image-manager.js'
 import { routerReducer } from 'react-router-redux'
-import makeHashTagDict,{makeSnippetDict,makeSnippetImageDict} from './actions/rehash-search-strings-action.js'
+import makeHashTagDict,{makeSnippetDict,makeSnippetImageDict,makeMathObjectTitleDict} from './actions/rehash-search-strings-action.js'
+import {store} from './store.js'
 
 function createVideoProgressDict(videoProgressDict, videoId, seconds) {
     let newProgressDict = {...videoProgressDict}
@@ -31,6 +32,7 @@ const user = (state = {}, actions) => {
                 videoProgressDict: {},
                 isAndroid: "Android" in window,
                 betaPopUpCounter: 0,
+                pageTitle: 'Epsilon Stream'
             }
         case "USER_HOME_ACTION": //QQQQ not using it now
             let tempCleanString = cleanSearchString("Home")
@@ -39,7 +41,8 @@ const user = (state = {}, actions) => {
                 rawSearchString: tempCleanString,
                 cleanSearchString: tempCleanString, //QQQQ what for?
                 autoCompleteList: autoCompleteForString(tempCleanString),
-                betaPopUpCounter: nextCounter(state.betaPopUpCounter)
+                betaPopUpCounter: nextCounter(state.betaPopUpCounter),
+                pageTitle: 'Epsilon Stream Home'
             }
         case "USER_SEARCH_IS_TYPING":
             let tempCleanString2 = cleanSearchString(actions.payload.value)
@@ -48,11 +51,13 @@ const user = (state = {}, actions) => {
                 searchTypingInProgress: true,
                 cleanSearchString: tempCleanString2, //QQQQ what for?
                 autoCompleteList: autoCompleteForString(tempCleanString2),
+                pageTitle: 'Key in your search'
             }
         case "USER_SEARCH_DONE_TYPING":
             return {
                 ...state,
-                searchTypingInProgress: false
+                searchTypingInProgress: false,
+                pageTitle: 'Epsilon Stream'
             }
         case "UPDATE_SEARCH_STRING": //QQQQ this is used also for surprise and for home (and mol).... fix
             let cleanString = cleanSearchString(actions.payload)
@@ -63,14 +68,17 @@ const user = (state = {}, actions) => {
                 autoCompleteList: autoCompleteForString(cleanString)
             }
         case "UPDATE_HASH_TAG":
+            let hashTag = hashTagOfString(state.cleanSearchString)
             return{
                 ...state,
-                currentHashTag: hashTagOfString(state.cleanSearchString),
+                currentHashTag: hashTag,
+                pageTitle: store.getState().database.mathObjectTitleDict[hashTag]
             }
         case "UPDATE_SEARCH_RESULTS":
             return{
                 ...state,
                 currentSearchResults: recordsOfHashTag(state.currentHashTag),
+                pageTitle: store.getState().database.mathObjectTitleDict[state.currentHashTag]
             }
         case "UPDATE_DISPLAY_RESULTS":
             return{
@@ -82,7 +90,8 @@ const user = (state = {}, actions) => {
             }
         case "USER_START_WATCH":
             return{
-                ...state
+                ...state,
+                pageTitle: ''
             }
         case "USER_STOP_WATCH":
             return{
@@ -125,6 +134,7 @@ const database = (state = {records: []}, actions) => {
                 ...state,
                 mathObjects: [],
                 hashTagDict: [],
+                mathObjectTitleDict: [],
                 mathObjectLinks: [],
                 snippetDict: {},
                 snippetImageDict:{},
@@ -212,6 +222,7 @@ const database = (state = {records: []}, actions) => {
             return{
                 ...state,
                 hashTagDict: makeHashTagDict(),
+                mathObjectTitleDict: makeMathObjectTitleDict()
             }
         case "REHASH_SNIPPET_STRINGS":
             return{

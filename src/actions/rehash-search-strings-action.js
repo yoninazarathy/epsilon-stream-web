@@ -18,6 +18,18 @@ export default function makeHashTagDict(){
     return dict
 }
 
+export function makeMathObjectTitleDict(){
+    var tits = store.getState().database.mathObjects.map(x=>x.associatedTitles)
+    var hashes = store.getState().database.mathObjects.map(x=>x.hashTag)
+
+    var dict = {}
+
+    for(var i=0;i<hashes.length;i++){
+        dict[hashes[i]] = tits[i].split("$")[1]
+    }
+    return dict
+}
+
 export function makeSnippetDict(){
     let snippets = store.getState().database.snippets;
     let dict = {}
