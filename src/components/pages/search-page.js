@@ -13,6 +13,7 @@ import {push} from 'react-router-redux'
 import querystring from 'query-string'
 import updateSearchAction from '../../actions/update-search-action.js'
 import userHomeAction from '../../actions/user-home-action.js'
+import userMathObjectAction from '../../actions/user-math-object-action.js'
 
 class SearchPage extends Component {
   constructor(props){
@@ -29,7 +30,8 @@ class SearchPage extends Component {
         this.state.parsedQuery = parsed.q;
         updateSearchAction(this.state.parsedQuery)
       }else if('mo' in parsed){
-        console.log("TO DO....")//QQQQ        
+        //this.state.parsedQuery = 'la la la'
+        userMathObjectAction(parsed.mo)
       }else if('home' in parsed){
         this.state.parsedQuery = 'Epsilon Stream Home';
         userHomeAction()

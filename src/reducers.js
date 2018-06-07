@@ -6,6 +6,7 @@ import {localRecord, recordsOfHashTag, snippetsOfHashTag} from './managers/recor
 import { routerReducer } from 'react-router-redux'
 import makeHashTagDict,{makeSnippetDict,makeSnippetImageDict,makeMathObjectTitleDict} from './actions/rehash-search-strings-action.js'
 import {store} from './store.js'
+import jQuery from 'jquery'
 
 function createVideoProgressDict(videoProgressDict, videoId, seconds) {
     let newProgressDict = {...videoProgressDict}
@@ -15,7 +16,7 @@ function createVideoProgressDict(videoProgressDict, videoId, seconds) {
 
 function nextCounter(counter){
     // console.log("counter " + counter)
-    return counter === 3 ? 0 : counter + 1
+    return counter === 100 ? 0 : counter + 1
 }
 
 const user = (state = {}, actions) => {
@@ -31,7 +32,7 @@ const user = (state = {}, actions) => {
                 autoCompleteList: [],
                 videoProgressDict: {},
                 isAndroid: "Android" in window,
-                betaPopUpCounter: 0,
+                betaPopUpCounter: 50,
                 pageTitle: 'Epsilon Stream'
             }
         case "USER_HOME_ACTION": //QQQQ not using it now
@@ -68,7 +69,12 @@ const user = (state = {}, actions) => {
                 autoCompleteList: autoCompleteForString(cleanString)
             }
         case "UPDATE_HASH_TAG":
-            let hashTag = hashTagOfString(state.cleanSearchString)
+            let hashTag = ''
+            if(jQuery.isEmptyObject(actions.payload)){
+                hashTag = hashTagOfString(state.cleanSearchString)
+            }else{
+                hashTag = actions.payload
+            }
             return{
                 ...state,
                 currentHashTag: hashTag,
@@ -86,7 +92,6 @@ const user = (state = {}, actions) => {
                 displaySearchResults: displayResultsOfSearchResults(state.currentSearchResults,
                                                                     state.currentHashTag),
                 betaPopUpCounter: nextCounter(state.betaPopUpCounter)
-
             }
         case "USER_START_WATCH":
             return{
