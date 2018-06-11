@@ -13,8 +13,8 @@
 .SearchItem {
   background-color: #fff;
   margin: 0px;
-  border-radius: 5px;
-  box-shadow: inset 1px 4px 9px -6px;
+  /*border-radius: 5px;*/
+  box-shadow: inset 0px 6px 6px -6px;
   height: 120px;
   font-size: 10pt;
 }
@@ -24,7 +24,7 @@
   color: blueviolet;
 }
 
-.SearchItem > .media > .media-left > .media-container {
+.SearchItem > div > .imagecontainer {
   height: 113px;
   width: 195px;
   overflow: hidden;
@@ -53,12 +53,12 @@
   background-color: #ff0000;
 }
 
-.SearchItem > .media > .media-left > .media-container > img {
+.thumbimage {
   min-height: 113px;
   min-width: 195px;
 }
 
-.FeaturedURL > .media > .media-left > .media-container > img {
+.FeaturedURL > div > .imagecontainer > img {
   border-radius: 100px;
   width: 50px;
   height: 50px;
@@ -70,7 +70,7 @@
 }
 
 
-.MathObjectLinks > .media > .media-left > .media-container > img {
+.MathObjectLinks > div > .imagecontainer > img {
   border-radius: 100px;
   width: 30px;
   height: auto;
@@ -81,25 +81,9 @@
   display: block;
 }
 
-.Snippet > .media > .media-left > .media-container > img {
+.Snippet > div > .imagecontainer > img {
  /* min-height: 113px;
   min-width: 195px;*/
-}
-
-
-
-body:after {
-  content : "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  /*background-image: url('https://www.aapelivuorinen.com/p.jpg');*/
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-  /*opacity : 0.2;*/
-  z-index: -1;
 }
 
 .productButton {
@@ -107,10 +91,10 @@ body:after {
 }
 
 
-NavbarBrand.propTypes = {
+/*NavbarBrand.propTypes = {
   color: white;
   fixed: true;
-}
+}*/
 
 .center {
   text-align: center;
@@ -179,4 +163,16 @@ li{
 .blogPost{
   background-color: aliceblue;
   text-align: left;
+}
+
+.form-control, .input-group-addon, .noborderradius {
+  border-radius: 0px !important;
+}
+
+.randombutton {
+  background-color: rgba(255, 255, 255, 255) !important;
+}
+
+.thumbimage {
+  width: 250px;
 }

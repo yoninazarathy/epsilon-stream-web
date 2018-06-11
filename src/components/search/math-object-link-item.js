@@ -11,7 +11,8 @@ class MathObjectLinkItem extends React.Component{
                       subtitle={this.props.subtitle}
                       link={this.props.link}
                       hasprogressbar={false}
-                      action={this.props.action}>
+                      action={this.props.action}
+                      shareURL={"https://epsilonstream.com/search?q="+encodeURIComponent(this.props.link)}>
           </SearchItem>
       )
     }

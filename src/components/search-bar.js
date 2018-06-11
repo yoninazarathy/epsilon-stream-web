@@ -13,7 +13,7 @@ import querystring from 'query-string';
 
 
 const SurpriseButton = withRouter(({history}) => (
-  <Button color="danger" className="ml-sm-2 mr-sm-2"
+  <Button color="link" className="noborderradius randombutton"
       onClick={randomChoiceAction}>
       <img alt="surprise" src={Surprise1} width={30} height={30} />
   </Button>
@@ -95,17 +95,17 @@ class SearchBar extends React.Component{
     return(
         <div>
           <InputGroup>
-                      <Input type="text" className="w-100 ml-auto"
-                              id = "inputField"
-                              name="search" 
-                              value={this.state.isInControl ?  this.state.searchString: this.props.storeSearchString}
-                              placeholder="Search Mathematics"
-                              onChange={this.handleChange}
-                              onKeyPress={this.handleKeyPress}
-                              autoComplete = "off" />
-                              <InputGroupAddon >
-                                  <SurpriseButton/>
-                              </InputGroupAddon>
+            <Input type="text"
+                    id="inputField"
+                    name="search" 
+                    value={this.state.isInControl ?  this.state.searchString: this.props.storeSearchString}
+                    placeholder="Search Mathematics"
+                    onChange={this.handleChange}
+                    onKeyPress={this.handleKeyPress}
+                    autoComplete = "off" />
+            <InputGroupAddon addonType="append">
+              <SurpriseButton/>
+            </InputGroupAddon>
           </InputGroup>
         </div>
     )

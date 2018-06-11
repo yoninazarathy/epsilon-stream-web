@@ -145,10 +145,8 @@ class EpsilonStreamPage extends Component {
                                         <RingLoader/>
                                         </div>
                                 </center>
-                                :  
-                                <center>       
-                                    {this.props.children}
-                                </center>
+                                :
+                                this.props.children
                             }    
                         </Col>
                     </Row>  

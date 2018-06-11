@@ -14,7 +14,7 @@ function stichLinks(mdText){
 
 class Snippet extends React.Component{
   formattedMD: "" 
- 
+
   render(){
     let rawMarkDown = this.props.snippetDict[this.props.mathObject]
     // console.log("object: " + this.props.mathObject)
