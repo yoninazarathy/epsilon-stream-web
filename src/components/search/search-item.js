@@ -26,7 +26,7 @@ class SearchItemUNROUTED extends React.Component{
         };
         this.toggle = this.toggle.bind(this);
     }
-    
+
     toggle() {
         this.setState({
             shareModal: !this.state.shareModal

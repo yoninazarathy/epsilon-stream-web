@@ -13,7 +13,44 @@ import { RingLoader } from 'react-spinners';
 import {connect} from 'react-redux'
 import {store} from '../../store.js'
 import {push} from 'react-router-redux'
+import {Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 
+import {SharePanel} from '../share-panel.js';
+
+
+class ShareButton extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            shareModal: false
+        };
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        this.setState({
+            shareModal: !this.state.shareModal
+        });
+    }
+
+    render() {
+        return (
+            <div>
+                <Button outline color="danger" onClick={(e) => {e.stopPropagation();this.toggle()}} id="globalShare" className="ml-sm-2 mr-sm-2">
+                    <p className = "text-white">
+                        Share
+                    </p>
+                </Button>
+                <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target="globalShare">
+                    <PopoverHeader toggle={this.toggle}>Share this...</PopoverHeader>
+                    <PopoverBody>
+                        <SharePanel shareURL="https://epsilonstream.com" shareType="none"/>
+                    </PopoverBody>
+                </Popover>
+            </div>
+        )
+    }
+}
 
 const SettingsButton = withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
@@ -114,6 +151,9 @@ class EpsilonStreamPage extends Component {
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <ShareButton/>
+                            </NavItem>
                             <NavItem>
                                 <SearchButton/>
                             </NavItem>

@@ -31,12 +31,13 @@ class SnippetSearchItem extends React.Component{
                       link={this.props.link}
                       hasprogressbar={false}
                       noImage = {true}
-                      action={this.toggle}>
+                      action={this.toggle}
+                      shareURL={"https://epsilonstream.com/snippet?mo="+encodeURIComponent(this.props.hashTag.substr(1))}>
             </SearchItem>
             <Modal isOpen={this.state.modal} toggle={this.toggle}>
               <ModalHeader toggle={this.toggle}> {this.props.title}</ModalHeader>
                   <ModalBody>
-                      <Snippet mathObject = {this.props.hashTag}/>
+                      <Snippet mathObject={this.props.hashTag}/>
                   </ModalBody>
                   <ModalFooter>
                       <Button color="primary" onClick={this.toggle}>OK</Button>
