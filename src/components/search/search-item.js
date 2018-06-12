@@ -57,9 +57,9 @@ class SearchItemUNROUTED extends React.Component{
                                         {this.props.subtitle}
                                     </div>
                                     <div className="ml-auto">
-                                        <Button color="link" onClick={(e) => {e.stopPropagation();this.toggle()}} id={this.state.share_id} className="sharebutton">Share</Button>
+                                        <Button outline color="secondary" onClick={(e) => {e.stopPropagation();this.toggle()}} id={this.state.share_id} className="sharebutton">Share</Button>
                                         <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
-                                            <PopoverHeader toggle={this.toggle}>Share this...</PopoverHeader>
+                                            <PopoverHeader toggle={this.toggle}></PopoverHeader>
                                             <PopoverBody>
                                                 <SharePanel shareURL={this.props.shareURL} shareType={this.props.type}/>
                                             </PopoverBody>
@@ -76,48 +76,3 @@ class SearchItemUNROUTED extends React.Component{
   }
   const SearchItem =  withRouter(SearchItemUNROUTED);
   export {SearchItem}
-
-
-
-  /*
-  <Container>
-                    <Row>
-                        <Col sm="2">
-                            <Media left href="#">
-                                <div className="media-container">
-                                    <Media object src={image !== null ? image.src : ""} alt={image !== null ? image.alt : ""} />
-                                </div>
-                                {
-                                    this.props.hasprogressbar ?
-                                    <ProgressBar completed={this.props.completed} />
-                                    : ""
-                                }
-                            </Media>
-                        </Col>
-                        <Col sm="10">
-                            <Container>
-                                <Row>
-                                    <Col>
-                                        <span className = "media-title">{this.props.title}</span>
-                                    </Col>
-                                </Row>
-                                <Row>
-                                    <Col sm="auto">
-                                        <span className="media-subtitle">{this.props.subtitle}</span>
-                                    </Col>
-                                    <Col sm="2">
-                                        <Button color="link" onClick={this.toggle} id={this.state.share_id} className="sharebutton">Share</Button>
-                                        <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
-                                            <PopoverHeader toggle={this.toggle}>Share this...</PopoverHeader>
-                                            <PopoverBody>
-                                                <SharePanel />
-                                            </PopoverBody>
-                                        </Popover>
-                                    </Col>
-                                </Row>
-                            </Container>
-                        </Col>
-                    </Row>
-                </Container>
-
-                */

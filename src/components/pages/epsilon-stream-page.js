@@ -42,7 +42,7 @@ class ShareButton extends Component {
                     </p>
                 </Button>
                 <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target="globalShare">
-                    <PopoverHeader toggle={this.toggle}>Share this...</PopoverHeader>
+                    <PopoverHeader toggle={this.toggle}></PopoverHeader>
                     <PopoverBody>
                         <SharePanel shareURL="https://epsilonstream.com" shareType="none"/>
                     </PopoverBody>
@@ -132,7 +132,7 @@ class EpsilonStreamPage extends Component {
     render() {
         return (
             <div>
-                <Navbar className="navbar" color="danger" expand="md" > 
+                <Navbar className="navbar" color="danger" light expand="md" > 
                     <NavbarBrand href="/home"> 
                         <span>
                             <img    className="productButton mr-sm-2" 
@@ -143,12 +143,9 @@ class EpsilonStreamPage extends Component {
                             <p className = "text-white">
                                 {this.props.headerString}
                             </p>
-                            <Tooltip placement="right" isOpen={this.state.tooltipOpen} target="ToolTipLogo" toggle={this.toolTipToggle}>
-                                Epsilon Stream Beta
-                            </Tooltip>
                         </span>
                     </NavbarBrand>
-                    <NavbarToggler onClick={this.toggle}/>
+                    <NavbarToggler onClick={this.toggle} toggleable={true}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
