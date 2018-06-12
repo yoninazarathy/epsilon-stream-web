@@ -25,7 +25,7 @@
 }
 
 .SearchItem > div > .imagecontainer {
-  height: 113px;
+  height: 123px;
   width: 195px;
   overflow: hidden;
 }
@@ -54,8 +54,8 @@
 }
 
 .thumbimage {
-  min-height: 113px;
-  min-width: 195px;
+  height: 103px;
+  width: 195px;
 }
 
 .FeaturedURL > div > .imagecontainer > img {
@@ -81,20 +81,9 @@
   display: block;
 }
 
-.Snippet > div > .imagecontainer > img {
- /* min-height: 113px;
-  min-width: 195px;*/
-}
-
 .productButton {
   border-radius: 100px;
 }
-
-
-/*NavbarBrand.propTypes = {
-  color: white;
-  fixed: true;
-}*/
 
 .center {
   text-align: center;
@@ -171,8 +160,4 @@ li{
 
 .randombutton {
   background-color: rgba(255, 255, 255, 255) !important;
-}
-
-.thumbimage {
-  width: 250px;
 }

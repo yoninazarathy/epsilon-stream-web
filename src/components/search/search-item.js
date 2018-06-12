@@ -40,11 +40,13 @@ class SearchItemUNROUTED extends React.Component{
             <div className={classes} onClick={() => {this.props.action(this.props.link,this.props.history)}}>
                 <div className="d-flex flex-row">
                     <div className="imagecontainer">
-                        <img className="thumbimage" object src={image !== null ? image.src : ""} alt={image !== null ? image.alt : ""} />
-
+                        <img className="thumbimage" 
+                            object src={image !== null ? image.src : ""} 
+                            alt={image !== null ? image.alt : ""} 
+                            />
                         {this.props.hasprogressbar ?
-                        <ProgressBar completed={this.props.completed} />
-                        : ""}
+                            <ProgressBar completed={this.props.completed} />
+                            : ""}
                     </div>
                     <div className="p-2 flex-grow-1">
                         <div className="d-flex flex-column flex-grow-1">
