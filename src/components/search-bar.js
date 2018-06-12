@@ -6,16 +6,25 @@ import randomChoiceAction from '../actions/random-choice-action.js'
 import userHomeAction from '../actions/user-home-action';
 import HomeImage from '../assets/Home.png'
 import Surprise1 from '../assets/Surprise1.png'
+import Surprise2 from '../assets/Surprise2.png'
+import Surprise3 from '../assets/Surprise3.png'
+import Surprise4 from '../assets/Surprise4.png'
+import Surprise5 from '../assets/Surprise5.png'
+import Surprise6 from '../assets/Surprise6.png'
+
+
 import {store} from '../store.js'
 import updateSearchAction from '../actions/update-search-action.js'
 import {push} from 'react-router-redux'
 import querystring from 'query-string';
 
+let buttonArray = [Surprise1,Surprise2,Surprise3,Surprise4,Surprise5,Surprise6]
+let index = 0
 
 const SurpriseButton = withRouter(({history}) => (
   <Button color="link" className="noborderradius randombutton"
-      onClick={randomChoiceAction}>
-      <img alt="surprise" src={Surprise1} width={30} height={30} />
+      onClick={()=>{index = index===5?0:index+1;randomChoiceAction()}}>
+      <img alt="surprise" src={buttonArray[index]} width={30} height={30} />
   </Button>
 ))
 
