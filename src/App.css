@@ -55,34 +55,33 @@
   background-color: #ff0000;
 }
 
-.thumbimage {
+.thumbimage-explore {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.thumbimage-searchlink, .thumbimage-snippet, .thumbimage-no-match {
+  height: 100px;
+  width: 195px;
+  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.thumbimage-watch {
   height: 110px;
   width: 195px;
   object-fit: cover;
 }
 
-.FeaturedURL > div > .imagecontainer > img {
-  border-radius: 100px;
-  width: 50px;
-  height: 50px;
-  padding-left:20%;
-  padding-right:20%;
-  padding-top:10%;
-  padding-bottom:10%;
-  display: block;
-}
-
-
-.MathObjectLinks > div > .imagecontainer > img {
-  border-radius: 100px;
-  width: 30px;
-  height: auto;
-  padding-left:20%;
-  padding-right:20%;
-  padding-top:10%;
-  padding-bottom:10%;
-  display: block;
-}
 
 .productButton {
   border-radius: 100px;

@@ -2,16 +2,17 @@ import React from 'react';
 import {SearchItem} from './search-item.js'
 import { Modal, Button, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import Snippet from '../snippet.js';
-import robotIcon from '../../assets/OneOnEpsilon-Character.png'
 
 class SnippetSearchItem extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
           modal: false,
+          src: 'https://www.aapelivuorinen.com/p.jpg'
         };
-    
+
         this.toggle = this.toggle.bind(this);
+        this.img = {src: "https://i.ytimg.com/vi/Htza-E2dQSY/mqdefault.jpg", alt: "alt"};
       }
     
     toggle() {
@@ -23,9 +24,9 @@ class SnippetSearchItem extends React.Component{
     render(){
         return(
             <div>
-            <SearchItem searchType='Snippet'
+            <SearchItem searchType='SNIPPET'
                       type={this.props.type}
-                      image={robotIcon}
+                      image={this.img}
                       title={this.props.title}
                       subtitle={this.props.subtitle}
                       link={this.props.link}

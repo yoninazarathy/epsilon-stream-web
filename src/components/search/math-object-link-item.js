@@ -4,7 +4,7 @@ import {SearchItem} from './search-item.js'
 class MathObjectLinkItem extends React.Component{
     render(){
       return(
-          <SearchItem searchType = 'SEARCHLINK'
+          <SearchItem searchType='SEARCHLINK'
                       type={this.props.type}
                       image={this.props.image}
                       title={this.props.title}

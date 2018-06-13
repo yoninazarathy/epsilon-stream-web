@@ -17,7 +17,7 @@ function guidGenerator() {
     return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
 
-class SearchItemUNROUTED extends React.Component{
+class SearchItemX extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -34,15 +34,15 @@ class SearchItemUNROUTED extends React.Component{
     }
 
     render(){
-        let image = getImageForKey(this.props.image, this.props.searchType)
+        let image = getImageForKey(this.props.image, this.props.searchType);
         let classes = "SearchItem " + this.props.type
         return(
             <div className={classes} onClick={() => {this.props.action(this.props.link,this.props.history)}}>
                 <div className="d-flex flex-row">
                     <div className="imagecontainer">
-                        <img className="thumbimage" 
-                            object src={image !== null ? image.src : ""} 
-                            alt={image !== null ? image.alt : ""} 
+                        <img className={(this.props.hasprogressbar ? "thumbimage-pb" : "thumbimage")+" thumbimage-"+this.props.searchType.toLowerCase()}
+                            object src={image !== null ? image.src : ""}
+                            alt={image !== null ? image.alt : ""}
                             />
                         {this.props.hasprogressbar ?
                             <ProgressBar completed={this.props.completed} />
@@ -76,5 +76,5 @@ class SearchItemUNROUTED extends React.Component{
         )
     }
 }
-const SearchItem =  withRouter(SearchItemUNROUTED);
+const SearchItem =  withRouter(SearchItemX);
 export {SearchItem}
