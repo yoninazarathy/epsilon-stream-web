@@ -75,6 +75,6 @@ class SearchItemUNROUTED extends React.Component{
             </div>
         )
     }
-  }
-  const SearchItem =  withRouter(SearchItemUNROUTED);
-  export {SearchItem}
+}
+const SearchItem =  withRouter(SearchItemUNROUTED);
+export {SearchItem}

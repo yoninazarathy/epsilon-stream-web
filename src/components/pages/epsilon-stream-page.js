@@ -174,7 +174,7 @@ class EpsilonStreamPage extends Component {
                                 md={{ size: 12, order: 0, offset: 0}}
                                 lg={{ size: 8, order: 0, offset: 2}}
                                 xl={{ size: 8, order: 0, offset: 2}}
-                                >
+                                className="nopadding-lg">
                             {this.props.loadingInProgress ?
                                 <center>
                                     <div className = "LoadContent">

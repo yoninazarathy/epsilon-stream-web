@@ -56,7 +56,7 @@ export function localRecord(fromRecord,type){
                 type: type,
                 hashTags: fi.hashTags.value,
                 durationSec: fi.durationSec.value,
-                imageURL: fi.imageURL.value,
+                imageURL: 'https://i.ytimg.com/vi/'+fi.youtubeVideoId.value+'/mqdefault.jpg', //fi.imageURL.value, // QQQQ do this properly plz
                 ourTitle: fi.ourTitle.value,
                 provider: fi.channelKey.value, //name change
                 youtubeVideoId: fi.youtubeVideoId.value,

@@ -17,6 +17,7 @@
   box-shadow: inset 0px 6px 6px -6px;
   height: 120px;
   font-size: 10pt;
+  overflow: hidden;
 }
 
 .SearchItem > .media > .media-body {
@@ -25,9 +26,10 @@
 }
 
 .SearchItem > div > .imagecontainer {
-  height: 123px;
+  height: 120px;
   width: 195px;
   overflow: hidden;
+  flex: 0 0 195px;
 }
 
 .media-title{
@@ -44,7 +46,7 @@
   background-color: #000000;
   position: relative;
   left: 0px;
-  bottom: 10px;
+  bottom: 0px;
   width: 195px;
   height: 10px;
 }
@@ -54,8 +56,9 @@
 }
 
 .thumbimage {
-  height: 103px;
+  height: 110px;
   width: 195px;
+  object-fit: cover;
 }
 
 .FeaturedURL > div > .imagecontainer > img {
@@ -160,4 +163,18 @@ li{
 
 .randombutton {
   background-color: rgba(255, 255, 255, 255) !important;
+}
+
+@media (min-width: 992px) {
+  .nopadding-lg {
+    padding: initial;
+    margin: initial;
+  }
+}
+
+@media (max-width: 991px) {
+  .nopadding-lg {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
 }
