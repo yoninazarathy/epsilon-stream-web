@@ -48,25 +48,23 @@ class SearchItemX extends React.Component{
                             <ProgressBar completed={this.props.completed} />
                             : ""}
                     </div>
-                    <div className="p-2 flex-grow-1">
-                        <div className="d-flex flex-column flex-grow-1">
-                            <div className="p-2 flex-grow-1">
-                                {this.props.title}
-                            </div>
-                            <div className="p-2 mt-auto">
-                                <div className="d-flex flex-row">
-                                    <div className="p-2 flex-grow-1">
-                                        {this.props.subtitle}
-                                    </div>
-                                    <div className="ml-auto">
-                                        <Button outline color="secondary" onClick={(e) => {e.stopPropagation();this.toggle()}} id={this.state.share_id} className="sharebutton">Share</Button>
-                                        <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
-                                            <PopoverHeader toggle={this.toggle}></PopoverHeader>
-                                            <PopoverBody>
-                                                <SharePanel shareURL={this.props.shareURL} shareType={this.props.type}/>
-                                            </PopoverBody>
-                                        </Popover>
-                                    </div>
+                    <div className="p-2 d-flex flex-column flex-grow-1">
+                        <div className="flex-grow-1">
+                            {this.props.title}
+                        </div>
+                        <div className="mt-auto">
+                            <div className="d-flex flex-row">
+                                <div className="mt-auto flex-grow-1">
+                                    {this.props.subtitle}
+                                </div>
+                                <div className="ml-auto">
+                                    <Button outline color="secondary" onClick={(e) => {e.stopPropagation();this.toggle()}} id={this.state.share_id} className="sharebutton">Share</Button>
+                                    <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
+                                        <PopoverHeader toggle={this.toggle}></PopoverHeader>
+                                        <PopoverBody>
+                                            <SharePanel shareURL={this.props.shareURL} shareType={this.props.type}/>
+                                        </PopoverBody>
+                                    </Popover>
                                 </div>
                             </div>
                         </div>

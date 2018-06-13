@@ -111,7 +111,7 @@
   height:100vh;
 }
 
-.background{
+.background, body, html{
   background-color: lightgrey;
 }
 
