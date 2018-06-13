@@ -155,9 +155,6 @@ class EpsilonStreamPage extends Component {
                                 <SearchButton/>
                             </NavItem>
                             <NavItem>
-                                <SettingsButton/>
-                            </NavItem>
-                            <NavItem>
                                 <AboutButton/>
                             </NavItem>
                             <NavItem>
