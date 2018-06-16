@@ -3,7 +3,9 @@ import {connect} from 'react-redux'
 
 var md = require('markdown-it')();
 var mk = require('markdown-it-katex');
+var mt = require('markdown-it-multimd-table');
 md.use(mk);
+md.use(mt);
 
 function stichLinks(mdText){
   return mdText.replace(/\[[^\[^\]^\(^\)]*\]\([^\[^\]^\(^\)]*\)/gi,
