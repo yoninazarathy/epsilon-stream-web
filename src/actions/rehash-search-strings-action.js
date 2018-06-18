@@ -14,11 +14,14 @@ export default function makeHashTagDict(){
         for(var k=0; k< titles.length;k++){
             dict[titles[k]] = hashes[i];
         }
+        //hashtag points to itself
+        dict[hashes[i]] = hashes[i] 
+        dict[hashes[i].substr(1)] = hashes[i]
     }
     return dict
 }
 
-
+//QQQQ this function is just like the one above only with .toLowerCase() - refactor into a single function
 export function makeLowCaseHashTagDict(){
     var tits = store.getState().database.mathObjects.map(x=>x.associatedTitles)
     var hashes = store.getState().database.mathObjects.map(x=>x.hashTag)
@@ -31,6 +34,9 @@ export function makeLowCaseHashTagDict(){
         for(var k=0; k< titles.length;k++){
             dict[titles[k].toLowerCase()] = hashes[i];
         }
+        //hashtag points to itself
+        dict[hashes[i].toLowerCase()] = hashes[i] 
+        dict[hashes[i].substr(1).toLowerCase()] = hashes[i]
     }
     return dict
 }
