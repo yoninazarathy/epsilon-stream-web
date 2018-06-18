@@ -16,7 +16,7 @@ export default function getImageForKey(key, type){
         case 'NO-MATCH':
             return getImageForNoMatch(key, type)
         case 'SEARCHLINK':
-            return {src: Icon, alt: "alt"}
+            return getImageForMathObjectLink(key,type)
         default:
             return null
     }
@@ -41,4 +41,8 @@ function getImageForNoMatch(key){
 
 function getImageForURL(key,type){
     return {src: Icon, alt: "alt"}
+}
+
+function getImageForMathObjectLink(key,type){
+    return {src: key !== "" ? key : Icon, alt: "alt"}
 }

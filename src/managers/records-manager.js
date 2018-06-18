@@ -41,6 +41,7 @@ export function localRecord(fromRecord,type){
                 type: type,
                 hashTags: ('hashTags' in fi) ? fi.hashTags.value.split(',') : "NONE", //QQQQ do this type of thing everywhere with an exception
                 imageKey: fi.imageKey.value,
+                imageURL: typeof(fi.imageURL) !== 'undefined' ? fi.imageURL.value : "",
                 ourTitle: fi.ourTitle.value,
                 ourTitleDetail: fi.ourTitleDetail.value,
                 searchTitle: fi.searchTitle.value,
