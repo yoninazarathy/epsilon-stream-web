@@ -76,8 +76,7 @@ export function localRecord(fromRecord,type){
             }
             return {
                 type: type,
-                imageURL: fi.imageURL.value,//"https://es-app.com/assets/"+fi.imageKey.value+".jpg",
-                //imageURL: fi.imageURL.value, //derived
+                imageURL: fi.imageURL.value,
                 ourTitle: fi.ourTitle.value,
                 provider: fi.provider.value,
                 urlOfItem: fi.urlOfItem.value,

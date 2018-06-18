@@ -1,6 +1,7 @@
 import Icon from '../assets/icon.png'
 import robotIcon from '../assets/OneOnEpsilon-Character.png'
 //import store from '../store.js'
+import exploreImage from '../assets/Explore_icon@3x.png'
 
 export default function getImageForKey(key, type){
     switch(type){
@@ -26,7 +27,8 @@ function getImageForVideo(key){
 }
 
 function getImageForExplore(key){
-    return {src: key, alt: "alt"}
+    console.log("here:" + key)
+    return {src: key, alt: "qqqq"/*exploreImage*/}
 }
 
 function getImageForSnippet(key){
