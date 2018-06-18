@@ -27,8 +27,7 @@ function getImageForVideo(key){
 }
 
 function getImageForExplore(key){
-    console.log("here:" + key)
-    return {src: key, alt: "qqqq"/*exploreImage*/}
+    return {src: key, alt: "alt"/*exploreImage*/} //QQQQ
 }
 
 function getImageForSnippet(key){
