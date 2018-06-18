@@ -52,7 +52,7 @@ export function displayResultsOfSearchResults(searchResults,currentHashTag) {
                 type: sr.type,
                 image: sr.imageURL,
                 title: sr.ourTitle,
-                subtitle: sr.provider,
+                subtitle: sr.ourTitleDetail,
                 link: sr.searchTitle,
                 action: undefined,
                 displayOrder: calculatePriority(sr.displaySearchPriority,sr.hashTagPriorities,currentHashTag)

@@ -50,7 +50,7 @@ class SearchItemX extends React.Component{
                     </div>
                     <div className="p-2 d-flex flex-column flex-grow-1">
                         <div className="flex-grow-1">
-                            {this.props.title}
+                            <h5> {this.props.title}</h5>
                         </div>
                         <div className="mt-auto">
                             <div className="d-flex flex-row">
