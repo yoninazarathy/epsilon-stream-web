@@ -18,6 +18,23 @@ export default function makeHashTagDict(){
     return dict
 }
 
+
+export function makeLowCaseHashTagDict(){
+    var tits = store.getState().database.mathObjects.map(x=>x.associatedTitles)
+    var hashes = store.getState().database.mathObjects.map(x=>x.hashTag)
+
+    var dict = {}
+    
+    for (var i = 0; i < tits.length; i++) { 
+        var titles = tits[i].split("$")
+        titles = titles.filter(word => {return (word !== "") && (word !== ",") && (word !== "~")})
+        for(var k=0; k< titles.length;k++){
+            dict[titles[k].toLowerCase()] = hashes[i];
+        }
+    }
+    return dict
+}
+
 export function makeMathObjectTitleDict(){
     var tits = store.getState().database.mathObjects.map(x=>x.associatedTitles)
     var hashes = store.getState().database.mathObjects.map(x=>x.hashTag)

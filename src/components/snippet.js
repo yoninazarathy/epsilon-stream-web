@@ -22,7 +22,8 @@ class Snippet extends React.Component{
     // console.log("object: " + this.props.mathObject)
     // console.log(this.props.snippetDict)
     if(rawMarkDown !== undefined){
-      if(this.props.snippetImageDict[this.props.mathObject] !== undefined){
+      if(this.props.snippetImageDict[this.props.mathObject] !== undefined 
+          && this.props.snippetImageDict[this.props.mathObject].trim() !== ""){
         rawMarkDown += '\n\r'
         rawMarkDown += "[image1]:" + this.props.snippetImageDict[this.props.mathObject]
       }

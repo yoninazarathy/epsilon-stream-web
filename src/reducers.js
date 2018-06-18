@@ -4,7 +4,7 @@ import startCloudPullAction from './actions/start-cloud-pull-action.js'
 import {localRecord, recordsOfHashTag, snippetsOfHashTag} from './managers/records-manager.js';
 //import {makeImageDictionary} from './managers/image-manager.js'
 import { routerReducer } from 'react-router-redux'
-import makeHashTagDict,{makeSnippetDict,makeSnippetImageDict,makeMathObjectTitleDict} from './actions/rehash-search-strings-action.js'
+import makeHashTagDict,{makeLowCaseHashTagDict,makeSnippetDict,makeSnippetImageDict,makeMathObjectTitleDict} from './actions/rehash-search-strings-action.js'
 import {store} from './store.js'
 import jQuery from 'jquery'
 
@@ -139,6 +139,7 @@ const database = (state = {records: []}, actions) => {
                 ...state,
                 mathObjects: [],
                 hashTagDict: [],
+                lowCaseHashTagDict: [],
                 mathObjectTitleDict: [],
                 mathObjectLinks: [],
                 snippetDict: {},
@@ -227,6 +228,7 @@ const database = (state = {records: []}, actions) => {
             return{
                 ...state,
                 hashTagDict: makeHashTagDict(),
+                lowCaseHashTagDict: makeLowCaseHashTagDict(),
                 mathObjectTitleDict: makeMathObjectTitleDict()
             }
         case "REHASH_SNIPPET_STRINGS":

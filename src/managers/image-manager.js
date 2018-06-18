@@ -30,7 +30,7 @@ function getImageForExplore(key){
 }
 
 function getImageForSnippet(key){
-    return  null //{src: robotIcon, alt: "alt"}
+    return  {src: robotIcon, alt: "alt"}
 }
 
 function getImageForNoMatch(key){

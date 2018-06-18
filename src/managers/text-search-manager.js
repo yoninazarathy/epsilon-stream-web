@@ -78,18 +78,14 @@ export function displayResultsOfSearchResults(searchResults,currentHashTag) {
 }
 
 export function hashTagOfString(searchString) {
-    let mos = store.getState().database.mathObjects
-    let hashTag = "#noTag"
-    //QQQQ temporary shit
-    for (let i = 0; i < mos.length; i++) {
-        let mo = mos[i]
-        if (mo.associatedTitles.toLowerCase().includes(searchString.toLowerCase())) {
-            hashTag = mo.hashTag
-            break
-        }
+    let htd = store.getState().database.lowCaseHashTagDict
+    let cleanString = searchString.toLowerCase().trim()
+    let val = htd[cleanString]
+    if(val === undefined){
+        return "#noTag"
+    }else{
+        return val;
     }
-    //console.log(hashTag)
-    return hashTag//"#explodingDots"//hashTag
 }
 
 export function autoCompleteForString(s) {

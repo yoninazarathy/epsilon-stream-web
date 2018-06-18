@@ -31,12 +31,10 @@ export function localRecord(fromRecord,type){
         case "MathObject":
             return {
                 type: type,
-                /// Aapeli was here...
-                //associatedTitles: fi.associatedTitles.value.split("~").map((g) => g.split(",").map((s) => s.substr(1).slice(0, -1))),
                 associatedTitlesNew: x(fi.associatedTitles.value),
                 associatedTitles: fi.associatedTitles.value,
                 hashTag: fi.hashTag.value,
-                notes: "notes"//fi.Notes.value
+                notes: "notes"
             }
         case "MathObjectLinks":
             return {
