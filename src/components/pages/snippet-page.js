@@ -31,9 +31,18 @@ class SnippetPage extends Component {
       //console.log("no math boject")
     }
 
+    let noNav = false
+
+    if ("nonav" in parsed){
+      if(parsed.nonav === "true"){
+        noNav = true
+      }
+    }
+
+
     return (
         <div>
-          <EpsilonStreamPage title="Watch" hassearch={true}>
+          <EpsilonStreamPage title="Watch" hassearch={true} hideNav={noNav}>
             <center>
               <span/>
               <h3>

@@ -131,7 +131,7 @@ class EpsilonStreamPage extends Component {
   
     render() {
         return (
-            <div>
+            <div>{this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
                     <NavbarBrand href="/home"> 
                         <span>
@@ -163,6 +163,7 @@ class EpsilonStreamPage extends Component {
                         </Nav>
                     </Collapse>
                 </Navbar>
+                : ""}
                 <div className = "background">
                 <Container fluid={true} >
                     <Row>

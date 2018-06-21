@@ -156,6 +156,12 @@ li{
   text-align: left;
   margin-left: 20px;
   margin-right: 20px;
+  overflow: hidden;
+}
+
+blog-inline-image{
+    max-width: 100%;
+    width: 10px;
 }
 
 .form-control, .input-group-addon, .noborderradius {
