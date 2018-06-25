@@ -1,5 +1,7 @@
 import Icon from '../assets/icon.png'
 import robotIcon from '../assets/OneOnEpsilon-Character.png'
+import notFoundIcon from '../assets/Not-Found.png'
+import oneOnEpsilonNews from '../assets/One-on-Epsilon-News.png'
 //import store from '../store.js'
 import exploreImage from '../assets/Explore_icon@3x.png'
 
@@ -35,7 +37,7 @@ function getImageForSnippet(key){
 }
 
 function getImageForNoMatch(key){
-    return {src: "https://www.aapelivuorinen.com/p.jpg", alt: "alt"}
+    return {src: notFoundIcon, alt: "alt"}
 }
 
 function getImageForURL(key,type){
