@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { Button} from 'reactstrap';
+//import { Button} from 'reactstrap';
 import updateSearchAction from '../../actions/update-search-action.js'
 
 class SearchAutoCompleteList extends Component {
@@ -8,13 +8,15 @@ class SearchAutoCompleteList extends Component {
     return(
         <div className="SearchAutoCompleteList">
             <ul>
-              {this.props.autoCompleteList.map((item,i) => <li key={i}>
-                <Button  outline color="danger" block className = "move"
-                        onClick={()=>{updateSearchAction(item)}}
-                      >
-                      {item}
-                  </Button></li>)
-                }
+              <div className="AutoCompleteElement">
+                {this.props.autoCompleteList.map((item,i) => <li key={i}>
+                  <button className="AutoCompleteButton" 
+                          onClick={()=>{updateSearchAction(item)}}
+                        >
+                        {item}
+                    </button></li>)
+                  }
+              </div>
             </ul>
         </div>
     )

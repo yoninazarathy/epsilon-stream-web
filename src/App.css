@@ -185,3 +185,20 @@ blog-inline-image{
     margin: 0 !important;
   }
 }
+
+.SearchAutoCompleteList{
+  background-color: white;
+  color: black;
+}
+
+.AutoCompleteElement{
+  background-color: white;
+  text-align: left;
+}
+
+.AutoCompleteButton{
+  background-color: white;
+  text-align: center;
+  background-color: Transparent;
+  border: none;
+}
