@@ -30,11 +30,14 @@ class App extends React.Component {
       <Router history={history}>
         <div className="App">
         <Helmet>
-          <meta property="og:title" content="The Epsilon Stream App" />
-          <meta property="og:url" content="http://epsilonstream.com" />
-          <meta property="og:image" content="https://constrainedcontent.com/sandbox40/wp-content/uploads/sites/32/2018/05/content_team.svg" />
-        
-          <meta name="twitter:card" content="summary"></meta>
+          <meta property="og:title" content="Epsilon Stream Platform" />
+          <meta property="og:description" content="Watch, Play and Explore Mathematics." />
+          <meta property="og:image" content="https://es-app.com/assets/935xva.jpg" />
+          <meta property="og:url" content="https://epsilonstream.com" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta property="og:site_name" content="Epsilon Stream" />
+          <meta name="twitter:image:alt" content="Watch, Play and Explore Mathematics." />
+          <meta name="twitter:site" content="@OneOnEpsilon" />
         </Helmet>
           {isAndroid() ? '' :<SmartBanner title={'Epsilon Stream'}  />}
           <Switch>
