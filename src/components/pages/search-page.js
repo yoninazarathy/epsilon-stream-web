@@ -56,7 +56,7 @@ class SearchPage extends Component {
         <div>
         <EpsilonStreamPage title="Search" hassearch={true}>
             <SearchBar startQuery={this.state.parsedQuery}/>
-            {this.props.searchTypingInProgress && this.props.listHasStuff 
+            {true && this.props.listHasStuff 
                         ? <SearchAutoCompleteList/> : 
                           <SearchResults/>}
         </EpsilonStreamPage>
@@ -65,12 +65,6 @@ class SearchPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    searchTypingInProgress: state.user.searchTypingInProgress,
-    listHasStuff: state.user.autoCompleteList.length > 0
-  };
-};
 
 export default connect(mapStateToProps)(SearchPage);
 export {SearchPage}

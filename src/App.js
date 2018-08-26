@@ -4,7 +4,6 @@ import './App.css';
 import {ConnectedRouter as Router} from 'react-router-redux';
 import {store, history,isAndroid} from './store.js'
 import {Route, Switch} from 'react-router-dom'
-import SearchPage from './components/pages/search-page.js'
 import WatchPage from './components/pages/watch-page.js'
 import SettingsPage from './components/pages/settings-page.js'
 import BlogPage from './components/pages/blog-page.js'
@@ -16,6 +15,9 @@ import {Helmet} from "react-helmet";
 
 */
 
+// import SearchPage from './components/pages/search-page.js'
+
+
 import React from 'react'
 import { Router, Link } from 'react-static'
 import { Provider } from 'react-redux'
@@ -26,22 +28,29 @@ import store from './connectors/redux'
 
 //import './app.css'
 
-const App = () => (
-  <Provider store={store}>
-    <Router>
+class App extends React.Component {
+  render() {
+    return(
+      <Router>
       <div>
         <nav>
           <Link exact to="/">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/blog">Blog</Link>
+          <Link to="/snippets">Snippets</Link>
+          <Link to="/videos">Videos</Link>
+          <Link to="/curious">Curious Epsilon</Link>
+          <Link to="/picks">Editors Picks</Link>
+          <Link to="/news">News</Link>
+          <Link to="/iosapps">iOS Apps</Link>
+          <Link to="/channels">Channels</Link>
         </nav>
         <div className="content">
           <Routes />
         </div>
       </div>
     </Router>
-  </Provider>
-)
+    )
+  }
+}
 
 export default hot(module)(App)
 /*
