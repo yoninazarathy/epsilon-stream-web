@@ -1,4 +1,4 @@
-import CloudKit from 'CloudKit';
+/*import CloudKit from 'CloudKit';
 
 function configureCloudKit(){
   CloudKit.configure({
@@ -76,3 +76,4 @@ function handleResponse(response){
      afterGetFunction(collectedRecords)
    }
  }
+*/

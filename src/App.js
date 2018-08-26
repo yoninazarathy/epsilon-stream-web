@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import './App.css';
 import {ConnectedRouter as Router} from 'react-router-redux';
@@ -13,6 +14,37 @@ import '../node_modules/react-smartbanner/dist/main.css';
 import { SnippetPage } from './components/pages/snippet-page';
 import {Helmet} from "react-helmet";
 
+*/
+
+import React from 'react'
+import { Router, Link } from 'react-static'
+import { Provider } from 'react-redux'
+import { hot } from 'react-hot-loader'
+import Routes from 'react-static-routes'
+//
+import store from './connectors/redux'
+
+//import './app.css'
+
+const App = () => (
+  <Provider store={store}>
+    <Router>
+      <div>
+        <nav>
+          <Link exact to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/blog">Blog</Link>
+        </nav>
+        <div className="content">
+          <Routes />
+        </div>
+      </div>
+    </Router>
+  </Provider>
+)
+
+export default hot(module)(App)
+/*
 
 
 class App extends React.Component {
@@ -62,7 +94,7 @@ class App extends React.Component {
 }
 
 function refreshStore() {
-  store.dispatch({type : "FETCH_FULL_PULL_START"})
+  //QQQQ store.dispatch({type : "FETCH_FULL_PULL_START"})
   setTimeout(refreshStore, 3*1000*60*60)
 }
 
@@ -95,3 +127,4 @@ function checkKey(e) {
 
 
 export default App;
+*/
