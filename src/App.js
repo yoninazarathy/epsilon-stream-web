@@ -33,7 +33,7 @@ class App extends React.Component {
     return(
       <Router>
       <div>
-        <nav>
+        {/*<nav>
           <Link exact to="/">Home</Link>
           <Link to="/snippets">Snippets</Link>
           <Link to="/videos">Videos</Link>
@@ -42,7 +42,7 @@ class App extends React.Component {
           <Link to="/news">News</Link>
           <Link to="/iosapps">iOS Apps</Link>
           <Link to="/channels">Channels</Link>
-        </nav>
+        </nav>*/}
         <div className="content">
           <Routes />
         </div>
