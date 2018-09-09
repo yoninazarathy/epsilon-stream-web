@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux'
 
 var md = require('markdown-it')();
 var mk = require('markdown-it-katex');
@@ -14,26 +13,25 @@ function stichLinks(mdText){
   });
 }
 
-class Snippet extends React.Component{
+export default class Snippet extends React.Component{
   formattedMD: "" 
 
   render(){
-    let rawMarkDown = this.props.snippetDict[this.props.mathObject]
-    // console.log("object: " + this.props.mathObject)
-    // console.log(this.props.snippetDict)
+    let rawMarkDown = this.props.rawMarkDown
     if(rawMarkDown !== undefined){
-      if(this.props.snippetImageDict[this.props.mathObject] !== undefined 
-          && this.props.snippetImageDict[this.props.mathObject].trim() !== ""){
+      if(this.props.imageName !== undefined && this.props.imageName.trim() !== ""){
         rawMarkDown += '\n\r'
-        rawMarkDown += "[image1]:" + this.props.snippetImageDict[this.props.mathObject]
+        rawMarkDown += "[image1]:" + this.props.imageName
       }
 
       rawMarkDown = stichLinks(rawMarkDown)
-//      console.log(rawMarkDown)
       this.formattedMD = md.render(rawMarkDown)
     }else{
       this.formattedMD = md.render("# There is no snippet for \#" + this.props.mathObject)
     }
+
+    console.log("QQQQ")
+    console.log(this.formattedMD)
 
     return(
         <div>
@@ -42,12 +40,3 @@ class Snippet extends React.Component{
     )
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    snippetDict: state.database.snippetDict,
-    snippetImageDict: state.database.snippetImageDict
-  };
-};
-
-export default connect(mapStateToProps)(Snippet);
-export {Snippet}
