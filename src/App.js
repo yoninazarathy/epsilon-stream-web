@@ -1,6 +1,5 @@
 /*
 import React from 'react';
-import './App.css';
 import {ConnectedRouter as Router} from 'react-router-redux';
 import {store, history,isAndroid} from './store.js'
 import {Route, Switch} from 'react-router-dom'
@@ -17,7 +16,7 @@ import {Helmet} from "react-helmet";
 
 // import SearchPage from './components/pages/search-page.js'
 
-
+import './App.css';
 import React from 'react'
 import { Router, Link } from 'react-static'
 import { Provider } from 'react-redux'

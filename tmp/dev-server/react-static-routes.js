@@ -6,17 +6,16 @@ import { Route } from 'react-router-dom'
 import { cleanPath } from 'react-static'
 
 import t_0 from '../../src/containers/Home'
-import t_1 from '../../src/containers/About'
-import t_2 from '../../src/containers/Snippets'
-import t_3 from '../../src/containers/constructed/SnippetPage'
-import t_4 from '../../src/containers/Videos'
-import t_5 from '../../src/containers/constructed/VideoPage'
-import t_6 from '../../src/containers/Curious'
-import t_7 from '../../src/containers/Picks'
-import t_8 from '../../src/containers/News'
-import t_9 from '../../src/containers/IosApps'
-import t_10 from '../../src/containers/Channels'
-import t_11 from '../../src/containers/404'
+import t_1 from '../../src/containers/Snippets'
+import t_2 from '../../src/containers/constructed/SnippetPage'
+import t_3 from '../../src/containers/Videos'
+import t_4 from '../../src/containers/constructed/VideoPage'
+import t_5 from '../../src/containers/Curious'
+import t_6 from '../../src/containers/Picks'
+import t_7 from '../../src/containers/News'
+import t_8 from '../../src/containers/IosApps'
+import t_9 from '../../src/containers/Channels'
+import t_10 from '../../src/containers/404'
 
 // Template Map
 global.componentsByTemplateID = global.componentsByTemplateID || [
@@ -30,13 +29,12 @@ t_6,
 t_7,
 t_8,
 t_9,
-t_10,
-t_11
+t_10
 ]
 
 // Template Tree
 global.templateIDsByPath = global.templateIDsByPath || {
-  '404': 11
+  '404': 10
 }
 
 // Get template for given path

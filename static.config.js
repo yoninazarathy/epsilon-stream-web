@@ -21,8 +21,8 @@ export default {
         component: 'src/containers/Home',
       },
       {
-        path: '/about',
-        component: 'src/containers/About',
+        path: '/home',
+        component: 'src/containers/Home',
       },
       {
         path: '/snippets',

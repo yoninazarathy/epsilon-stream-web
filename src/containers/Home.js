@@ -1,9 +1,17 @@
 import React from 'react'
-import { withSiteData } from 'react-static'
-//
+import { withSiteData,Link } from 'react-static'
+import EpsilonStreamPage from '../new-components/pages/epsilon-stream-page';
 
 export default withSiteData(() => (
-  <div>
-    <h1 style={{ textAlign: 'center' }}>The Peeker!!!</h1>
-  </div>
+  <EpsilonStreamPage title="Snippet" hassearch={true}>
+    <div>
+      <h1 style={{ textAlign: 'center' }}>Epsilon Stream Web - Under Development</h1>
+        <ul>
+          <li><Link to={`/videos`}>See all videos</Link> </li>
+          <li><Link to={`/snippets`}>See all snippets</Link></li>
+        </ul>
+
+    
+    </div>
+  </EpsilonStreamPage>
 ))
