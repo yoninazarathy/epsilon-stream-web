@@ -25,7 +25,7 @@ export default {
         component: 'src/containers/Home',
       },
       {
-        path: '/snippets',
+        path: '/snippet',
         component: 'src/containers/Snippets',
         getData: () => ({
           snippets,
@@ -39,7 +39,7 @@ export default {
         })),
       },
       {
-        path: '/videos',
+        path: '/video',
         component: 'src/containers/Videos',
         getData: () => ({
           videos,
@@ -60,7 +60,7 @@ export default {
         }),
       },
       {
-        path: '/picks',
+        path: '/pick',
         component: 'src/containers/Picks',
         getData: () => ({
           picks,
@@ -74,14 +74,14 @@ export default {
         }),
       },
       {
-        path: '/iosapps',
+        path: '/iosapp',
         component: 'src/containers/IosApps',
         getData: () => ({
           iosApps,
         }),
       },
       {
-        path: '/channels',
+        path: '/channel',
         component: 'src/containers/Channels',
         getData: () => ({
           channels,
