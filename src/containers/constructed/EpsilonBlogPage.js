@@ -1,12 +1,11 @@
 import React from 'react'
 import { withRouteData, Link } from 'react-static'
-//
+
+import EpsilonStreamPage from '../../new-components/pages/epsilon-stream-page';
 
 export default withRouteData(({ post }) => (
-  <div>
-    <Link to="/blog/">{'<'} Back</Link>
-    <br />
+  <EpsilonStreamPage title="Post" hassearch={true}>
     <h3>{post.title}</h3>
     <p>{post.body}</p>
-  </div>
+  </EpsilonStreamPage>
 ))
