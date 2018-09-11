@@ -7,8 +7,8 @@ export default withSiteData(() => (
     <div>
       <h1 style={{ textAlign: 'center' }}>Epsilon Stream Web - Under Development</h1>
         <ul>
-          <li><Link to={`/videos`}>See all videos</Link> </li>
-          <li><Link to={`/snippets`}>See all snippets</Link></li>
+          <li><Link to={`/video`}>See all videos</Link> </li>
+          <li><Link to={`/snippet`}>See all snippets</Link></li>
         </ul>
 
     

@@ -34,13 +34,13 @@ class App extends React.Component {
       <div>
         {/*<nav>
           <Link exact to="/">Home</Link>
-          <Link to="/snippets">Snippets</Link>
-          <Link to="/videos">Videos</Link>
+          <Link to="/snippet">Snippets</Link>
+          <Link to="/video">Videos</Link>
           <Link to="/curious">Curious Epsilon</Link>
-          <Link to="/picks">Editors Picks</Link>
+          <Link to="/pick">Editors Picks</Link>
           <Link to="/news">News</Link>
-          <Link to="/iosapps">iOS Apps</Link>
-          <Link to="/channels">Channels</Link>
+          <Link to="/iosapp">iOS Apps</Link>
+          <Link to="/channel">Channels</Link>
         </nav>*/}
         <div className="content">
           <Routes />

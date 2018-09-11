@@ -11,7 +11,7 @@ export default withRouteData(({ snippets }) => (
     <ul>
       {snippets.map(snippet => (
         <li key={snippet.hashTags[0]}>
-          <Link to={`/snippets/${snippet.hashTags[0].substring(1)}`}>{snippet.ourTitle} ({snippet.hashTags[0]})</Link>
+          <Link to={`/snippet/${snippet.hashTags[0].substring(1)}`}>{snippet.ourTitle} ({snippet.hashTags[0]})</Link>
         </li>
       ))}
     </ul>
