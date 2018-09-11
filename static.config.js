@@ -1,5 +1,8 @@
 import axios from 'axios'
 
+import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,hashTagOfString} from './src/new-components/text-search-manager';
+import {recordsOfHashTag} from './src/new-components/records-manager.js';
+
 export default {
   getSiteData: () => ({
     title: 'React Static',
@@ -10,11 +13,25 @@ export default {
     var featuredURLS = db["featuredURLs"]
     var videos = db["videos"]
 
+    var hashTagDict = db["hashTagDict"]
+
     var curious = featuredURLS.filter(obj => {return obj["hashTags"].includes("#oneOnEpsilonBlog")})
     var picks = featuredURLS.filter(obj => {return obj["hashTags"].includes("#editorsPicks")})
     var news = featuredURLS.filter(obj => {return obj["hashTags"].includes("#oneOnEpsilonNews")})
     var iosApps = featuredURLS.filter(obj => {return obj["featureType"] === 'Game'})
     var channels = featuredURLS.filter(obj => {return obj["provider"] === 'Youtube'})
+
+    var searchItems = Object.keys(hashTagDict).map(item => {
+      let currentHashTag = hashTagDict[item]
+      let searchResults = recordsOfHashTag(currentHashTag, db)
+      let displayResults = displayResultsOfSearchResults(searchResults, currentHashTag)
+      return {
+        item: item,
+        displaySearchResults: displayResults,
+        currentHashTag: currentHashTag
+      }
+    })
+
     return [
       {
         path: '/',
@@ -49,6 +66,20 @@ export default {
           component: 'src/containers/constructed/VideoPage',
           getData: () => ({
             video,
+          }),
+        })),
+      },
+      {
+        path: '/search',
+        component: 'src/containers/Search',
+        getData: () => ({
+          searchItems,
+        }),
+        children: searchItems.map(searchItem => ({
+          path: `${searchItem.item}`,
+          component: 'src/containers/constructed/SearchPage',
+          getData: () => ({
+            searchItem
           }),
         })),
       },
