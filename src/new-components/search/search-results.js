@@ -38,6 +38,7 @@ class SearchResults extends Component {
       } else if (type === "Video") {
         history.push("/video/" + name)
       } else if (type === "MathObjectLinks") {
+        console.log(name)
         history.push("/search/" + encodeURIComponent(name))
       }
     }
@@ -66,7 +67,7 @@ class SearchResults extends Component {
           image={null}
           subtitle={null}
           link={null}
-          hashTag={this.props.searchItem.currentHashTag}
+          hashTag={this.props.searchItem.hashTag}
           action={this.action("EpsilonSnippet")}
         />
         );

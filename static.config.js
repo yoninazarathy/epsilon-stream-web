@@ -13,7 +13,7 @@ export default {
     var featuredURLS = db["featuredURLs"]
     var videos = db["videos"]
 
-    var hashTagDict = db["hashTagDict"]
+    var mathObjects = db["mathObjects"]
 
     var curious = featuredURLS.filter(obj => {return obj["hashTags"].includes("#oneOnEpsilonBlog")})
     var picks = featuredURLS.filter(obj => {return obj["hashTags"].includes("#editorsPicks")})
@@ -21,14 +21,14 @@ export default {
     var iosApps = featuredURLS.filter(obj => {return obj["featureType"] === 'Game'})
     var channels = featuredURLS.filter(obj => {return obj["provider"] === 'Youtube'})
 
-    var topics = Object.keys(hashTagDict).map(item => {
-      let currentHashTag = hashTagDict[item]
-      let searchResults = recordsOfHashTag(currentHashTag, db)
-      let displayResults = displayResultsOfSearchResults(searchResults, currentHashTag)
+    var topics = mathObjects.map(item => {
+      let searchResults = recordsOfHashTag(item.hashTag, db)
+      let displayResults = displayResultsOfSearchResults(searchResults, item.hashTag)
       return {
-        item: item,
+        mathObject: item,
         displaySearchResults: displayResults,
-        currentHashTag: currentHashTag
+        hashTag: item.hashTag,
+        name: item.hashTag.substring(1) // Strips hashtag character
       }
     })
 
@@ -76,7 +76,7 @@ export default {
           topics,
         }),
         children: topics.map(topic => ({
-          path: `${topic.item}`,
+          path: `${topic.name}`,
           component: 'src/containers/constructed/TopicPage',
           getData: () => ({
             topic

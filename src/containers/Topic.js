@@ -8,8 +8,8 @@ export default withRouteData(({ topics }) => (
     <h1>Search items:</h1>
     <ul>
       {topics.map(topic => (
-        <li key={topic.item}>
-          <Link to={`/topic/${topic.item}`}>{topic.item}</Link>
+        <li key={topic.name}>
+          <Link to={`/topic/${topic.name}`}>{topic.name}</Link>
         </li>
       ))}
     </ul>
