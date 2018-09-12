@@ -9,7 +9,7 @@ export default withSiteData(() => (
         <ul>
           <li><Link to={`/video`}>See all videos</Link> </li>
           <li><Link to={`/snippet`}>See all snippets</Link></li>
-          <li><Link to={`/search`}>See all pregenerated math object thingimagis</Link></li>
+          <li><Link to={`/topic`}>See all pregenerated math object thingimagis</Link></li>
         </ul>
 
     

@@ -21,7 +21,7 @@ export default {
     var iosApps = featuredURLS.filter(obj => {return obj["featureType"] === 'Game'})
     var channels = featuredURLS.filter(obj => {return obj["provider"] === 'Youtube'})
 
-    var searchItems = Object.keys(hashTagDict).map(item => {
+    var topics = Object.keys(hashTagDict).map(item => {
       let currentHashTag = hashTagDict[item]
       let searchResults = recordsOfHashTag(currentHashTag, db)
       let displayResults = displayResultsOfSearchResults(searchResults, currentHashTag)
@@ -70,16 +70,16 @@ export default {
         })),
       },
       {
-        path: '/search',
-        component: 'src/containers/Search',
+        path: '/topic',
+        component: 'src/containers/Topic',
         getData: () => ({
-          searchItems,
+          topics,
         }),
-        children: searchItems.map(searchItem => ({
-          path: `${searchItem.item}`,
-          component: 'src/containers/constructed/SearchPage',
+        children: topics.map(topic => ({
+          path: `${topic.item}`,
+          component: 'src/containers/constructed/TopicPage',
           getData: () => ({
-            searchItem
+            topic
           }),
         })),
       },
