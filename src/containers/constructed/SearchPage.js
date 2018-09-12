@@ -26,12 +26,10 @@ class SearchPage extends Component {
   render() {
     console.log(this.props)
     return (
-        <div>
         <EpsilonStreamPage title="Search" hassearch={true}>
             {/*<SearchBar startQuery={this.state.parsedQuery}/>*/}
             <SearchResults searchItem={this.props.searchItem} />
         </EpsilonStreamPage>
-        </div>
     );
   }
 }
