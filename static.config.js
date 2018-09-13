@@ -1,4 +1,6 @@
 import axios from 'axios'
+import React, { Component } from 'react'
+import { ServerStyleSheet } from 'styled-components'
 
 import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,hashTagOfString} from './src/new-components/text-search-manager';
 import {recordsOfHashTag} from './src/new-components/records-manager.js';
@@ -140,4 +142,23 @@ export default {
   //   ]
   //   return config
   // },
+  Document: class CustomHtml extends Component {
+    render () {
+      const {
+        Html, Head, Body, children, renderMeta,link
+      } = this.props
+
+      return (
+        <Html>
+          <Head>
+            <meta charSet="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css" />
+          </Head>
+          <Body>{children}</Body>
+        </Html>
+      )
+    }
+  },
+
 }
