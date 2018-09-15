@@ -13,11 +13,11 @@ class WatchPage extends Component {
     this.onEnd = this.onEnd.bind(this);
   }
 
-  checkTime() { console.log("checkTime"); }
-  onReady() { console.log("onReady"); }
-  onPlay() { console.log("onPlay"); }
-  onPause() { console.log("onPause"); }
-  onEnd() { console.log("onEnd"); }
+  checkTime() {}// console.log("checkTime"); }
+  onReady() {}// console.log("onReady"); }
+  onPlay() {}// console.log("onPlay"); }
+  onPause() {}// console.log("onPause"); }
+  onEnd() {}// console.log("onEnd"); }
 
   /*
   checkTime() {
@@ -112,10 +112,10 @@ class WatchPage extends Component {
         id="youtube-player"
         videoId={videoId}
         opts={opts}
-        onReady={console.log("onReady")}
-        onPlay={console.log("onPlay")}
-        onPause={console.log("onPause")}
-        onEnd={console.log("onEnd")}
+        onReady={""}//console.log("onReady")}
+        onPlay={""}//console.log("onPlay")}
+        onPause={""}//console.log("onPause")}
+        onEnd={""}//console.log("onEnd")}
         />
       </EpsilonStreamPage>
     );

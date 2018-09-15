@@ -88,7 +88,7 @@ const RegisterButton = withRouter(({history}) => (
     </Button>
 ))
 
-class EpsilonStreamPage extends Component {
+export default class EpsilonStreamPage extends Component {
     constructor(props) {
       super(props);
 
@@ -145,11 +145,11 @@ class EpsilonStreamPage extends Component {
                             </p>
                         </span>
                     </NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} toggleable={true}/>
+                    <NavbarToggler onClick={this.toggle} toggleable={"true"}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <ShareButton/>
+                                {/*<ShareButton/>*/}
                             </NavItem>
                             <NavItem>
                                 <SearchButton/>
@@ -220,17 +220,17 @@ class EpsilonStreamPage extends Component {
                             </video>
                             */
 
-const mapStateToProps = (state) => {
-    return {
-        searchString: state.user.cleanSearchString,
-        loadingInProgress:  state.database.mathObjectsFetchInProgress       ||
-                            state.database.mathObjectLinksFetchInProgress   ||
-                            state.database.videosInProgress                 ||
-                            state.database.snippetsFetchInProgress          ||
-                            state.database.featuredURLsInProgress,
-        headerString: ' ' + state.user.pageTitle,
-        betaPopUpCounter: state.user.betaPopUpCounter
-    };
-};
+// const mapStateToProps = (state) => {
+//     return {
+//         searchString: state.user.cleanSearchString,
+//         loadingInProgress:  state.database.mathObjectsFetchInProgress       ||
+//                             state.database.mathObjectLinksFetchInProgress   ||
+//                             state.database.videosInProgress                 ||
+//                             state.database.snippetsFetchInProgress          ||
+//                             state.database.featuredURLsInProgress,
+//         headerString: ' ' + state.user.pageTitle,
+//         betaPopUpCounter: state.user.betaPopUpCounter
+//     };
+// };
 
-export default connect(mapStateToProps)(EpsilonStreamPage);
+//export default connect(mapStateToProps)(EpsilonStreamPage);

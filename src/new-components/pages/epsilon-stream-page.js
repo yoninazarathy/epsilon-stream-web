@@ -145,11 +145,11 @@ class EpsilonStreamPage extends Component {
                             </p>
                         </span>
                     </NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} toggleable={true}/>
+                    <NavbarToggler onClick={this.toggle} toggleable={"true"}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <ShareButton/>
+                                {/*<ShareButton/>*/}
                             </NavItem>
                             <NavItem>
                                 <SearchButton/>

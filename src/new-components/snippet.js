@@ -29,10 +29,6 @@ export default class Snippet extends React.Component{
     }else{
       this.formattedMD = md.render("# There is no snippet for \#" + this.props.mathObject)
     }
-
-    console.log("QQQQ")
-    console.log(this.formattedMD)
-
     return(
         <div>
           <span dangerouslySetInnerHTML={{__html: this.formattedMD}} />
