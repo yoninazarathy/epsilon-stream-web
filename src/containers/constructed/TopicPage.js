@@ -11,7 +11,6 @@ class TopicPage extends Component {
 
 
   render() {
-    console.log(this.props)
     return (
         <EpsilonStreamPage title="Topic" hassearch={true}>
             {/*<SearchBar startQuery={this.state.parsedQuery}/>*/}

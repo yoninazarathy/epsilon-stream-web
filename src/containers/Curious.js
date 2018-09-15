@@ -10,7 +10,7 @@ export default withRouteData(({ curious }) => (
     <br />
     <ul>
       {curious.map(post => (
-        <li key={"QQQQ"}>
+        <li key={post.urlOfItem}>
           <a href={post.urlOfItem}> {post.urlOfItem}</a>
         </li>
       ))}

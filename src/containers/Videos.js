@@ -10,7 +10,7 @@ export default withRouteData(({ videos }) => (
     All Videos:
     <ul>
       {videos.map(video => (
-        <li key={"QQQQ"}>
+        <li key={video.youtubeVideoId}>
           <Link to={`/video/${video.youtubeVideoId}`}>{video.ourTitle} ({video.hashTags[0]})</Link>
         </li>
       ))}

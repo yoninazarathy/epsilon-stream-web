@@ -9,7 +9,7 @@ export default withRouteData(({ channels }) => (
     <br />
     <ul>
       {channels.map(post => (
-        <li key={"QQQQ"}>
+        <li key={post.urlOfItem}>
           <a href={post.urlOfItem}> {post.urlOfItem}</a>
         </li>
       ))}

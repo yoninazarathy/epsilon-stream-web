@@ -9,7 +9,7 @@ export default withRouteData(({ picks }) => (
     <br />
     <ul>
       {picks.map(post => (
-        <li key={"QQQQ"}>
+        <li key={post.urlOfItem}>
           <a href={post.urlOfItem}> {post.urlOfItem}</a>
         </li>
       ))}

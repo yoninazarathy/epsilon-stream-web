@@ -71,20 +71,20 @@ export default {
           }),
         })),
       },
-      // {
-      //   path: '/topic',
-      //   component: 'src/containers/Topic',
-      //   getData: () => ({
-      //     topics,
-      //   }),
-      //   children: topics.map(topic => ({
-      //     path: `${topic.name}`,
-      //     component: 'src/containers/constructed/TopicPage',
-      //     getData: () => ({
-      //       topic
-      //     }),
-      //   })),
-      // },
+      {
+        path: '/topic',
+        component: 'src/containers/Topic',
+        getData: () => ({
+          topics,
+        }),
+        children: topics.map(topic => ({
+          path: `${topic.name}`,
+          component: 'src/containers/constructed/TopicPage',
+          getData: () => ({
+            topic
+          }),
+        })),
+      },
       {
         path: '/curious',
         component: 'src/containers/Curious',

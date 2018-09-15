@@ -3,7 +3,6 @@ import randomSearchResult from '../managers/random-search-manager.js'
 import {push} from 'react-router-redux'
 
 export default function blogPostAction(){
-    console.log("accccccc")
     store.dispatch({type: "UPDATE_SEARCH_STRING",payload: "square"})
     store.dispatch({type: "UPDATE_HASH_TAG",payload: {}})
     store.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})

@@ -9,7 +9,7 @@ export default withRouteData(({ iosApps }) => (
     <br />
     <ul>
       {iosApps.map(post => (
-        <li key={"QQQQ"}>
+        <li key={post.urlOfItem}>
           <a href={post.urlOfItem}> {post.urlOfItem}</a>
         </li>
       ))}
