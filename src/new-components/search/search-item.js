@@ -17,7 +17,7 @@ function guidGenerator() {
     return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
 
-class SearchItemX extends React.Component{
+export class SearchItem extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -74,5 +74,5 @@ class SearchItemX extends React.Component{
         )
     }
 }
-const SearchItem =  withRouter(SearchItemX);
-export {SearchItem}
+//const SearchItem =  withRouter(SearchItemX);
+//export {SearchItem}

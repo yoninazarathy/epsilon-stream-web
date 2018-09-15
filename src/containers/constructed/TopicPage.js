@@ -4,17 +4,18 @@ import SearchResults from '../../new-components/search/search-results';
 
 import { withRouteData } from 'react-static'
 
+
 class TopicPage extends Component {
   constructor(props){
     super(props);
   }
 
-
   render() {
     return (
         <EpsilonStreamPage title="Topic" hassearch={true}>
             {/*<SearchBar startQuery={this.state.parsedQuery}/>*/}
-            <SearchResults searchItem={this.props.topic} />
+            {/*<SearchResults searchItem={this.props.topic} />*/}
+            <p> Topic page.</p>
         </EpsilonStreamPage>
     );
   }
