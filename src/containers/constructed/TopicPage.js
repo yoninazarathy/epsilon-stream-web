@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import EpsilonStreamPage from '../../new-components/pages/epsilon-stream-page';
-import SearchResults from '../../new-components/search/search-results';
+import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
+import SearchResults from '../../components/search/search-results';
 
 import { withRouteData } from 'react-static'
 

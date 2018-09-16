@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouteData, Link } from 'react-static'
-import EpsilonStreamPage from '../../new-components/pages/epsilon-stream-page';
+import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
 import YouTube from 'react-youtube';
 
 class WatchPage extends Component {

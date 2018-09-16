@@ -1,6 +1,6 @@
 import React from 'react'
 import { withSiteData,Link } from 'react-static'
-import EpsilonStreamPage from '../new-components/pages/epsilon-stream-page';
+import EpsilonStreamPage from '../components/pages/epsilon-stream-page';
 
 export default withSiteData(() => (
   <EpsilonStreamPage title="Snippet" hassearch={true}>
@@ -10,7 +10,7 @@ export default withSiteData(() => (
           <li> <a href="https://epsiloncoach.com"> Use V0.5 of Epsilon Stream</a> </li>
           <li><Link to={`/video`}>See all videos</Link> </li>
           <li><Link to={`/snippet`}>See all snippets</Link></li>
-          <li><Link to={`/topic`}>See all pregenerated math object thingimagis</Link></li>
+          <li><Link to={`/topic`}>See all topics</Link></li>
         </ul>
 
     

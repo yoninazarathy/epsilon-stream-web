@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import EpsilonStreamPage from '../new-components/pages/epsilon-stream-page';
+import EpsilonStreamPage from '../components/pages/epsilon-stream-page';
 
 import { withRouter } from 'react-router-dom';
 

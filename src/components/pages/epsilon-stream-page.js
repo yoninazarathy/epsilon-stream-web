@@ -8,11 +8,11 @@ import Icon from '../../assets/icon.png'
 //import RightButtonImage from '../../assets/Right_Passive.png'
 //import LeftButtonImage from '../../assets/Left_Passive.png'
 //import MediaQuery from 'react-responsive';
-import { withRouter } from 'react-router-dom'
-import { RingLoader } from 'react-spinners';
-import {connect} from 'react-redux'
-import {store} from '../../store.js'
-import {push} from 'react-router-redux'
+// import { withRouter } from 'react-router-dom'
+// import { RingLoader } from 'react-spinners';
+// import {connect} from 'react-redux'
+// import {store} from '../../store.js'
+// import {push} from 'react-router-redux'
 import {Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 
 import {SharePanel} from '../share-panel.js';
@@ -52,43 +52,43 @@ class ShareButton extends Component {
     }
 }
 
-const SettingsButton = withRouter(({history}) => (
+const SettingsButton = props => ( //withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {history.push('/settings')}}>
                                     <p className = "text-white">
                                         Settings
                                     </p>
     </Button>
-))
+)//)
 
-const SearchButton = withRouter(({history}) => (
+const SearchButton = props => ( //withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {history.push('/search')}}>
                                     <p className = "text-white">
                                         Search
                                     </p>
     </Button>
-))
+)//)
 
-const AboutButton = withRouter(({history}) => (
+const AboutButton = props => ( //withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {window.open("https://oneonepsilon.com/epsilonstream", '_blank')}}>
                                     <p className = "text-white">
                                         About
                                     </p>
     </Button>
-))
+)//)
 
-const RegisterButton = withRouter(({history}) => (
+const RegisterButton = props => ( //withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {window.open("https://oneonepsilon.com/register", '_blank')}}>
                                     <p className = "text-white">
                                         Register
                                     </p>
     </Button>
-))
+)//)
 
-export default class EpsilonStreamPage extends Component {
+class EpsilonStreamPage extends Component {
     constructor(props) {
       super(props);
 
@@ -220,17 +220,18 @@ export default class EpsilonStreamPage extends Component {
                             </video>
                             */
 
-// const mapStateToProps = (state) => {
-//     return {
-//         searchString: state.user.cleanSearchString,
-//         loadingInProgress:  state.database.mathObjectsFetchInProgress       ||
-//                             state.database.mathObjectLinksFetchInProgress   ||
-//                             state.database.videosInProgress                 ||
-//                             state.database.snippetsFetchInProgress          ||
-//                             state.database.featuredURLsInProgress,
-//         headerString: ' ' + state.user.pageTitle,
-//         betaPopUpCounter: state.user.betaPopUpCounter
-//     };
-// };
+                            /*
+const mapStateToProps = (state) => {
+    return {
+        searchString: state.user.cleanSearchString,
+        loadingInProgress:  state.database.mathObjectsFetchInProgress       ||
+                            state.database.mathObjectLinksFetchInProgress   ||
+                            state.database.videosInProgress                 ||
+                            state.database.snippetsFetchInProgress          ||
+                            state.database.featuredURLsInProgress,
+        headerString: ' ' + state.user.pageTitle,
+        betaPopUpCounter: state.user.betaPopUpCounter
+    };
+};*/
 
-//export default connect(mapStateToProps)(EpsilonStreamPage);
+export default EpsilonStreamPage;//connect(EpsilonStreamPage);

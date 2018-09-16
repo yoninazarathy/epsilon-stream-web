@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouteData, Link } from 'react-static'
 
-import EpsilonStreamPage from '../../new-components/pages/epsilon-stream-page';
+import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
 
 export default withRouteData(({ post }) => (
   <EpsilonStreamPage title="Post" hassearch={true}>

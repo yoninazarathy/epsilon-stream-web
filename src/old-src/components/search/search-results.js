@@ -6,15 +6,15 @@ import ExploreSearchItem from './explore-search-item.js'
 import MathObjectLinkItem from './math-object-link-item.js'
 import SnippetSearchItem from './snippet-search-item.js'
 import NoMatchSearchItem from './no-match-search-item.js'
-// import userWatchAction from '../../actions/user-watch-action';
-// import userSnippetAction from '../../actions/user-snippet-action';
+import userWatchAction from '../../actions/user-watch-action';
+import userSnippetAction from '../../actions/user-snippet-action';
 
 //import userPlayAction from '../../actions/user-play-action';
-// import userExploreAction from '../../actions/user-explore-action';
-// import userLinkAction from '../../actions/user-link-action';
+import userExploreAction from '../../actions/user-explore-action';
+import userLinkAction from '../../actions/user-link-action';
 import { Alert } from 'reactstrap';
 
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 
 import Icon from '../../assets/icon.png'
 
@@ -24,24 +24,6 @@ class SearchResults extends Component {
     super(props);
 
     this.getItem = this.getItem.bind(this);
-    this.action = this.action.bind(this);
-  }
-
-  action(type, name, history) {
-    return (name, history) => {
-      if (type === "NO-MATCH") {
-        window.open("https://oneonepsilon.com/contact", '_blank')
-      } else if (type === "EpsilonSnippet") {
-        history.push("/snippet/" + name)
-      } else if (type === "FeaturedURL") {
-        window.open(name)
-      } else if (type === "Video") {
-        history.push("/video/" + name)
-      } else if (type === "MathObjectLinks") {
-        console.log(name)
-        history.push("/search/" + encodeURIComponent(name))
-      }
-    }
   }
 
    getItem(item, i) {
@@ -55,7 +37,7 @@ class SearchResults extends Component {
           image={Icon}
           subtitle={"Contact our team"}
           link={null}
-          action={this.action("NO-MATCH")}
+          action={() => {window.open("https://oneonepsilon.com/contact", '_blank')} } 
         />
         );
       case "EpsilonSnippet":
@@ -67,8 +49,8 @@ class SearchResults extends Component {
           image={null}
           subtitle={null}
           link={null}
-          hashTag={this.props.searchItem.hashTag}
-          action={this.action("EpsilonSnippet")}
+          hashTag = {this.props.hashTag}
+          action={userSnippetAction} 
         />
         );
       case "FeaturedURL":
@@ -79,7 +61,7 @@ class SearchResults extends Component {
           image={item.image}
           subtitle={item.subtitle}
           link={item.link}
-          action={this.action("FeaturedURL")}
+          action={()=>{userExploreAction(item.link)} }
           />
           );
       case "Video":
@@ -90,7 +72,7 @@ class SearchResults extends Component {
           image={item.image}
           subtitle={item.subtitle}
           link={item.link}
-          action={this.action("Video")}
+          action={userWatchAction}
           completed={item.completed}
           />
         );
@@ -102,7 +84,7 @@ class SearchResults extends Component {
           image={item.image}
           subtitle={item.subtitle}
           link={item.link}
-          action={this.action("MathObjectLinks")}
+          action={() => {userLinkAction(item.link)}}
           completed={item.completed}
           />
         );
@@ -113,10 +95,21 @@ class SearchResults extends Component {
   render(){
     return(
         <div className="SearchResults">
-            {this.props.searchItem.displaySearchResults.map(this.getItem)}
+            {this.props.displaySearchResults.map(this.getItem)}
         </div>
     )
   }
 }
 
-export default SearchResults;
+const mapStateToProps = (state) => {
+    return {
+      search: state.user.cleanSearchString,
+      hashTag: state.user.currentHashTag,
+      displaySearchResults: state.user.displaySearchResults
+    };
+  };
+
+
+
+export default connect(mapStateToProps)(SearchResults);
+export {SearchResults}

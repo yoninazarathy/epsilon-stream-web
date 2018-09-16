@@ -26,7 +26,7 @@ import Routes from 'react-static-routes'
 
 import Search from './containers/Search'
 //
-import store from './connectors/redux'
+import store from './redux'
 
 //import './app.css'
 
@@ -35,16 +35,6 @@ class App extends React.Component {
     return(
       <Router>
       <div>
-        {/*<nav>
-          <Link exact to="/">Home</Link>
-          <Link to="/snippet">Snippets</Link>
-          <Link to="/video">Videos</Link>
-          <Link to="/curious">Curious Epsilon</Link>
-          <Link to="/pick">Editors Picks</Link>
-          <Link to="/news">News</Link>
-          <Link to="/iosapp">iOS Apps</Link>
-          <Link to="/channel">Channels</Link>
-        </nav>*/}
         <div className="content">
           <Switch>
             <Route exact path="/search/:query" component={Search} />

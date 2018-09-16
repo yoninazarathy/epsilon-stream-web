@@ -1,10 +1,10 @@
 import React from 'react'
 import { withRouteData, Link } from 'react-static'
-import Snippet from '../../new-components/snippet.js'
+import Snippet from '../../components/snippet.js'
 
 // import { SnippetPage } from '../../components/pages/snippet-page';
 //
-import EpsilonStreamPage from '../../new-components/pages/epsilon-stream-page';
+import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
 
 export default withRouteData(({ snippet }) => (
   <EpsilonStreamPage title="Snippet" hassearch={true}>

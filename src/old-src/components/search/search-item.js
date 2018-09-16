@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Col, Row } from 'reactstrap';
-import getImageForKey from '../../managers/image-manager.js';
+// import getImageForKey from '../../managers/image-manager.js';
 import { Media,Button} from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { ProgressBar } from './progressbar.js';
@@ -17,7 +17,7 @@ function guidGenerator() {
     return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
 
-export class SearchItem extends React.Component{
+class SearchItemX extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -74,5 +74,5 @@ export class SearchItem extends React.Component{
         )
     }
 }
-//const SearchItem =  withRouter(SearchItemX);
-//export {SearchItem}
+const SearchItem =  withRouter(SearchItemX);
+export {SearchItem}

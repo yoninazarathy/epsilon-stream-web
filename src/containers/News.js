@@ -9,7 +9,7 @@ export default withRouteData(({ news }) => (
     <br />
     <ul>
       {news.map(post => (
-        <li key={"QQQQ"}>
+        <li key={post.urlOfItem}>
           <a href={post.urlOfItem}> {post.urlOfItem}</a>
         </li>
       ))}

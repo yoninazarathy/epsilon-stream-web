@@ -2,12 +2,13 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { ServerStyleSheet } from 'styled-components'
 
-import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,hashTagOfString} from './src/new-components/text-search-manager';
-import {recordsOfHashTag} from './src/new-components/records-manager.js';
+import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,hashTagOfString} from './src/components/text-search-manager';
+import {recordsOfHashTag} from './src/components/records-manager.js';
 
 export default {
+  siteRoot: 'https://epsilonstream.com',
   getSiteData: () => ({
-    title: 'React Static',
+    title: 'Epsilon Stream',
   }),
   getRoutes: async () => {
     const { data: db} = await axios.get('https://es-app.com/repo/database.json')
