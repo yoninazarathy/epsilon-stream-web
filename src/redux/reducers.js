@@ -134,6 +134,8 @@ const user = (state = {}, actions) => {
 
 const database = (state = {records: []}, actions) => {
     switch (actions.type) {
+        case "INIT_DATABASE_STORE":
+            return {...actions.payload.db}
         case "RESET_DATABASE_STORE":
             return {
                 ...state,

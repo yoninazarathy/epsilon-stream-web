@@ -6,6 +6,19 @@ import { persistStore, autoRehydrate } from 'redux-persist'
 //import createHistory from 'history/createBrowserHistory'
 import {routerMiddleware } from 'react-router-redux' //QQQQ push
 
+import axios from 'axios'
+
+ var dbFromServer = require('./database.json')
+
+// function loadDB(){
+//   axios.get('https://es-app.com/repo/database.json').then((response)=>{
+//     dbFromServer = response.data
+//     })
+// }
+
+// loadDB()
+
+
 //export const history = createHistory()
 
 
@@ -60,7 +73,8 @@ const store = createStore(
     // ),
 )
 
-store.dispatch({type: "RESET_DATABASE_STORE",payload:{}})
+//store.dispatch({type: "RESET_DATABASE_STORE",payload:{}})
 store.dispatch({type: "RESET_USER_STORE",payload:{}})
+store.dispatch({type: "INIT_DATABASE_STORE",payload:{db: dbFromServer}})
 
 /* eslint-enable */
