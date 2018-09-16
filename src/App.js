@@ -25,24 +25,26 @@ import { hot } from 'react-hot-loader'
 import Routes from 'react-static-routes'
 
 import Search from './containers/Search'
-//
-import store from './redux'
+
+import store from './redux/store'
 
 //import './app.css'
 
 class App extends React.Component {
   render() {
     return(
-      <Router>
-      <div>
-        <div className="content">
-          <Switch>
-            <Route exact path="/search/:query" component={Search} />
-            <Routes />
-          </Switch>
+      <Provider store={store}>
+        <Router>
+        <div>
+          <div className="content">
+            <Switch>
+              <Route exact path="/search/:query" component={Search} />
+              <Routes />
+            </Switch>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </Provider>
     )
   }
 }

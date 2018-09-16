@@ -1,12 +1,12 @@
-// import {compose,createStore,applyMiddleware} from 'redux'
-// import reducers from './reducers.js'
-// import logger from 'redux-logger'
-// import thunk from 'redux-thunk'
-// import { persistStore, autoRehydrate } from 'redux-persist'
-// //import createHistory from 'history/createBrowserHistory'
-// import {routerMiddleware } from 'react-router-redux' //QQQQ push
+import {compose,createStore,applyMiddleware} from 'redux'
+import reducers from './reducers.js'
+import logger from 'redux-logger'
+import thunk from 'redux-thunk'
+import { persistStore, autoRehydrate } from 'redux-persist'
+//import createHistory from 'history/createBrowserHistory'
+import {routerMiddleware } from 'react-router-redux' //QQQQ push
 
-// //export const history = createHistory()
+//export const history = createHistory()
 
 
 // //QQQQ Consider moving this to another module
@@ -24,21 +24,43 @@
 //   }
 
 
-// //const historyMiddleware = routerMiddleware(history);
+//const historyMiddleware = routerMiddleware(history);
 
-// const middleware = applyMiddleware(thunk, logger,rehashMiddleWare)
+const middleware = applyMiddleware(thunk, logger)//,rehashMiddleWare)
 
 // export const store = createStore(   reducers,
 //                                     undefined,
 //                                     compose (middleware,
 //                                         autoRehydrate()))
-//                                         persistStore(store)
+                                       
+//         // persistStore(store)
 
-// store.dispatch({type: "RESET_DATABASE_STORE",payload:{}})
-// store.dispatch({type: "RESET_USER_STORE",payload:{}})
 
 // export function isAndroid() {
 //     return store.getState().user.isAndroid;
 // }
 
 // export default store
+
+//
+// The code below came from the redux template of react-static
+//
+
+if (typeof window === 'undefined') {
+  global.window = {}
+}
+
+/* eslint-disable no-underscore-dangle */
+const store = createStore(
+  reducers,
+  {}, // initial state
+  //compose(
+    middleware
+    //,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    // ),
+)
+
+store.dispatch({type: "RESET_DATABASE_STORE",payload:{}})
+store.dispatch({type: "RESET_USER_STORE",payload:{}})
+
+/* eslint-enable */
