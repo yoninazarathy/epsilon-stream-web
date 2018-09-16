@@ -19,9 +19,12 @@ import {Helmet} from "react-helmet";
 import './App.css';
 import React from 'react'
 import { Router, Link } from 'react-static'
+import { Route, Switch } from 'react-router'
 import { Provider } from 'react-redux'
 import { hot } from 'react-hot-loader'
 import Routes from 'react-static-routes'
+
+import SearchPage from './new-components/SearchPage'
 //
 import store from './connectors/redux'
 
@@ -43,7 +46,10 @@ class App extends React.Component {
           <Link to="/channel">Channels</Link>
         </nav>*/}
         <div className="content">
-          <Routes />
+          <Switch>
+            <Route exact path="/search/:query" component={SearchPage} />
+            <Routes />
+          </Switch>
         </div>
       </div>
     </Router>
