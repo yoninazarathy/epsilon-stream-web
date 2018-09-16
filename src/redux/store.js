@@ -39,7 +39,8 @@ import axios from 'axios'
 
 //const historyMiddleware = routerMiddleware(history);
 
-const middleware = applyMiddleware(thunk, logger)//,rehashMiddleWare)
+const middleware = applyMiddleware(thunk)
+  //, logger)//,rehashMiddleWare)
 
 // export const store = createStore(   reducers,
 //                                     undefined,
