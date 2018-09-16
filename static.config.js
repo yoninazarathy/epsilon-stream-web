@@ -94,7 +94,7 @@ export default {
         }),
       },
       {
-        path: '/pick',
+        path: '/picks',
         component: 'src/containers/Picks',
         getData: () => ({
           picks,
