@@ -39,8 +39,7 @@ import axios from 'axios'
 
 //const historyMiddleware = routerMiddleware(history);
 
-const middleware = applyMiddleware(thunk)
-  //, logger)//,rehashMiddleWare)
+const middleware = applyMiddleware(thunk, logger)//,rehashMiddleWare)
 
 // export const store = createStore(   reducers,
 //                                     undefined,
@@ -65,17 +64,31 @@ if (typeof window === 'undefined') {
 }
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(
+const ourStore = createStore(
   reducers,
-  {}, // initial state
-  //compose(
+    { database:
+        dbFromServer, 
+      user: {
+        searchTypingInProgress: false,
+        searchString: "",
+        currentHashTag: "",
+        currentSearchResults: {},
+        displaySearchResults: [],
+        autoCompleteList: [],
+        videoProgressDict: {},
+        isAndroid: false,
+        betaPopUpCounter: 50,
+        pageTitle: "Epsilon Stream"
+      }
+    },
+    //compose(
     middleware
     //,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     // ),
 )
 
 //store.dispatch({type: "RESET_DATABASE_STORE",payload:{}})
-store.dispatch({type: "RESET_USER_STORE",payload:{}})
-store.dispatch({type: "INIT_DATABASE_STORE",payload:{db: dbFromServer}})
+//ourStore.dispatch({type: "RESET_USER_STORE",payload:{}})
+//ourStore.dispatch({type: "INIT_DATABASE_STORE",payload:{db: dbFromServer}})
 
 /* eslint-enable */
