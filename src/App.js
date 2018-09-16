@@ -24,7 +24,7 @@ import { Provider } from 'react-redux'
 import { hot } from 'react-hot-loader'
 import Routes from 'react-static-routes'
 
-import SearchPage from './new-components/SearchPage'
+import Search from './containers/Search'
 //
 import store from './connectors/redux'
 
@@ -47,7 +47,7 @@ class App extends React.Component {
         </nav>*/}
         <div className="content">
           <Switch>
-            <Route exact path="/search/:query" component={SearchPage} />
+            <Route exact path="/search/:query" component={Search} />
             <Routes />
           </Switch>
         </div>
