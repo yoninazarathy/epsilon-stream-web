@@ -64,7 +64,7 @@ if (typeof window === 'undefined') {
 }
 
 /* eslint-disable no-underscore-dangle */
-const ourStore = createStore(
+export const ourStore = createStore(
   reducers,
     { database:
         dbFromServer, 

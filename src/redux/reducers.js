@@ -69,17 +69,21 @@ const user = (state = {}, actions) => {
                 autoCompleteList: autoCompleteForString(cleanString)
             }
         case "UPDATE_HASH_TAG":
-            let hashTag = ''
-            if(jQuery.isEmptyObject(actions.payload)){
-                hashTag = hashTagOfString(state.cleanSearchString)
-            }else{
-                hashTag = actions.payload
-            }
             return{
                 ...state,
-                currentHashTag: hashTag,
-                pageTitle: store.getState().database.mathObjectTitleDict[hashTag]
+                currentHashTag: actions.payload.hashTagString,
             }
+            // let hashTag = ''
+            // if(jQuery.isEmptyObject(actions.payload)){
+            //     hashTag = hashTagOfString(state.cleanSearchString)
+            // }else{
+            //     hashTag = actions.payload
+            // }
+            // return{
+            //     ...state,
+            //     currentHashTag: hashTag,
+            //     pageTitle: store.getState().database.mathObjectTitleDict[hashTag]
+            // }
         case "UPDATE_SEARCH_RESULTS":
             return{
                 ...state,
