@@ -26,7 +26,7 @@ import Routes from 'react-static-routes'
 
 import Search from './containers/Search'
 
-import ourStore from './redux/store'
+import { ourStore } from './redux/store'
 
 //import './app.css'
 
