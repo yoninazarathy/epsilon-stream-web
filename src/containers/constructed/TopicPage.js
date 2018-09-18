@@ -6,6 +6,8 @@ import { withRouteData } from 'react-static'
 
 import {ourStore} from '../../redux/store'
 
+
+
 class TopicPage extends Component {
   constructor(props){
     super(props);
