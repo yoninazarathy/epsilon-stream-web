@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouteData, Link } from 'react-static'
 import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
 import YouTube from 'react-youtube';
+import {Helmet} from 'react-helmet'
 
 class WatchPage extends Component {
   constructor(props) {
