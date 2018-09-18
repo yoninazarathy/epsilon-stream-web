@@ -152,8 +152,6 @@ export default {
       return (
         <Html>
           <Head>
-            <meta charSet="UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css" />
           </Head>
           <Body>{children}</Body>

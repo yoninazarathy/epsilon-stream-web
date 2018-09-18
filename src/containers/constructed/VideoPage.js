@@ -106,18 +106,34 @@ class WatchPage extends Component {
     };
 
     return (
-      <EpsilonStreamPage title="Watch" hassearch={true}>
-        <YouTube
-        className="youtube-player"
-        id="youtube-player"
-        videoId={videoId}
-        opts={opts}
-        onReady={""}//console.log("onReady")}
-        onPlay={""}//console.log("onPlay")}
-        onPause={""}//console.log("onPause")}
-        onEnd={""}//console.log("onEnd")}
-        />
-      </EpsilonStreamPage>
+      <div>
+        <Helmet>
+          <meta charSet="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta property="og:description" content={"Video "+" with "+"Epsilon Stream"} />
+          <meta property="og:title" content="Epsilon Stream Platform" />
+          <meta property="og:image" content="https://es-app.com/assets/935xva.jpg" />
+          <meta property="og:url" content="https://epsilonstream.com" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta property="og:site_name" content={"Video "+" @ "+"Epsilon Stream"} />
+          <meta name="twitter:image:alt" content="Watch, Play and Explore Mathematics." />
+          <meta name="twitter:site" content="@OneOnEpsilon" />
+          <title> {"Video "+" with "+"Epsilon Stream"} </title>
+        </Helmet>
+        <EpsilonStreamPage title="Watch" hassearch={true}>
+          <YouTube
+          className="youtube-player"
+          id="youtube-player"
+          videoId={videoId}
+          opts={opts}
+          onReady={""}//console.log("onReady")}
+          onPlay={""}//console.log("onPlay")}
+          onPause={""}//console.log("onPause")}
+          onEnd={""}//console.log("onEnd")}
+          />
+        </EpsilonStreamPage>
+      </div>
+
     );
   }
 }
