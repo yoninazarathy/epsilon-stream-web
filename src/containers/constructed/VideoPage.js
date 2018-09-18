@@ -92,6 +92,8 @@ class WatchPage extends Component {
 
   render() {
     var videoId = this.props.video.youtubeVideoId;
+    var title = this.props.video.ourTitle
+    var imageURL = 'https://i.ytimg.com/vi/'+videoId+'/mqdefault.jpg'
 
     const opts = {
       height: '100%',
@@ -111,9 +113,9 @@ class WatchPage extends Component {
         <Helmet>
           <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta property="og:description" content={"Video "+" with "+"Epsilon Stream"} />
-          <meta property="og:title" content="Epsilon Stream Platform" />
-          <meta property="og:image" content="https://es-app.com/assets/935xva.jpg" />
+          <meta property="og:description" content={"Video "+"with "+"Epsilon Stream"} />
+          <meta property="og:title" content={title + " on Epsilon Stream"} />
+          <meta property="og:image" content={imageURL} />
           <meta property="og:url" content="https://epsilonstream.com" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta property="og:site_name" content={"Video "+" @ "+"Epsilon Stream"} />
