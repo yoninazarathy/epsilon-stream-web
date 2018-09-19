@@ -39,10 +39,10 @@ export class SearchItem extends React.Component{
             <div className={classes} onClick={() => {this.props.action(this.props.link,this.props.history)}}>
                 <div className="d-flex flex-row">
                     <div className="imagecontainer">
-                        {/*<img className={(this.props.hasprogressbar ? "thumbimage-pb" : "thumbimage")+" thumbimage-"+this.props.searchType.toLowerCase()}
-                            object src={image !== null ? image.src : ""}
-                            alt={image !== null ? image.alt : ""}
-        />*/}
+                        <img className={(this.props.hasprogressbar ? "thumbimage-pb" :
+                                             "thumbimage")+" thumbimage-"+this.props.searchType.toLowerCase()}
+                             src={image !== null ? image.src : ""}
+                            alt={image !== null ? image.alt : ""} />
                         {this.props.hasprogressbar ?
                             <ProgressBar completed={this.props.completed} />
                             : ""}
@@ -56,17 +56,18 @@ export class SearchItem extends React.Component{
                                 <div className="mt-auto flex-grow-1">
                                     {this.props.subtitle}
                                 </div>
-                                {/*
+                                
                                 <div className="ml-auto">
                                     <Button outline color="secondary" onClick={(e) => {e.stopPropagation();this.toggle()}} id={this.state.share_id} className="sharebutton">Share</Button>
-                                    <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
+                                    {/*<Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
                                         <PopoverHeader toggle={this.toggle}></PopoverHeader>
                                         <PopoverBody>
                                             <SharePanel shareURL={this.props.shareURL} shareType={this.props.type}/>
                                         </PopoverBody>
                                     </Popover>
+                        */}
                                 </div>
-                                */}
+                                
                             </div>
                         </div>
                     </div>
