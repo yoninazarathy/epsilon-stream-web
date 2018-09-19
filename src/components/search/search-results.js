@@ -13,6 +13,7 @@ import NoMatchSearchItem from './no-match-search-item.js'
 // import userExploreAction from '../../actions/user-explore-action';
 // import userLinkAction from '../../actions/user-link-action';
 import { Alert } from 'reactstrap';
+import { withRouter } from 'react-router-dom';
 
 // import {connect} from 'react-redux'
 
@@ -38,8 +39,7 @@ export class SearchResults extends Component {
       } else if (type === "Video") {
         history.push("/video/" + name)
       } else if (type === "MathObjectLinks") {
-        console.log(name)
-        history.push("/search/" + encodeURIComponent(name))
+        history.push("/topic/" + encodeURIComponent(name)) //QQQQ change for associated title to hashtag
       }
     }
   }
@@ -120,5 +120,3 @@ export class SearchResults extends Component {
     )
   }
 }
-
-// export SearchResults;
