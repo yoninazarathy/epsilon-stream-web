@@ -1,11 +1,10 @@
 import React from 'react';
 import { Container, Col, Row } from 'reactstrap';
-// import getImageForKey from '../../managers/image-manager.js';
+import getImageForKey from './../../redux/managers/image-manager.js';
 import { Media,Button} from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { ProgressBar } from './progressbar.js';
 import {Popover, PopoverHeader, PopoverBody } from 'reactstrap';
-
 import {SharePanel} from '../share-panel.js';
 
 function guidGenerator() {
@@ -40,10 +39,10 @@ export class SearchItem extends React.Component{
             <div className={classes} onClick={() => {this.props.action(this.props.link,this.props.history)}}>
                 <div className="d-flex flex-row">
                     <div className="imagecontainer">
-                        <img className={(this.props.hasprogressbar ? "thumbimage-pb" : "thumbimage")+" thumbimage-"+this.props.searchType.toLowerCase()}
+                        {/*<img className={(this.props.hasprogressbar ? "thumbimage-pb" : "thumbimage")+" thumbimage-"+this.props.searchType.toLowerCase()}
                             object src={image !== null ? image.src : ""}
                             alt={image !== null ? image.alt : ""}
-                            />
+        />*/}
                         {this.props.hasprogressbar ?
                             <ProgressBar completed={this.props.completed} />
                             : ""}
@@ -57,6 +56,7 @@ export class SearchItem extends React.Component{
                                 <div className="mt-auto flex-grow-1">
                                     {this.props.subtitle}
                                 </div>
+                                {/*
                                 <div className="ml-auto">
                                     <Button outline color="secondary" onClick={(e) => {e.stopPropagation();this.toggle()}} id={this.state.share_id} className="sharebutton">Share</Button>
                                     <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
@@ -66,6 +66,7 @@ export class SearchItem extends React.Component{
                                         </PopoverBody>
                                     </Popover>
                                 </div>
+                                */}
                             </div>
                         </div>
                     </div>
@@ -74,5 +75,3 @@ export class SearchItem extends React.Component{
         )
     }
 }
-//const SearchItem =  withRouter(SearchItemX);
-//export {SearchItem}

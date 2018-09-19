@@ -1,9 +1,9 @@
-import Icon from '../assets/icon.png'
-import robotIcon from '../assets/OneOnEpsilon-Character.png'
-import notFoundIcon from '../assets/Not-Found.png'
-import oneOnEpsilonNews from '../assets/One-on-Epsilon-News.png'
+import Icon from '../../assets/icon.png'
+import robotIcon from '../../assets/OneOnEpsilon-Character.png'
+import notFoundIcon from '../../assets/Not-Found.png'
+import oneOnEpsilonNews from '../../assets/One-on-Epsilon-News.png'
 //import store from '../store.js'
-import exploreImage from '../assets/Explore_icon@3x.png'
+import exploreImage from '../../assets/Explore_icon@3x.png'
 
 export default function getImageForKey(key, type){
     switch(type){

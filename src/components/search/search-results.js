@@ -19,7 +19,7 @@ import { Alert } from 'reactstrap';
 import Icon from '../../assets/icon.png'
 
 
-class SearchResults extends Component {
+export class SearchResults extends Component {
   constructor(props) {
     super(props);
 
@@ -111,13 +111,14 @@ class SearchResults extends Component {
   }
 
   render(){
-    console.log(this.props)
     return(
-        <div className="SearchResults">
-            {/*this.props.searchItem.displaySearchResults.map(this.getItem)*/}
+        <div onLoad = {() =>{this.loadAction}} className="SearchResults">
+          <div>
+            {this.props.searchItem.displaySearchResults.map(this.getItem)}
+          </div>
         </div>
     )
   }
 }
 
-export default SearchResults;
+// export SearchResults;

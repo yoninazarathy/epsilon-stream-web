@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
 import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
-import SearchResults from '../../components/search/search-results';
-
+import {SearchResults} from '../../components/search/search-results';
 import {withRouteData } from 'react-static'
-
 import {ourStore} from '../../redux/store'
-
 import {Helmet} from 'react-helmet'
-
-
 
 class TopicPage extends Component {
   constructor(props){
     super(props);
-    this. loadAction = this.loadAction.bind(this)
+    this.loadAction = this.loadAction.bind(this)
+    this.state = {
+      loaded: false,
+    };
+
   }
 
   loadAction(){
+    this.setState({
+      loaded: true
+    });
     ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#'+this.props.topic.name}})
     ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
     ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
@@ -40,8 +42,7 @@ class TopicPage extends Component {
           </Helmet>
           <EpsilonStreamPage title="Topic" hassearch={true}>
               {/*<SearchBar startQuery={this.state.parsedQuery}/>*/}
-              {<SearchResults searchItem={this.props.topic} />}
-              <p> Topic page for {'#'+this.props.topic.name}.</p>
+              {this.state.loaded ? <SearchResults searchItem={this.props.topic}/> : ""}
           </EpsilonStreamPage>
       </div>
     );
