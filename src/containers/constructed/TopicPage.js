@@ -16,12 +16,15 @@ class TopicPage extends Component {
   }
 
   loadAction(){
+    if(!this.state.loaded){
+      ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#'+this.props.topic.name}})
+      ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
+      ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
+    }
     this.setState({
       loaded: true
     });
-    ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#'+this.props.topic.name}})
-    ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
-    ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
+
   }
 
   render() {

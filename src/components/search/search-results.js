@@ -113,7 +113,7 @@ export class SearchResults extends Component {
 
   render(){
     return(
-        <div onLoad = {() =>{this.loadAction}} className="SearchResults">
+        <div className="SearchResults">
           <div>
             {this.props.searchItem.displaySearchResults.map(this.getItem)}
           </div>
