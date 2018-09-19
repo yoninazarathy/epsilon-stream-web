@@ -15,13 +15,12 @@ import NoMatchSearchItem from './no-match-search-item.js'
 import { Alert } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { ourStore } from '../../redux/store'
-
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 
 import Icon from '../../assets/icon.png'
 
 
-export class SearchResults extends Component {
+class SearchResultsX extends Component {
   constructor(props) {
     super(props);
 
@@ -115,9 +114,20 @@ export class SearchResults extends Component {
     return(
         <div className="SearchResults">
           <div>
-            {this.props.searchItem.displaySearchResults.map(this.getItem)}
+            {this.props.displaySearchResults.map(this.getItem)}
           </div>
         </div>
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    search: state.user.cleanSearchString,
+    hashTag: state.user.currentHashTag,
+    displaySearchResults: state.user.displaySearchResults,
+  };
+};
+
+const SearchResults = connect(mapStateToProps)(SearchResultsX);
+export {SearchResults}

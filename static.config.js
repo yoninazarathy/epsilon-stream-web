@@ -25,11 +25,8 @@ export default {
     var channels = featuredURLS.filter(obj => {return obj["provider"] === 'Youtube'})
 
     var topics = mathObjects.map(item => {
-      let searchResults = recordsOfHashTag(item.hashTag, db)
-      let displayResults = displayResultsOfSearchResults(searchResults, item.hashTag)
       return {
         mathObject: item,
-        displaySearchResults: displayResults,
         hashTag: item.hashTag,
         name: item.hashTag.substring(1) // Strips hashtag character
       }
