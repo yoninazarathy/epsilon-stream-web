@@ -9,15 +9,21 @@ import {ourStore} from '../../redux/store'
 import {Helmet} from 'react-helmet'
 
 
+
+
 class TopicPage extends Component {
   constructor(props){
     super(props);
+    this. loadAction = this.loadAction.bind(this)
+  }
+
+  loadAction(){
     ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#'+this.props.topic.name}})
   }
 
   render() {
     return (
-      <div>
+      <div onLoad = {this.loadAction}>
           <Helmet>
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
