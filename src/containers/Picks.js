@@ -1,19 +1,7 @@
 import React from 'react'
-import { withRouteData, Link } from 'react-static'
+import { withSiteData,Link } from 'react-static'
+import TopicPage from './constructed/TopicPage'
 
-export default withRouteData(({ picks }) => (
-  <div>
-    <h1>Editors' Picks:</h1>
-    <br />
-    <ul>
-      {picks.map(post => (
-        <li key={post.urlOfItem}>
-          <a href={post.urlOfItem}> {post.urlOfItem}</a>
-        </li>
-      ))}
-    </ul>
-
-
-
-  </div>
+export default withSiteData(() => (
+  <TopicPage topic = {{name: "editorsPicks"}}/>
 ))

@@ -26,8 +26,6 @@ export default {
 
     var topics = mathObjects.map(item => {
       return {
-        mathObject: item,
-        hashTag: item.hashTag,
         name: item.hashTag.substring(1) // Strips hashtag character
       }
     })
