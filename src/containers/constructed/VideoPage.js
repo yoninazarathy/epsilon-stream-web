@@ -14,6 +14,8 @@ class WatchPage extends Component {
     this.onEnd = this.onEnd.bind(this);
   }
 
+
+
   checkTime() {}// console.log("checkTime"); }
   onReady() {}// console.log("onReady"); }
   onPlay() {}// console.log("onPlay"); }

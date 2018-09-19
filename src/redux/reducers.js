@@ -5,7 +5,7 @@ import {localRecord, recordsOfHashTag, snippetsOfHashTag} from './managers/recor
 //import {makeImageDictionary} from './managers/image-manager.js'
 import { routerReducer } from 'react-router-redux'
 import makeHashTagDict,{makeLowCaseHashTagDict,makeSnippetDict,makeSnippetImageDict,makeMathObjectTitleDict} from './actions/rehash-search-strings-action.js'
-import {store} from './store.js'
+import {ourStore} from './store.js'
 import jQuery from 'jquery'
 
 function createVideoProgressDict(videoProgressDict, videoId, seconds) {
@@ -88,7 +88,7 @@ const user = (state = {}, actions) => {
             return{
                 ...state,
                 currentSearchResults: recordsOfHashTag(state.currentHashTag),
-                pageTitle: store.getState().database.mathObjectTitleDict[state.currentHashTag]
+                pageTitle: ourStore.getState().database.mathObjectTitleDict[state.currentHashTag]
             }
         case "UPDATE_DISPLAY_RESULTS":
             return{

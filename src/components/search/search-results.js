@@ -111,9 +111,10 @@ class SearchResults extends Component {
   }
 
   render(){
+    console.log(this.props)
     return(
         <div className="SearchResults">
-            {this.props.searchItem.displaySearchResults.map(this.getItem)}
+            {/*this.props.searchItem.displaySearchResults.map(this.getItem)*/}
         </div>
     )
   }

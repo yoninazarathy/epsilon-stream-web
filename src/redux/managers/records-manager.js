@@ -1,4 +1,4 @@
-import store from '../store.js'
+import {ourStore} from '../store.js'
 import $ from 'jquery'
 
 export function recordToShortString(record){
@@ -119,21 +119,21 @@ export function recordsOfHashTag(hashTag){
 }
 
 function videosOfHashTag(hashTag){ 
-    let vids = store.getState().database.videos
+    let vids = ourStore.getState().database.videos
     return vids.filter( (el) => {
           return el.hashTags.includes(hashTag)
          });
 }
 
 function featuredURLsOfHashTag(hashTag){
-    let furls = store.getState().database.featuredURLs
+    let furls = ourStore.getState().database.featuredURLs
     return furls.filter( (el) => {
           return el.hashTags.includes(hashTag)
          });
 }
 
 function mathObjectLinksOfHashTag(hashTag){
-    let mols = store.getState().database.mathObjectLinks
+    let mols = ourStore.getState().database.mathObjectLinks
     //let mols2 = $.grep(mols,(mol) => {
       //  return !mol.avoided.includes("web") //QQQQ
     // })
@@ -143,7 +143,7 @@ function mathObjectLinksOfHashTag(hashTag){
 }
 
 export function snippetsOfHashTag(hashTag){ 
-    let snips = store.getState().database.snippets
+    let snips = ourStore.getState().database.snippets
     return snips.filter( (el) => {
         return el.hashTags.includes(hashTag)
        });

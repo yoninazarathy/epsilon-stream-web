@@ -1,15 +1,11 @@
-import {
-    store
-} from '../store.js'
-//import $ from 'jquery'
-
+import {ourStore} from '../store.js'
 
 export function cleanSearchString(searchString) {
     return searchString
 }
 
 export function displayResultsOfSearchResults(searchResults,currentHashTag) {
-    let ourVideoProgressDict = store.getState().user.videoProgressDict;
+    let ourVideoProgressDict = ourStore.getState().user.videoProgressDict;
     //let ourVideoDict = store.getState().database.videos;
     let retVal =  [  
         ...searchResults.snippets.map((sr) =>{
@@ -60,7 +56,7 @@ export function displayResultsOfSearchResults(searchResults,currentHashTag) {
         })
     ]
     if(retVal.length === 0){
-        let searchString = store.getState().user.rawSearchString
+        let searchString = ourStore.getState().user.rawSearchString
         retVal = [
             {
                 type:"NO-MATCH",
