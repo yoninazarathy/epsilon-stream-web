@@ -14,6 +14,7 @@ import NoMatchSearchItem from './no-match-search-item.js'
 // import userLinkAction from '../../actions/user-link-action';
 import { Alert } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
+import { ourStore } from '../../redux/store'
 
 // import {connect} from 'react-redux'
 
@@ -39,7 +40,7 @@ export class SearchResults extends Component {
       } else if (type === "Video") {
         history.push("/video/" + name)
       } else if (type === "MathObjectLinks") {
-        history.push("/topic/" + encodeURIComponent(name)) //QQQQ change for associated title to hashtag
+        history.push("/topic/" + ourStore.getState().database.hashTagDict[name].substring(1))
       }
     }
   }
