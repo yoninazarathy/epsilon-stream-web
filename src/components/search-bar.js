@@ -2,8 +2,11 @@ import React from 'react';
 import {connect} from 'react-redux'
 import { NavbarToggler,NavItem,Row,Col,Container,InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, Collapse, Input} from 'reactstrap';
 import { withRouter } from 'react-router-dom'
-import randomChoiceAction from '../actions/random-choice-action.js'
-import userHomeAction from '../actions/user-home-action';
+
+import randomChoiceAction from '../redux/actions/random-choice-action.js'
+import updateSearchAction from '../redux/actions/update-search-action.js'
+import userHomeAction from '../redux/actions/user-home-action';
+
 import HomeImage from '../assets/Home.png'
 import Surprise1 from '../assets/Surprise1.png'
 import Surprise2 from '../assets/Surprise2.png'
@@ -13,8 +16,7 @@ import Surprise5 from '../assets/Surprise5.png'
 import Surprise6 from '../assets/Surprise6.png'
 
 
-import {store} from '../store.js'
-import updateSearchAction from '../actions/update-search-action.js'
+import {ourStore} from '../redux/store.js'
 import {push} from 'react-router-redux'
 import querystring from 'query-string';
 
@@ -51,20 +53,20 @@ class SearchBar extends React.Component{
       isInControl: true
     });      
     if(finishedTyping){
-      store.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
+      //TTTT ourStore.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
       if(this.state.searchString !== ''){
         let query = searchString.toLowerCase().split(' ').join('+');
-        store.dispatch(push('/search?q='+query))
+        //TTTT ourStore.dispatch(push('/search?q='+query))
       }else{
-        store.dispatch(push('/search'))
+        //TTTT ourStore.dispatch(push('/search'))
       }
-      updateSearchAction(searchString)
+      //TTTT updateSearchAction(searchString)
       this.setState({
         ...this.state,
         isInControl: false
       })
     }else{
-      store.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:searchString}})
+      //TTTT ourStore.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:searchString}})
     }
   }
 

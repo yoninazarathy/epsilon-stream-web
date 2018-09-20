@@ -3,6 +3,9 @@ import {push} from 'react-router-redux'
 
 export default function userHomeAction(){
     let result = "Epsilon Stream Home"
+
+    console.log("hhh")
+
     //QQQQ note used store.dispatch({type: "USER_HOME_ACTION",payload:{}})   
     //QQQQ this code is duplicated (also in search-bar and maybe elsewhwere - consolidate)
     let query = result.toLowerCase().split(' ').join('+');

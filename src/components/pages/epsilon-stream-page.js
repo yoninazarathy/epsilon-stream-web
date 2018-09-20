@@ -14,7 +14,7 @@ import Icon from '../../assets/icon.png'
 // import {store} from '../../store.js'
 // import {push} from 'react-router-redux'
 import {Popover, PopoverHeader, PopoverBody } from 'reactstrap';
-
+import {SearchBar} from '../search-bar.js'
 import {SharePanel} from '../share-panel.js';
 
 
@@ -149,11 +149,14 @@ class EpsilonStreamPage extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                {/*<ShareButton/>*/}
+                                <p> Search bar to go (in certain cases) here.</p>
                             </NavItem>
                             <NavItem>
-                                <SearchButton/>
+                                {/*<ShareButton/>*/}
                             </NavItem>
+                            {/*<NavItem>
+                                <SearchButton/>
+                            </NavItem>*/}
                             <NavItem>
                                 <AboutButton/>
                             </NavItem>
@@ -181,7 +184,10 @@ class EpsilonStreamPage extends Component {
                                         </div>
                                 </center>
                                 :
-                                this.props.children
+                                <div>
+                                    <SearchBar startQuery={"qqqq"/*this.state.parsedQuery*/}/>
+                                    {this.props.children}
+                                </div>
                             }    
                         </Col>
                     </Row>  
@@ -207,6 +213,8 @@ class EpsilonStreamPage extends Component {
         );
     }
 }
+
+export default EpsilonStreamPage;//connect(EpsilonStreamPage);
 
 
 //https://es-app.com/assets/anim/LogoAnimationVert_9sec.mp4
@@ -234,4 +242,3 @@ const mapStateToProps = (state) => {
     };
 };*/
 
-export default EpsilonStreamPage;//connect(EpsilonStreamPage);

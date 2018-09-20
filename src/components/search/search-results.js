@@ -59,6 +59,7 @@ class SearchResultsX extends Component {
         />
         );
       case "EpsilonSnippet":
+          console.log("herrrrnow " + this.props.hashTag)
         return(
         <SnippetSearchItem
           key={i}
@@ -67,7 +68,7 @@ class SearchResultsX extends Component {
           image={null}
           subtitle={null}
           link={null}
-          hashTag={this.props.searchItem.hashTag}
+          hashTag={this.props.hashTag}
           action={this.action("EpsilonSnippet")}
         />
         );

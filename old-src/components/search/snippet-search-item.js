@@ -22,6 +22,7 @@ class SnippetSearchItem extends React.Component{
       }
     
     render(){
+      console.log("herrrr")
         return(
             <div>
             <SearchItem searchType='SNIPPET'
