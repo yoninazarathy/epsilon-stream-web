@@ -144,6 +144,8 @@ export default {
         Html, Head, Body, children, renderMeta,link
       } = this.props
 
+      let analyticsScript = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-84756717-6');"
+
       return (
         <Html>
           <Head>
@@ -167,7 +169,20 @@ ww1VkFEFhB66JuOMi0jDZuNgPPaYwAse/vZYK5uEseRgEziZgAxRdkYFJ7RUUsSVcDHQIwRdNnYD
 iCGKZMlXV2agIoYPzJAmX34d6WYlXpE5wZx13mnDdHruKaafC0RgZ5o35FlomJWAoWSBGyRRhQ1p
 UsFmm6CIAgYR4MG1wRBLKPKGFUSydgMVU4YSCSthgAEGJ2+UMUYVY5TRqiiYyOcrN75CNk2wsSRD
 LEPDHuvqLkgquwizhjqbCLQCSasLtZ0Si+2r8m2ribDepqIPtYEAADs=" rel="icon" type="image/x-icon" />
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css" />
+
+            <meta name="apple-itunes-app" content="app-id=1200152358"/>
+            <meta name="google-play-app" content="app-id=com.oneonepsilon.epsilonstream"/>
+
+            {/*<link rel="apple-touch-icon" href="assets/icon.png">*/}
+            {/*<link rel="android-touch-icon" href="assets/icon.png">*/}
+
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84756717-6"></script>
+            <script>
+              {analyticsScript}
+            </script>
+
+
+
           </Head>
           <Body>{children}</Body>
         </Html>
