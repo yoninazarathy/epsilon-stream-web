@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavbarToggler,NavItem,Row,Col,Container,InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, Collapse, Input} from 'reactstrap';
 import { Tooltip, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+import {connect} from 'react-redux'
 
 //import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
 import Icon from '../../assets/icon.png'
@@ -88,7 +89,7 @@ const RegisterButton = props => ( //withRouter(({history}) => (
     </Button>
 )//)
 
-class EpsilonStreamPage extends Component {
+class EpsilonStreamPageX extends Component {
     constructor(props) {
       super(props);
 
@@ -214,7 +215,7 @@ class EpsilonStreamPage extends Component {
     }
 }
 
-export default EpsilonStreamPage;//connect(EpsilonStreamPage);
+// export default EpsilonStreamPage;//connect(EpsilonStreamPage);
 
 
 //https://es-app.com/assets/anim/LogoAnimationVert_9sec.mp4
@@ -228,17 +229,19 @@ export default EpsilonStreamPage;//connect(EpsilonStreamPage);
                             </video>
                             */
 
-                            /*
+                            
 const mapStateToProps = (state) => {
     return {
-        searchString: state.user.cleanSearchString,
+        /*searchString: state.user.cleanSearchString,
         loadingInProgress:  state.database.mathObjectsFetchInProgress       ||
                             state.database.mathObjectLinksFetchInProgress   ||
                             state.database.videosInProgress                 ||
                             state.database.snippetsFetchInProgress          ||
-                            state.database.featuredURLsInProgress,
+                            state.database.featuredURLsInProgress,*/
         headerString: ' ' + state.user.pageTitle,
-        betaPopUpCounter: state.user.betaPopUpCounter
+        /*betaPopUpCounter: state.user.betaPopUpCounter*/
     };
-};*/
+};
 
+const EpsilonStreamPage = connect(mapStateToProps)(EpsilonStreamPageX);
+export default EpsilonStreamPage 
