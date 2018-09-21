@@ -59,7 +59,6 @@ class SearchResultsX extends Component {
         />
         );
       case "EpsilonSnippet":
-          console.log("herrrrnow " + this.props.hashTag)
         return(
         <SnippetSearchItem
           key={i}
