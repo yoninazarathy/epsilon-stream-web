@@ -74,7 +74,7 @@ export default {
           topics,
         }),
         children: topics.map(topic => ({
-          path: `${topic.name}`,
+          path: `${topic.name.toLowerCase()}`,
           component: 'src/containers/constructed/TopicPage',
           getData: () => ({
             topic
