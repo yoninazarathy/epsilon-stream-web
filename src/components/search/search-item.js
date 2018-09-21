@@ -5,7 +5,7 @@ import { Media,Button} from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { ProgressBar } from './progressbar.js';
 import {Popover, PopoverHeader, PopoverBody } from 'reactstrap';
-import {SharePanel} from '../share-panel.js';
+import SharePanel from '../share-panel.js';
 
 function guidGenerator() {
     // QQQQ fix this
@@ -47,7 +47,7 @@ class SearchItemX extends React.Component{
                             <ProgressBar completed={this.props.completed} />
                             : ""}
                     </div>
-                    <div className="p-2 d-flex flex-column flex-grow-1">
+                    <div className="p-1 d-flex flex-column flex-grow-1">
                         <div className="flex-grow-1">
                             <h5> {this.props.title}</h5>
                         </div>
@@ -58,15 +58,12 @@ class SearchItemX extends React.Component{
                                 </div>
                                 <div className="ml-auto">
                                     <Button outline color="secondary" onClick={(e) => {e.stopPropagation();this.toggle()}} id={this.state.share_id} className="sharebutton">Share</Button>
-                             {/*       <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
-                                        <PopoverHeader toggle={this.toggle}></PopoverHeader>
+                                   <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
                                         <PopoverBody>
-                                            <SharePanel shareURL={this.props.shareURL} shareType={this.props.type}/>
+                                            <SharePanel shareURL={"QQQQ"/*this.props.shareURL*/} shareType={"QQQQ"/*this.props.type*/}/>                                               
                                         </PopoverBody>
-                        
-                                    </Popover>   */}
-                                </div>
-                                
+                                    </Popover>   
+                                </div>         
                             </div>
                         </div>
                     </div>
