@@ -110,7 +110,7 @@ class SearchBar extends React.Component{
                     id="inputField"
                     name="search" 
                     value={this.state.isInControl ?  this.state.searchString: this.props.storeSearchString}
-                    placeholder="Search Mathematics"
+                    placeholder="Search Mathematics (still not working)"
                     onChange={this.handleChange}
                     onKeyPress={this.handleKeyPress}
                     autoComplete = "off" />

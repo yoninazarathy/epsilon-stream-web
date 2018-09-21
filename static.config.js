@@ -47,7 +47,7 @@ export default {
           snippets,
         }),
         children: snippets.map(snippet => ({
-          path: `${snippet.hashTags[0].substring(1)}`,
+          path: `${snippet.hashTags[0].substring(1).toLowerCase()}`,
           component: 'src/containers/constructed/SnippetPage',
           getData: () => ({
             snippet,
@@ -177,6 +177,7 @@ LEPDHuvqLkgquwizhjqbCLQCSasLtZ0Si+2r8m2ribDepqIPtYEAADs=" rel="icon" type="image
 
             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84756717-6"></script>
             <script dangerouslySetInnerHTML={{__html: "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-84756717-6');"}} />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css" />
           </Head>
           <Body>{children}</Body>
         </Html>

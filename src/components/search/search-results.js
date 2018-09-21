@@ -33,7 +33,7 @@ class SearchResultsX extends Component {
       if (type === "NO-MATCH") {
         window.open("https://oneonepsilon.com/contact", '_blank')
       } else if (type === "EpsilonSnippet") {
-        history.push("/snippet/" + name)
+        history.push("/snippet/" + name.toLowerCase())
       } else if (type === "FeaturedURL") {
         window.open(name)
       } else if (type === "Video") {

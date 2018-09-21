@@ -56,16 +56,15 @@ class SearchItemX extends React.Component{
                                 <div className="mt-auto flex-grow-1">
                                     {this.props.subtitle}
                                 </div>
-                                
                                 <div className="ml-auto">
                                     <Button outline color="secondary" onClick={(e) => {e.stopPropagation();this.toggle()}} id={this.state.share_id} className="sharebutton">Share</Button>
-                                    {/*<Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
+                             {/*       <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
                                         <PopoverHeader toggle={this.toggle}></PopoverHeader>
                                         <PopoverBody>
                                             <SharePanel shareURL={this.props.shareURL} shareType={this.props.type}/>
                                         </PopoverBody>
-                                    </Popover>
-                        */}
+                        
+                                    </Popover>   */}
                                 </div>
                                 
                             </div>
