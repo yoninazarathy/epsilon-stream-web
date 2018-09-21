@@ -144,8 +144,6 @@ export default {
         Html, Head, Body, children, renderMeta,link
       } = this.props
 
-      let analyticsScript = "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-84756717-6');"
-
       return (
         <Html>
           <Head>
@@ -177,12 +175,7 @@ LEPDHuvqLkgquwizhjqbCLQCSasLtZ0Si+2r8m2ribDepqIPtYEAADs=" rel="icon" type="image
             {/*<link rel="android-touch-icon" href="assets/icon.png">*/}
 
             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84756717-6"></script>
-            <script>
-              {analyticsScript}
-            </script>
-
-
-
+            <script dangerouslySetInnerHTML={{__html: "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-84756717-6');"}} />
           </Head>
           <Body>{children}</Body>
         </Html>
