@@ -16,7 +16,7 @@ import { Alert } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { ourStore } from '../../redux/store'
 import {connect} from 'react-redux'
-
+import {youtubeIdToEpsilonID} from '../../redux/managers/video-manager'
 import Icon from '../../assets/icon.png'
 
 
@@ -37,7 +37,7 @@ class SearchResultsX extends Component {
       } else if (type === "FeaturedURL") {
         window.open(name)
       } else if (type === "Video") {
-        history.push("/video/" + name)
+        history.push("/video/" + youtubeIdToEpsilonID(name))
       } else if (type === "MathObjectLinks") {
         history.push("/topic/" + ourStore.getState().database.hashTagDict[name].substring(1))
       }

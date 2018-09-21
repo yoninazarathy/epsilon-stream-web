@@ -1,3 +1,5 @@
+import {youtubeIdToEpsilonID} from '../redux/managers/video-manager'
+
 export function cleanSearchString(searchString) {
     return searchString
 }
@@ -24,7 +26,7 @@ export function displayResultsOfSearchResults(searchResults,currentHashTag) {
                 image: sr.imageURL,
                 title: sr.ourTitle,
                 subtitle: sr.provider + ', ' + ((sr.durationSec < 60) ? '1' : Math.round(sr.durationSec / 60)) + ' min',
-                link: sr.youtubeVideoId,
+                link: youtubeIdToEpsilonID(sr.youtubeVideoId),
                 action: undefined,
                 completed: 0.3, // QQQQ(ourVideoProgressDict[sr.youtubeVideoId] / sr.durationSec) || 0,
                 displayOrder: calculatePriority(sr.displaySearchPriority,sr.hashTagPriorities,currentHashTag)

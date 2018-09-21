@@ -1,9 +1,10 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import { ServerStyleSheet } from 'styled-components'
-
 import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,hashTagOfString} from './src/components/text-search-manager';
 import {recordsOfHashTag} from './src/components/records-manager.js';
+import {youtubeIdToEpsilonID} from './src/redux/managers/video-manager'
+
 
 export default {
   siteRoot: 'https://epsilonstream.com',
@@ -60,7 +61,7 @@ export default {
           videos,
         }),
         children: videos.map(video => ({
-          path: `${video.youtubeVideoId}`,
+          path: `${youtubeIdToEpsilonID(video.youtubeVideoId)}`,
           component: 'src/containers/constructed/VideoPage',
           getData: () => ({
             video,

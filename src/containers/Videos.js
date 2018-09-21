@@ -1,6 +1,6 @@
-
 import React from 'react'
 import { withRouteData, Link } from 'react-static'
+import {youtubeIdToEpsilonID} from '../redux/managers/video-manager'
 //
 
 export default withRouteData(({ videos }) => (
@@ -11,7 +11,7 @@ export default withRouteData(({ videos }) => (
     <ul>
       {videos.map(video => (
         <li key={video.youtubeVideoId}>
-          <Link to={`/video/${video.youtubeVideoId}`}>{video.ourTitle} ({video.hashTags[0]})</Link>
+          <Link to={`/video/${youtubeIdToEpsilonID(video.youtubeVideoId)}`}>{video.ourTitle} ({video.hashTags[0]})</Link>
         </li>
       ))}
     </ul>
