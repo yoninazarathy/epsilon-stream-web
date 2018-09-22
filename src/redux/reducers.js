@@ -15,7 +15,7 @@ function createVideoProgressDict(videoProgressDict, videoId, seconds) {
 
 function nextCounter(counter){
     console.log("counter " + counter)
-    return counter >= 4 ? 0 : counter + 1
+    return counter >= 10 ? 0 : counter + 1
 }
 
 const user = (state = {}, actions) => {
