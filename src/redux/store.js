@@ -77,8 +77,9 @@ export const ourStore = createStore(
         autoCompleteList: [],
         videoProgressDict: {},
         isAndroid: false,
-        betaPopUpCounter: 50,
-        pageTitle: "Epsilon Stream"
+        betaPopUpCounter: 3,
+        pageTitle: "Epsilon Stream",
+        currentURLforSharing: "https://epsilonstream.com"
       }
     },
     //compose(

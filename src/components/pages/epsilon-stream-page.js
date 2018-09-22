@@ -16,14 +16,13 @@ import Icon from '../../assets/icon.png'
 // import {push} from 'react-router-redux'
 import {Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import {SearchBar} from '../search-bar.js'
-import {SharePanel} from '../share-panel.js';
-
+import SharePanel from '../share-panel'
 
 class ShareButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            shareModal: false
+            shareModal: false,
         };
         this.toggle = this.toggle.bind(this);
     }
@@ -37,17 +36,17 @@ class ShareButton extends Component {
     render() {
         return (
             <div>
-                <Button outline color="danger" onClick={(e) => {e.stopPropagation();this.toggle()}} id="globalShare" className="ml-sm-2 mr-sm-2">
+                <Button outline color="danger" 
+                        onClick={(e) => {this.toggle()}} id="globalShare" className="ml-sm-2 mr-sm-2">
                     <p className = "text-white">
                         Share
                     </p>
                 </Button>
-                <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target="globalShare">
-                    <PopoverHeader toggle={this.toggle}></PopoverHeader>
+                <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={"globalShare"}>
                     <PopoverBody>
-                        <SharePanel shareURL="https://epsilonstream.com" shareType="none"/>
+                        <SharePanel shareURL={this.props.shareURL} shareType={"GENERIC"}/>                                          
                     </PopoverBody>
-                </Popover>
+                </Popover>   
             </div>
         )
     }
@@ -150,10 +149,7 @@ class EpsilonStreamPageX extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <p> Search bar to go (in certain cases) here.</p>
-                            </NavItem>
-                            <NavItem>
-                                {/*<ShareButton/>*/}
+                                <ShareButton shareURL = {this.props.currentURLforSharing}/>
                             </NavItem>
                             {/*<NavItem>
                                 <SearchButton/>
@@ -205,7 +201,7 @@ class EpsilonStreamPageX extends Component {
                                 {' '}
                                 <Button color="primary" 
                                         onClick={() => {this.toggle;
-                                                        window.open("https://oneonepsilon.com/epsilonstream", '_blank')}
+                                                        window.open("https://oneonepsilon.com/register", '_blank')}
                                                     }>Register</Button>{' '}
                         </ModalFooter>
                     </Modal> 
@@ -239,7 +235,8 @@ const mapStateToProps = (state) => {
                             state.database.snippetsFetchInProgress          ||
                             state.database.featuredURLsInProgress,*/
         headerString: ' ' + state.user.pageTitle,
-        /*betaPopUpCounter: state.user.betaPopUpCounter*/
+        currentURLforSharing: state.user.currentURLforSharing,
+        betaPopUpCounter: state.user.betaPopUpCounter,
     };
 };
 

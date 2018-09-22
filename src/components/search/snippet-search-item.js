@@ -34,7 +34,7 @@ class SnippetSearchItem extends React.Component{
                       hasprogressbar={false}
                       noImage = {true}
                       action={this.props.action}
-                      shareURL={"https://epsilonstream.com/snippet?mo="+encodeURIComponent(this.props.hashTag.substr(1))}>
+                      shareURL={"https://epsilonstream.com/snippet/"+encodeURIComponent(this.props.hashTag.substr(1))}>
             </SearchItem>
             <Modal isOpen={this.state.modal} toggle={this.toggle}>
               <ModalHeader toggle={this.toggle}> {this.props.title}</ModalHeader>

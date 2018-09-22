@@ -60,7 +60,7 @@ class SearchItemX extends React.Component{
                                     <Button outline color="secondary" onClick={(e) => {e.stopPropagation();this.toggle()}} id={this.state.share_id} className="sharebutton">Share</Button>
                                    <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={this.state.share_id}>
                                         <PopoverBody>
-                                            <SharePanel shareURL={"QQQQ"/*this.props.shareURL*/} shareType={"QQQQ"/*this.props.type*/}/>                                               
+                                            <SharePanel shareURL={this.props.shareURL} shareType={this.props.searchType}/>                                               
                                         </PopoverBody>
                                     </Popover>   
                                 </div>         
