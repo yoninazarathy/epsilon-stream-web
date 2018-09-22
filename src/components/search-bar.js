@@ -26,7 +26,7 @@ let index = 0
 
 const SurpriseButton = withRouter(({history}) => (
   <Button color="link" className="noborderradius randombutton"
-      onClick={()=>{index = index===5?0:index+1;randomChoiceAction()}}>
+      onClick={()=>{index = index===5?0:index+1;randomChoiceAction(history)}}>
       <img alt="surprise" src={buttonArray[index]} width={30} height={30} />
   </Button>
 ))

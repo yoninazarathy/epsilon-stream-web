@@ -1,9 +1,9 @@
 import {ourStore} from '../store.js'
 import randomSearchResult from '../managers/random-search-manager.js'
 
-export default function randomChoiceAction(){
+export default function randomChoiceAction(history){
     let newHashTag = randomSearchResult().substring(1)
-    window.location.href = ('/topic/' + newHashTag)
+    history.push('/topic/' + newHashTag)
     
     // ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: newHashTag}})
     // ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
