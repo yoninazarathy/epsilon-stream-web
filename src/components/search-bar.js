@@ -48,7 +48,7 @@ class SearchBar extends React.Component{
   }
 
   updateModel(searchString,finishedTyping){
-    this.setState({
+    this.state = ({
       searchString: searchString,
       isInControl: true
     });      
@@ -61,10 +61,10 @@ class SearchBar extends React.Component{
         //TTTT ourStore.dispatch(push('/search'))
       }
       //TTTT updateSearchAction(searchString)
-      this.setState({
+      this.state = {
         ...this.state,
         isInControl: false
-      })
+      }
     }else{
       //TTTT ourStore.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:searchString}})
     }

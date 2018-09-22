@@ -83,6 +83,10 @@ export default {
         })),
       },
       {
+        path: '/search',
+        component: 'src/containers/Search',
+      },
+      {
         path: '/curious',
         component: 'src/containers/Curious',
         getData: () => ({

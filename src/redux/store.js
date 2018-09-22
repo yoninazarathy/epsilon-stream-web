@@ -49,9 +49,7 @@ const middleware = applyMiddleware(thunk,logger)//,rehashMiddleWare)
 //         // persistStore(store)
 
 
-// export function isAndroid() {
-//     return store.getState().user.isAndroid;
-// }
+
 
 // export default store
 
@@ -88,8 +86,6 @@ export const ourStore = createStore(
     // ),
 )
 
-//store.dispatch({type: "RESET_DATABASE_STORE",payload:{}})
-//ourStore.dispatch({type: "RESET_USER_STORE",payload:{}})
-//ourStore.dispatch({type: "INIT_DATABASE_STORE",payload:{db: dbFromServer}})
-
-/* eslint-enable */
+export function isAndroid() {
+  return ourStore.getState().user.isAndroid;
+}

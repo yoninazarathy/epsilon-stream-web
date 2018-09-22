@@ -24,7 +24,7 @@ class TopicPage extends Component {
     this.setState({
       loaded: true
     });
-    this.forceUpdate()
+    //QQQQ ???? this isn't the answer... this.forceUpdate()
   }
 
   render() {

@@ -2,7 +2,6 @@ import {combineReducers} from 'redux'
 import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,hashTagOfString} from './managers/text-search-manager.js'
 import startCloudPullAction from './actions/start-cloud-pull-action.js'
 import {localRecord, recordsOfHashTag, snippetsOfHashTag} from './managers/records-manager.js';
-//import {makeImageDictionary} from './managers/image-manager.js'
 import { routerReducer } from 'react-router-redux'
 import makeHashTagDict,{makeLowCaseHashTagDict,makeSnippetDict,makeSnippetImageDict,makeMathObjectTitleDict} from './actions/rehash-search-strings-action.js'
 import {ourStore} from './store.js'
@@ -138,111 +137,19 @@ const user = (state = {}, actions) => {
 
 const database = (state = {records: []}, actions) => {
     switch (actions.type) {
-        case "INIT_DATABASE_STORE":
-            return {...actions.payload.db}
-        case "RESET_DATABASE_STORE":
-            return {
-                ...state,
-                mathObjects: [],
-                hashTagDict: [],
-                lowCaseHashTagDict: [],
-                mathObjectTitleDict: [],
-                mathObjectLinks: [],
-                snippetDict: {},
-                snippetImageDict:{},
-                videos: [],
-                featuredURLs: [],
-                snippets: [],
-                mathObjectsFetchInProgress: true,
-                mathObjectLinksFetchInProgress: true,
-                videosInProgress: true,
-                featuredURLsInProgress: true,
-                snippetsFetchInProgress: true,
-            }
-        case "FETCH_FULL_PULL_START":
-            startCloudPullAction("FULL_PULL")
-            return{
-                ...state,
-                mathObjectsFetchInProgress: true,
-                mathObjectLinksFetchInProgress: true,
-                videosInProgress: true,
-                featuredURLsInProgress: true,
-                snippetsFetchInProgress: true,
-            }
-        case "FETCH_MATH_OBJECT_START":
-            startCloudPullAction("MATH_OBJECT")
-            return{
-                ...state,
-                mathObjectsFetchInProgress: true,
-            }
-        case "FETCH_MATH_OBJECT_LINK_START":
-            startCloudPullAction("MATH_OBJECT_LINK")
-            return{
-                ...state,
-                mathObjectLinksFetchInProgress: true
-            }
-        case "FETCH_VIDEO_START":
-            startCloudPullAction("VIDEO")
-            return{
-                ...state,
-                videosInProgress: true
-            }
-        case "FETCH_FEATURED_URL_START":
-            startCloudPullAction("FEATURED_URL")
-            return{
-                ...state,
-                featuredURLsInProgress: true
-            }
-        case "FETCH_SNIPPET_START":
-            startCloudPullAction("SNIPPET")
-            return{
-                ...state,
-                snippetsFetchInProgress: true
-            }
-        case "FETCH_MATH_OBJECT_STOP":
-            return{
-                ...state,
-                mathObjectsFetchInProgress: false,
-                mathObjects: actions.payload.map((record) => localRecord(record,"MathObject"))
-            }
-        case "FETCH_MATH_OBJECT_LINK_STOP":
-            return{
-                ...state,
-                mathObjectLinksFetchInProgress: false,
-                mathObjectLinks: actions.payload.map((record) => localRecord(record,"MathObjectLinks"))
-            }
-        case "FETCH_VIDEO_STOP":
-            let videos = actions.payload.map((record) => localRecord(record,"Video"))
-            return{
-                ...state,
-                videosInProgress: false,
-                videos: videos,
-            }
-        case "FETCH_FEATURED_URL_STOP":
-            return{
-                ...state,
-                featuredURLsInProgress: false,
-                featuredURLs: actions.payload.map((record) => localRecord(record,"FeaturedURL"))
-            }
-        case "FETCH_SNIPPET_STOP":
-            return{
-                ...state,
-                snippetsFetchInProgress: false,
-                snippets: actions.payload.map((record) => localRecord(record,"Snippet"))
-            }
-        case "REHASH_SEARCH_STRINGS":
-            return{
-                ...state,
-                hashTagDict: makeHashTagDict(),
-                lowCaseHashTagDict: makeLowCaseHashTagDict(),
-                mathObjectTitleDict: makeMathObjectTitleDict()
-            }
-        case "REHASH_SNIPPET_STRINGS":
-            return{
-                ...state,
-                snippetDict: makeSnippetDict(),
-                snippetImageDict: makeSnippetImageDict()
-            }            
+        // case "REHASH_SEARCH_STRINGS":
+        //     return{
+        //         ...state,
+        //         hashTagDict: makeHashTagDict(),
+        //         lowCaseHashTagDict: makeLowCaseHashTagDict(),
+        //         mathObjectTitleDict: makeMathObjectTitleDict()
+        //     }
+        // case "REHASH_SNIPPET_STRINGS":
+        //     return{
+        //         ...state,
+        //         snippetDict: makeSnippetDict(),
+        //         snippetImageDict: makeSnippetImageDict()
+        //     }            
         default:            
             return state;
     }
