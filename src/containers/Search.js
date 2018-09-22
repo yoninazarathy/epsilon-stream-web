@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EpsilonStreamPage from '../components/pages/epsilon-stream-page';
 import {ourStore} from '../redux/store'
 import { withRouter } from 'react-router-dom';
+import {connect} from 'react-redux'
 
 class Search extends Component {
     render() {
@@ -13,5 +14,10 @@ class Search extends Component {
     }
 }
 
-
-export default withRouter(Search)
+const mapStateToProps = (state) => {
+    return {
+      appLoaded: state.user.appLoaded,
+    };
+  };
+  
+  export default connect(mapStateToProps)(Search);

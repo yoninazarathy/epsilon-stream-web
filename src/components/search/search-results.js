@@ -124,6 +124,7 @@ const mapStateToProps = (state) => {
     search: state.user.cleanSearchString,
     hashTag: state.user.currentHashTag,
     displaySearchResults: state.user.displaySearchResults,
+    appLoaded: state.user.appLoaded,
   };
 };
 

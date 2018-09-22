@@ -190,7 +190,7 @@ class EpsilonStreamPageX extends Component {
                     </Row>  
                 </Container>   
                 </div>  
-                {this.props.betaPopUpCounter < 2 && this.props.loadedProp ?
+                {this.props.appLoaded && this.props.betaPopUpCounter < 2  ?
                     <Modal isOpen={this.state.modal} toggle={this.modalToggle}>
                         <ModalHeader toggle={this.modalToggle}>Epsilon Stream Web - Beta</ModalHeader>
                         <ModalBody>
@@ -237,6 +237,7 @@ const mapStateToProps = (state) => {
         headerString: ' ' + state.user.pageTitle,
         currentURLforSharing: state.user.currentURLforSharing,
         betaPopUpCounter: state.user.betaPopUpCounter,
+        appLoaded: state.user.appLoaded,
     };
 };
 

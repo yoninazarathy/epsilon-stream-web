@@ -7,7 +7,7 @@ import {Helmet} from 'react-helmet'
 import {connect} from 'react-redux'
 
 class TopicPage extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.loadAction = this.loadAction.bind(this)
     this.state = {
@@ -16,6 +16,7 @@ class TopicPage extends Component {
   }
 
   loadAction(){
+    //console.log("topic load action")
     if(!this.state.loaded){
       ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#'+this.props.topic.name}})
       ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
@@ -24,7 +25,6 @@ class TopicPage extends Component {
     this.setState({
       loaded: true
     });
-    //QQQQ ???? this isn't the answer... this.forceUpdate()
   }
 
   render() {
@@ -43,8 +43,8 @@ class TopicPage extends Component {
             <meta name="twitter:site" content="@OneOnEpsilon" />
             <title> {this.props.topic.name+" with "+"Epsilon Stream"} </title>
           </Helmet>
-          <EpsilonStreamPage title="Topic" hassearch={true} loadedProp={this.state.loaded}>
-              {this.props.appLoaded ? <SearchResults searchItem={this.props.topic}/> : ""}
+          <EpsilonStreamPage title="Topic" hassearch={true}>
+              {this.props.appLoaded ? <SearchResults searchItem={this.props.topic}/> : "not"}
           </EpsilonStreamPage>
       </div>
     );
