@@ -20,6 +20,12 @@ function nextCounter(counter){
 
 const user = (state = {}, actions) => {
     switch (actions.type) {
+        case "LOAD":
+            console.log("load event...")
+            return {
+                ...state,
+                appLoaded: true
+            }
         case "RESET_USER_STORE":
             return {
                 ...state,

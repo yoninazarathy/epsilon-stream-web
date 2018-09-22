@@ -8,7 +8,6 @@ import SnippetSearchItem from './snippet-search-item.js'
 import NoMatchSearchItem from './no-match-search-item.js'
 // import userWatchAction from '../../actions/user-watch-action';
 // import userSnippetAction from '../../actions/user-snippet-action';
-
 //import userPlayAction from '../../actions/user-play-action';
 // import userExploreAction from '../../actions/user-explore-action';
 // import userLinkAction from '../../actions/user-link-action';
@@ -18,7 +17,6 @@ import { ourStore } from '../../redux/store'
 import {connect} from 'react-redux'
 import {youtubeIdToEpsilonID} from '../../redux/managers/video-manager'
 import Icon from '../../assets/icon.png'
-
 
 class SearchResultsX extends Component {
   constructor(props) {

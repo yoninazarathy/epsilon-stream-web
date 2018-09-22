@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import EpsilonStreamPage from '../components/pages/epsilon-stream-page';
-
+import {ourStore} from '../redux/store'
 import { withRouter } from 'react-router-dom';
 
 class Search extends Component {

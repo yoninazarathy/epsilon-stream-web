@@ -4,6 +4,7 @@ import {SearchResults} from '../../components/search/search-results';
 import {withRouteData } from 'react-static'
 import {ourStore} from '../../redux/store'
 import {Helmet} from 'react-helmet'
+import {connect} from 'react-redux'
 
 class TopicPage extends Component {
   constructor(props){
@@ -12,7 +13,6 @@ class TopicPage extends Component {
     this.state = {
       loaded: false,
     };
-
   }
 
   loadAction(){
@@ -44,12 +44,17 @@ class TopicPage extends Component {
             <title> {this.props.topic.name+" with "+"Epsilon Stream"} </title>
           </Helmet>
           <EpsilonStreamPage title="Topic" hassearch={true} loadedProp={this.state.loaded}>
-              {this.state.loaded ? <SearchResults searchItem={this.props.topic}/> : ""}
+              {this.props.appLoaded ? <SearchResults searchItem={this.props.topic}/> : ""}
           </EpsilonStreamPage>
       </div>
     );
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    appLoaded: state.user.appLoaded,
+  };
+};
 
-export default withRouteData(TopicPage);
+export default withRouteData(connect(mapStateToProps)(TopicPage));

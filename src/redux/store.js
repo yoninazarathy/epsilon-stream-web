@@ -77,7 +77,8 @@ export const ourStore = createStore(
         isAndroid: false,
         betaPopUpCounter: 0,
         pageTitle: "Epsilon Stream",
-        currentURLforSharing: "https://epsilonstream.com"
+        currentURLforSharing: "https://epsilonstream.com",
+        appLoaded: false
       }
     },
     //compose(

@@ -7,19 +7,32 @@ import { Route, Switch } from 'react-router'
 import { Provider } from 'react-redux'
 import { hot } from 'react-hot-loader'
 import Routes from 'react-static-routes'
-
 import Search from './containers/Search'
-
 import { ourStore } from './redux/store'
 
-//import './app.css'
-
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.loadAction = this.loadAction.bind(this)
+    this.state = {
+      loaded: false,
+    };
+  }
+
+  loadAction(){
+    if(!this.state.loaded){
+      ourStore.dispatch({type: "LOAD",payload: {}})
+    }
+    this.setState({
+      loaded: true
+    });
+  }
+
   render() {
     return(
       <Provider store={ourStore}>
         <Router>
-        <div>
+        <div onLoad = {this.loadAction}>
           {/*isAndroid() ? '' :<SmartBanner title={'Epsilon Stream'}  />*/}
           <div className="content">
             <Switch>
