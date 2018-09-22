@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavbarToggler,NavItem,Row,Col,Container,InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, Collapse, Input} from 'reactstrap';
 import { Tooltip, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import {connect} from 'react-redux'
+import {SearchAutoCompleteList} from '../search/search-autocomplete-list'
 
 //import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
 import Icon from '../../assets/icon.png'
@@ -182,8 +183,13 @@ class EpsilonStreamPageX extends Component {
                                 </center>
                                 :
                                 <div>
-                                    <SearchBar startQuery={"qqqq"/*this.state.parsedQuery*/}/>
-                                    {this.props.children}
+                                    <SearchBar startQuery={this.props.parsedQuery}/>
+                                    {this.props.appLoaded &&
+                                         this.props.autoCompleteList.length > 0
+                                          ? 
+                                        <SearchAutoCompleteList/>
+                                         : 
+                                        this.props.children}
                                 </div>
                             }    
                         </Col>
@@ -238,6 +244,7 @@ const mapStateToProps = (state) => {
         currentURLforSharing: state.user.currentURLforSharing,
         betaPopUpCounter: state.user.betaPopUpCounter,
         appLoaded: state.user.appLoaded,
+        autoCompleteList: state.user.autoCompleteList
     };
 };
 

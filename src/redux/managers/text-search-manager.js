@@ -74,7 +74,7 @@ export function displayResultsOfSearchResults(searchResults,currentHashTag) {
 }
 
 export function hashTagOfString(searchString) {
-    let htd = store.getState().database.lowCaseHashTagDict
+    let htd = ourStore.getState().database.lowCaseHashTagDict
     let cleanString = searchString.toLowerCase().trim()
     let val = htd[cleanString]
     if(val === undefined){
@@ -86,7 +86,7 @@ export function hashTagOfString(searchString) {
 
 export function autoCompleteForString(s) {
     let sLow = s.toLowerCase()
-    let filtered = Object.keys(store.getState().database.hashTagDict).filter((x)=>{return x.toLowerCase().includes(sLow)}) 
+    let filtered = Object.keys(ourStore.getState().database.hashTagDict).filter((x)=>{return x.toLowerCase().includes(sLow)}) 
     // if(filtered.length === 0){
         // return ["No Match"];
     // }else{

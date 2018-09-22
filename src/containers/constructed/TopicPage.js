@@ -44,7 +44,7 @@ class TopicPage extends Component {
             <title> {this.props.topic.name+" with "+"Epsilon Stream"} </title>
           </Helmet>
           <EpsilonStreamPage title="Topic" hassearch={true}>
-              {this.props.appLoaded ? <SearchResults searchItem={this.props.topic}/> : "not"}
+              {this.props.appLoaded ? <SearchResults searchItem={this.props.topic}/> : ""}
           </EpsilonStreamPage>
       </div>
     );
