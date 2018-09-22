@@ -15,8 +15,8 @@ function createVideoProgressDict(videoProgressDict, videoId, seconds) {
 }
 
 function nextCounter(counter){
-    // console.log("counter " + counter)
-    return counter === 100 ? 0 : counter + 1
+    console.log("counter " + counter)
+    return counter >= 4 ? 0 : counter + 1
 }
 
 const user = (state = {}, actions) => {
@@ -32,7 +32,7 @@ const user = (state = {}, actions) => {
                 autoCompleteList: [],
                 videoProgressDict: {},
                 isAndroid: "Android" in window,
-                betaPopUpCounter: 50,
+                betaPopUpCounter: 0,
                 pageTitle: 'Epsilon Stream'
             }
         case "USER_HOME_ACTION": //QQQQ not using it now

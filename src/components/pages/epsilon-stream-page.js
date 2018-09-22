@@ -190,7 +190,7 @@ class EpsilonStreamPageX extends Component {
                     </Row>  
                 </Container>   
                 </div>  
-                {this.props.betaPopUpCounter === 0 ?
+                {this.props.betaPopUpCounter < 2 && this.props.loadedProp ?
                     <Modal isOpen={this.state.modal} toggle={this.modalToggle}>
                         <ModalHeader toggle={this.modalToggle}>Epsilon Stream Web - Beta</ModalHeader>
                         <ModalBody>
