@@ -63,8 +63,11 @@ class SearchBar extends React.Component{
       appearingSearchString: event.target.value,
       typedSearchString: event.target.value,
       userIsTyping: true,
-    });      
-  }
+    }); 
+    ourStore.dispatch({type: "UPDATE_SEARCH_STRING",payload: this.state.typedSearchString})
+    // ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
+    // ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
+}
 
     handleKeyPress(event){
       console.log(event)
@@ -126,7 +129,7 @@ class SearchBar extends React.Component{
                     id="inputField"
                     name="search" 
                     value={this.state.appearingSearchString}
-                    placeholder="Search Mathematics (still disabled)"
+                    placeholder="Search Mathematics"
                     onChange={this.handleChange}
                     onKeyPress={this.handleKeyPress}
                     autoComplete = "off" />
