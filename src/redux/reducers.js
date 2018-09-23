@@ -76,6 +76,7 @@ const user = (state = {}, actions) => {
             return{
                 ...state,
                 currentHashTag: actions.payload.hashTagString,
+                autoCompleteList: [],
             }
             // let hashTag = ''
             // if(jQuery.isEmptyObject(actions.payload)){

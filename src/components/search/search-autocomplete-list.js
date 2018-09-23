@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 //import { Button} from 'reactstrap';
-// import updateSearchAction from '../../actions/update-search-action.js'
+import updateSearchAction from '../../redux/actions/update-search-action'
+import { withRouter } from 'react-router-dom'
 
 class SearchAutoCompleteListX extends Component {
   render(){
@@ -11,7 +12,7 @@ class SearchAutoCompleteListX extends Component {
               <div className="AutoCompleteElement">
                 {this.props.autoCompleteList.map((item,i) => <li key={i}>
                   <button className="AutoCompleteButton" 
-                          onClick={()=>{console.log(item)/*updateSearchAction(item)*/}}
+                          onClick={()=>{updateSearchAction(item,this.props.history)}}
                         >
                         {item}
                     </button></li>)
@@ -24,12 +25,10 @@ class SearchAutoCompleteListX extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("here...")
-  console.log(state.user)
     return {
       autoCompleteList: state.user.autoCompleteList
     };
   };
 
-const SearchAutoCompleteList = connect(mapStateToProps)(SearchAutoCompleteListX);
+const SearchAutoCompleteList = withRouter(connect(mapStateToProps)(SearchAutoCompleteListX));
 export {SearchAutoCompleteList}
