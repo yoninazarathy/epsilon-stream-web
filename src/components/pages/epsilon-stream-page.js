@@ -178,7 +178,7 @@ class EpsilonStreamPageX extends Component {
                                         <p> Welcome to Epsilon Stream Beta! </p>
                                         <TempButton/>
                                         { this.props.dbLoadingInProgress ? 
-                                            {/*<RingLoader/>*/} : ''}
+                                            <p> Loading... </p> : ''}
                                         </div>
                                 </center>
                                 :
