@@ -5,7 +5,7 @@ import axios from 'axios'
 export default function loadDbAction(){
     var time = (new Date()).getTime()
     var lastTime = ourStore.getState().database.lastDBUpdateTime
-    if(time - lastTime > 1000*10){ 
+    if(time - lastTime > 1000*30){//30 seconds delay 
         ourStore.dispatch({type: "LOAD_DB_START",payload: {}})
         axios.get('https://db-cdn.oneonepsilon.net/database.json').then((res)=>{
             ourStore.dispatch({type: "LOAD_DB_COMPLETE",payload: res.data})

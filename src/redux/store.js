@@ -78,11 +78,13 @@ export const ourStore = createStore(
         currentURLforSharing: "https://epsilonstream.com",
       }
     },
-    //compose(
-    middleware
+    compose(
+    middleware,
     //,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    // ),
+    autoRehydrate()),
 )
+
+persistStore(ourStore)
 
 export function isAndroid() {
   return ourStore.getState().user.isAndroid;
