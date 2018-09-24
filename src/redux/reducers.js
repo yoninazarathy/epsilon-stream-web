@@ -156,13 +156,11 @@ const database = (state = {records: []}, actions) => {
                 dbLoadingInProgress: true
             }
         case "LOAD_DB_COMPLETE":
-            // var db = loadDb()
-            console.log("here")
-            console.log(actions.payload)
             return{
                 ...state,
                 dbIsReady: true,
                 dbLoadingInProgress: false,
+                lastDBUpdateTime: (new Date()).getTime(),
                 featuredURLs: actions.payload.featuredURLs,
                 mathObjectLinks: actions.payload.mathObjectLinks,
                 mathObjects: actions.payload.mathObjects,

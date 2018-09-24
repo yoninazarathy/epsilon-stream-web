@@ -19,6 +19,10 @@ import {SearchBar} from '../search-bar.js'
 import SharePanel from '../share-panel'
 import loadDbAction from '../../redux/actions/reload-db-action'
 
+function onLoadFunction(){
+    loadDbAction()
+}
+
 class ShareButton extends Component {
     constructor(props) {
         super(props);
@@ -58,15 +62,6 @@ const SettingsButton = props => ( //withRouter(({history}) => (
         onClick={() => {history.push('/settings')}}>
                                     <p className = "text-white">
                                         Settings
-                                    </p>
-    </Button>
-)//)
-
-const TempButton = props => ( //withRouter(({history}) => (
-    <Button color="danger" className="ml-sm-2 mr-sm-2"
-        onClick={() => {loadDbAction()}}>
-                                    <p className = "text-white">
-                                        Load DB for First Time
                                     </p>
     </Button>
 )//)
@@ -132,7 +127,7 @@ class EpsilonStreamPageX extends Component {
   
     render() {
         return (
-            <div>{this.props.hideNav !== true ? 
+            <div onLoad = {onLoadFunction}>{this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
                     <NavbarBrand href="/home"> 
                         <span>
@@ -175,8 +170,6 @@ class EpsilonStreamPageX extends Component {
                                  ?
                                 <center>
                                     <div>
-                                        <p> Welcome to Epsilon Stream Beta! </p>
-                                        <TempButton/>
                                         { this.props.dbLoadingInProgress ? 
                                             <p> Loading... </p> : ''}
                                         </div>
@@ -184,7 +177,7 @@ class EpsilonStreamPageX extends Component {
                                 :
                                 <div>
                                     <SearchBar startQuery={this.props.parsedQuery}/>
-                                    {this.props.appLoaded &&
+                                    {
                                          this.props.autoCompleteList.length > 0
                                           ? 
                                         <SearchAutoCompleteList/>
@@ -196,7 +189,7 @@ class EpsilonStreamPageX extends Component {
                     </Row>  
                 </Container>   
                 </div>  
-                {this.props.appLoaded && this.props.betaPopUpCounter < 2  ?
+                {false && this.props.betaPopUpCounter < 2  ?
                     <Modal isOpen={this.state.modal} toggle={this.modalToggle}>
                         <ModalHeader toggle={this.modalToggle}>Epsilon Stream Web - Beta</ModalHeader>
                         <ModalBody>
@@ -243,7 +236,6 @@ const mapStateToProps = (state) => {
         headerString: state.user.pageTitle === undefined ? 'Epsilon Stream' : ' ' + state.user.pageTitle,
         currentURLforSharing: state.user.currentURLforSharing,
         betaPopUpCounter: state.user.betaPopUpCounter,
-        appLoaded: state.user.appLoaded,
         autoCompleteList: state.user.autoCompleteList,
         dbIsReady: state.database.dbIsReady,
         dbLoadingInProgress: state.database.dbLoadingInProgress

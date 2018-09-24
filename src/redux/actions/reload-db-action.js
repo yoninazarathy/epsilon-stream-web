@@ -3,10 +3,14 @@ import axios from 'axios'
 //QQQQ maybe this file shouldn't be an "action"
 
 export default function loadDbAction(){
-    ourStore.dispatch({type: "LOAD_DB_START",payload: {}})
-    axios.get('https://db-cdn.oneonepsilon.net/database.json').then((res)=>{
-        ourStore.dispatch({type: "LOAD_DB_COMPLETE",payload: res.data})
-    })
+    var time = (new Date()).getTime()
+    var lastTime = ourStore.getState().database.lastDBUpdateTime
+    if(time - lastTime > 1000*10){ 
+        ourStore.dispatch({type: "LOAD_DB_START",payload: {}})
+        axios.get('https://db-cdn.oneonepsilon.net/database.json').then((res)=>{
+            ourStore.dispatch({type: "LOAD_DB_COMPLETE",payload: res.data})
+        })
+    }
 }
 
 export function makeHashTagDict(){

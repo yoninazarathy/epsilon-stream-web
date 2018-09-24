@@ -12,6 +12,11 @@ const rehashMiddleWare = store => next => action => {
     if(action.type === 'LOAD_DB_COMPLETE'){
         next(action)
         store.dispatch({type: "REHASH_SEARCH_STRINGS",payload:{}})
+    }else if(action.type === 'REHASH_SEARCH_STRINGS'){
+         next(action)
+         ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#'+currentTopic}})
+         ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
+         ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
     }else{
         next(action);
     }
@@ -48,6 +53,7 @@ export const ourStore = createStore(
     { database:{
         dbIsReady: false,
         dbLoadingInProgress: false,
+        lastDBUpdateTime: 0,
         featuredURLs: [],
         mathObjectLinks: [],
         mathObjects: [],
@@ -70,7 +76,6 @@ export const ourStore = createStore(
         betaPopUpCounter: 0,
         pageTitle: "Epsilon Stream",
         currentURLforSharing: "https://epsilonstream.com",
-        appLoaded: false
       }
     },
     //compose(
@@ -81,4 +86,11 @@ export const ourStore = createStore(
 
 export function isAndroid() {
   return ourStore.getState().user.isAndroid;
+}
+
+//QQQQ Global
+var currentTopic = ""
+
+export function setCurrentTopic(topic){
+  currentTopic = topic
 }

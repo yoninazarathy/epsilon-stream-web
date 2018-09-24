@@ -13,26 +13,13 @@ import { ourStore } from './redux/store'
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.loadAction = this.loadAction.bind(this)
-    this.state = {
-      loaded: false,
-    };
-  }
-
-  loadAction(){
-    if(!this.state.loaded){
-      ourStore.dispatch({type: "LOAD",payload: {}})
-    }
-    this.setState({
-      loaded: true
-    });
   }
 
   render() {
     return(
       <Provider store={ourStore}>
         <Router>
-        <div onLoad = {this.loadAction}>
+        <div>
           {/*isAndroid() ? '' :<SmartBanner title={'Epsilon Stream'}  />*/}
           <div className="content">
             <Switch>

@@ -8,29 +8,11 @@ import {Helmet} from 'react-helmet'
 class Search extends Component {
     constructor(props) {
         super(props);
-        this.loadAction = this.loadAction.bind(this)
-        this.state = {
-          loaded: false,
-        };
       }
     
-      loadAction(){
-        if(!this.state.loaded){
-            ourStore.dispatch({type: "UPDATE_SEARCH_STRING",payload: this.props.match.params.query })
-            ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
-            ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
-        }
-        this.setState({
-          loaded: true
-        });
-      }
-    
-
-
-
     render() {
         return (
-            <div onLoad = {this.loadAction}>
+            <div>
                 <Helmet>
                 <meta charSet="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -58,7 +40,6 @@ class Search extends Component {
 
 const mapStateToProps = (state) => {
     return {
-      appLoaded: state.user.appLoaded,
     };
   };
   

@@ -5,31 +5,35 @@ import {withRouteData } from 'react-static'
 import {ourStore} from '../../redux/store'
 import {Helmet} from 'react-helmet'
 import {connect} from 'react-redux'
+import {setCurrentTopic} from '../../redux/store'
 
 class TopicPage extends Component {
   constructor(props) {
     super(props);
-    this.loadAction = this.loadAction.bind(this)
+    //this.loadAction = this.loadAction.bind(this)
     this.state = {
       loaded: false,
     };
+    setCurrentTopic(this.props.topic.name) //set global current topic
   }
 
-  loadAction(){
-    //console.log("topic load action")
-    if(!this.state.loaded){
-      ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#'+this.props.topic.name}})
-      ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
-      ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
-    }
-    this.setState({
-      loaded: true
-    });
-  }
+  // loadAction(){
+  //   //console.log("topic load action")
+  //   if(!this.state.loaded){
+  //     ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#'+this.props.topic.name}})
+  //     ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
+  //     ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
+  //   }
+  //   this.setState({
+  //     loaded: true
+  //   });
+  //   console.log("here baby")
+  //   console.log(currentTopic)
+  // }
 
   render() {
-    return (
-      <div onLoad = {this.loadAction}>
+    return ( //QQQQ onLoad = {this.loadAction}>
+      <div> 
           <Helmet>
             <meta charSet="UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -44,7 +48,7 @@ class TopicPage extends Component {
             <title> {this.props.topic.name+" with "+"Epsilon Stream"} </title>
           </Helmet>
           <EpsilonStreamPage title="Topic" hassearch={true}>
-              {this.props.appLoaded ? <SearchResults searchItem={this.props.topic}/> : ""}
+              {this.props.loaded ? <SearchResults searchItem={this.props.topic}/> : ""}
           </EpsilonStreamPage>
       </div>
     );
@@ -53,7 +57,7 @@ class TopicPage extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    appLoaded: state.user.appLoaded,
+    loaded: state.database.dbIsReady,
   };
 };
 
