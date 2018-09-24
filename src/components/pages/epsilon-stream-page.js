@@ -10,7 +10,7 @@ import Icon from '../../assets/icon.png'
 //import LeftButtonImage from '../../assets/Left_Passive.png'
 //import MediaQuery from 'react-responsive';
 // import { withRouter } from 'react-router-dom'
- import { RingLoader } from 'react-spinners';
+ //QQQQ import { RingLoader } from 'react-spinners';
 // import {connect} from 'react-redux'
 // import {store} from '../../store.js'
 // import {push} from 'react-router-redux'
@@ -178,7 +178,7 @@ class EpsilonStreamPageX extends Component {
                                         <p> Welcome to Epsilon Stream Beta! </p>
                                         <TempButton/>
                                         { this.props.dbLoadingInProgress ? 
-                                            <RingLoader/> : ''}
+                                            {/*<RingLoader/>*/} : ''}
                                         </div>
                                 </center>
                                 :
