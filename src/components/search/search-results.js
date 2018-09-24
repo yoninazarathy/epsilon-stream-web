@@ -37,7 +37,11 @@ class SearchResultsX extends Component {
       } else if (type === "Video") {
         history.push("/video/" + youtubeIdToEpsilonID(name))
       } else if (type === "MathObjectLinks") {
-        history.push("/topic/" + ourStore.getState().database.hashTagDict[name].substring(1).toLowerCase())
+        var hashTag = ourStore.getState().database.hashTagDict[name]
+        ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString:hashTag}})
+        ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
+        ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})   
+        history.push("/topic/" + hashTag.substring(1).toLowerCase())
       }
     }
   }
