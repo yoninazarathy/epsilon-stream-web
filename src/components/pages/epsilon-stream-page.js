@@ -3,7 +3,6 @@ import { NavbarToggler,NavItem,Row,Col,Container,InputGroup,InputGroupAddon, But
 import { Tooltip, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import {connect} from 'react-redux'
 import {SearchAutoCompleteList} from '../search/search-autocomplete-list'
-
 //import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
 import Icon from '../../assets/icon.png'
 //import SettingsImage from '../../assets/3dotsMenu.png'
@@ -11,13 +10,14 @@ import Icon from '../../assets/icon.png'
 //import LeftButtonImage from '../../assets/Left_Passive.png'
 //import MediaQuery from 'react-responsive';
 // import { withRouter } from 'react-router-dom'
-// import { RingLoader } from 'react-spinners';
+ import { RingLoader } from 'react-spinners';
 // import {connect} from 'react-redux'
 // import {store} from '../../store.js'
 // import {push} from 'react-router-redux'
 import {Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import {SearchBar} from '../search-bar.js'
 import SharePanel from '../share-panel'
+import loadDbAction from '../../redux/actions/reload-db-action'
 
 class ShareButton extends Component {
     constructor(props) {
@@ -62,11 +62,11 @@ const SettingsButton = props => ( //withRouter(({history}) => (
     </Button>
 )//)
 
-const SearchButton = props => ( //withRouter(({history}) => (
-    <Button outline color="danger" className="ml-sm-2 mr-sm-2"
-        onClick={() => {history.push('/search')}}>
+const TempButton = props => ( //withRouter(({history}) => (
+    <Button color="danger" className="ml-sm-2 mr-sm-2"
+        onClick={() => {loadDbAction()}}>
                                     <p className = "text-white">
-                                        Search
+                                        Load DB for First Time
                                     </p>
     </Button>
 )//)
@@ -152,9 +152,6 @@ class EpsilonStreamPageX extends Component {
                             <NavItem>
                                 <ShareButton shareURL = {this.props.currentURLforSharing}/>
                             </NavItem>
-                            {/*<NavItem>
-                                <SearchButton/>
-                            </NavItem>*/}
                             <NavItem>
                                 <AboutButton/>
                             </NavItem>
@@ -174,11 +171,14 @@ class EpsilonStreamPageX extends Component {
                                 lg={{ size: 8, order: 0, offset: 2}}
                                 xl={{ size: 8, order: 0, offset: 2}}
                                 className="nopadding-lg">
-                            {false/*this.props.loadingInProgress*/ ?
+                            { !this.props.dbIsReady
+                                 ?
                                 <center>
-                                    <div className = "LoadContent">
-                                        <p> LOADING CONTENT </p>
-                                        <RingLoader/>
+                                    <div>
+                                        <p> Welcome to Epsilon Stream Beta! </p>
+                                        <TempButton/>
+                                        { this.props.dbLoadingInProgress ? 
+                                            <RingLoader/> : ''}
                                         </div>
                                 </center>
                                 :
@@ -240,11 +240,13 @@ const mapStateToProps = (state) => {
                             state.database.videosInProgress                 ||
                             state.database.snippetsFetchInProgress          ||
                             state.database.featuredURLsInProgress,*/
-        headerString: ' ' + state.user.pageTitle,
+        headerString: state.user.pageTitle === undefined ? 'Epsilon Stream' : ' ' + state.user.pageTitle,
         currentURLforSharing: state.user.currentURLforSharing,
         betaPopUpCounter: state.user.betaPopUpCounter,
         appLoaded: state.user.appLoaded,
-        autoCompleteList: state.user.autoCompleteList
+        autoCompleteList: state.user.autoCompleteList,
+        dbIsReady: state.database.dbIsReady,
+        dbLoadingInProgress: state.database.dbLoadingInProgress
     };
 };
 

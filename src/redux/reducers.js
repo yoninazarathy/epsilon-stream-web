@@ -3,8 +3,8 @@ import {autoCompleteForString,cleanSearchString,displayResultsOfSearchResults,ha
 import startCloudPullAction from './actions/start-cloud-pull-action.js'
 import {localRecord, recordsOfHashTag, snippetsOfHashTag} from './managers/records-manager.js';
 import { routerReducer } from 'react-router-redux'
-import makeHashTagDict,{makeLowCaseHashTagDict,makeSnippetDict,makeSnippetImageDict,makeMathObjectTitleDict} from './actions/rehash-search-strings-action.js'
-import {ourStore} from './store.js'
+import {loadDb,makeHashTagDict,makeLowCaseHashTagDict,makeMathObjectTitleDict} from './actions/reload-db-action'
+import {ourStore} from './store'
 import jQuery from 'jquery'
 
 function createVideoProgressDict(videoProgressDict, videoId, seconds) {
@@ -143,19 +143,32 @@ const user = (state = {}, actions) => {
 
 const database = (state = {records: []}, actions) => {
     switch (actions.type) {
-        // case "REHASH_SEARCH_STRINGS":
-        //     return{
-        //         ...state,
-        //         hashTagDict: makeHashTagDict(),
-        //         lowCaseHashTagDict: makeLowCaseHashTagDict(),
-        //         mathObjectTitleDict: makeMathObjectTitleDict()
-        //     }
-        // case "REHASH_SNIPPET_STRINGS":
-        //     return{
-        //         ...state,
-        //         snippetDict: makeSnippetDict(),
-        //         snippetImageDict: makeSnippetImageDict()
-        //     }            
+        case "REHASH_SEARCH_STRINGS":
+            return{
+                ...state,
+                hashTagDict: makeHashTagDict(),
+                lowCaseHashTagDict: makeLowCaseHashTagDict(),
+                mathObjectTitleDict: makeMathObjectTitleDict()
+            }
+        case "LOAD_DB_START":
+            return{
+                ...state,
+                dbLoadingInProgress: true
+            }
+        case "LOAD_DB_COMPLETE":
+            // var db = loadDb()
+            console.log("here")
+            console.log(actions.payload)
+            return{
+                ...state,
+                dbIsReady: true,
+                dbLoadingInProgress: false,
+                featuredURLs: actions.payload.featuredURLs,
+                mathObjectLinks: actions.payload.mathObjectLinks,
+                mathObjects: actions.payload.mathObjects,
+                snippets: actions.payload.snippets,
+                videos: actions.payload.videos,
+                }
         default:            
             return state;
     }

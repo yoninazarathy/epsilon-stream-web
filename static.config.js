@@ -12,7 +12,9 @@ export default {
     title: 'Epsilon Stream',
   }),
   getRoutes: async () => {
-    const { data: db} = await axios.get('https://es-app.com/repo/database.json')
+    const { data: db} = await axios.get('https://db-cdn.oneonepsilon.net/database.json')
+                //    'https://es-app.com/repo/database.json') -- old...
+
     var snippets = db["snippets"]
     var featuredURLS = db["featuredURLs"]
     var videos = db["videos"]

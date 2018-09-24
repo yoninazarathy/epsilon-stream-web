@@ -1,10 +1,17 @@
-import {store} from '../store.js'
-
+import {ourStore} from '../store.js'
+import axios from 'axios'
 //QQQQ maybe this file shouldn't be an "action"
 
-export default function makeHashTagDict(){
-    var tits = store.getState().database.mathObjects.map(x=>x.associatedTitles)
-    var hashes = store.getState().database.mathObjects.map(x=>x.hashTag)
+export default function loadDbAction(){
+    ourStore.dispatch({type: "LOAD_DB_START",payload: {}})
+    axios.get('https://db-cdn.oneonepsilon.net/database.json').then((res)=>{
+        ourStore.dispatch({type: "LOAD_DB_COMPLETE",payload: res.data})
+    })
+}
+
+export function makeHashTagDict(){
+    var tits = ourStore.getState().database.mathObjects.map(x=>x.associatedTitles)
+    var hashes = ourStore.getState().database.mathObjects.map(x=>x.hashTag)
 
     var dict = {}
     
@@ -23,8 +30,8 @@ export default function makeHashTagDict(){
 
 //QQQQ this function is just like the one above only with .toLowerCase() - refactor into a single function
 export function makeLowCaseHashTagDict(){
-    var tits = store.getState().database.mathObjects.map(x=>x.associatedTitles)
-    var hashes = store.getState().database.mathObjects.map(x=>x.hashTag)
+    var tits = ourStore.getState().database.mathObjects.map(x=>x.associatedTitles)
+    var hashes = ourStore.getState().database.mathObjects.map(x=>x.hashTag)
 
     var dict = {}
     
@@ -42,8 +49,8 @@ export function makeLowCaseHashTagDict(){
 }
 
 export function makeMathObjectTitleDict(){
-    var tits = store.getState().database.mathObjects.map(x=>x.associatedTitles)
-    var hashes = store.getState().database.mathObjects.map(x=>x.hashTag)
+    var tits = ourStore.getState().database.mathObjects.map(x=>x.associatedTitles)
+    var hashes = ourStore.getState().database.mathObjects.map(x=>x.hashTag)
 
     var dict = {}
 
@@ -54,7 +61,7 @@ export function makeMathObjectTitleDict(){
 }
 
 export function makeSnippetDict(){
-    let snippets = store.getState().database.snippets;
+    let snippets = ourStore.getState().database.snippets;
     let dict = {}
     for(var i=0; i<snippets.length;i++){
         dict[snippets[i].hashTags] = snippets[i].body;
@@ -63,7 +70,7 @@ export function makeSnippetDict(){
 }
 
 export function makeSnippetImageDict(){
-    let snippets = store.getState().database.snippets;
+    let snippets = ourStore.getState().database.snippets;
     let dict = {}
     for(var i=0; i<snippets.length;i++){
         dict[snippets[i].hashTags] = snippets[i].imageURL;
