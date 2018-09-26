@@ -84,7 +84,7 @@ export const ourStore = createStore(
     autoRehydrate()),
 )
 
-persistStore(ourStore)
+//QQQQ persistStore(ourStore)
 
 export function isAndroid() {
   return ourStore.getState().user.isAndroid;

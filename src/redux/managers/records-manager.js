@@ -27,8 +27,8 @@ export function localRecord(fromRecord,type){
                 ourTitleDetail: fi.ourTitleDetail.value,
                 searchTitle: fi.searchTitle.value,
                 avoided: ('avoidPlatforms' in fi) ? fi.avoidPlatforms.value : "",
-                displaySearchPriority: typeof(fi.displaySearchPriority) !== 'undefined' ?
-                                                    fi.displaySearchPriority.value  : -100000,
+                displaySearchPriority: 50000+ (typeof(fi.displaySearchPriority) !== 'undefined' ?
+                                                    fi.displaySearchPriority.value  : -100000),
                 hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
                                                     fi.hashTagPriorities.value  : "",             } 
         case "Video":
@@ -40,8 +40,8 @@ export function localRecord(fromRecord,type){
                 ourTitle: fi.ourTitle.value,
                 provider: fi.channelKey.value, //name change
                 youtubeVideoId: fi.youtubeVideoId.value,
-                displaySearchPriority: typeof(fi.displaySearchPriority) !== 'undefined' ?
-                                                    fi.displaySearchPriority.value  : -100000,
+                displaySearchPriority: -20000+ (typeof(fi.displaySearchPriority) !== 'undefined' ?
+                                                    fi.displaySearchPriority.value  : -100000),
                 hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
                                                     fi.hashTagPriorities.value  : "", 
                                                 
@@ -64,8 +64,8 @@ export function localRecord(fromRecord,type){
                 urlOfItem: fi.urlOfItem.value,
                 featureType: featureType,
                 hashTags: fi.hashTags.value.split(','),   
-                displaySearchPriority: typeof(fi.displaySearchPriority) !== 'undefined' ?
-                                                    fi.displaySearchPriority.value  : -100000,
+                displaySearchPriority: 10000+ (typeof(fi.displaySearchPriority) !== 'undefined' ?
+                                                    fi.displaySearchPriority.value  : -100000),
                 hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
                                                     fi.hashTagPriorities.value  : "",          
             } 
@@ -109,7 +109,7 @@ function videosOfHashTag(hashTag){
 function featuredURLsOfHashTag(hashTag){
     let furls = ourStore.getState().database.featuredURLs
     return furls.filter( (el) => {
-          return el.hashTags.includes(hashTag)
+          return el.hashTags.includes(hashTag) && el.featureType != "Game"
          });
 }
 
