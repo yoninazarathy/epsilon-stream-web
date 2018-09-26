@@ -1,25 +1,6 @@
 import {ourStore} from '../store.js'
 import $ from 'jquery'
 
-export function recordToShortString(record){
-    switch(record.type){
-        case "MathObject":
-            return record.hashTag + " ---- " + record.associatedTitles        
-        case "MathObjectLinks":
-            return record.hashTags + "---->" + record.searchTitle
-        case "Video":
-            return record.ourTitle +
-            " ( " + record.provider + " ) " + 
-            "---->" + record.youtubeVideoId
-        case "FeaturedURL":
-            return  record.ourTitle + "   ( " + 
-                    record.provider + " ) -- " +
-                    record.featureType
-        default:
-            return "ERROR"
-    }
-}
-
 function x(y) {
     //console.log(y)
     return y.split("~").map((g) => g.split(",").map((s) => s.substr(1).slice(0, -1)))
