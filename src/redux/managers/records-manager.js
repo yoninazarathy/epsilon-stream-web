@@ -47,7 +47,7 @@ export function localRecord(fromRecord,type){
                 searchTitle: fi.searchTitle.value,
                 avoided: ('avoidPlatforms' in fi) ? fi.avoidPlatforms.value : "",
                 displaySearchPriority: typeof(fi.displaySearchPriority) !== 'undefined' ?
-                                                    fi.displaySearchPriority.value  : -1000,
+                                                    fi.displaySearchPriority.value  : -100000,
                 hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
                                                     fi.hashTagPriorities.value  : "",             } 
         case "Video":
@@ -60,7 +60,7 @@ export function localRecord(fromRecord,type){
                 provider: fi.channelKey.value, //name change
                 youtubeVideoId: fi.youtubeVideoId.value,
                 displaySearchPriority: typeof(fi.displaySearchPriority) !== 'undefined' ?
-                                                    fi.displaySearchPriority.value  : -1000,
+                                                    fi.displaySearchPriority.value  : -100000,
                 hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
                                                     fi.hashTagPriorities.value  : "", 
                                                 
@@ -84,7 +84,7 @@ export function localRecord(fromRecord,type){
                 featureType: featureType,
                 hashTags: fi.hashTags.value.split(','),   
                 displaySearchPriority: typeof(fi.displaySearchPriority) !== 'undefined' ?
-                                                    fi.displaySearchPriority.value  : -1000,
+                                                    fi.displaySearchPriority.value  : -100000,
                 hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
                                                     fi.hashTagPriorities.value  : "",          
             } 

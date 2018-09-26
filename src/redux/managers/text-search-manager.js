@@ -69,8 +69,7 @@ export function displayResultsOfSearchResults(searchResults,currentHashTag) {
             }
         ]
     }
-    retVal.sort((a,b) => {return a.displayOrder > b.displayOrder })
-    return retVal
+    return retVal.sort((a,b) => {return Math.sign(a.displayOrder - b.displayOrder) })
 }
 
 export function hashTagOfString(searchString) {
@@ -96,16 +95,17 @@ export function autoCompleteForString(s) {
 
 
 function calculatePriority(displaySearchPriority,hashTagPriorities,currentHashTag){
-    //console.log(displaySearchPriority + "    " + hashTagPriorities)
-    //console.log(currentHashTag)
-    //console.log(hashTagPriorities)
+    // console.log("priority: "+ displaySearchPriority + "    " + hashTagPriorities)
+    // console.log(currentHashTag)
     let index = hashTagPriorities.indexOf(currentHashTag)
     if(index === -1){
+        // console.log("resolving priority as: " + displaySearchPriority)
         return displaySearchPriority
     }else{
         let afterStr = hashTagPriorities.substr(index + currentHashTag.length + 1) //The +1 is to remove the ":"
         //console.log("AFTER: " + afterStr)
         let pri = parseFloat(afterStr)
+        // console.log("resolving priority as: " + pri)
         return pri
     }
 }
