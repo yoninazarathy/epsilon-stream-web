@@ -28,7 +28,7 @@ export function localRecord(fromRecord,type){
                 searchTitle: fi.searchTitle.value,
                 avoided: ('avoidPlatforms' in fi) ? fi.avoidPlatforms.value : "",
                 displaySearchPriority: 50000+ (typeof(fi.displaySearchPriority) !== 'undefined' ?
-                                                    fi.displaySearchPriority.value  : -100000),
+                                                    fi.displaySearchPriority.value  : 0),
                 hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
                                                     fi.hashTagPriorities.value  : "",             } 
         case "Video":
@@ -41,7 +41,7 @@ export function localRecord(fromRecord,type){
                 provider: fi.channelKey.value, //name change
                 youtubeVideoId: fi.youtubeVideoId.value,
                 displaySearchPriority: -20000+ (typeof(fi.displaySearchPriority) !== 'undefined' ?
-                                                    fi.displaySearchPriority.value  : -100000),
+                                                    fi.displaySearchPriority.value  : 0),
                 hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
                                                     fi.hashTagPriorities.value  : "", 
                                                 
@@ -65,7 +65,7 @@ export function localRecord(fromRecord,type){
                 featureType: featureType,
                 hashTags: fi.hashTags.value.split(','),   
                 displaySearchPriority: 10000+ (typeof(fi.displaySearchPriority) !== 'undefined' ?
-                                                    fi.displaySearchPriority.value  : -100000),
+                                                    fi.displaySearchPriority.value  : 0),
                 hashTagPriorities: typeof(fi.hashTagPriorities) !== 'undefined' ?
                                                     fi.hashTagPriorities.value  : "",          
             } 
@@ -87,7 +87,8 @@ function normalizePris(arr,startPri){
     let range = Math.max(...arr.map(x => x.displaySearchPriority)) - minP
 
     arr.forEach(function(part, index, theArray) {
-        theArray[index].displaySearchPriority = startPri + (part.displaySearchPriority - minP)/range;
+        theArray[index].displaySearchPriority = startPri + (
+                    range !== 0.0 ? (part.displaySearchPriority - minP)/range : 0.0);
       });
 }
 
