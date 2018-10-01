@@ -82,6 +82,15 @@ export function localRecord(fromRecord,type){
     }
 }
 
+function normalizePris(arr,startPri){
+    let minP = Math.min(...arr.map(x => x.displaySearchPriority))
+    let range = Math.max(...arr.map(x => x.displaySearchPriority)) - minP
+
+    arr.forEach(function(part, index, theArray) {
+        theArray[index].displaySearchPriority = startPri + (part.displaySearchPriority - minP)/range;
+      });
+}
+
 export function recordsOfHashTag(hashTag){
     if(hashTag === "#noTag"){
         return {videos: [],
@@ -96,6 +105,31 @@ export function recordsOfHashTag(hashTag){
         mathObjectLinks: mathObjectLinksOfHashTag(hashTag),
         snippets: snippetsOfHashTag(hashTag)
     }
+    
+    if(matches.snippets.length > 0){
+        normalizePris(matches.snippets,0)
+    }
+
+    if(matches.videos.length > 0){
+        // console.log("Priorities before:")
+        // console.log(matches.videos.map(x=>x.displaySearchPriority))
+        normalizePris(matches.videos,10)
+        // console.log("Priorities after:")
+        // console.log(matches.videos.map(x=>x.displaySearchPriority))
+    }
+
+    if(matches.featuredURLs.length > 0){
+        // console.log("Priorities before:")
+        // console.log(matches.featuredURLs.map(x=>x.displaySearchPriority))
+        normalizePris(matches.featuredURLs,20)
+        // console.log("Priorities after:")
+        // console.log(matches.featuredURLs.map(x=>x.displaySearchPriority))
+    }
+
+    if(matches.mathObjectLinks.length > 0){
+        normalizePris(matches.mathObjectLinks,30)
+    }
+
     return matches
 }
 
