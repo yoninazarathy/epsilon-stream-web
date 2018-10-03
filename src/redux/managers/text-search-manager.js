@@ -33,9 +33,11 @@ export function displayResultsOfSearchResults(searchResults,currentHashTag) {
             }
         }),
         ...searchResults.featuredURLs.map((sr) => {
+            console.log("hererereeee")
+            console.log(sr.imageURL)
             return {
                 type: sr.type,
-                image: sr.imageURL,
+                image: sr.imageURL === "" || sr.imageURL === "znone" ? 'https://es-app.com/assets/expe32.png' : sr.imageURL,
                 title: sr.ourTitle,
                 subtitle: sr.provider,
                 link: sr.urlOfItem,
