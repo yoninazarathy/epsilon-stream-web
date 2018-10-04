@@ -3,6 +3,7 @@ import axios from 'axios'
 //QQQQ maybe this file shouldn't be an "action"
 
 export default function loadDbAction(){
+    console.log("loadDbAction")
     var time = (new Date()).getTime()
     var lastTime = ourStore.getState().database.lastDBUpdateTime
     if(time - lastTime > 1000*30){//30 seconds delay 
