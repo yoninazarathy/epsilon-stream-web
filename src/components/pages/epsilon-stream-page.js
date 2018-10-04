@@ -178,25 +178,21 @@ class EpsilonStreamPageX extends Component {
                                 lg={{ size: 8, order: 0, offset: 2}}
                                 xl={{ size: 8, order: 0, offset: 2}}
                                 className="nopadding-lg">
-                            { false /*!this.props.dbIsReady*/
-                                 ?
-                                <center>
+                            <div>
+                                {this.props.dbIsReady ?
                                     <div>
-                                        { this.props.dbLoadingInProgress ? 
-                                            <p> Loading... </p> : ''}
+                                        <SearchBar startQuery={this.props.parsedQuery}/>
+                                        <div>
+                                            {this.props.autoCompleteList.length > 0 ? 
+                                                <SearchAutoCompleteList/>
+                                                    : ''}
                                         </div>
-                                </center>
-                                :
-                                <div>
-                                    <SearchBar startQuery={this.props.parsedQuery}/>
-                                    {
-                                         this.props.autoCompleteList.length > 0
-                                          ? 
-                                        <SearchAutoCompleteList/>
-                                         : 
-                                        this.props.children}
-                                </div>
-                            }    
+                                    </div>
+                                 : ''}
+                            </div>
+                            <div>
+                                {this.props.children}
+                            </div>
                         </Col>
                     </Row>  
                 </Container>   
