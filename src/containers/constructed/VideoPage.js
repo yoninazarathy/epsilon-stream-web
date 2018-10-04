@@ -118,7 +118,7 @@ class WatchPage extends Component {
           <meta property="og:description" content={"Video "+"with "+"Epsilon Stream"} />
           <meta property="og:title" content={title + " on Epsilon Stream"} />
           <meta property="og:image" content={imageURL} />
-          <meta property="og:url" content="https://epsilonstream.com" />
+          {/*<meta property="og:url" content="https://epsilonstream.com" />*/}
           <meta name="twitter:card" content="summary_large_image" />
           <meta property="og:site_name" content={"Video "+" @ "+"Epsilon Stream"} />
           <meta name="twitter:image:alt" content="Watch, Play and Explore Mathematics." />
