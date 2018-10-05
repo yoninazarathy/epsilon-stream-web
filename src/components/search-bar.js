@@ -124,7 +124,7 @@ class SearchBar extends React.Component{
   render(){
     return(
       <InputGroup>
-        <Input  size="lg"
+        <Input  bsSize="lg"
                 type="text"
                 id="inputField"
                 name="search"
