@@ -133,7 +133,7 @@ class EpsilonStreamPageX extends Component {
             <div onLoad = {onLoadFunction}> 
             {this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
-                    <NavbarBrand onClick = {()=>{localStorage.clear();location.reload();
+                    <NavbarBrand className="navbarBrand" onClick = {()=>{localStorage.clear();location.reload();
                                                     console.log("Hit Clear and Reload")}}> 
                         <span>
                             <img    className="productButton mr-sm-2" 
@@ -171,17 +171,13 @@ class EpsilonStreamPageX extends Component {
                                 lg={{ size: 8, order: 0, offset: 2}}
                                 xl={{ size: 8, order: 0, offset: 2}}
                                 className="nopadding-lg">
-                            <div>
-                                {this.props.dbIsReady ?
-                                    <div>
-                                        <SearchBar startQuery={this.props.parsedQuery}/>
-                                        <div>
-                                            {this.props.autoCompleteList.length > 0 ? 
-                                                <SearchAutoCompleteList/>
-                                                    : ''}
-                                        </div>
-                                    </div>
-                                 : ''}
+                            <div className="searchBarWrapper">
+                            { this.props.dbIsReady ?
+                                    <React.Fragment>
+                                        <SearchBar className="searchBar" startQuery={this.props.parsedQuery}/>
+                                        {this.props.autoCompleteList.length > 0 ? <SearchAutoCompleteList /> : ''}
+                                    </React.Fragment>
+                            : ''}
                             </div>
                             <div>
                                 {this.props.needsDB && !this.props.dbIsReady ? 
