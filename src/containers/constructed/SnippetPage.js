@@ -19,7 +19,7 @@ export default withRouteData(({ snippet }) => (
       <meta name="twitter:site" content="@OneOnEpsilon" />
       <title> {"Video "+" with "+"Epsilon Stream"} </title>
     </Helmet>
-    <EpsilonStreamPage title="Snippet" hassearch={true}>
+    <EpsilonStreamPage title="Snippet" hassearch={true} needsDB={false}>
       <h2> {snippet.ourTitle}</h2>
       <br/>
       <Snippet rawMarkDown = {snippet.body}  imageName = {snippet.imageURL}/>

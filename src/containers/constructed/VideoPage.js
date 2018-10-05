@@ -125,7 +125,7 @@ class WatchPage extends Component {
           <meta name="twitter:site" content="@OneOnEpsilon" />
           <title> {"Video "+" with "+"Epsilon Stream"} </title>
         </Helmet>
-        <EpsilonStreamPage title="Watch" hassearch={true}>
+        <EpsilonStreamPage title="Watch" hassearch={true} needsDB={false}>
           <YouTube
           className="youtube-player"
           id="youtube-player"

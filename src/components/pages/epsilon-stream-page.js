@@ -57,15 +57,6 @@ class ShareButton extends Component {
     }
 }
 
-const LoadButton = props => ( //withRouter(({history}) => (
-    <Button outline color="danger" className="ml-sm-2 mr-sm-2"
-        onClick={() => {console.log("Yarden!!!!")}}>
-                                    <p className = "text-white">
-                                        
-                                    </p>
-    </Button>
-)//)
-
 const SettingsButton = props => ( //withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {history.push('/settings')}}>
@@ -154,9 +145,6 @@ class EpsilonStreamPageX extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <LoadButton/>
-                            </NavItem>
-                            <NavItem>
                                 <ShareButton shareURL = {this.props.currentURLforSharing}/>
                             </NavItem>
                             <NavItem>
@@ -191,7 +179,11 @@ class EpsilonStreamPageX extends Component {
                                  : ''}
                             </div>
                             <div>
-                                {this.props.children}
+                                {this.props.needsDB && !this.props.dbIsReady ? 
+                                    <center><p> Hold on as we reload...</p></center>
+                                    :
+                                    this.props.children
+                                }
                             </div>
                         </Col>
                     </Row>  

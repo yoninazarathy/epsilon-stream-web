@@ -47,7 +47,7 @@ class TopicPage extends Component {
             <meta name="twitter:site" content="@OneOnEpsilon" />
             <title> {this.props.topic.name+" with "+"Epsilon Stream"} </title>
           </Helmet>
-          <EpsilonStreamPage title="Topic" hassearch={true}>
+          <EpsilonStreamPage title="Topic" hassearch={true} needsDB={true}>
               {this.props.loaded ? <SearchResults searchItem={this.props.topic}/> : ""}
           </EpsilonStreamPage>
       </div>
