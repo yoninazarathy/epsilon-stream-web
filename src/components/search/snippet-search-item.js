@@ -22,6 +22,7 @@ class SnippetSearchItem extends React.Component{
       }
     
     render(){
+        console.log()
         return(
             <div>
             <SearchItem searchType='SNIPPET'
@@ -29,11 +30,11 @@ class SnippetSearchItem extends React.Component{
                       image={this.img}
                       title={this.props.title}
                       subtitle={this.props.subtitle}
-                      link={this.props.link}
+                      link={this.props.hashTag.substr(1)}
                       hasprogressbar={false}
                       noImage = {true}
-                      action={this.toggle}
-                      shareURL={"https://epsilonstream.com/snippet?mo="+encodeURIComponent(this.props.hashTag.substr(1))}>
+                      action={this.props.action}
+                      shareURL={"https://epsilonstream.com/snippet/"+encodeURIComponent(this.props.hashTag.substr(1))}>
             </SearchItem>
             <Modal isOpen={this.state.modal} toggle={this.toggle}>
               <ModalHeader toggle={this.toggle}> {this.props.title}</ModalHeader>

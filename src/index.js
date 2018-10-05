@@ -1,15 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+// Your top level component
+import App from './App'
+
 import 'bootstrap/dist/css/bootstrap.css';
-import {store} from './store.js'
-import {Provider} from 'react-redux'
 
+// Export your top level component as JSX (for static rendering)
+export default App
 
-ReactDOM.render(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    ,document.getElementById('root'));
-registerServiceWorker();
+// Render your app
+if (typeof document !== 'undefined') {
+  const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate || ReactDOM.render
+  const render = Comp => {
+    renderMethod(<Comp />, document.getElementById('root'))
+  }
+
+  // Render!
+  render(App)
+}

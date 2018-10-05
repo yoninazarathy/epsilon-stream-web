@@ -2,7 +2,9 @@
   "name": "epsilon-stream-web",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "dependencies": {
+    "axios": "^0.16.2",
     "bootstrap": "^4.1.1",
     "classnames": "^2.2.5",
     "history": "^4.7.2",
@@ -24,23 +26,30 @@
     "react-responsive-redux": "^0.5.0",
     "react-responsive-ux-container": "^1.0.7",
     "react-route": "^1.0.3",
+    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-scripts": "^1.0.17",
     "react-share": "^2.2.0",
     "react-smartbanner": "^5.0.5",
     "react-spinners": "^0.2.5",
+    "react-static": "^5.9.7",
     "react-youtube": "^7.5.0",
     "reactstrap": "^5.0.0-alpha.4",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^4.8.3",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^3.4.6"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-static start",
+    "stage": "react-static build --staging",
+    "build": "react-static build",
+    "serve": "serve dist -p 3000"
+  },
+  "devDependencies": {
+    "eslint-config-react-tools": "1.x.x",
+    "serve": "^6.1.0"
   }
 }

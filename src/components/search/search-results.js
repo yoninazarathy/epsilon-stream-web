@@ -6,24 +6,44 @@ import ExploreSearchItem from './explore-search-item.js'
 import MathObjectLinkItem from './math-object-link-item.js'
 import SnippetSearchItem from './snippet-search-item.js'
 import NoMatchSearchItem from './no-match-search-item.js'
-import userWatchAction from '../../actions/user-watch-action';
-import userSnippetAction from '../../actions/user-snippet-action';
-
+// import userWatchAction from '../../actions/user-watch-action';
+// import userSnippetAction from '../../actions/user-snippet-action';
 //import userPlayAction from '../../actions/user-play-action';
-import userExploreAction from '../../actions/user-explore-action';
-import userLinkAction from '../../actions/user-link-action';
+// import userExploreAction from '../../actions/user-explore-action';
+// import userLinkAction from '../../actions/user-link-action';
 import { Alert } from 'reactstrap';
-
+import { withRouter } from 'react-router-dom';
+import { ourStore } from '../../redux/store'
 import {connect} from 'react-redux'
-
+import {youtubeIdToEpsilonID} from '../../redux/managers/video-manager'
 import Icon from '../../assets/icon.png'
 
-
-class SearchResults extends Component {
+class SearchResultsX extends Component {
   constructor(props) {
     super(props);
 
     this.getItem = this.getItem.bind(this);
+    this.action = this.action.bind(this);
+  }
+
+  action(type, name, history) {
+    return (name, history) => {
+      if (type === "NO-MATCH") {
+        window.open("https://oneonepsilon.com/contact", '_blank')
+      } else if (type === "EpsilonSnippet") {
+        history.push("/snippet/" + name.toLowerCase())
+      } else if (type === "FeaturedURL") {
+        window.open(name)
+      } else if (type === "Video") {
+        history.push("/video/" + youtubeIdToEpsilonID(name))
+      } else if (type === "MathObjectLinks") {
+        var hashTag = ourStore.getState().database.hashTagDict[name]
+        ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString:hashTag}})
+        ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
+        ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})   
+        history.push("/topic/" + hashTag.substring(1).toLowerCase())
+      }
+    }
   }
 
    getItem(item, i) {
@@ -37,7 +57,7 @@ class SearchResults extends Component {
           image={Icon}
           subtitle={"Contact our team"}
           link={null}
-          action={() => {window.open("https://oneonepsilon.com/contact", '_blank')} } 
+          action={this.action("NO-MATCH")}
         />
         );
       case "EpsilonSnippet":
@@ -49,8 +69,8 @@ class SearchResults extends Component {
           image={null}
           subtitle={null}
           link={null}
-          hashTag = {this.props.hashTag}
-          action={userSnippetAction} 
+          hashTag={this.props.hashTag}
+          action={this.action("EpsilonSnippet")}
         />
         );
       case "FeaturedURL":
@@ -61,7 +81,7 @@ class SearchResults extends Component {
           image={item.image}
           subtitle={item.subtitle}
           link={item.link}
-          action={()=>{userExploreAction(item.link)} }
+          action={this.action("FeaturedURL")}
           />
           );
       case "Video":
@@ -72,7 +92,7 @@ class SearchResults extends Component {
           image={item.image}
           subtitle={item.subtitle}
           link={item.link}
-          action={userWatchAction}
+          action={this.action("Video")}
           completed={item.completed}
           />
         );
@@ -84,7 +104,7 @@ class SearchResults extends Component {
           image={item.image}
           subtitle={item.subtitle}
           link={item.link}
-          action={() => {userLinkAction(item.link)}}
+          action={this.action("MathObjectLinks")}
           completed={item.completed}
           />
         );
@@ -95,21 +115,22 @@ class SearchResults extends Component {
   render(){
     return(
         <div className="SearchResults">
+          <div>
             {this.props.displaySearchResults.map(this.getItem)}
+          </div>
         </div>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-    return {
-      search: state.user.cleanSearchString,
-      hashTag: state.user.currentHashTag,
-      displaySearchResults: state.user.displaySearchResults
-    };
+  return {
+    search: state.user.cleanSearchString,
+    hashTag: state.user.currentHashTag,
+    displaySearchResults: state.user.displaySearchResults,
+    appLoaded: state.user.appLoaded,
   };
+};
 
-
-
-export default connect(mapStateToProps)(SearchResults);
+const SearchResults = connect(mapStateToProps)(SearchResultsX);
 export {SearchResults}

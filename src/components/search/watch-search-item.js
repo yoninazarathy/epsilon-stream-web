@@ -1,5 +1,6 @@
 import React from 'react';
 import {SearchItem} from './search-item.js'
+import {youtubeIdToEpsilonID} from '../../redux/managers/video-manager'
 
 class WatchSearchItem extends React.Component{
   render(){
@@ -13,14 +14,10 @@ class WatchSearchItem extends React.Component{
                     action={this.props.action}
                     hasprogressbar={true}
                     completed={this.props.completed}
-                    shareURL={"https://epsilonstream.com/watch?v="+encodeURIComponent(this.props.link)}>
+                    shareURL={"https://epsilonstream.com/video/"+encodeURIComponent(youtubeIdToEpsilonID(this.props.link))}>
         </SearchItem>
     )
   }
 }
 
 export default WatchSearchItem;
-
-
-
-

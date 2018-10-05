@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
 import { NavbarToggler,NavItem,Row,Col,Container,InputGroup,InputGroupAddon, Button, Navbar, Nav, NavbarBrand, Collapse, Input} from 'reactstrap';
 import { Tooltip, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-
+import {connect} from 'react-redux'
+import {SearchAutoCompleteList} from '../search/search-autocomplete-list'
 //import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
 import Icon from '../../assets/icon.png'
 //import SettingsImage from '../../assets/3dotsMenu.png'
 //import RightButtonImage from '../../assets/Right_Passive.png'
 //import LeftButtonImage from '../../assets/Left_Passive.png'
 //import MediaQuery from 'react-responsive';
-import { withRouter } from 'react-router-dom'
-import { RingLoader } from 'react-spinners';
-import {connect} from 'react-redux'
-import {store} from '../../store.js'
-import {push} from 'react-router-redux'
+// import { withRouter } from 'react-router-dom'
+ //QQQQ import { RingLoader } from 'react-spinners';
+// import {connect} from 'react-redux'
+// import {store} from '../../store.js'
+// import {push} from 'react-router-redux'
 import {Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import {SearchBar} from '../search-bar.js'
+import SharePanel from '../share-panel'
+import loadDbAction from '../../redux/actions/reload-db-action'
 
-import {SharePanel} from '../share-panel.js';
+import Welcome from '../welcome.js'
 
+
+function onLoadFunction(){
+    loadDbAction()
+}
 
 class ShareButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            shareModal: false
+            shareModal: false,
         };
         this.toggle = this.toggle.bind(this);
     }
@@ -36,59 +44,50 @@ class ShareButton extends Component {
     render() {
         return (
             <div>
-                <Button outline color="danger" onClick={(e) => {e.stopPropagation();this.toggle()}} id="globalShare" className="ml-sm-2 mr-sm-2">
+                <Button outline color="danger" 
+                        onClick={(e) => {this.toggle()}} id="globalShare" className="ml-sm-2 mr-sm-2">
                     <p className = "text-white">
                         Share
                     </p>
                 </Button>
-                <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target="globalShare">
-                    <PopoverHeader toggle={this.toggle}></PopoverHeader>
+                <Popover isOpen={this.state.shareModal} toggle={this.toggle} placement="bottom" target={"globalShare"}>
                     <PopoverBody>
-                        <SharePanel shareURL="https://epsilonstream.com" shareType="none"/>
+                        <SharePanel shareURL={this.props.shareURL} shareType={"GENERIC"}/>                                          
                     </PopoverBody>
-                </Popover>
+                </Popover>   
             </div>
         )
     }
 }
 
-const SettingsButton = withRouter(({history}) => (
+const SettingsButton = props => ( //withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {history.push('/settings')}}>
                                     <p className = "text-white">
                                         Settings
                                     </p>
     </Button>
-))
+)//)
 
-const SearchButton = withRouter(({history}) => (
-    <Button outline color="danger" className="ml-sm-2 mr-sm-2"
-        onClick={() => {history.push('/search')}}>
-                                    <p className = "text-white">
-                                        Search
-                                    </p>
-    </Button>
-))
-
-const AboutButton = withRouter(({history}) => (
+const AboutButton = props => ( //withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {window.open("https://oneonepsilon.com/epsilonstream", '_blank')}}>
                                     <p className = "text-white">
                                         About
                                     </p>
     </Button>
-))
+)//)
 
-const RegisterButton = withRouter(({history}) => (
+const RegisterButton = props => ( //withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {window.open("https://oneonepsilon.com/register", '_blank')}}>
                                     <p className = "text-white">
                                         Register
                                     </p>
     </Button>
-))
+)//)
 
-class EpsilonStreamPage extends Component {
+class EpsilonStreamPageX extends Component {
     constructor(props) {
       super(props);
 
@@ -131,9 +130,11 @@ class EpsilonStreamPage extends Component {
   
     render() {
         return (
-            <div>{this.props.hideNav !== true ? 
+            <div onLoad = {onLoadFunction}> 
+            {this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
-                    <NavbarBrand href="/home"> 
+                    <NavbarBrand className="navbarBrand" onClick = {()=>{localStorage.clear();location.reload();
+                                                    console.log("Hit Clear and Reload")}}> 
                         <span>
                             <img    className="productButton mr-sm-2" 
                                     src={Icon} 
@@ -145,14 +146,11 @@ class EpsilonStreamPage extends Component {
                             </p>
                         </span>
                     </NavbarBrand>
-                    <NavbarToggler onClick={this.toggle} toggleable={true}/>
+                    <NavbarToggler onClick={this.toggle} toggleable={"true"}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <ShareButton/>
-                            </NavItem>
-                            <NavItem>
-                                <SearchButton/>
+                                <ShareButton shareURL = {this.props.currentURLforSharing}/>
                             </NavItem>
                             <NavItem>
                                 <AboutButton/>
@@ -173,21 +171,26 @@ class EpsilonStreamPage extends Component {
                                 lg={{ size: 8, order: 0, offset: 2}}
                                 xl={{ size: 8, order: 0, offset: 2}}
                                 className="nopadding-lg">
-                            {this.props.loadingInProgress ?
-                                <center>
-                                    <div className = "LoadContent">
-                                        <p> LOADING CONTENT </p>
-                                        <RingLoader/>
-                                        </div>
-                                </center>
-                                :
-                                this.props.children
-                            }    
+                            <div className="searchBarWrapper">
+                            { this.props.dbIsReady ?
+                                    <React.Fragment>
+                                        <SearchBar className="searchBar" startQuery={this.props.parsedQuery}/>
+                                        {this.props.autoCompleteList.length > 0 ? <SearchAutoCompleteList /> : ''}
+                                    </React.Fragment>
+                            : ''}
+                            </div>
+                            <div>
+                                {this.props.needsDB && !this.props.dbIsReady ? 
+                                    <Welcome/>
+                                        :
+                                    this.props.children
+                                }
+                            </div>
                         </Col>
                     </Row>  
                 </Container>   
                 </div>  
-                {this.props.betaPopUpCounter === 0 ?
+                {false /*this.props.dbIsReady && this.props.betaPopUpCounter < 2*/  ?
                     <Modal isOpen={this.state.modal} toggle={this.modalToggle}>
                         <ModalHeader toggle={this.modalToggle}>Epsilon Stream Web - Beta</ModalHeader>
                         <ModalBody>
@@ -198,7 +201,7 @@ class EpsilonStreamPage extends Component {
                                 {' '}
                                 <Button color="primary" 
                                         onClick={() => {this.toggle;
-                                                        window.open("https://oneonepsilon.com/epsilonstream", '_blank')}
+                                                        window.open("https://oneonepsilon.com/register", '_blank')}
                                                     }>Register</Button>{' '}
                         </ModalFooter>
                     </Modal> 
@@ -207,6 +210,12 @@ class EpsilonStreamPage extends Component {
         );
     }
 }
+
+//    <script dangerouslySetInnerHTML={{__html: "console.log(\"peek man\");window.onload = onLoadFunction"}} />
+
+
+
+// export default EpsilonStreamPage;//connect(EpsilonStreamPage);
 
 
 //https://es-app.com/assets/anim/LogoAnimationVert_9sec.mp4
@@ -220,17 +229,23 @@ class EpsilonStreamPage extends Component {
                             </video>
                             */
 
+                            
 const mapStateToProps = (state) => {
     return {
-        searchString: state.user.cleanSearchString,
+        /*searchString: state.user.cleanSearchString,
         loadingInProgress:  state.database.mathObjectsFetchInProgress       ||
                             state.database.mathObjectLinksFetchInProgress   ||
                             state.database.videosInProgress                 ||
                             state.database.snippetsFetchInProgress          ||
-                            state.database.featuredURLsInProgress,
-        headerString: ' ' + state.user.pageTitle,
-        betaPopUpCounter: state.user.betaPopUpCounter
+                            state.database.featuredURLsInProgress,*/
+        headerString: state.user.pageTitle === undefined ? 'Epsilon Stream' : ' ' + state.user.pageTitle,
+        currentURLforSharing: state.user.currentURLforSharing,
+        betaPopUpCounter: state.user.betaPopUpCounter,
+        autoCompleteList: state.user.autoCompleteList,
+        dbIsReady: state.database.dbIsReady,
+        dbLoadingInProgress: state.database.dbLoadingInProgress
     };
 };
 
-export default connect(mapStateToProps)(EpsilonStreamPage);
+const EpsilonStreamPage = connect(mapStateToProps)(EpsilonStreamPageX);
+export default EpsilonStreamPage 
