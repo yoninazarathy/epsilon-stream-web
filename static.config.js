@@ -11,10 +11,7 @@ export default {
     title: 'Epsilon Stream',
   }),
   getRoutes: async () => {
-    const { data: db} = await axios.get('http://s3.amazonaws.com/oneonepsilon-database/database.json') 
-                        //The S3 database is not chached so is guranteed to be the newest one
-                //'https://db-cdn.oneonepsilon.net/database.json')
-                //    'https://es-app.com/repo/database.json') -- old...
+    const { data: db} = await axios.get('https://s3.amazonaws.com/oneonepsilon-database/database.json')
 
     var snippets = db["snippets"]
     var featuredURLS = db["featuredURLs"]
