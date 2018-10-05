@@ -87,6 +87,15 @@ const RegisterButton = props => ( //withRouter(({history}) => (
     </Button>
 )//)
 
+const ReloadButton = props => ( //withRouter(({history}) => (
+    <Button outline color="danger" className="ml-sm-2 mr-sm-2"
+        onClick={() => {onLoadFunction()}}>
+                                    <p className = "text-white">
+                                        Load
+                                    </p>
+    </Button>
+)//)
+
 class EpsilonStreamPageX extends Component {
     constructor(props) {
       super(props);
@@ -130,7 +139,7 @@ class EpsilonStreamPageX extends Component {
   
     render() {
         return (
-            <div onLoad = {onLoadFunction}> 
+            <div onLoad = {()=>{console.log("onLoad"); onLoadFunction()}}> 
             {this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
                     <NavbarBrand className="navbarBrand" onClick = {()=>{localStorage.clear();location.reload();
@@ -149,6 +158,9 @@ class EpsilonStreamPageX extends Component {
                     <NavbarToggler onClick={this.toggle} toggleable={"true"}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <ReloadButton/>
+                            </NavItem>
                             <NavItem>
                                 <ShareButton shareURL = {this.props.currentURLforSharing}/>
                             </NavItem>
@@ -216,6 +228,11 @@ class EpsilonStreamPageX extends Component {
 
 //    <script dangerouslySetInnerHTML={{__html: "console.log(\"peek man\");window.onload = onLoadFunction"}} />
 
+
+function refreshStore() {
+    store.dispatch({type : "FETCH_FULL_PULL_START"})
+    setTimeout(refreshStore, 3*1000*60*60)
+  }
 
 
 // export default EpsilonStreamPage;//connect(EpsilonStreamPage);
