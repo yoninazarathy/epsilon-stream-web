@@ -6,7 +6,7 @@ import {youtubeIdToEpsilonID} from './src/redux/managers/video-manager'
 
 
 export default {
-  // siteRoot: 'https://epsilonstream.com',
+  siteRoot: 'https://epsilonstream.com',
   getSiteData: () => ({
     title: 'Epsilon Stream',
   }),
