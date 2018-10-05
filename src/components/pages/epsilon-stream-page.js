@@ -17,14 +17,8 @@ import Icon from '../../assets/icon.png'
 import {Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import {SearchBar} from '../search-bar.js'
 import SharePanel from '../share-panel'
-import loadDbAction from '../../redux/actions/reload-db-action'
 
 import Welcome from '../welcome.js'
-
-
-function onLoadFunction(){
-    loadDbAction()
-}
 
 class ShareButton extends Component {
     constructor(props) {
@@ -130,7 +124,7 @@ class EpsilonStreamPageX extends Component {
   
     render() {
         return (
-            <div onLoad = {onLoadFunction}> 
+            <div> 
             {this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
                     <NavbarBrand className="navbarBrand" onClick = {()=>{localStorage.clear();location.reload();
@@ -192,7 +186,7 @@ class EpsilonStreamPageX extends Component {
                         </Col>
                     </Row>  
                 </Container>   
-                </div>  
+                </div>
                 {false /*this.props.dbIsReady && this.props.betaPopUpCounter < 2*/  ?
                     <Modal isOpen={this.state.modal} toggle={this.modalToggle}>
                         <ModalHeader toggle={this.modalToggle}>Epsilon Stream Web - Beta</ModalHeader>
