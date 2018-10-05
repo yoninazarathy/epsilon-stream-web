@@ -19,6 +19,9 @@ import {SearchBar} from '../search-bar.js'
 import SharePanel from '../share-panel'
 import loadDbAction from '../../redux/actions/reload-db-action'
 
+import Welcome from '../welcome.js'
+
+
 function onLoadFunction(){
     loadDbAction()
 }
@@ -127,10 +130,11 @@ class EpsilonStreamPageX extends Component {
   
     render() {
         return (
-            <div onLoad = {onLoadFunction}>{this.props.hideNav !== true ? 
+            <div onLoad = {onLoadFunction}> 
+            {this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
                     <NavbarBrand onClick = {()=>{localStorage.clear();location.reload();
-console.log("Hit Clear and Reload")}}> 
+                                                    console.log("Hit Clear and Reload")}}> 
                         <span>
                             <img    className="productButton mr-sm-2" 
                                     src={Icon} 
@@ -181,8 +185,8 @@ console.log("Hit Clear and Reload")}}>
                             </div>
                             <div>
                                 {this.props.needsDB && !this.props.dbIsReady ? 
-                                    <center><p> Hold on as we reload...</p></center>
-                                    :
+                                    <Welcome/>
+                                        :
                                     this.props.children
                                 }
                             </div>
@@ -210,6 +214,10 @@ console.log("Hit Clear and Reload")}}>
         );
     }
 }
+
+//    <script dangerouslySetInnerHTML={{__html: "console.log(\"peek man\");window.onload = onLoadFunction"}} />
+
+
 
 // export default EpsilonStreamPage;//connect(EpsilonStreamPage);
 
