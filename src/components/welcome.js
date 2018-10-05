@@ -2,8 +2,6 @@ import React from 'react';
 import {Button} from 'reactstrap';
 import loadDbAction from '../redux/actions/reload-db-action'
 
-import { loadProgressBar } from 'axios-progress-bar'
-
 
 const RegisterButton = props => ( //withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
