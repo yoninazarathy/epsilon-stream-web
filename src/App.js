@@ -10,7 +10,7 @@ import Routes from 'react-static-routes'
 import Search from './containers/Search'
 import { ourStore } from './redux/store'
 
-import loadDbAction from 'redux/actions/reload-db-action'
+import loadDbAction from './redux/actions/reload-db-action'
 
 class App extends React.Component {
   constructor(props){
