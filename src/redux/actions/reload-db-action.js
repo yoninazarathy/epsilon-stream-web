@@ -8,6 +8,7 @@ export default function loadDbAction(){
     var lastTime = ourStore.getState().database.lastDBUpdateTime
     // var inProgress = ourStore.getState().data.dbLoadingInProgress
     if(time - lastTime > 1000*60*5){//5 minute delay between loads 
+        console.log("loading.... Lasttime = " + lastTime + ".    Current time: "+ time)
         ourStore.dispatch({type: "LOAD_DB_START",payload: {}})
         axios.get('https://s3.amazonaws.com/oneonepsilon-database/database.json'
             //'https://db-cdn.oneonepsilon.net/database.json'

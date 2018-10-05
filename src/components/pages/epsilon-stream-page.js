@@ -129,7 +129,8 @@ class EpsilonStreamPageX extends Component {
         return (
             <div onLoad = {onLoadFunction}>{this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
-                    <NavbarBrand href="/home"> 
+                    <NavbarBrand onClick = {()=>{localStorage.clear();location.reload();
+console.log("Hit Clear and Reload")}}> 
                         <span>
                             <img    className="productButton mr-sm-2" 
                                     src={Icon} 
