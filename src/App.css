@@ -208,14 +208,19 @@ blog-inline-image{
 }
 
 .navbarBrand {
-  min-width: 20%;
+  /*min-width: 20%;*/
 }
 
 .searchBar {
+  padding: 5px 0px;
   width: 100%;
 }
 
 .searchBarButton {
   background-color: #ffffff;
   padding: 0px 3px !important;
+}
+
+.searchBarWrapper {
+  min-height: 50px;
 }
