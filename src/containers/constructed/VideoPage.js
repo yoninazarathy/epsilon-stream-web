@@ -109,7 +109,6 @@ class WatchPage extends Component {
         color: 'white'
       }
     };
-
     return (
       <div>
         <Helmet>
@@ -125,7 +124,7 @@ class WatchPage extends Component {
           <meta name="twitter:site" content="@OneOnEpsilon" />
           <title> {"Video "+" with "+"Epsilon Stream"} </title>
         </Helmet>
-        <EpsilonStreamPage title="Watch" hassearch={true} needsDB={false}>
+        <EpsilonStreamPage title="Watch" hassearch={true} needsDB={false} searchBarReplacementString={this.props.video.ourTitle}>
           <YouTube
           className="youtube-player"
           id="youtube-player"

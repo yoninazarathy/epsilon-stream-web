@@ -177,7 +177,10 @@ class EpsilonStreamPageX extends Component {
                                         <SearchBar className="searchBar" startQuery={this.props.parsedQuery}/>
                                         {this.props.autoCompleteList.length > 0 ? <SearchAutoCompleteList /> : ''}
                                     </React.Fragment>
-                            : ''}
+                            :
+                            <span className="darkHorse">
+                                {this.props.searchBarReplacementString || "Loading..."}
+                            </span> }
                             </div>
                             <div>
                                 {this.props.needsDB && !this.props.dbIsReady ? 

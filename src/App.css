@@ -92,11 +92,11 @@
 }
 
 .youtube-player {
-  position: absolute;
-  top: 0px;
+  /*position: absolute;
+  top: 50px;
   bottom: 0px;
   left: 0px;
-  right: 0px;
+  right: 0px;*/
   height: 90vh; /* QQQQ */
 }
 
@@ -212,6 +212,7 @@ blog-inline-image{
 }
 
 .searchBar {
+  margin: 1px 0px;
   padding: 5px 0px;
   width: 100%;
 }
@@ -223,4 +224,9 @@ blog-inline-image{
 
 .searchBarWrapper {
   min-height: 50px;
+  text-align: center;
+}
+
+.darkHorse {
+  font-size: 2em;
 }
