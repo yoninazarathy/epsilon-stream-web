@@ -2,6 +2,9 @@ import React from 'react';
 import {Button} from 'reactstrap';
 import loadDbAction from '../redux/actions/reload-db-action'
 
+import { loadProgressBar } from 'axios-progress-bar'
+
+
 const RegisterButton = props => ( //withRouter(({history}) => (
     <Button outline color="danger" className="ml-sm-2 mr-sm-2"
         onClick={() => {  loadDbAction();
@@ -19,7 +22,8 @@ export default class Welcome extends React.Component{
   render(){
     return(
         <div>
-          <p> Welcome to Epsilon World....</p>
+          
+          <center> <p> Loading Database....</p> </center>
         </div>
     )
   }
