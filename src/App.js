@@ -10,9 +10,16 @@ import Routes from 'react-static-routes'
 import Search from './containers/Search'
 import { ourStore } from './redux/store'
 
+import loadDbAction from 'redux/actions/reload-db-action'
+
 class App extends React.Component {
   constructor(props){
     super(props);
+
+    if (typeof document !== 'undefined') {
+      // If we're not building but in the browser, load the DB
+      loadDbAction()
+    }
   }
 
   render() {
