@@ -147,7 +147,7 @@ class EpsilonStreamPageX extends Component {
                         </span>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} toggleable={"true"}/>
-                    { true ? //this.props.dbIsReady ?
+                    { this.props.dbIsReady ?
                             <SearchBar className="searchBar" startQuery={this.props.parsedQuery}/>
                     : ''}
                     <Collapse className="ml-auto" isOpen={this.state.isOpen} navbar>
