@@ -133,7 +133,7 @@ class EpsilonStreamPageX extends Component {
             <div onLoad = {onLoadFunction}> 
             {this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
-                    <NavbarBrand onClick = {()=>{localStorage.clear();location.reload();
+                    <NavbarBrand className="navbarBrand" onClick = {()=>{localStorage.clear();location.reload();
                                                     console.log("Hit Clear and Reload")}}> 
                         <span>
                             <img    className="productButton mr-sm-2" 
@@ -147,8 +147,11 @@ class EpsilonStreamPageX extends Component {
                         </span>
                     </NavbarBrand>
                     <NavbarToggler onClick={this.toggle} toggleable={"true"}/>
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
+                    { true ? //this.props.dbIsReady ?
+                            <SearchBar className="searchBar" startQuery={this.props.parsedQuery}/>
+                    : ''}
+                    <Collapse className="ml-auto" isOpen={this.state.isOpen} navbar>
+                        <Nav navbar>
                             <NavItem>
                                 <ShareButton shareURL = {this.props.currentURLforSharing}/>
                             </NavItem>
@@ -171,18 +174,13 @@ class EpsilonStreamPageX extends Component {
                                 lg={{ size: 8, order: 0, offset: 2}}
                                 xl={{ size: 8, order: 0, offset: 2}}
                                 className="nopadding-lg">
-                            <div>
-                                {this.props.dbIsReady ?
-                                    <div>
-                                        <SearchBar startQuery={this.props.parsedQuery}/>
-                                        <div>
-                                            {this.props.autoCompleteList.length > 0 ? 
-                                                <SearchAutoCompleteList/>
-                                                    : ''}
-                                        </div>
-                                    </div>
-                                 : ''}
-                            </div>
+                            {this.props.dbIsReady ?
+                                <div>
+                                    {this.props.autoCompleteList.length > 0 ?
+                                        <SearchAutoCompleteList/>
+                                            : ''}
+                                </div>
+                                : ''}
                             <div>
                                 {this.props.needsDB && !this.props.dbIsReady ? 
                                     <Welcome/>

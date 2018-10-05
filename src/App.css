@@ -164,17 +164,17 @@ blog-inline-image{
     width: 10px;
 }
 
-.form-control, .input-group-addon, .noborderradius {
+/* .form-control, .input-group-addon, .noborderradius {
   border-radius: 0px !important;
-}
+} */
 
-.randombutton {
+/* .randombutton {
   background-color: rgba(255, 255, 255, 0) !important;
-}
+} */
 
-.erasebutton {
+/* .erasebutton {
   background-color: rgba(255, 255, 255, 0) !important;
-}
+} */
 
 @media (min-width: 992px) {
   .nopadding-lg {
@@ -205,4 +205,17 @@ blog-inline-image{
   text-align: center;
   background-color: Transparent;
   border: none;
+}
+
+.navbarBrand {
+  min-width: 20%;
+}
+
+.searchBar {
+  width: 100%;
+}
+
+.searchBarButton {
+  background-color: #ffffff;
+  padding: 0px 3px !important;
 }

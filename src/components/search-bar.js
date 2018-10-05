@@ -25,16 +25,16 @@ let buttonArray = [Surprise1,Surprise2,Surprise3,Surprise4,Surprise5,Surprise6]
 let index = 0
 
 const SurpriseButton = withRouter(({history}) => (
-  <Button color="link" className="noborderradius randombutton"
+  <Button size="lg" color="link" outline={true} className="searchBarButton randombutton"
       onClick={()=>{index = index===5?0:index+1;randomChoiceAction(history)}}>
-      <img alt="surprise" src={buttonArray[index]} width={30} height={30} />
+      <img alt="surprise" src={buttonArray[index]} width={40} height={40} />
   </Button>
 ))
 
 const EraseButton = withRouter(({history}) => (
-  <Button color="link" className="noborderradius erasebutton"
+  <Button size="lg" color="link" outline={true} className="searchBarButton erasebutton"
       onClick={()=>{clearSearchStringAction()}}>
-      <img alt="erase" src={Erase} width={30} height={30} />
+      <img alt="erase" src={Erase} width={40} height={40} />
   </Button>
 ))
 
@@ -123,21 +123,20 @@ class SearchBar extends React.Component{
  
   render(){
     return(
-        <div>
-          <InputGroup>
-            <Input type="text"
-                    id="inputField"
-                    name="search" 
-                    value={this.state.appearingSearchString}
-                    placeholder="Search Mathematics"
-                    onChange={this.handleChange}
-                    onKeyPress={this.handleKeyPress}
-                    autoComplete = "off" />
-            <InputGroupAddon addonType="append">
-              {this.state.userIsTyping && this.state.typedSearchString !== "" ? <EraseButton/> : <SurpriseButton/>}
-            </InputGroupAddon>
-          </InputGroup>
-        </div>
+      <InputGroup>
+        <Input  size="lg"
+                type="text"
+                id="inputField"
+                name="search"
+                value={this.state.appearingSearchString}
+                placeholder="Search Mathematics"
+                onChange={this.handleChange}
+                onKeyPress={this.handleKeyPress}
+                autoComplete = "off" />
+        <InputGroupAddon addonType="append">
+          {this.state.userIsTyping && this.state.typedSearchString !== "" ? <EraseButton/> : <SurpriseButton/>}
+        </InputGroupAddon>
+      </InputGroup>
     )
   }
 }
