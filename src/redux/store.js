@@ -14,9 +14,13 @@ const rehashMiddleWare = store => next => action => {
         store.dispatch({type: "REHASH_SEARCH_STRINGS",payload:{}})
 
         if (typeof document !== 'undefined') {
-          if(window.location.pathname.substr(0,7) === '/topic/'){
-            ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {
-                              hashTagString: '#'+window.location.pathname.substring(7)}})
+          if(window.location.pathname === '/' || window.location.pathname.substr(0,7) === '/topic/'){
+            if (window.location.pathname === '/') {
+              ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#homePage'}})
+            } else {
+              ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {
+                                hashTagString: '#'+window.location.pathname.substring(7)}})
+            }
             ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
             ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})  
           }

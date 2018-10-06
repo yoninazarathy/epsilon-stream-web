@@ -35,10 +35,6 @@ export default {
         component: 'src/containers/Home',
       },
       {
-        path: '/home',
-        component: 'src/containers/Home',
-      },
-      {
         path: '/snippet',
         component: 'src/containers/Snippets',
         getData: () => ({
