@@ -35,6 +35,25 @@ class SearchItemX extends React.Component{
     render(){
         let image = getImageForKey(this.props.image, this.props.searchType);
         let classes = "SearchItem " + this.props.type
+
+        let displayTitle = this.props.title;
+        if (typeof document !== 'undefined') {
+            let allowableLength = 10;
+            let body = document.getElementsByTagName('body')[0];
+            let width = window.innerWidth || document.documentElement.clientWidth || body.clientWidth;
+            let height = window.innerHeight|| document.documentElement.clientHeight|| body.clientHeight;
+            if (width < 700) {
+                allowableLength = 50;
+            } else if (width < 1300) {
+                allowableLength = 70;
+            } else {
+                allowableLength = 120;
+            }
+            if (allowableLength < displayTitle.length) {
+                let numberOfTokens = this.props.title.substring(0, allowableLength).split(" ").length - 1;
+                displayTitle = this.props.title.split(" ").slice(0, numberOfTokens).join(" ") + "...";
+            }
+        }
         return(
             <div className={classes} onClick={() => {this.props.action(this.props.link,this.props.history)}}>
                 <div className="d-flex flex-row">
@@ -49,7 +68,7 @@ class SearchItemX extends React.Component{
                     </div>
                     <div className="p-1 d-flex flex-column flex-grow-1">
                         <div className="flex-grow-1">
-                            <h5> {this.props.title}</h5>
+                            <span className="searchItemTitle">{displayTitle}</span>
                         </div>
                         <div className="mt-auto">
                             <div className="d-flex flex-row">
