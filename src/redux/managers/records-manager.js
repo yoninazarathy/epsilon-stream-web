@@ -93,6 +93,7 @@ function normalizePris(arr,startPri){
 }
 
 export function recordsOfHashTag(hashTag){
+    console.log("i am here with hashtag = "+hashTag)
     if(hashTag === "#noTag"){
         return {videos: [],
                 featuredURLs: [],
@@ -137,14 +138,14 @@ export function recordsOfHashTag(hashTag){
 function videosOfHashTag(hashTag){ 
     let vids = ourStore.getState().database.videos
     return vids.filter( (el) => {
-          return el.hashTags.includes(hashTag)
+          return el.hashTags.map(x => x.toLowerCase()).includes(hashTag.toLowerCase())
          });
 }
 
 function featuredURLsOfHashTag(hashTag){
     let furls = ourStore.getState().database.featuredURLs
     return furls.filter( (el) => {
-          return el.hashTags.includes(hashTag) && el.featureType != "Game"
+          return el.hashTags.map(x => x.toLowerCase()).includes(hashTag.toLowerCase()) && el.featureType != "Game"
          });
 }
 
@@ -154,13 +155,13 @@ function mathObjectLinksOfHashTag(hashTag){
       //  return !mol.avoided.includes("web") //QQQQ
     // })
     return mols.filter( (el) => {
-        return el.hashTags.includes(hashTag)
+        return el.hashTags.map(x => x.toLowerCase()).includes(hashTag.toLowerCase())
        });
 }
 
 export function snippetsOfHashTag(hashTag){ 
     let snips = ourStore.getState().database.snippets
     return snips.filter( (el) => {
-        return el.hashTags.includes(hashTag)
+        return el.hashTags.map(x => x.toLowerCase()).includes(hashTag.toLowerCase())
        });
 }
