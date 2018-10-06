@@ -16,6 +16,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
 
+    //QQQQ can improve and test on process.env.REACT_STATIC_ENV === 'production'
     if (typeof document !== 'undefined') {
       // If we're not building but in the browser, load the DB
       loadDbAction()
