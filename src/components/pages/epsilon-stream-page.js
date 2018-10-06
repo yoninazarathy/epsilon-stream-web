@@ -173,7 +173,7 @@ class EpsilonStreamPageX extends Component {
                                     </React.Fragment>
                             :
                             <span className="darkHorse">
-                                {this.props.searchBarReplacementString || "Loading..."}
+                                {this.props.searchBarReplacementString || ""}
                             </span> }
                             </div>
                             <div>
