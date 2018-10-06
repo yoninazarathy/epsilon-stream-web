@@ -92,11 +92,11 @@ export const ourStore = createStore(
     compose(
     middleware,
     //,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-    //autoRehydrate()
+    autoRehydrate()
     ),
 )
 
-// persistStore(ourStore)
+persistStore(ourStore)
 
 export function isAndroid() {
   return ourStore.getState().user.isAndroid;
