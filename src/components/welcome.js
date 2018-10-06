@@ -21,7 +21,7 @@ export default class Welcome extends React.Component{
     return(
         <div>
           
-          <center> <p> Loading Database....</p> </center>
+          <center> <p> </p> </center>
         </div>
     )
   }
