@@ -24,7 +24,7 @@ class TopicPage extends Component {
           hashTag = hashTag.substring(0,hashTag.length-1)
         }
 
-        if (window.location.pathname === '') {
+        if (window.location.pathname === '/') {
           hashTag = "#homePage";
         }
         
