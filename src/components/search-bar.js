@@ -33,7 +33,10 @@ const SurpriseButton = withRouter(({history}) => (
 
 const EraseButton = withRouter(({history}) => (
   <Button size="lg" color="link" outline={true} className="searchBarButton erasebutton"
-      onClick={()=>{clearSearchStringAction()}}>
+      onClick={()=>{
+          document.getElementById("inputField").value = ""
+          clearSearchStringAction()}
+          }>
       <img alt="erase" src={Erase} width={40} height={40} />
   </Button>
 ))
@@ -44,7 +47,6 @@ class SearchBarX extends React.Component{
 
     this.state = {
       value: "",
-      userIsTyping: false,
     };
     this.handleChange   = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -56,7 +58,6 @@ class SearchBarX extends React.Component{
     this.setState({
       ...this.state,
       value: event.target.value,
-      userIsTyping: true,
     }); 
     ourStore.dispatch({type: "UPDATE_SEARCH_STRING",payload: event.target.value})
   }
@@ -64,18 +65,13 @@ class SearchBarX extends React.Component{
     handleKeyPress(event){
       // console.log("handleKeyPress()")
       // console.log(event.key)
-
-      // ourStore.dispatch({type: "UPDATE_SEARCH_STRING",payload: this.state.typedSearchString})
-
       if (event.key === 'Enter'){
         let cleanerString = event.target.value.replace(/\s+/g, " ").replace(/^\s|\s$/g, "").toLowerCase()
         this.setState({
           ...this.state,
           //appearingSearchString: cleanerString,
           value: cleanerString,
-          userIsTyping: false,
         });   
-        console.log("gonna search for " + cleanerString)
         updateSearchAction(cleanerString,this.props.history)
       }
     }
@@ -93,13 +89,12 @@ class SearchBarX extends React.Component{
                 onKeyPress={this.handleKeyPress}
                 autoComplete = "off" />
         <InputGroupAddon addonType="append">
-          {this.state.userIsTyping && this.state.typedSearchString !== "" ? <EraseButton/> : <SurpriseButton/>}
+          {this.state.value !== "" ? <EraseButton/> : <SurpriseButton/>}
         </InputGroupAddon>
       </InputGroup>
     )
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {
