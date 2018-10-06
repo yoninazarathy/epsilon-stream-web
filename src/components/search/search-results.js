@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
-
 import WatchSearchItem from './watch-search-item.js'
-//import PlaySearchItem from './play-search-item.js'
 import ExploreSearchItem from './explore-search-item.js'
 import MathObjectLinkItem from './math-object-link-item.js'
 import SnippetSearchItem from './snippet-search-item.js'
 import NoMatchSearchItem from './no-match-search-item.js'
-// import userWatchAction from '../../actions/user-watch-action';
-// import userSnippetAction from '../../actions/user-snippet-action';
-//import userPlayAction from '../../actions/user-play-action';
-// import userExploreAction from '../../actions/user-explore-action';
-// import userLinkAction from '../../actions/user-link-action';
 import { Alert } from 'reactstrap';
 import { withRouter } from 'react-router-dom';
 import { ourStore } from '../../redux/store'

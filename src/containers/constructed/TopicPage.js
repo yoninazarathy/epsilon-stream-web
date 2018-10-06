@@ -10,7 +10,6 @@ import {setCurrentTopic} from '../../redux/store'
 class TopicPage extends Component {
   constructor(props) {
     super(props);
-    //this.loadAction = this.loadAction.bind(this)
     this.state = {
       loaded: false,
     };
@@ -18,7 +17,7 @@ class TopicPage extends Component {
   }
 
   render() {
-    return ( //QQQQ onLoad = {this.loadAction}>
+    return (
       <div> 
           <Helmet>
             <meta charSet="UTF-8" />
