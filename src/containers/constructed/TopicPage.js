@@ -16,6 +16,15 @@ class TopicPage extends Component {
     setCurrentTopic(this.props.topic.name) //set global current topic
   }
 
+  componentWillMount(){
+    if (typeof document !== 'undefined') {
+      let hashTag = '#'+window.location.pathname.substring(7) //The 7 is for following '/topic/
+      ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: hashTag}})
+      ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
+      ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})  
+    }
+  }
+
   render() {
     return (
       <div> 

@@ -14,9 +14,6 @@ const rehashMiddleWare = store => next => action => {
         store.dispatch({type: "REHASH_SEARCH_STRINGS",payload:{}})
     }else if(action.type === 'REHASH_SEARCH_STRINGS'){
          next(action)
-         ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#'+currentTopic}})
-         ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
-         ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
     }else{
         next(action);
     }
