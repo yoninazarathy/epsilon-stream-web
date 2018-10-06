@@ -14,17 +14,13 @@ const rehashMiddleWare = store => next => action => {
         store.dispatch({type: "REHASH_SEARCH_STRINGS",payload:{}})
 
         if (typeof document !== 'undefined') {
-          console.log("hererererrrrrr")
-          // console.log(window.location.pathname.substr(0,6))
           if(window.location.pathname.substr(0,7) === '/topic/'){
             ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {
                               hashTagString: '#'+window.location.pathname.substring(7)}})
             ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
             ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})  
           }
-          // console.log(window.location.pathname)//.substring(7) //The 7 is for following '/topic/
         }
-    
 
     }else if(action.type === 'REHASH_SEARCH_STRINGS'){
          next(action)
