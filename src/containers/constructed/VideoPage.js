@@ -3,8 +3,9 @@ import { withRouteData, Link } from 'react-static'
 import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
 import YouTube from 'react-youtube';
 import {Helmet} from 'react-helmet'
+import {ourStore} from '../../redux/store'
 
-class WatchPage extends Component {
+class VideoPage extends Component {
   constructor(props) {
     super(props);
     this.checkTime = this.checkTime.bind(this);
@@ -13,18 +14,9 @@ class WatchPage extends Component {
     this.onPause = this.onPause.bind(this);
     this.onEnd = this.onEnd.bind(this);
   }
-
-
-
-  checkTime() {}// console.log("checkTime"); }
-  onReady() {}// console.log("onReady"); }
-  onPlay() {}// console.log("onPlay"); }
-  onPause() {}// console.log("onPause"); }
-  onEnd() {}// console.log("onEnd"); }
-
-  /*
+  
   checkTime() {
-    store.dispatch({
+    ourStore.dispatch({
       type: "USER_PLAYER_AT",
       payload: {
         videoId: this.player.getVideoData()['video_id'],
@@ -39,8 +31,8 @@ class WatchPage extends Component {
     console.log("player ready")
     this.player = e.target;
     let videoId = this.player.getVideoData()['video_id'];
-    let progress = store.getState().user.videoProgressDict[videoId];
-    store.dispatch({
+    let progress = ourStore.getState().user.videoProgressDict[videoId];
+    ourStore.dispatch({
       type: "USER_PLAYER_READY",
       payload: {
         videoId: videoId,
@@ -55,7 +47,7 @@ class WatchPage extends Component {
   onPlay(e) {
     console.log("player started")
     this.player = e.target;
-    store.dispatch({
+    ourStore.dispatch({
       type: "USER_PLAYER_PLAY",
       payload: {
         videoId: this.player.getVideoData()['video_id'],
@@ -68,7 +60,7 @@ class WatchPage extends Component {
   onPause(e) {
     console.log("player paused")
     this.player = e.target;
-    store.dispatch({
+    ourStore.dispatch({
       type: "USER_PLAYER_PAUSE",
       payload: {
         videoId: this.player.getVideoData()['video_id'],
@@ -81,7 +73,7 @@ class WatchPage extends Component {
   onEnd(e) {
     console.log("player ended")
     this.player = e.target;
-    store.dispatch({
+    ourStore.dispatch({
       type: "USER_PLAYER_END",
       payload: {
         videoId: this.player.getVideoData()['video_id'],
@@ -90,7 +82,7 @@ class WatchPage extends Component {
       }
     });
   }
-  */
+  
 
   render() {
     var videoId = this.props.video.youtubeVideoId;
@@ -136,10 +128,10 @@ class WatchPage extends Component {
           id="youtube-player"
           videoId={videoId}
           opts={opts}
-          onReady={""}//console.log("onReady")}
-          onPlay={""}//console.log("onPlay")}
-          onPause={""}//console.log("onPause")}
-          onEnd={""}//console.log("onEnd")}
+          onReady={this.onReady}
+          onPlay={this.onPlay}
+          onPause={this.onPause}
+          onEnd={this.onEnd}
           />
         </EpsilonStreamPage>
       </div>
@@ -148,4 +140,4 @@ class WatchPage extends Component {
   }
 }
 
-export default withRouteData(WatchPage);
+export default withRouteData(VideoPage);
