@@ -20,9 +20,16 @@ class TopicPage extends Component {
     if (typeof document !== 'undefined') {
       if(this.props.loaded){
         let hashTag = '#'+window.location.pathname.substring(7) //The 7 is for following '/topic/
-        if (window.location.pathname === '/') {
+        if(hashTag[hashTag.length-1] === '/'){
+          hashTag = hashTag.substring(0,hashTag.length-1)
+        }
+
+        if (window.location.pathname === '') {
           hashTag = "#homePage";
         }
+        
+        console.log('my man our hashTag is '+ hashTag)
+        
         ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: hashTag}})
         ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
         ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})  

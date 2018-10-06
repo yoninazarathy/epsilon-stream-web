@@ -18,8 +18,13 @@ const rehashMiddleWare = store => next => action => {
             if (window.location.pathname === '/') {
               ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#homePage'}})
             } else {
+              let hashTag = '#'+window.location.pathname.substring(7)
+              if(hashTag[hashTag.length-1] === '/'){
+                hashTag = hashTag.substring(0,hashTag.length-1)
+              }
+
               ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {
-                                hashTagString: '#'+window.location.pathname.substring(7)}})
+                                hashTagString: hashTag}})
             }
             ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
             ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})  

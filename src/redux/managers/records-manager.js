@@ -93,7 +93,7 @@ function normalizePris(arr,startPri){
 }
 
 export function recordsOfHashTag(hashTag){
-    console.log("i am here with hashtag = "+hashTag)
+    // console.log("i am here with hashtag = "+hashTag)
     if(hashTag === "#noTag"){
         return {videos: [],
                 featuredURLs: [],
