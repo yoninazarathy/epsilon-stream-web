@@ -31,9 +31,11 @@ class SnippetPage extends Component {
             needsDB={false}
             history={this.props.history}
             >
-          <h2> {this.props.snippet.ourTitle}</h2>
-          <br/>
-          <Snippet rawMarkDown = {this.props.snippet.body}  imageName = {this.props.snippet.imageURL}/>
+            <div className="snippet">
+              <center><h2> {this.props.snippet.ourTitle}</h2></center>
+              <br/>
+              <Snippet rawMarkDown = {this.props.snippet.body}  imageName = {this.props.snippet.imageURL}/>
+            </div>
         </EpsilonStreamPage>
       </div>
     )

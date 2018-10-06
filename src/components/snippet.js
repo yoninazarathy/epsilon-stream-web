@@ -30,9 +30,7 @@ export default class Snippet extends React.Component{
       this.formattedMD = md.render("# There is no snippet for \#" + this.props.mathObject)
     }
     return(
-        <div>
-          <span dangerouslySetInnerHTML={{__html: this.formattedMD}} />
-        </div>
+        <div dangerouslySetInnerHTML={{__html: this.formattedMD}}/>
     )
   }
 }
