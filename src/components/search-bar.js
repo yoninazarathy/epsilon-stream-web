@@ -38,88 +38,47 @@ const EraseButton = withRouter(({history}) => (
   </Button>
 ))
 
-
-class SearchBar extends React.Component{
+class SearchBarX extends React.Component{
   constructor(props) {
     super(props);
 
     this.state = {
-      appearingSearchString: this.props.startQuery,
-      typedSearchString: "",
+      value: "",
       userIsTyping: false,
     };
     this.handleChange   = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    // this.updateModel    = this.updateModel.bind(this);
-
-    // if(this.state.searchString != ' '){
-    //   this.updateModel(this.state.searchString,true)
-    // }
   }
 
   handleChange(event){
+    // console.log("handleChange()")
+    // console.log(event.target.value)
     this.setState({
       ...this.state,
-      appearingSearchString: event.target.value,
-      typedSearchString: event.target.value,
+      value: event.target.value,
       userIsTyping: true,
     }); 
-    ourStore.dispatch({type: "UPDATE_SEARCH_STRING",payload: this.state.typedSearchString})
-    // ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
-    // ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
-}
+    ourStore.dispatch({type: "UPDATE_SEARCH_STRING",payload: event.target.value})
+  }
 
     handleKeyPress(event){
-      console.log(event)
-      console.log(event.key)
+      // console.log("handleKeyPress()")
+      // console.log(event.key)
+
+      // ourStore.dispatch({type: "UPDATE_SEARCH_STRING",payload: this.state.typedSearchString})
+
       if (event.key === 'Enter'){
-        let cleanerString = event.target.value.replace(/\s+/g, " ").replace(/^\s|\s$/g, "")
+        let cleanerString = event.target.value.replace(/\s+/g, " ").replace(/^\s|\s$/g, "").toLowerCase()
         this.setState({
           ...this.state,
-          appearingSearchString: cleanerString,
-          typedSearchString: cleanerString,
+          //appearingSearchString: cleanerString,
+          value: cleanerString,
           userIsTyping: false,
         });   
+        console.log("gonna search for " + cleanerString)
+        updateSearchAction(cleanerString,this.props.history)
       }
     }
-  
-
-
-    // if(event.target.value === ''){
-    //     this.updateModel('',true)
-    // }else{
-    //     this.updateModel(event.target.value,false)
-    // }
-  // }
-
-
-  // updateModel(searchString,finishedTyping){
-  //   console.log("updateModel("+searchString+","+finishedTyping+")")
-  //   this.setState({
-  //     ...this.state,
-  //     appearingSearchString: searchString,
-  //     typedSearchString: searchString,
-  //     userIsTyping: true,
-  //   });      
-  //   console.log(this.state)
-    // if(finishedTyping){
-    //   //TTTT ourStore.dispatch({type: "USER_SEARCH_DONE_TYPING",payload:{}})
-    //   if(this.state.searchString !== ''){
-    //     let query = searchString.toLowerCase().split(' ').join('+');
-    //     //TTTT ourStore.dispatch(push('/search?q='+query))
-    //   }else{
-    //     //TTTT ourStore.dispatch(push('/search'))
-    //   }
-    //   updateSearchAction(searchString)
-    //   this.state = {
-    //     ...this.state,
-    //     isInControl: false
-    //   }
-    // }else{
-    //   // ourStore.dispatch({type: "USER_SEARCH_IS_TYPING",payload:{value:searchString}})
-    // }
-  // }
-
  
   render(){
     return(
@@ -140,6 +99,8 @@ class SearchBar extends React.Component{
     )
   }
 }
+
+
 const mapStateToProps = (state) => {
   return {
     snippetDict: state.database.snippetDict, //QQQQ replace
@@ -147,5 +108,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(SearchBar);
+export default connect(mapStateToProps)(SearchBarX);
+export {SearchBarX}
+
+const SearchBar = withRouter(connect(mapStateToProps)(SearchBarX));
 export {SearchBar}

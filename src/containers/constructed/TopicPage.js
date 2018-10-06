@@ -17,20 +17,6 @@ class TopicPage extends Component {
     setCurrentTopic(this.props.topic.name) //set global current topic
   }
 
-  // loadAction(){
-  //   //console.log("topic load action")
-  //   if(!this.state.loaded){
-  //     ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: '#'+this.props.topic.name}})
-  //     ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
-  //     ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})
-  //   }
-  //   this.setState({
-  //     loaded: true
-  //   });
-  //   console.log("here baby")
-  //   console.log(currentTopic)
-  // }
-
   render() {
     return ( //QQQQ onLoad = {this.loadAction}>
       <div> 
@@ -48,7 +34,7 @@ class TopicPage extends Component {
             <title> {this.props.topic.name+" with "+"Epsilon Stream"} </title>
           </Helmet>
           <EpsilonStreamPage title="Topic" hassearch={true} needsDB={true}>
-              {this.props.loaded ? <SearchResults searchItem={this.props.topic}/> : ""}
+              {this.props.loaded && this.props.autoCompleteList.length === 0 ? <SearchResults searchItem={this.props.topic}/> : ""}
           </EpsilonStreamPage>
       </div>
     );
@@ -58,6 +44,7 @@ class TopicPage extends Component {
 const mapStateToProps = (state) => {
   return {
     loaded: state.database.dbIsReady,
+    autoCompleteList: state.user.autoCompleteList,
   };
 };
 
