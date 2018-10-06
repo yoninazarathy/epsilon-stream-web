@@ -17,6 +17,7 @@ class TopicPage extends Component {
   }
 
   componentWillMount(){
+    console.log("i am here jacksonnnnnnn")
     if (typeof document !== 'undefined') {
       let hashTag = '#'+window.location.pathname.substring(7) //The 7 is for following '/topic/
       ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString: hashTag}})
