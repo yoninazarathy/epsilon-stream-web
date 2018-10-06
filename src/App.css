@@ -234,3 +234,26 @@ blog-inline-image{
 .snippet{
   margin: 0 5%;
 }
+
+.searchItemTitle {
+  font-weight: 600;
+  font-size: 1.5em;
+}
+
+@media all and (max-width: 699px) {
+  .searchItemTitle {
+    font-size: 1.1em;
+  }
+}
+
+@media all and (min-width: 700px) and (max-width: 1299px) {
+  .searchItemTitle {
+    font-size: 1.5em;
+  }
+}
+
+@media all and (min-width: 1300px) {
+  .searchItemTitle {
+    font-size: 1.8em;
+  }
+}
