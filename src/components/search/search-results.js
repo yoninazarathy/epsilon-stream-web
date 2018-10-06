@@ -30,7 +30,7 @@ class SearchResultsX extends Component {
       } else if (type === "Video") {
         history.push("/video/" + youtubeIdToEpsilonID(name))
       } else if (type === "MathObjectLinks") {
-        var hashTag = ourStore.getState().database.hashTagDict[name]
+        var hashTag = ourStore.getState().database.lowCaseHashTagDict[name.toLowerCase()]
         ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString:hashTag}})
         ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
         ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})   
