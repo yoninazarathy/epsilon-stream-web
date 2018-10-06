@@ -15,7 +15,8 @@ class VideoPage extends Component {
     this.onEnd = this.onEnd.bind(this);
   }
   
-  checkTime() {
+  checkTime() { //QQQQ disabled for now... needs to stop when video leaves screen
+                //and needs to handle parallel videos...
     ourStore.dispatch({
       type: "USER_PLAYER_AT",
       payload: {
@@ -83,7 +84,6 @@ class VideoPage extends Component {
     });
   }
   
-
   render() {
     var videoId = this.props.video.youtubeVideoId;
     var title = this.props.video.ourTitle
@@ -124,18 +124,17 @@ class VideoPage extends Component {
             history={this.props.history}
             >
           <YouTube
-          className="youtube-player"
-          id="youtube-player"
-          videoId={videoId}
-          opts={opts}
-          onReady={this.onReady}
-          onPlay={this.onPlay}
-          onPause={this.onPause}
-          onEnd={this.onEnd}
+            className="youtube-player"
+            id="youtube-player"
+            videoId={videoId}
+            opts={opts}
+            onReady={this.onReady}
+            onPlay={this.onPlay}
+            onPause={this.onPause}
+            onEnd={this.onEnd}
           />
         </EpsilonStreamPage>
       </div>
-
     );
   }
 }

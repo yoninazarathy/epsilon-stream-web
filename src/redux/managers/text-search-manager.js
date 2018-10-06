@@ -56,12 +56,17 @@ export function displayResultsOfSearchResults(searchResults,currentHashTag) {
         })
     ]
     if(retVal.length === 0){
-        let searchString = ourStore.getState().user.rawSearchString
+        let str = ourStore.getState().user.rawSearchString
+        let message = "No match found"
+        if(str !== undefined && str !== ''){
+            message += " for "
+            message += str
+        }
         retVal = [
             {
                 type:"NO-MATCH",
                 image: undefined,
-                title: "No match found for " + searchString,
+                title: message,
                 subtitle: undefined,
                 link: undefined,
                 action: undefined,
