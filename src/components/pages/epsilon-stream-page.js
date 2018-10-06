@@ -3,22 +3,13 @@ import { NavbarToggler,NavItem,Row,Col,Container,InputGroup,InputGroupAddon, But
 import { Tooltip, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import {connect} from 'react-redux'
 import {SearchAutoCompleteList} from '../search/search-autocomplete-list'
-//import VerticalLogo from '../../assets/Vertical_logo_1_outlines@4x.png'
 import Icon from '../../assets/icon.png'
-//import SettingsImage from '../../assets/3dotsMenu.png'
-//import RightButtonImage from '../../assets/Right_Passive.png'
-//import LeftButtonImage from '../../assets/Left_Passive.png'
-//import MediaQuery from 'react-responsive';
-// import { withRouter } from 'react-router-dom'
- //QQQQ import { RingLoader } from 'react-spinners';
-// import {connect} from 'react-redux'
-// import {store} from '../../store.js'
-// import {push} from 'react-router-redux'
 import {Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import {SearchBar} from '../search-bar.js'
 import SharePanel from '../share-panel'
 
 import Welcome from '../welcome.js'
+import userHomeAction from '../../redux/actions/user-home-action';
 
 class ShareButton extends Component {
     constructor(props) {
@@ -127,8 +118,9 @@ class EpsilonStreamPageX extends Component {
             <div> 
             {this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
-                    <NavbarBrand className="navbarBrand" onClick = {()=>{localStorage.clear();location.reload();
-                                                    console.log("Hit Clear and Reload")}}> 
+                    <NavbarBrand className="navbarBrand" onClick = {()=>{
+                                                                        userHomeAction(this.props.history)
+                                                                    }}> 
                         <span>
                             <img    className="productButton mr-sm-2" 
                                     src={Icon} 

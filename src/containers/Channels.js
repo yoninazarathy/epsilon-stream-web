@@ -1,7 +1,5 @@
 import React from 'react'
 import { withRouteData, Link } from 'react-static'
-import SnippetPage from './constructed/SnippetPage';
-//
 
 export default withRouteData(({ channels }) => (
   <div>

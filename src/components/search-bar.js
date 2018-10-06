@@ -6,9 +6,6 @@ import { withRouter } from 'react-router-dom'
 import randomChoiceAction from '../redux/actions/random-choice-action.js'
 import updateSearchAction from '../redux/actions/update-search-action.js'
 import clearSearchStringAction from '../redux/actions/clear-search-string-action'
-import userHomeAction from '../redux/actions/user-home-action';
-
-import HomeImage from '../assets/Home.png'
 import Surprise1 from '../assets/Surprise1.png'
 import Surprise2 from '../assets/Surprise2.png'
 import Surprise3 from '../assets/Surprise3.png'

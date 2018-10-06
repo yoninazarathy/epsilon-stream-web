@@ -1,7 +1,5 @@
 import React from 'react'
 import { withRouteData, Link } from 'react-static'
-import SnippetPage from './constructed/SnippetPage';
-//
 
 export default withRouteData(({ iosApps }) => (
   <div>
@@ -14,8 +12,5 @@ export default withRouteData(({ iosApps }) => (
         </li>
       ))}
     </ul>
-
-
-
   </div>
 ))

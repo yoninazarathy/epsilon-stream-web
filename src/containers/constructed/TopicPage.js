@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
 import {SearchResults} from '../../components/search/search-results';
-import {withRouteData } from 'react-static'
+import {withRouteData} from 'react-static'
 import {ourStore} from '../../redux/store'
 import {Helmet} from 'react-helmet'
 import {connect} from 'react-redux'
@@ -32,7 +32,12 @@ class TopicPage extends Component {
             <meta name="twitter:site" content="@OneOnEpsilon" />
             <title> {this.props.topic.name+" with "+"Epsilon Stream"} </title>
           </Helmet>
-          <EpsilonStreamPage title="Topic" hassearch={true} needsDB={true}>
+          <EpsilonStreamPage 
+              title="Topic" 
+              hassearch={true} 
+              needsDB={true}
+              history={this.props.history}
+              >
               {this.props.loaded && this.props.autoCompleteList.length === 0 ? <SearchResults searchItem={this.props.topic}/> : ""}
           </EpsilonStreamPage>
       </div>

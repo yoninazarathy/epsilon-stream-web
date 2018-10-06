@@ -1,18 +1,9 @@
-import {store} from '../store.js'
+import {ourStore} from '../store.js'
 import {push} from 'react-router-redux'
 
-export default function userHomeAction(){
-    let result = "Epsilon Stream Home"
-
-    console.log("hhh")
-
-    //QQQQ note used store.dispatch({type: "USER_HOME_ACTION",payload:{}})   
-    //QQQQ this code is duplicated (also in search-bar and maybe elsewhwere - consolidate)
-    let query = result.toLowerCase().split(' ').join('+');
-    store.dispatch(push('/home'))//search?q='+query))
-
-    store.dispatch({type: "UPDATE_SEARCH_STRING",payload: result})
-    store.dispatch({type: "UPDATE_HASH_TAG",payload: {}})
-    store.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
-    store.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})   
+export default function userHomeAction(history){
+    ourStore.dispatch({type: "UPDATE_HASH_TAG",payload: {hashTagString:"#homePage"}})
+    ourStore.dispatch({type: "UPDATE_SEARCH_RESULTS",payload: {}})
+    ourStore.dispatch({type: "UPDATE_DISPLAY_RESULTS",payload: {}})   
+    history.push("/home")
 }
