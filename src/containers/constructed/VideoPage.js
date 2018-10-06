@@ -14,18 +14,27 @@ class VideoPage extends Component {
     this.onPause = this.onPause.bind(this);
     this.onEnd = this.onEnd.bind(this);
   }
-  
-  checkTime() { //QQQQ disabled for now... needs to stop when video leaves screen
-                //and needs to handle parallel videos...
-    ourStore.dispatch({
-      type: "USER_PLAYER_AT",
-      payload: {
-        videoId: this.player.getVideoData()['video_id'],
-        currentTime: this.player.getCurrentTime(),
-        totalTime: this.player.getDuration()
-      }
-    });
-    setTimeout(this.checkTime, 5000);
+
+  componentDidMount() {
+    this._mounted = true;
+  }
+
+  componentWillUnmount() {
+    this._mounted = false;
+  }
+
+  checkTime() {
+    if (this._mounted) {
+      ourStore.dispatch({
+        type: "USER_PLAYER_AT",
+        payload: {
+          videoId: this.player.getVideoData()['video_id'],
+          currentTime: this.player.getCurrentTime(),
+          totalTime: this.player.getDuration()
+        }
+      });
+      setTimeout(this.checkTime, 5000);
+    }
   }
 
   onReady(e) {
@@ -42,7 +51,7 @@ class VideoPage extends Component {
       }
     });
     this.player.seekTo(progress, true);
-    //QQQQ disable for now   this.checkTime();
+    this.checkTime();
   }
 
   onPlay(e) {
