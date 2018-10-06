@@ -41,7 +41,7 @@ class VideoPage extends Component {
       }
     });
     this.player.seekTo(progress, true);
-    this.checkTime();
+    //QQQQ disable for now   this.checkTime();
   }
 
   onPlay(e) {
