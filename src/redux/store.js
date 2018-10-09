@@ -77,7 +77,8 @@ export const ourStore = createStore(
         videos: [],
         hashTagDict: [],
         lowCaseHashTagDict: [],
-        mathObjectTitleDict: []
+        mathObjectTitleDict: [],
+        errorState: undefined,
       }
       , 
       user: {

@@ -12,7 +12,10 @@ export default function loadDbAction(){
         ourStore.dispatch({type: "LOAD_DB_START",payload: {}})
         axios.get('https://db-cdn.oneonepsilon.net/database.json').then((res)=>{
             ourStore.dispatch({type: "LOAD_DB_COMPLETE",payload: res.data})
-        })
+        }).catch((error) => {
+            ourStore.dispatch({type: "LOAD_DB_ERROR",payload: error.message})
+        }
+        )
     }
 }
 

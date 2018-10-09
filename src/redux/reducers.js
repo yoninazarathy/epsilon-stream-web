@@ -167,6 +167,12 @@ const database = (state = {records: []}, actions) => {
                 mathObjects: actions.payload.mathObjects,
                 snippets: actions.payload.snippets,
                 videos: actions.payload.videos,
+                errorState: undefined //indicates there is no error
+                }
+        case "LOAD_DB_ERROR":
+            return{
+                ...state,
+                errorState: actions.payload + ' check your network or firewall or contact info@oneonepsilon.com for support.'
                 }
         default:            
             return state;

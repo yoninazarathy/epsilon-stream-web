@@ -165,7 +165,9 @@ class EpsilonStreamPageX extends Component {
                                     </React.Fragment>
                             :
                             <span className="darkHorse">
-                                {this.props.searchBarReplacementString || "Loading..."}
+                                {   this.props.searchBarReplacementString ||
+                                    this.props.networkError ||
+                                    "Loading..."}
                             </span> }
                             </div>
                             <div>
@@ -232,7 +234,8 @@ const mapStateToProps = (state) => {
         betaPopUpCounter: state.user.betaPopUpCounter,
         autoCompleteList: state.user.autoCompleteList,
         dbIsReady: state.database.dbIsReady,
-        dbLoadingInProgress: state.database.dbLoadingInProgress
+        dbLoadingInProgress: state.database.dbLoadingInProgress,
+        networkError: state.database.errorState
     };
 };
 
