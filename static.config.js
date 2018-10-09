@@ -10,7 +10,7 @@ export default {
   }),
   getRoutes: async () => {
     const { data: db} = await axios.get('https://s3.amazonaws.com/oneonepsilon-database/database.json')
-
+  
     var snippets = db["snippets"]
     var featuredURLS = db["featuredURLs"]
     var videos = db["videos"]
@@ -28,6 +28,16 @@ export default {
         name: item.hashTag.substring(1) // Strips hashtag character
       }
     })
+
+    const { data: blog} = await axios.get('https://es-app.com/repo/blog-post-list.json')
+    var i;
+    var postList = blog["curious"]
+    console.log("Getting markdown posts:")
+    for (i = 0; i < postList.length; i++) { 
+      console.log(postList[i]["url"])
+      const { data: post} = await axios.get(postList[i]["url"])
+      postList[i]["markDown"] = post
+    }
 
     return [
       {
@@ -73,6 +83,20 @@ export default {
           component: 'src/containers/constructed/TopicPage',
           getData: () => ({
             topic
+          }),
+        })),
+      },
+      {
+        path: '/blog',
+        component: 'src/containers/Blog',
+        getData: () => ({
+          postList,
+        }),
+        children: postList.map(post => ({
+          path: `${post.handle.toLowerCase()}`,
+          component: 'src/containers/constructed/EpsilonBlogPage',
+          getData: () => ({
+            post
           }),
         })),
       },
