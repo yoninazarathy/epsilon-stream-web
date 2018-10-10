@@ -33,7 +33,6 @@ export function makeHashTagDict(){
         }
         //hashtag points to itself
         dict[hashes[i]] = hashes[i] 
-        dict[hashes[i].substr(1)] = hashes[i]
     }
     return dict
 }
@@ -53,7 +52,6 @@ export function makeLowCaseHashTagDict(){
         }
         //hashtag points to itself
         dict[hashes[i].toLowerCase()] = hashes[i] 
-        dict[hashes[i].substr(1).toLowerCase()] = hashes[i]
     }
     return dict
 }
