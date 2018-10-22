@@ -1,5 +1,5 @@
 import {isAndroid} from './redux/store.js'
-// import SmartBanner from 'react-smartbanner';
+//import SmartBanner from 'react-smartbanner';
 import './App.css';
 import React from 'react'
 import { Router, Link } from 'react-static'

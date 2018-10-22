@@ -29,15 +29,15 @@ export default {
       }
     })
 
-    const { data: blog} = await axios.get('https://es-app.com/repo/blog-post-list.json')
-    var i;
-    var postList = blog["curious"]
-    console.log("Getting markdown posts:")
-    for (i = 0; i < postList.length; i++) { 
-      console.log(postList[i]["url"])
-      const { data: post} = await axios.get(postList[i]["url"])
-      postList[i]["markDown"] = post
-    }
+    // const { data: blog} = await axios.get('https://es-app.com/repo/blog-post-list.json')
+    // var i;
+    // var postList = blog["curious"]
+    // console.log("Getting markdown posts:")
+    // for (i = 0; i < postList.length; i++) { 
+    //   console.log(postList[i]["url"])
+    //   const { data: post} = await axios.get(postList[i]["url"])
+    //   postList[i]["markDown"] = post
+    // }
 
     return [
       {
@@ -86,20 +86,20 @@ export default {
           }),
         })),
       },
-      {
-        path: '/blog',
-        component: 'src/containers/Blog',
-        getData: () => ({
-          postList,
-        }),
-        children: postList.map(post => ({
-          path: `${post.handle.toLowerCase()}`,
-          component: 'src/containers/constructed/EpsilonBlogPage',
-          getData: () => ({
-            post
-          }),
-        })),
-      },
+      // {
+      //   path: '/blog',
+      //   component: 'src/containers/Blog',
+      //   getData: () => ({
+      //     postList,
+      //   }),
+      //   children: postList.map(post => ({
+      //     path: `${post.handle.toLowerCase()}`,
+      //     component: 'src/containers/constructed/EpsilonBlogPage',
+      //     getData: () => ({
+      //       post
+      //     }),
+      //   })),
+      // },
       {
         path: '/search',
         component: 'src/containers/Search',
