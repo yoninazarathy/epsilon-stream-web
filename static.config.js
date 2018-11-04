@@ -29,15 +29,26 @@ export default {
       }
     })
 
-    // const { data: blog} = await axios.get('https://es-app.com/repo/blog-post-list.json')
-    // var i;
-    // var postList = blog["curious"]
-    // console.log("Getting markdown posts:")
-    // for (i = 0; i < postList.length; i++) { 
-    //   console.log(postList[i]["url"])
-    //   const { data: post} = await axios.get(postList[i]["url"])
-    //   postList[i]["markDown"] = post
-    // }
+    const { data: blog} = await axios.get('https://es-app.com/repo/blog-post-list.json')
+    var i;
+    var postList = blog["curious"]
+    console.log("Getting markdown posts:")
+    for (i = 0; i < postList.length; i++) { 
+      let url = postList[i]["url"]
+      if(url !== undefined && url !== ""){
+        console.log(url)
+        const { data: post} = await axios.get(postList[i]["url"])//.then((response) =>{
+                                                    // console.log("got response")
+                                                    // }).catch((error) =>{
+                                                    //     console.log("got error: " + error)
+                                                    //   })
+        postList[i]["markDown"] = post
+      }
+    }
+
+    postList = postList.filter((ps)=>{return ps["markDown"] !== undefined})
+    // console.log("number of posts: " + postList.length)
+
 
     return [
       {
@@ -86,20 +97,20 @@ export default {
           }),
         })),
       },
-      // {
-      //   path: '/blog',
-      //   component: 'src/containers/Blog',
-      //   getData: () => ({
-      //     postList,
-      //   }),
-      //   children: postList.map(post => ({
-      //     path: `${post.handle.toLowerCase()}`,
-      //     component: 'src/containers/constructed/EpsilonBlogPage',
-      //     getData: () => ({
-      //       post
-      //     }),
-      //   })),
-      // },
+      {
+        path: '/blog',
+        component: 'src/containers/Blog',
+        getData: () => ({
+          postList,
+        }),
+        children: postList.map(post => ({
+          path: `${post.handle.toLowerCase()}`,
+          component: 'src/containers/constructed/EpsilonBlogPage',
+          getData: () => ({
+            post
+          }),
+        })),
+      },
       {
         path: '/search',
         component: 'src/containers/Search',
