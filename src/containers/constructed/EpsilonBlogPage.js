@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {withRouteData, Link } from 'react-static'
-import Snippet from '../../components/snippet.js'
+import Blog from '../../components/blog.js'
 import {Helmet} from 'react-helmet'
 import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
 
@@ -26,14 +26,15 @@ class EpsilonBlogPage extends Component {
           <title> {"Video "+" with "+"Epsilon Stream"} </title>
         </Helmet>
         <EpsilonStreamPage 
+            className = "epsilonBlogPage"
             title="Snippet" 
             hassearch={true} 
             needsDB={false}
             history={this.props.history}
             >
-            <div className="snippet">
+            <div className="blogpost">
               <br/>
-              <Snippet rawMarkDown = {this.props.post.markDown}/>
+              <Blog rawMarkDown = {this.props.post.markDown}/>
             </div>
         </EpsilonStreamPage>
       </div>

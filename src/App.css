@@ -235,6 +235,13 @@ blog-inline-image{
   margin: 0 5%;
 }
 
+.blogpost{
+  margin: 0 0;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #ffffff;
+}
+
 .searchItemTitle {
   font-weight: 600;
   font-size: 1.5em;

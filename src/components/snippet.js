@@ -9,7 +9,7 @@ md.use(mt);
 function stichLinks(mdText){
   return mdText.replace(/\[[^\[^\]^\(^\)]*\]\([^\[^\]^\(^\)]*\)/gi,
     (x) => {return x.replace(/\([^\[^\]^\(^\)]*\)/,
-      (x)=>{return'(search?q='+x.substring(1,x.length-1).split(' ').join('+') +')'})
+      (x)=>{return'(search/'+x.substring(1,x.length-1).split(' ').join('+') +')'})
   });
 }
 
