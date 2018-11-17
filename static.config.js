@@ -31,7 +31,7 @@ export default {
 
     const { data: blog} = await axios.get('https://es-app.com/repo/blog-post-list.json')
     var i;
-    var postList = blog["curious"].concat(blog["news"]).concat("picks")
+    var postList = blog["curious"].concat(blog["news"]).concat(blog["picks"])
     console.log("Getting markdown posts:")
     for (i = 0; i < postList.length; i++) { 
       let url = postList[i]["url"]
