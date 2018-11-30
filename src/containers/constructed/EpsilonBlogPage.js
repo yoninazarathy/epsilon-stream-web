@@ -3,10 +3,11 @@ import {withRouteData, Link } from 'react-static'
 import Blog from '../../components/blog.js'
 import {Helmet} from 'react-helmet'
 import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
+import { ourStore } from '../../redux/store'
 
 class EpsilonBlogPage extends Component {
-  constructor(props) {
-    super(props);
+  componentWillMount() {
+    ourStore.dispatch({type: "SET_PAGE_TITLE", payload: "Epsilon Stream"})
   }
 
   render() {

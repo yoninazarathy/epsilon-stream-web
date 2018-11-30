@@ -15,6 +15,10 @@ class VideoPage extends Component {
     this.onEnd = this.onEnd.bind(this);
   }
 
+  componentWillMount() {
+    ourStore.dispatch({type: "SET_PAGE_TITLE", payload: "Epsilon Stream"})
+  }
+
   componentDidMount() {
     this._mounted = true;
   }

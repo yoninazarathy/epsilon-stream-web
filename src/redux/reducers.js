@@ -136,6 +136,11 @@ const user = (state = {}, actions) => {
                 ...state,
                 videoProgressDict: createVideoProgressDict(state.videoProgressDict, actions.payload.videoId, actions.payload.currentTime)
             }
+        case "SET_PAGE_TITLE":
+            return{
+                ...state,
+                pageTitle: actions.payload,
+            }
         default:
             return state;
         }
