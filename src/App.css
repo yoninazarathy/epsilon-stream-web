@@ -225,6 +225,8 @@ blog-inline-image{
 .searchBarWrapper {
   min-height: 50px;
   text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .darkHorse {
