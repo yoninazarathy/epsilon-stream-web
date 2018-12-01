@@ -16,7 +16,9 @@ class VideoPage extends Component {
   }
 
   componentWillMount() {
-    ourStore.dispatch({type: "SET_PAGE_TITLE", payload: "Epsilon Stream"})
+    if (typeof document !== 'undefined') {
+      ourStore.dispatch({type: "SET_PAGE_TITLE", payload: "Epsilon Stream"})
+    }
   }
 
   componentDidMount() {

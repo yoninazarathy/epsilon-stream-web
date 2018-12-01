@@ -6,10 +6,12 @@ import EpsilonStreamPage from '../../components/pages/epsilon-stream-page';
 import { ourStore } from '../../redux/store'
 
 class EpsilonBlogPage extends Component {
-  componentWillMount() {
-    ourStore.dispatch({type: "SET_PAGE_TITLE", payload: "Epsilon Stream"})
+  if (typeof document !== 'undefined') {
+    componentWillMount() {
+      ourStore.dispatch({type: "SET_PAGE_TITLE", payload: "Epsilon Stream"})
+    }
   }
-
+  
   render() {
     return (
       <div>
