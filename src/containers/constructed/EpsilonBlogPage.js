@@ -20,18 +20,18 @@ class EpsilonBlogPage extends Component {
         <meta charSet="UTF-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta property="og:description" content={"Blog Post "+"with "+"Epsilon Stream"} />
-          <meta property="og:title" content={"title" + " on Epsilon Stream"} />
-          <meta property="og:image" content={"imageURL"} />
+          <meta property="og:title" content={"Blog Post" + " on Epsilon Stream"} />
+          <meta property="og:image" content={this.props.post.imageUrl} />
           {/*<meta property="og:url" content="https://epsilonstream.com" />*/}
           <meta name="twitter:card" content="summary_large_image" />
-          <meta property="og:site_name" content={"Snippet "+" @ "+"Epsilon Stream"} />
+          <meta property="og:site_name" content={"Blog "+" @ "+"Epsilon Stream"} />
           <meta name="twitter:image:alt" content="Watch, Play and Explore Mathematics." />
           <meta name="twitter:site" content="@OneOnEpsilon" />
-          <title> {"Video "+" with "+"Epsilon Stream"} </title>
+          <title> {"Blog Post "+" with "+"Epsilon Stream"} </title>
         </Helmet>
         <EpsilonStreamPage 
             className = "epsilonBlogPage"
-            title="Snippet" 
+            title="Blog Post" 
             hassearch={true} 
             needsDB={false}
             history={this.props.history}
