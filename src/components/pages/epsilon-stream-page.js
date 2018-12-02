@@ -148,7 +148,6 @@ class EpsilonStreamPageX extends Component {
                     </Collapse>
                 </Navbar>
                 : ""}
-                {console.log(this.props)}
                 <div className={"background" + (this.props.backgroundExtraClass ? " " + this.props.backgroundExtraClass : "")}>
                 <Container fluid={true} >
                     <Row>
