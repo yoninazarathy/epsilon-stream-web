@@ -29,12 +29,13 @@ class EpsilonBlogPage extends Component {
           <meta name="twitter:site" content="@OneOnEpsilon" />
           <title> {"Blog Post "+" with "+"Epsilon Stream"} </title>
         </Helmet>
-        <EpsilonStreamPage 
+        <EpsilonStreamPage
             className = "epsilonBlogPage"
             title="Blog Post" 
             hassearch={true} 
             needsDB={false}
             history={this.props.history}
+            backgroundExtraClass="blogbackground"
             >
             <div className="blogpost">
               <br/>
