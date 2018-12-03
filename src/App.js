@@ -20,6 +20,13 @@ class App extends React.Component {
     if (typeof document !== 'undefined') {
       // If we're not building but in the browser, load the DB
       loadDbAction()
+      if ("Android" in window) {
+        ourStore.dispatch({type: "SET_ENVIRONMENT", payload: "android-app"})
+      } else if ("IOSWebView" in window) {
+        ourStore.dispatch({type: "SET_ENVIRONMENT", payload: "ios-app"})
+      } else {
+        ourStore.dispatch({type: "SET_ENVIRONMENT", payload: "web"})
+      }
     }
   }
 

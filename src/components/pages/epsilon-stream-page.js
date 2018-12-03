@@ -238,8 +238,8 @@ const mapStateToProps = (state) => {
         dbIsReady: state.database.dbIsReady,
         dbLoadingInProgress: state.database.dbLoadingInProgress,
         networkError: state.database.errorState,
-        hideNav: state.user.isIOSEstream,
-        hideSearch: state.user.isIOSEstream
+        hideNav: state.user.environment_ios_app,
+        hideSearch: state.user.environment_ios_app
     };
 };
 

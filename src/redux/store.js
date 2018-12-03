@@ -82,6 +82,10 @@ export const ourStore = createStore(
       }
       , 
       user: {
+        environment: "unknown",
+        environment_android_app: false,
+        environment_ios_app: false,
+        environment_web: true,
         searchTypingInProgress: false,
         searchString: "",
         currentHashTag: "",

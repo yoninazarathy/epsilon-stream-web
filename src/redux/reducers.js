@@ -142,6 +142,14 @@ const user = (state = {}, actions) => {
                 ...state,
                 pageTitle: actions.payload,
             }
+        case "SET_ENVIRONMENT":
+            return {
+                ...state,
+                environment: actions.payload,
+                environment_android_app: actions.payload === "android-app",
+                environment_ios_app: actions.payload === "ios-app",
+                environment_web: actions.payload === "web",
+            }
         default:
             return state;
         }
