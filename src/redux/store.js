@@ -90,6 +90,7 @@ export const ourStore = createStore(
         autoCompleteList: [],
         videoProgressDict: {},
         isAndroid: false,
+        isIOSEstream: false,
         betaPopUpCounter: 0,
         pageTitle: " Epsilon Stream",
         currentURLforSharing: "https://epsilonstream.com",

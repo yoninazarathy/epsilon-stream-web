@@ -35,7 +35,8 @@ const user = (state = {}, actions) => {
                 displaySearchResults: [],
                 autoCompleteList: [],
                 videoProgressDict: {},
-                isAndroid: "Android" in window,
+                isAndroid: "Android" in window, //this set in the AndroidStudio for the Android App
+                isIOSEstream: "iOSApp" in window,
                 betaPopUpCounter: 0,
                 pageTitle: 'Epsilon Stream'
             }

@@ -157,19 +157,21 @@ class EpsilonStreamPageX extends Component {
                                 lg={{ size: 8, order: 0, offset: 2}}
                                 xl={{ size: 8, order: 0, offset: 2}}
                                 className="nopadding-lg">
+                            { !this.props.hideSearch ?
                             <div className="searchBarWrapper">
-                            { this.props.dbIsReady ?
-                                    <React.Fragment>
-                                        <SearchBar className="searchBar" startQuery={this.props.parsedQuery}/>
-                                        {this.props.autoCompleteList.length > 0 ? <SearchAutoCompleteList /> : ''}
-                                    </React.Fragment>
-                            :
-                            <span className="darkHorse">
-                                {   this.props.searchBarReplacementString ||
-                                    this.props.networkError ||
-                                    "Loading..."}
-                            </span> }
-                            </div>
+                                { this.props.dbIsReady ?
+                                        <React.Fragment>
+                                            <SearchBar className="searchBar" startQuery={this.props.parsedQuery}/>
+                                            {this.props.autoCompleteList.length > 0 ? <SearchAutoCompleteList /> : ''}
+                                        </React.Fragment>
+                                :
+                                <span className="darkHorse">
+                                    {   this.props.searchBarReplacementString ||
+                                        this.props.networkError ||
+                                        "Loading..."}
+                                </span> }
+                                </div>
+                            : ""}
                             <div>
                                 {this.props.needsDB && !this.props.dbIsReady ? 
                                     <Welcome/>
@@ -235,7 +237,9 @@ const mapStateToProps = (state) => {
         autoCompleteList: state.user.autoCompleteList,
         dbIsReady: state.database.dbIsReady,
         dbLoadingInProgress: state.database.dbLoadingInProgress,
-        networkError: state.database.errorState
+        networkError: state.database.errorState,
+        hideNav: state.user.isIOSEstream,
+        hideSearch: state.user.isIOSEstream
     };
 };
 
