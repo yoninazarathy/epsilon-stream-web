@@ -116,6 +116,7 @@ class EpsilonStreamPageX extends Component {
     render() {
         return (
             <div> 
+              <div class={"background" + (this.props.backgroundExtraClass ? " " + this.props.backgroundExtraClass : "")} />
             {this.props.hideNav !== true ? 
                 <Navbar className="navbar" color="danger" light expand="md" > 
                     <NavbarBrand className="navbarBrand" onClick = {()=>{
@@ -148,7 +149,7 @@ class EpsilonStreamPageX extends Component {
                     </Collapse>
                 </Navbar>
                 : ""}
-                <div className={"background" + (this.props.backgroundExtraClass ? " " + this.props.backgroundExtraClass : "")}>
+                <div>
                 <Container fluid={true} >
                     <Row>
                         <Col    xs={{ size: 12, order: 0, offset: 0}}
