@@ -280,4 +280,5 @@ html, body {
 
 .blogbackground {
   background: url(https://es-app.com/blog-assets/blogBack.png) repeat;
+  opacity: 0.3;
 }
