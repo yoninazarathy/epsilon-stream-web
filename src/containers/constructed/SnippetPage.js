@@ -31,7 +31,7 @@ class SnippetPage extends Component {
             needsDB={false}
             history={this.props.history}
             >
-            <div className="snippet">
+            <div className="snippet markdown-body">
               <center><h2> {this.props.snippet.ourTitle}</h2></center>
               <br/>
               <Snippet rawMarkDown = {this.props.snippet.body}  imageName = {this.props.snippet.imageURL}/>

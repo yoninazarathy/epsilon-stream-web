@@ -37,7 +37,7 @@ class EpsilonBlogPage extends Component {
             history={this.props.history}
             backgroundExtraClass="blogbackground"
             >
-            <div className="blogpost">
+            <div className="blogpost markdown-body">
               <br/>
               <Blog rawMarkDown = {this.props.post.markDown}/>
             </div>

@@ -283,3 +283,98 @@ html, body {
   background: url(https://es-app.com/blog-assets/blogBack.png) repeat;
   opacity: 0.3;
 }
+
+.blogpost img {
+  display: block;
+  margin: 1em auto;
+  border-radius: 3px;
+}
+
+.blog-image-inline-small {
+  width: 40%
+}
+
+.blog-image-medium {
+  width: 50%;
+}
+
+.blog-image-header {
+  width: 60%;
+}
+
+.blog-image-inline-full {
+  width: 95%;
+}
+
+
+.markdown-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body table {
+  display: table;
+  overflow: auto;
+  margin: 1em auto;
+}
+
+.markdown-body table th {
+  font-weight: 600;
+  background-color: #ffeef1;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #fff9fa;
+}
+
+
+@media all and (max-width: 699px) {
+  .blog-image-inline-small {
+    width: 80%
+  }
+  
+  .blog-image-medium {
+    width: 90%;
+  }
+  
+  .blog-image-header {
+    width: 95%;
+  }
+  
+  .blog-image-inline-full {
+    width: 98%;
+  }
+}

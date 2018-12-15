@@ -11,6 +11,7 @@
     "jquery": "^3.2.1",
     "lodash": "^4.17.5",
     "markdown-it": "^8.4.1",
+    "markdown-it-attrs": "^2.3.2",
     "markdown-it-katex": "^2.0.3",
     "markdown-it-multimd-table": "^3.1.2",
     "markdown-it-table": "^2.0.3",
