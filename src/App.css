@@ -238,8 +238,8 @@ blog-inline-image{
   margin: 0 0;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: #ffffff;
   padding-bottom: 30px;
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .searchItemTitle {
@@ -282,8 +282,4 @@ html, body {
 .blogbackground {
   background: url(https://es-app.com/blog-assets/blogBack.png) repeat;
   opacity: 0.3;
-}
-
-.post-blogbackground {
-  background-color: rgba(255, 255, 255, 0.85);
 }

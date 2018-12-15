@@ -36,7 +36,6 @@ class EpsilonBlogPage extends Component {
             needsDB={false}
             history={this.props.history}
             backgroundExtraClass="blogbackground"
-            postbackgroundExtraClass="post-blogbackground"
             >
             <div className="blogpost">
               <br/>

@@ -149,7 +149,7 @@ class EpsilonStreamPageX extends Component {
                     </Collapse>
                 </Navbar>
                 : ""}
-                <div className={"post-background" + (this.props.postbackgroundExtraClass ? " " + this.props.postbackgroundExtraClass : "")}>
+                <div>
                 <Container fluid={true} >
                     <Row>
                         <Col    xs={{ size: 12, order: 0, offset: 0}}
