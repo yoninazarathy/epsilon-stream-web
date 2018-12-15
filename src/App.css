@@ -282,3 +282,7 @@ html, body {
   background: url(https://es-app.com/blog-assets/blogBack.png) repeat;
   opacity: 0.3;
 }
+
+.post-blogbackground {
+  opacity: 0.85;
+}
