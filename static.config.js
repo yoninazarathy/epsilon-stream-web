@@ -210,6 +210,7 @@ LEPDHuvqLkgquwizhjqbCLQCSasLtZ0Si+2r8m2ribDepqIPtYEAADs=" rel="icon" type="image
 
             <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84756717-6"></script>
             <script dangerouslySetInnerHTML={{__html: "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-84756717-6');"}} />
+            <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700|Poppins:500" rel="stylesheet" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css" />
           </Head>
           <Body>{children}</Body>
