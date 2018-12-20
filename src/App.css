@@ -370,6 +370,21 @@ html, body {
   background-color: #fff9fa;
 }
 
+.blog-video-inline {
+  position: relative;
+  width: 70%;
+  height: 0;
+  padding-bottom: 39.375%;
+  margin: 0 auto;
+}
+
+.blog-video-inline > iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 @media all and (max-width: 699px) {
   .blog-image-inline-small {
@@ -386,5 +401,21 @@ html, body {
   
   .blog-image-inline-full {
     width: 98%;
+  }
+
+  .blog-video-inline {
+    position: relative;
+    width: 90%;
+    height: 0;
+    padding-bottom: 50.625%;
+    margin: 0 auto;
+  }
+
+  .blog-video-inline > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }
