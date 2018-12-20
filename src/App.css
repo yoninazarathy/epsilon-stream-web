@@ -386,6 +386,36 @@ html, body {
   height: 100%;
 }
 
+.es-play-overlay > .blog-image-medium {
+  transition: opacity 300ms ease-in-out;
+}
+
+.es-play-overlay > .blog-image-medium:hover {
+  opacity: 0.8;
+}
+
+.es-play-overlay {
+  display: block;
+  position: relative;
+}
+
+.es-play-overlay:after {
+  content: "";
+  display: block;
+  width: 10%;
+  height: 35%;
+  position: absolute;
+  margin: 0px auto;
+  padding: 0px auto;
+  top: 30%;
+  left: 45%;
+  background-image: url("https://es-app.com/assets/pl3es2.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
 @media all and (max-width: 699px) {
   .blog-image-inline-small {
     width: 80%
